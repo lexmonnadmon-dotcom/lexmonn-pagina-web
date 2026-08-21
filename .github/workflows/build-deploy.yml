@@ -1,0 +1,33 @@
+name: Build y deploy a Netlify
+
+on:
+  schedule:
+    # Cada 6 horas (UTC). Los cambios de precio/stock ya se ven en minutos
+    # gracias al fetch en vivo del navegador — este cron es para que los
+    # productos NUEVOS o eliminados en la Sheet generen sus páginas propias
+    # (SEO) sin que nadie tenga que acordarse de correr el build a mano.
+    - cron: "0 */6 * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generar las páginas (build.js)
+        run: node build.js
+
+      - name: Deploy a Netlify
+        run: npx netlify-cli deploy --prod --dir=. --site="$NETLIFY_SITE_ID" --auth="$NETLIFY_AUTH_TOKEN"
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

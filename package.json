@@ -1,0 +1,12 @@
+{
+  "name": "lexmonn-pagina-web",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sitio estático de Lexmonn con pre-renderizado (SSG) del catálogo desde Google Sheets.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node build.js"
+  }
+}

@@ -1,0 +1,326 @@
+// ============================================================
+// LEXMONN - "Cascarón" (chrome) de la página: todo lo que se repite
+// en Home, páginas de producto y páginas de categoría (head, header,
+// carrito, modales, footer, scripts). Solo lo usa build.js (Node).
+//
+// Si quieres cambiar el header, el footer, el banner de aniversario
+// o los modales del carrito a mano, este es el archivo que debes
+// editar — index.html y las páginas de producto/categoría se
+// regeneran a partir de aquí con `node build.js`.
+// ============================================================
+
+const SITE_URL = "https://lexmonn.com";
+
+const ORG_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness"],
+  name: "Lexmonn",
+  url: `${SITE_URL}/`,
+  logo: `${SITE_URL}/logo-cropped.png`,
+  image: `${SITE_URL}/logo-cropped.png`,
+  taxID: "901923669",
+  telephone: "+57 301 559 7873",
+  email: "lexmonn.admon@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Cll 54 cr 53-34",
+    addressLocality: "Bello",
+    addressRegion: "Antioquia",
+    addressCountry: "CO",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "18:30",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "09:00",
+      closes: "15:00",
+    },
+  ],
+  sameAs: [
+    "https://www.instagram.com/lexmonn_sas?igsh=c3I3eGVrZ3F4OHRi",
+    "https://www.facebook.com/share/18Bj6WAGWX/?mibextid=wwXIfr",
+    "https://www.tiktok.com/@lexmonn_sas",
+  ],
+};
+
+function jsonLdScript(obj, id) {
+  return `<script type="application/ld+json"${id ? ` id="${id}"` : ""}>\n${JSON.stringify(obj)}\n</script>`;
+}
+
+// meta: { title, description, canonical, ogImage, robots, breadcrumbJsonLd, extraJsonLd }
+function renderHead(meta) {
+  const title = meta.title;
+  const description = meta.description;
+  const canonical = meta.canonical;
+  const ogImage = meta.ogImage || `${SITE_URL}/hero-banner-2.jpeg`;
+  const robots = meta.robots || "index, follow";
+
+  const extraJsonLd = (meta.extraJsonLd || []).map((obj) => jsonLdScript(obj)).join("\n");
+
+  return `<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${title}</title>
+<meta name="description" content="${description}">
+<meta name="robots" content="${robots}">
+<link rel="canonical" href="${canonical}">
+
+<!-- Open Graph -->
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${description}">
+<meta property="og:image" content="${ogImage}">
+<meta property="og:url" content="${canonical}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lexmonn">
+<meta property="og:locale" content="es_CO">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${title}">
+<meta name="twitter:description" content="${description}">
+<meta name="twitter:image" content="${ogImage}">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/logo-cropped.png">
+<link rel="apple-touch-icon" href="/logo-cropped.png">
+
+<!-- Preconnect / DNS-prefetch a dominios externos -->
+<link rel="preconnect" href="https://docs.google.com">
+<link rel="dns-prefetch" href="https://docs.google.com">
+<link rel="preconnect" href="https://i.postimg.cc">
+<link rel="dns-prefetch" href="https://i.postimg.cc">
+<link rel="preconnect" href="https://cdn.phototourl.com">
+<link rel="dns-prefetch" href="https://cdn.phototourl.com">
+
+<link rel="stylesheet" href="/style.css">
+
+<!-- Schema.org: Organization + LocalBusiness -->
+${jsonLdScript(ORG_JSON_LD)}
+${meta.breadcrumbJsonLd ? jsonLdScript(meta.breadcrumbJsonLd) : ""}
+${extraJsonLd}`;
+}
+
+function renderHeader() {
+  return `<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <a href="/"><img class="brand-logo-img" src="/logo-cropped.png" alt="Lexmonn Tool Holders" width="874" height="272" loading="eager" fetchpriority="high"></a>
+      <p class="tagline" id="store-tagline">Porta herramientas fabricados en Colombia, hechos para durar</p>
+    </div>
+    <button id="cart-btn" class="cart-btn">
+      🛒 Carrito <span id="cart-count" class="cart-count">0</span>
+    </button>
+  </div>
+</header>
+
+<div class="anniversary-banner">
+  🎉 <strong>¡Celebramos 5 años!</strong> 🎉 Fabricando calidad y revolucionando la forma en que trabajas.
+</div>`;
+}
+
+function renderFooter() {
+  return `<footer class="site-footer">
+  <div class="footer-shipping">🚚 Envíos a todo Colombia</div>
+  <div class="footer-info-bar">
+    <div class="footer-info-item">
+      <span class="footer-info-label">NIT</span>
+      <span class="footer-info-value">901923669</span>
+    </div>
+    <div class="footer-info-item">
+      <span class="footer-info-label">Correo</span>
+      <span class="footer-info-value">lexmonn.admon@gmail.com</span>
+    </div>
+    <div class="footer-info-item">
+      <span class="footer-info-label">Dirección</span>
+      <span class="footer-info-value" id="store-location">Cll 54 cr 53-34, Bello, Antioquia</span>
+    </div>
+    <div class="footer-info-item">
+      <span class="footer-info-label">Contáctanos</span>
+      <span class="footer-info-value">301-559-7873</span>
+    </div>
+    <div class="footer-info-item">
+      <span class="footer-info-label">Síguenos</span>
+      <div class="footer-social-links">
+        <a href="https://www.instagram.com/lexmonn_sas?igsh=c3I3eGVrZ3F4OHRi" target="_blank" rel="noopener" class="footer-social-link">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <span>@lexmonn_sas</span>
+        </a>
+        <a href="https://www.facebook.com/share/18Bj6WAGWX/?mibextid=wwXIfr" target="_blank" rel="noopener" class="footer-social-link">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.3-1.5 1.6-1.5H16V4.2C15.7 4.1 14.8 4 13.7 4 11.4 4 9.9 5.4 9.9 8v2.5H7.4v3h2.5V21h3.6z"/></svg>
+          <span>Lexmonn</span>
+        </a>
+        <a href="https://www.tiktok.com/@lexmonn_sas" target="_blank" rel="noopener" class="footer-social-link">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M16.5 3c.3 2 1.7 3.6 3.7 4v3c-1.4 0-2.7-.4-3.7-1.2v6.4a5.7 5.7 0 1 1-5.7-5.7c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.8 2.5V3h3z"/></svg>
+          <span>@lexmonn_sas</span>
+        </a>
+      </div>
+    </div>
+    <div class="footer-info-item">
+      <span class="footer-info-label">Horarios de atención</span>
+      <span class="footer-info-value">Lunes a viernes: 8:00 a.m. - 6:30 p.m.<br>Sábados: 9:00 a.m. - 3:00 p.m.</span>
+    </div>
+  </div>
+  <p class="footer-copy">© <span id="year"></span> Lexmonn. Todos los derechos reservados.</p>
+</footer>`;
+}
+
+// includeProductModal: home y categoría lo usan (vista rápida); las páginas
+// de producto no lo necesitan porque la página ENTERA ya es el detalle.
+function renderCartAndModals(opts) {
+  opts = opts || {};
+  const includeProductModal = opts.includeProductModal !== false;
+
+  const productModal = includeProductModal
+    ? `
+<!-- Modal de detalle de producto (vista rápida) -->
+<div id="product-overlay" class="overlay" hidden></div>
+<div id="product-modal" class="modal product-modal" hidden>
+  <button id="product-close" class="icon-btn product-modal-close" aria-label="Cerrar">✕</button>
+  <div class="product-modal-body">
+    <div class="product-modal-gallery">
+      <div class="product-modal-img-wrap">
+        <img id="product-modal-img" class="product-modal-img" src="" alt="">
+        <span class="zoom-badge">🔍 Ampliar</span>
+      </div>
+      <div id="product-modal-thumbs" class="product-modal-thumbs"></div>
+    </div>
+    <div class="product-modal-info">
+      <span id="product-modal-discount-badge" class="discount-badge discount-badge-modal" hidden></span>
+      <h2 id="product-modal-name"></h2>
+      <p id="product-modal-category" class="product-modal-category"></p>
+      <p id="product-modal-desc" class="product-modal-desc"></p>
+      <div id="product-modal-price" class="product-modal-price"></div>
+      <div class="product-modal-actions">
+        <input type="number" id="product-modal-qty" class="qty-input qty-input-lg" min="1" value="1">
+        <button id="product-modal-add" class="add-btn add-btn-lg">Añadir al carrito</button>
+      </div>
+    </div>
+  </div>
+</div>`
+    : "";
+
+  return `
+<!-- Panel del carrito -->
+<div id="cart-overlay" class="overlay" hidden></div>
+<aside id="cart-panel" class="cart-panel" hidden>
+  <div class="cart-panel-header">
+    <h2>Tu pedido</h2>
+    <button id="cart-close" class="icon-btn" aria-label="Cerrar carrito">✕</button>
+  </div>
+  <div id="cart-items" class="cart-items"></div>
+  <div class="cart-summary">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="cart-total">$0</span>
+    </div>
+    <button id="checkout-btn" class="btn-primary" disabled>Finalizar pedido por WhatsApp</button>
+  </div>
+</aside>
+
+<!-- Modal de datos del comprador -->
+<div id="checkout-overlay" class="overlay" hidden></div>
+<div id="checkout-modal" class="modal" hidden>
+  <div class="modal-header">
+    <h2>Datos para tu pedido</h2>
+    <button id="checkout-close" class="icon-btn" aria-label="Cerrar">✕</button>
+  </div>
+  <form id="checkout-form">
+    <label>
+      Nombre completo *
+      <input type="text" name="nombre" required>
+    </label>
+    <label>
+      Dirección de entrega *
+      <input type="text" name="direccion" required>
+    </label>
+    <label>
+      Ciudad / Municipio *
+      <input type="text" name="ciudad" required>
+    </label>
+    <label>
+      Número de teléfono *
+      <input type="tel" name="telefono" required>
+    </label>
+    <label>
+      Cédula / NIT (si es empresa) *
+      <input type="text" name="documento" required>
+    </label>
+    <label>
+      Correo electrónico
+      <input type="email" name="correo">
+    </label>
+    <button type="submit" class="btn-primary">Enviar pedido por WhatsApp</button>
+  </form>
+</div>
+
+<button id="cart-fab" class="cart-fab" hidden>
+  🛒 <span id="cart-fab-count">0</span>
+</button>
+${productModal}
+
+<!-- Visor de imagen con zoom -->
+<div id="image-lightbox" class="image-lightbox" hidden>
+  <button id="lightbox-close" class="icon-btn lightbox-close" aria-label="Cerrar">✕</button>
+  <div id="lightbox-hint" class="lightbox-hint">Toca la imagen para hacer zoom</div>
+  <img id="lightbox-img" class="lightbox-img" src="" alt="">
+</div>
+
+<!-- Pop-up de promoción -->
+<div id="promo-overlay" class="overlay" hidden></div>
+<div id="promo-modal" class="promo-modal" hidden>
+  <button id="promo-close" class="icon-btn promo-modal-close" aria-label="Cerrar">✕</button>
+  <a href="https://wa.me/573015597873?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20promoci%C3%B3n%20de%20aniversario%20de%20Lexmonn" target="_blank" rel="noopener">
+    <img src="/promo-sorteo.jpeg" alt="Promoción de aniversario Lexmonn" class="promo-modal-img">
+  </a>
+</div>`;
+}
+
+function renderScripts() {
+  return `<script src="/config.js"></script>
+<script src="/sample-products.js"></script>
+<script src="/lib/shared.js"></script>
+<script src="/lib/templates.js"></script>
+<script src="/app.js"></script>`;
+}
+
+// opts: { head, bodyAttrs, main, includeProductModal }
+function renderPage(opts) {
+  return `<!DOCTYPE html>
+<html lang="es">
+<head>
+${opts.head}
+</head>
+<body${opts.bodyAttrs ? " " + opts.bodyAttrs : ""}>
+
+${renderHeader()}
+
+<main>
+${opts.main}
+</main>
+
+${renderFooter()}
+
+${renderCartAndModals({ includeProductModal: opts.includeProductModal })}
+
+${renderScripts()}
+</body>
+</html>
+`;
+}
+
+module.exports = {
+  SITE_URL,
+  ORG_JSON_LD,
+  jsonLdScript,
+  renderHead,
+  renderHeader,
+  renderFooter,
+  renderCartAndModals,
+  renderScripts,
+  renderPage,
+};
