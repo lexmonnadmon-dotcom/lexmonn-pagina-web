@@ -1037,4 +1037,36 @@ a { color: var(--teal); }
      imagen decorativa casi no se alcanza a ver detrás del contenido
      opaco en pantallas angostas, la desactivamos ahí. */
   main::before { display: none; }
+
+  /* La foto del producto ocupa casi toda la pantalla en móvil, así que el
+     precio y "Añadir al carrito" quedaban fuera de vista sin hacer scroll.
+     Los dejamos pegados abajo para que siempre se puedan ver y tocar sin
+     buscarlos. En el modal de vista rápida se pega al fondo del propio
+     modal (que ya tiene su scroll interno); en la página de producto se
+     fija abajo de toda la pantalla (esa página no tiene un contenedor
+     con scroll propio, así que sticky no alcanzaría a "pegarse" ahí). */
+  #product-modal .product-modal-actions {
+    position: sticky;
+    bottom: 0;
+    background: #ffffff;
+    margin: 12px -28px -28px;
+    padding: 14px 28px calc(14px + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -6px 14px rgba(0, 0, 0, 0.08);
+    z-index: 5;
+  }
+
+  .product-detail-body .product-modal-actions {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    background: #ffffff;
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -6px 14px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+  }
+  .product-detail {
+    padding-bottom: 90px;
+  }
 }
