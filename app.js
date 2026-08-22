@@ -27,6 +27,22 @@ document.addEventListener("DOMContentLoaded", () => {
   initPromoPopup();
 });
 
+// ---------- Bloqueo del scroll de fondo mientras hay un panel/modal abierto ----------
+// Evita que, al llegar al final del scroll dentro de un modal/panel (en
+// especial en celular), el navegador "empuje" el scroll hacia el catálogo
+// de atrás. Usa un contador porque a veces un panel abre a otro (ej. el
+// carrito se abre al agregar desde el modal de producto, que se cierra
+// justo después) y no debe desbloquearse hasta que no quede ninguno abierto.
+let openOverlaysCount = 0;
+function lockBodyScroll() {
+  openOverlaysCount++;
+  document.body.style.overflow = "hidden";
+}
+function unlockBodyScroll() {
+  openOverlaysCount = Math.max(0, openOverlaysCount - 1);
+  if (openOverlaysCount === 0) document.body.style.overflow = "";
+}
+
 // ---------- Pop-up de promoción ----------
 
 function initPromoPopup() {
@@ -39,6 +55,7 @@ function initPromoPopup() {
   setTimeout(() => {
     document.getElementById("promo-modal").hidden = false;
     document.getElementById("promo-overlay").hidden = false;
+    lockBodyScroll();
     sessionStorage.setItem(PROMO_KEY, "1");
   }, 1200);
 }
@@ -46,6 +63,7 @@ function initPromoPopup() {
 function closePromoPopup() {
   document.getElementById("promo-modal").hidden = true;
   document.getElementById("promo-overlay").hidden = true;
+  unlockBodyScroll();
 }
 
 // ---------- Carga del catálogo desde Google Sheets ----------
@@ -305,11 +323,13 @@ function openProductModal(p) {
 
   document.getElementById("product-modal").hidden = false;
   document.getElementById("product-overlay").hidden = false;
+  lockBodyScroll();
 }
 
 function closeProductModal() {
   document.getElementById("product-modal").hidden = true;
   document.getElementById("product-overlay").hidden = true;
+  unlockBodyScroll();
 }
 
 // ---------- Página estática de producto (/productos/slug.html) ----------
@@ -413,11 +433,13 @@ function openLightbox(src) {
   lightboxImg.classList.remove("zoomed");
   lightboxImg.style.transformOrigin = "center center";
   document.getElementById("image-lightbox").hidden = false;
+  lockBodyScroll();
 }
 
 function closeLightbox() {
   document.getElementById("image-lightbox").hidden = true;
   document.getElementById("lightbox-img").classList.remove("zoomed");
+  unlockBodyScroll();
 }
 
 function toggleLightboxZoom(e) {
@@ -561,18 +583,22 @@ function bindGlobalEvents() {
 function openCart() {
   document.getElementById("cart-panel").hidden = false;
   document.getElementById("cart-overlay").hidden = false;
+  lockBodyScroll();
 }
 function closeCart() {
   document.getElementById("cart-panel").hidden = true;
   document.getElementById("cart-overlay").hidden = true;
+  unlockBodyScroll();
 }
 function openCheckout() {
   document.getElementById("checkout-modal").hidden = false;
   document.getElementById("checkout-overlay").hidden = false;
+  lockBodyScroll();
 }
 function closeCheckout() {
   document.getElementById("checkout-modal").hidden = true;
   document.getElementById("checkout-overlay").hidden = true;
+  unlockBodyScroll();
 }
 
 function handleCheckoutSubmit(e) {
