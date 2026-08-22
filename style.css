@@ -1031,4 +1031,10 @@ a { color: var(--teal); }
     padding: 8px 4px;
     font-size: 0.85rem;
   }
+
+  /* En móvil, los navegadores repintan mal los fondos "fixed" durante el
+     scroll (se ve como si la imagen de fondo saltara/temblara). Como esta
+     imagen decorativa casi no se alcanza a ver detrás del contenido
+     opaco en pantallas angostas, la desactivamos ahí. */
+  main::before { display: none; }
 }
