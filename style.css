@@ -1006,4 +1006,29 @@ a { color: var(--teal); }
 @media (max-width: 640px) {
   .cart-btn { display: none; }
   .cart-fab:not([hidden]) { display: flex; align-items: center; gap: 6px; }
+
+  .catalog {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 16px 12px;
+  }
+  .product-body {
+    padding: 10px 10px 0;
+    gap: 6px;
+  }
+  .product-name { font-size: 0.9rem; }
+  .product-desc { font-size: 0.78rem; }
+  .product-price { font-size: 1.05rem; }
+  .product-actions {
+    padding: 8px 10px 10px;
+    gap: 6px;
+  }
+  .qty-input {
+    width: 44px;
+    padding: 6px;
+  }
+  .add-btn {
+    padding: 8px 4px;
+    font-size: 0.85rem;
+  }
 }
