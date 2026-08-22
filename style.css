@@ -1043,33 +1043,54 @@ a { color: var(--teal); }
 
   /* La foto del producto ocupa casi toda la pantalla en móvil, así que el
      precio y "Añadir al carrito" quedaban fuera de vista sin hacer scroll.
-     Los dejamos pegados abajo para que siempre se puedan ver y tocar sin
-     buscarlos. En el modal de vista rápida se pega al fondo del propio
+     Los agrupamos en una sola barra, con el precio al lado del botón, y
+     la dejamos pegada abajo para que siempre se puedan ver y tocar sin
+     buscarlas. En el modal de vista rápida se pega al fondo del propio
      modal (que ya tiene su scroll interno); en la página de producto se
      fija abajo de toda la pantalla (esa página no tiene un contenedor
      con scroll propio, así que sticky no alcanzaría a "pegarse" ahí). */
-  #product-modal .product-modal-actions {
+  .sticky-buy-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+  }
+  .sticky-buy-bar .product-modal-price {
+    margin-top: 0;
+    font-size: 1.3rem;
+  }
+  .sticky-buy-bar .product-modal-price-original {
+    font-size: 0.8rem;
+  }
+  .sticky-buy-bar .product-modal-actions {
+    margin-top: 0;
+    flex: 1;
+    min-width: 180px;
+  }
+
+  #product-modal .sticky-buy-bar {
     position: sticky;
     bottom: 0;
     background: #ffffff;
     margin: 12px -28px -28px;
-    padding: 14px 28px calc(14px + env(safe-area-inset-bottom, 0px));
+    padding: 12px 28px calc(12px + env(safe-area-inset-bottom, 0px));
     box-shadow: 0 -6px 14px rgba(0, 0, 0, 0.08);
     z-index: 5;
   }
 
-  .product-detail-body .product-modal-actions {
+  .product-detail-body .sticky-buy-bar {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
     margin: 0;
     background: #ffffff;
-    padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+    padding: 10px 20px calc(10px + env(safe-area-inset-bottom, 0px));
     box-shadow: 0 -6px 14px rgba(0, 0, 0, 0.08);
     z-index: 10;
   }
   .product-detail {
-    padding-bottom: 90px;
+    padding-bottom: 100px;
   }
 }

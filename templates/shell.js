@@ -194,10 +194,12 @@ function renderCartAndModals(opts) {
       <h2 id="product-modal-name"></h2>
       <p id="product-modal-category" class="product-modal-category"></p>
       <p id="product-modal-desc" class="product-modal-desc"></p>
-      <div id="product-modal-price" class="product-modal-price"></div>
-      <div class="product-modal-actions">
-        <input type="number" id="product-modal-qty" class="qty-input qty-input-lg" min="1" value="1">
-        <button id="product-modal-add" class="add-btn add-btn-lg">Añadir al carrito</button>
+      <div class="sticky-buy-bar">
+        <div id="product-modal-price" class="product-modal-price"></div>
+        <div class="product-modal-actions">
+          <input type="number" id="product-modal-qty" class="qty-input qty-input-lg" min="1" value="1">
+          <button id="product-modal-add" class="add-btn add-btn-lg">Añadir al carrito</button>
+        </div>
       </div>
     </div>
   </div>
