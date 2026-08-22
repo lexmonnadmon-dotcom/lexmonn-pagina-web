@@ -328,6 +328,11 @@ function initStaticProductDetail() {
     });
   }
 
+  const shareBtn = document.getElementById("product-share-btn");
+  if (shareBtn) {
+    shareBtn.addEventListener("click", () => shareCurrentProduct(shareBtn));
+  }
+
   const mainImg = document.getElementById("product-modal-img");
   const thumbsEl = document.getElementById("product-modal-thumbs");
   if (mainImg) {
@@ -343,6 +348,37 @@ function initStaticProductDetail() {
       thumb.addEventListener("error", () => { thumb.src = PLACEHOLDER_IMG; });
     });
   }
+}
+
+// Botón "Compartir producto": usa el menú nativo de compartir del celular
+// si está disponible, o copia el link al portapapeles como respaldo.
+async function shareCurrentProduct(btn) {
+  const url = window.location.href;
+  const name = document.getElementById("product-modal-name")?.textContent || document.title;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: name, text: `Mira este producto de Lexmonn: ${name}`, url });
+    } catch (err) {
+      // el usuario cerró el menú de compartir sin elegir nada, no hacemos nada
+    }
+    return;
+  }
+
+  const originalText = btn.textContent;
+  try {
+    await navigator.clipboard.writeText(url);
+    btn.textContent = "✅ ¡Enlace copiado!";
+  } catch (err) {
+    try {
+      window.prompt("Copia este link para compartirlo:", url);
+    } catch (promptErr) {
+      // algunos navegadores (ej. ciertos navegadores embebidos en apps)
+      // tampoco soportan prompt() — no queda más respaldo posible.
+    }
+    return;
+  }
+  setTimeout(() => { btn.textContent = originalText; }, 2200);
 }
 
 // Refresca el precio mostrado en la página de producto con el dato más

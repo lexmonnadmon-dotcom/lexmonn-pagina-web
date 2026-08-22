@@ -916,6 +916,24 @@ a { color: var(--teal); }
 }
 .whatsapp-direct-btn:hover { background: #1ebe5b; transform: translateY(-1px); }
 
+.share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #ffffff;
+  color: var(--teal);
+  border: 2px solid var(--teal);
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 11px;
+  border-radius: 50px;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.share-btn:hover { background: #f2f8ea; transform: translateY(-1px); }
+
 .back-to-catalog {
   display: inline-block;
   margin-top: 18px;

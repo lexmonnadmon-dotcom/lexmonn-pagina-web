@@ -179,6 +179,7 @@ function buildProductPage(p, allCategories) {
           <button id="product-modal-add" class="add-btn add-btn-lg" data-id="${Shared.escapeHtml(p.id)}">Añadir al carrito</button>
         </div>
         <a class="whatsapp-direct-btn" href="${waLink}" target="_blank" rel="noopener">📲 Pedir por WhatsApp</a>
+        <button id="product-share-btn" class="share-btn" type="button">🔗 Compartir producto</button>
         <a class="back-to-catalog" href="/">← Volver al catálogo</a>
       </div>
     </div>
