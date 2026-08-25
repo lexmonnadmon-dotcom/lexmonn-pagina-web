@@ -2,11 +2,14 @@ name: Build y deploy a Netlify
 
 on:
   schedule:
-    # Cada 6 horas (UTC). Los cambios de precio/stock ya se ven en minutos
-    # gracias al fetch en vivo del navegador — este cron es para que los
-    # productos NUEVOS o eliminados en la Sheet generen sus páginas propias
-    # (SEO) sin que nadie tenga que acordarse de correr el build a mano.
-    - cron: "0 */6 * * *"
+    # Una vez al día, 6:00 a.m. hora Colombia (11:00 UTC). Los cambios de
+    # precio/stock ya se ven en minutos gracias al fetch en vivo del
+    # navegador — este cron es solo para que los productos NUEVOS o
+    # eliminados en la Sheet generen sus páginas propias (SEO) sin que
+    # nadie tenga que acordarse de correr el build a mano. Se bajó de
+    # cada 6 horas a una vez al día para no gastar de más los créditos
+    # gratis de Netlify (300/mes en el plan gratuito).
+    - cron: "0 11 * * *"
   workflow_dispatch: {}
   push:
     branches: [main]
