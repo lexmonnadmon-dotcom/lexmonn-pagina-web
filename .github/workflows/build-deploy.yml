@@ -11,6 +11,14 @@ on:
   push:
     branches: [main]
 
+# Si se hacen varios pushes seguidos, cancela la publicación anterior que
+# todavía esté corriendo en vez de dejar que las dos terminen a la vez —
+# así nunca hay riesgo de que una versión vieja termine de publicarse
+# después que una nueva y la tape.
+concurrency:
+  group: build-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
