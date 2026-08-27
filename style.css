@@ -955,6 +955,27 @@ a { color: var(--teal); }
 .product-unavailable h1 { color: var(--teal); margin-bottom: 12px; }
 .product-unavailable p { color: var(--text-muted); margin-bottom: 8px; }
 
+/* Lista de categorías en la página 404 */
+.not-found-cats {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.not-found-cats a {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid var(--teal);
+  border-radius: 999px;
+  color: var(--teal);
+  text-decoration: none;
+  font-weight: 600;
+}
+.not-found-cats a:hover { background: var(--teal); color: #fff; }
+
 /* Pop-up de promoción */
 .promo-modal {
   position: fixed;

@@ -73,6 +73,7 @@ Columnas de la hoja (no cambies los nombres de las columnas):
 | `Precio` | Solo números, sin puntos ni símbolo. Ej: `180000` |
 | `Imagen_URL` | Link directo a la imagen (ver Paso 3) |
 | `Categoria` | Se usa para los filtros de la tienda (ver abajo) |
+| `Marca` | Opcional pero recomendada. La marca real del producto (ver abajo) |
 | `Imagenes_Adicionales` | Opcional. Fotos extra para la galería del producto (ver abajo) |
 | `Precio_Oferta` | Opcional. Precio de descuento (ver abajo) |
 | `Activo` | `Si` para que se muestre en la tienda, `No` para ocultarlo |
@@ -92,6 +93,20 @@ Categorías sugeridas para Lexmonn (puedes usar estas o las que prefieras):
 - `Herramientas Pretul`
 - `Herramientas Truper`
 - `Herramientas de Ferretería`
+
+### La columna `Marca` (importante para Google)
+
+Google muestra mejor los productos cuando sabe de qué **marca** son. Por eso
+cada página de producto le declara una marca a Google.
+
+- Si dejas la celda `Marca` **vacía**, se asume **Lexmonn**. Eso es lo
+  correcto para los porta herramientas que ustedes fabrican.
+- Si el producto es de **reventa** (una herramienta Total, Pretul, Truper,
+  etc.), **escribe ahí la marca real**. Si la dejas vacía le estarías
+  diciendo a Google que esa herramienta es marca Lexmonn, y no lo es.
+
+Vale la pena repasar la hoja una vez y llenar `Marca` en las herramientas
+que no son de fabricación propia.
 
 ### Galería de varias fotos por producto
 

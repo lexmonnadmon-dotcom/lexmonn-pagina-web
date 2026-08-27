@@ -217,6 +217,36 @@ function buildUnavailableProductPage(slug, nombre) {
   writeFile(`productos/${slug}.html`, Shell.renderPage({ head, main, includeProductModal: false }));
 }
 
+// ---------- 404 ----------
+
+// GitHub Pages sirve /404.html automáticamente para cualquier ruta que no
+// exista. Sin este archivo el visitante ve la página de error genérica de
+// GitHub, sin logo ni forma de volver al catálogo.
+function build404Page(categoryLinks) {
+  const head = Shell.renderHead({
+    title: "Página no encontrada | Lexmonn",
+    description: "Esta página no existe. Explora el catálogo completo de porta herramientas y herramientas Lexmonn.",
+    canonical: `${SITE_URL}/`,
+    robots: "noindex, follow",
+  });
+
+  const catLinks = categoryLinks
+    .map(
+      (c) =>
+        `<li><a href="/categoria/${c.slug}.html">${Shared.escapeHtml(c.name)}</a></li>`
+    )
+    .join("");
+
+  const main = `<section class="product-unavailable">
+    <h1>Esta página no existe</h1>
+    <p>Puede que el enlace esté mal escrito o que el producto haya cambiado de nombre.</p>
+    <a class="back-to-catalog" href="/">← Ver el catálogo completo</a>
+    ${catLinks ? `<p>O ve directo a una categoría:</p><ul class="not-found-cats">${catLinks}</ul>` : ""}
+  </section>`;
+
+  writeFile("404.html", Shell.renderPage({ head, main, includeProductModal: false }));
+}
+
 // ---------- Categoría ----------
 
 function buildCategoryPage(catName, catSlug, products, allCategories) {
@@ -347,10 +377,12 @@ async function main() {
     categoryLinks.push({ name: catName, slug: catSlug });
   });
 
+  build404Page(categoryLinks);
+
   buildSitemap(activeProducts, categoryLinks);
 
   console.log(
-    `[build] Listo: index.html, ${activeProducts.length} páginas de producto, ${categoryLinks.length} páginas de categoría, sitemap.xml.`
+    `[build] Listo: index.html, ${activeProducts.length} páginas de producto, ${categoryLinks.length} páginas de categoría, 404.html, sitemap.xml.`
   );
 }
 

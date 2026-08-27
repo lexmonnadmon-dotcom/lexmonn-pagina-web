@@ -206,6 +206,7 @@ function injectProductSchema(products) {
         "@type": "Product",
         name: p.nombre,
         description: p.descripcion,
+        brand: { "@type": "Brand", name: p.marca || "Lexmonn" },
         image: p.imagen || undefined,
         offers: {
           "@type": "Offer",
