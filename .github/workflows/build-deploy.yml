@@ -1,4 +1,4 @@
-name: Build y deploy a Netlify
+name: Build y deploy a GitHub Pages
 
 on:
   schedule:
@@ -6,9 +6,7 @@ on:
     # precio/stock ya se ven en minutos gracias al fetch en vivo del
     # navegador — este cron es solo para que los productos NUEVOS o
     # eliminados en la Sheet generen sus páginas propias (SEO) sin que
-    # nadie tenga que acordarse de correr el build a mano. Se bajó de
-    # cada 6 horas a una vez al día para no gastar de más los créditos
-    # gratis de Netlify (300/mes en el plan gratuito).
+    # nadie tenga que acordarse de correr el build a mano.
     - cron: "0 11 * * *"
   workflow_dispatch: {}
   push:
@@ -19,12 +17,20 @@ on:
 # así nunca hay riesgo de que una versión vieja termine de publicarse
 # después que una nueva y la tape.
 concurrency:
-  group: build-deploy-${{ github.ref }}
+  group: pages
   cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,8 +43,17 @@ jobs:
       - name: Generar las páginas (build.js)
         run: node build.js
 
-      - name: Deploy a Netlify
-        run: npx netlify-cli deploy --prod --dir=. --site="$NETLIFY_SITE_ID" --auth="$NETLIFY_AUTH_TOKEN"
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - name: Quitar archivos que no debe servir el sitio
+        run: rm -rf .git
+
+      - name: Preparar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir el sitio como artefacto
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
