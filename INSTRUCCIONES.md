@@ -43,7 +43,7 @@ operar tú.
 |---|---|---|
 | Un precio o si un producto está en oferta | En la página de ese producto y en el catálogo (Home): **unos minutos** | — |
 | Activar/desactivar un producto (`Activo`) | En el catálogo (Home): unos minutos | Su página individual y el sitemap: en la siguiente actualización automática |
-| Un producto **nuevo** (fila nueva) | — | Su propia página (con su URL, para SEO) aparece en la **siguiente actualización automática** (cada 6 horas) |
+| Un producto **nuevo** (fila nueva) | — | Su propia página (con su URL, para SEO) aparece en la **siguiente actualización automática** (una vez al día, a las 6:00 a.m.) |
 | Cambiar el **nombre** de un producto | El catálogo lo refleja en minutos | Su página cambia de dirección (URL); la anterior queda con un aviso de "no disponible" en vez de romperse |
 
 ### ¿Cómo forzar una actualización inmediata?
@@ -52,13 +52,12 @@ Si no quieres esperar la actualización automática (por ejemplo, acabas de
 agregar 3 productos nuevos y quieres que ya tengan su página):
 
 1. Ve a la pestaña **Actions** del repositorio en GitHub.
-2. Entra al workflow **"Build y deploy a Netlify"**.
+2. Entra al workflow **"Build y deploy a GitHub Pages"**.
 3. Clic en **"Run workflow"** → **"Run workflow"** de nuevo para confirmar.
 4. En 1-2 minutos el sitio queda actualizado con todo lo nuevo de la Sheet.
 
 Si no tienes acceso a GitHub, pídele a quien te ayudó a configurar esto que
-lo haga, o que corra `node build.js` desde su computador y vuelva a subir la
-carpeta a Netlify.
+lo haga.
 
 ---
 
@@ -233,44 +232,46 @@ adicional (`npm install` no es necesario).
 
 ## Publicar el sitio en internet
 
-### Automatizado (recomendado, ya configurado en este proyecto)
+El sitio vive en **GitHub Pages**, servido bajo el dominio `lexmonn.com`.
+GitHub Pages no cobra por sitios públicos y no funciona con créditos ni
+cuotas mensuales que se puedan agotar, así que la publicación no se puede
+"pausar" por facturación.
+
+### Automatizado (ya configurado en este proyecto)
 
 Un workflow de GitHub Actions (`.github/workflows/build-deploy.yml`) corre
-`node build.js` y publica el resultado en Netlify automáticamente:
-- Cada 6 horas.
+`node build.js` y publica el resultado en GitHub Pages automáticamente:
+- Una vez al día, a las 6:00 a.m. hora Colombia.
 - Cada vez que se hace push a la rama `main`.
 - A demanda, desde la pestaña "Actions" en GitHub (botón "Run workflow").
 
-**Configuración inicial (solo una vez, la hace quien tenga acceso técnico):**
+No hace falta ningún token ni secreto: el workflow se autentica solo contra
+GitHub Pages usando los permisos `pages: write` e `id-token: write` que ya
+están declarados en el archivo.
 
-1. Crear un repositorio en GitHub y subir esta carpeta:
-   ```bash
-   git add -A
-   git commit -m "Sitio Lexmonn con SEO y build automático"
-   git remote add origin https://github.com/TU-USUARIO/lexmonn-pagina-web.git
-   git push -u origin main
-   ```
-2. En el sitio de Netlify (el que ya sirve `lexmonn.com`): **Site
-   configuration → General → Site details**, copiar el **Site ID**.
-3. En Netlify: **User settings → Applications → Personal access tokens →
-   New access token**, copiarlo (solo se muestra una vez).
-4. En el repositorio de GitHub: **Settings → Secrets and variables →
-   Actions → New repository secret**, crear:
-   - `NETLIFY_SITE_ID` con el valor del paso 2.
-   - `NETLIFY_AUTH_TOKEN` con el valor del paso 3.
-5. Listo — desde ahora el sitio se actualiza solo. El dominio `lexmonn.com`
-   no cambia (sigue apuntando al mismo sitio de Netlify).
+**Cómo quedó configurado (referencia, ya está hecho):**
+
+1. El repositorio es `lexmonnadmon-dotcom/lexmonn-pagina-web` y es
+   **público** — requisito para usar GitHub Pages sin pagar GitHub Pro.
+   Ten en cuenta que eso hace visible el código y el link de solo lectura
+   de la Google Sheet.
+2. En el repositorio: **Settings → Pages → Build and deployment →
+   Source: GitHub Actions**.
+3. En **Settings → Pages → Custom domain** está puesto `lexmonn.com`, con
+   **Enforce HTTPS** activado. El archivo `CNAME` de esta carpeta guarda ese
+   mismo dominio para que cada deploy lo conserve — no lo borres.
+4. El DNS del dominio apunta a GitHub Pages (registros A del apex a las IPs
+   de GitHub, y `www` como CNAME a `lexmonnadmon-dotcom.github.io`).
 
 ### Manual (alternativa, sin GitHub)
 
-Sigue siendo un sitio de archivos estáticos, así que también puedes:
-1. Correr `node build.js` en tu computador.
-2. Arrastrar la carpeta completa a https://app.netlify.com/drop (o a
-   GitHub Pages).
+Sigue siendo un sitio de archivos estáticos, así que también puedes correr
+`node build.js` en tu computador y subir la carpeta resultante a cualquier
+hosting estático.
 
 Con esta opción, los cambios de la Sheet **no** generan páginas nuevas de
-producto/categoría hasta que alguien repita estos dos pasos a mano — por
-eso se recomienda la opción automatizada de arriba.
+producto/categoría hasta que alguien repita esos pasos a mano — por eso se
+recomienda la opción automatizada de arriba.
 
 ---
 
