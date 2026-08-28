@@ -217,6 +217,74 @@ function buildUnavailableProductPage(slug, nombre) {
   writeFile(`productos/${slug}.html`, Shell.renderPage({ head, main, includeProductModal: false }));
 }
 
+// ---------- Privacidad ----------
+
+// El aviso enlaza aquí. El contenido describe lo que el sitio hace DE VERDAD
+// hoy: guarda el carrito en el navegador y manda el pedido por WhatsApp. Si
+// algún día se agrega analítica o publicidad, hay que actualizar esta página
+// junto con el texto del aviso en templates/shell.js.
+function buildPrivacyPage() {
+  const canonical = `${SITE_URL}/privacidad.html`;
+  const head = Shell.renderHead({
+    title: "Privacidad y tratamiento de datos | Lexmonn",
+    description:
+      "Qué datos guarda la tienda de Lexmonn, para qué los usa y cómo ejercer tus derechos. No usamos cookies de publicidad ni de seguimiento.",
+    canonical,
+    breadcrumbJsonLd: Templates.renderBreadcrumbJsonLd([
+      { name: "Inicio", url: `${SITE_URL}/` },
+      { name: "Privacidad y datos", url: canonical },
+    ]),
+  });
+
+  const breadcrumbs = Templates.renderBreadcrumbs([
+    { name: "Inicio", href: "/" },
+    { name: "Privacidad y datos" },
+  ]);
+
+  const main = `<section class="legal-page">
+    ${breadcrumbs}
+    <h1>Privacidad y tratamiento de datos</h1>
+
+    <h2>Qué guarda este sitio en tu navegador</h2>
+    <p>Muy poco, y nada de eso sale de tu dispositivo:</p>
+    <ul>
+      <li><strong>Tu carrito.</strong> Se guarda para que no lo pierdas si cierras la pestaña y vuelves. Sin esto la tienda no funcionaría, así que es almacenamiento necesario.</li>
+      <li><strong>Tu respuesta a este aviso</strong>, para no volver a preguntártelo en cada visita.</li>
+      <li><strong>Si ya viste el aviso de promociones</strong>, para no mostrártelo dos veces en la misma sesión. Esto es opcional y solo se guarda si aceptaste.</li>
+    </ul>
+
+    <h2>Qué NO hacemos</h2>
+    <p>Para que quede explícito, porque es distinto de lo que hacen muchas tiendas:</p>
+    <ul>
+      <li>No usamos cookies de publicidad ni de seguimiento.</li>
+      <li>No tenemos Google Analytics, píxel de Meta ni ninguna herramienta que siga tu navegación.</li>
+      <li>No construimos perfiles tuyos, no te mostramos anuncios personalizados y no vendemos ni compartimos tus datos con terceros.</li>
+    </ul>
+
+    <h2>Los datos que nos das al hacer un pedido</h2>
+    <p>Cuando finalizas una compra te pedimos nombre, dirección, ciudad, teléfono, documento y, opcionalmente, correo. Esos datos <strong>no se guardan en este sitio web</strong>: se usan para armar el mensaje del pedido y se envían por <strong>WhatsApp</strong> al número de Lexmonn, donde quedan en esa conversación. Los usamos únicamente para procesar, despachar y facturar tu pedido, y para contactarte si hay algo que aclarar. Ten en cuenta que WhatsApp es un servicio de Meta y tiene sus propias condiciones.</p>
+
+    <h2>Responsable del tratamiento</h2>
+    <p>
+      <strong>Lexmonn</strong> — NIT 901923669<br>
+      Cll 54 cr 53-34, Bello, Antioquia, Colombia<br>
+      Correo: <a href="mailto:lexmonn.admon@gmail.com">lexmonn.admon@gmail.com</a><br>
+      Teléfono: 301 559 7873
+    </p>
+
+    <h2>Tus derechos</h2>
+    <p>De acuerdo con la Ley 1581 de 2012 puedes conocer, actualizar y rectificar tus datos, pedir prueba de la autorización, ser informado del uso que les damos, presentar quejas ante la Superintendencia de Industria y Comercio, y revocar la autorización o pedir que los suprimamos. Para ejercer cualquiera de estos derechos escríbenos a <a href="mailto:lexmonn.admon@gmail.com">lexmonn.admon@gmail.com</a> y te respondemos.</p>
+
+    <h2>Cambiar tu decisión</h2>
+    <p>Puedes volver a ver el aviso y cambiar tu respuesta cuando quieras.</p>
+    <p><button type="button" id="consent-reset" class="consent-btn consent-btn-main">Cambiar mi decisión</button></p>
+
+    <p class="legal-updated">Última actualización: 27 de agosto de 2026.</p>
+  </section>`;
+
+  writeFile("privacidad.html", Shell.renderPage({ head, main, includeProductModal: false }));
+}
+
 // ---------- 404 ----------
 
 // GitHub Pages sirve /404.html automáticamente para cualquier ruta que no
@@ -309,6 +377,7 @@ function buildSitemap(activeProducts, categoryLinks) {
     { loc: `${SITE_URL}/`, priority: "1.0" },
     ...categoryLinks.map((c) => ({ loc: `${SITE_URL}/categoria/${c.slug}.html`, priority: "0.7" })),
     ...activeProducts.map((p) => ({ loc: `${SITE_URL}/productos/${p.slug}.html`, priority: "0.8" })),
+    { loc: `${SITE_URL}/privacidad.html`, priority: "0.3" },
   ];
   const xml =
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
@@ -378,11 +447,12 @@ async function main() {
   });
 
   build404Page(categoryLinks);
+  buildPrivacyPage();
 
   buildSitemap(activeProducts, categoryLinks);
 
   console.log(
-    `[build] Listo: index.html, ${activeProducts.length} páginas de producto, ${categoryLinks.length} páginas de categoría, 404.html, sitemap.xml.`
+    `[build] Listo: index.html, ${activeProducts.length} páginas de producto, ${categoryLinks.length} páginas de categoría, 404.html, privacidad.html, sitemap.xml.`
   );
 }
 

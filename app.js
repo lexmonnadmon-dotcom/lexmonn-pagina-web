@@ -10,10 +10,13 @@
 // ============================================================
 
 const CART_STORAGE_KEY = "lexmonn_cart";
+const PROMO_STORAGE_KEY = "lexmonn_promo_shown";
+const CONSENT_STORAGE_KEY = "lexmonn_consent";
 
 let PRODUCTS = [];
 let cart = loadCart();
 let activeCategory = (document.body && document.body.dataset.category) || "Todos";
+let searchTerm = "";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("year").textContent = new Date().getFullYear();
@@ -21,10 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (CONFIG.STORE_LOCATION) document.getElementById("store-location").textContent = CONFIG.STORE_LOCATION;
 
   bindGlobalEvents();
+  initSearch();
   initStaticProductDetail();
   loadCatalog();
   renderCart();
-  initPromoPopup();
+  initConsent();
 });
 
 // ---------- Bloqueo del scroll de fondo mientras hay un panel/modal abierto ----------
@@ -45,19 +49,210 @@ function unlockBodyScroll() {
 
 // ---------- Pop-up de promoción ----------
 
+// Solo se llama cuando el visitante aceptó lo opcional (ver initConsent).
 function initPromoPopup() {
-  const PROMO_KEY = "lexmonn_promo_shown";
   document.getElementById("promo-close").addEventListener("click", closePromoPopup);
   document.getElementById("promo-overlay").addEventListener("click", closePromoPopup);
 
-  if (sessionStorage.getItem(PROMO_KEY)) return;
+  if (sessionStorage.getItem(PROMO_STORAGE_KEY)) return;
 
   setTimeout(() => {
     document.getElementById("promo-modal").hidden = false;
     document.getElementById("promo-overlay").hidden = false;
     lockBodyScroll();
-    sessionStorage.setItem(PROMO_KEY, "1");
+    sessionStorage.setItem(PROMO_STORAGE_KEY, "1");
   }, 1200);
+}
+
+// ---------- Aviso de privacidad ----------
+//
+// Este sitio no tiene analítica, ni píxeles, ni publicidad: lo único
+// estrictamente necesario es el carrito (sin él la tienda no sirve), así que
+// el carrito NO pasa por este permiso. Lo opcional hoy es el pop-up de
+// promoción. El día que se agregue Google Analytics, Meta Pixel o similar,
+// hay que envolverlo en `hasOptionalConsent()` para no cargarlo hasta que el
+// visitante acepte.
+
+function getConsent() {
+  try {
+    return localStorage.getItem(CONSENT_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function setConsent(value) {
+  try {
+    localStorage.setItem(CONSENT_STORAGE_KEY, value);
+  } catch {
+    // navegador con almacenamiento bloqueado: se seguirá preguntando, que es
+    // el comportamiento correcto (nunca asumimos un "sí" que no se guardó).
+  }
+}
+
+function hasOptionalConsent() {
+  return getConsent() === "aceptado";
+}
+
+function initConsent() {
+  const banner = document.getElementById("consent-banner");
+  if (!banner) return;
+
+  const decision = getConsent();
+  if (!decision) {
+    banner.hidden = false;
+  } else if (decision === "aceptado") {
+    initPromoPopup();
+  }
+
+  document.getElementById("consent-accept").addEventListener("click", () => {
+    setConsent("aceptado");
+    banner.hidden = true;
+    initPromoPopup();
+  });
+
+  // Botón de la página de privacidad para volver a ver el aviso.
+  const resetBtn = document.getElementById("consent-reset");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      try {
+        localStorage.removeItem(CONSENT_STORAGE_KEY);
+        sessionStorage.removeItem(PROMO_STORAGE_KEY);
+      } catch {
+        // sin almacenamiento no hay decisión guardada que borrar
+      }
+      window.location.reload();
+    });
+  }
+
+  document.getElementById("consent-reject").addEventListener("click", () => {
+    setConsent("rechazado");
+    banner.hidden = true;
+    // Borra la marca del pop-up: si rechaza, no dejamos nada opcional puesto.
+    try {
+      sessionStorage.removeItem(PROMO_STORAGE_KEY);
+    } catch {
+      // sin sessionStorage no hay nada que borrar
+    }
+  });
+}
+
+// ---------- Buscador ----------
+
+// Compara sin tildes ni mayúsculas, para que "percutor" encuentre
+// "Percutor" y "bateria" encuentre "batería".
+const DIACRITICS_RE = new RegExp("[\u0300-\u036f]", "g");
+
+function normalizeText(value) {
+  return (value || "")
+    .toString()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(DIACRITICS_RE, "");
+}
+
+function productMatchesSearch(p, term) {
+  if (!term) return true;
+  const haystack = normalizeText([p.nombre, p.descripcion, p.categoria, p.marca].join(" "));
+  return normalizeText(term)
+    .split(/\s+/)
+    .filter(Boolean)
+    .every((word) => haystack.includes(word));
+}
+
+function initSearch() {
+  const form = document.getElementById("search-form");
+  const input = document.getElementById("search-input");
+  const clearBtn = document.getElementById("search-clear");
+  if (!form || !input || !clearBtn) return;
+
+  // Las páginas de producto, 404 y privacidad no tienen catálogo que
+  // filtrar: ahí el buscador manda a la home con ?q=, que sí lo lee.
+  const hasCatalog = !!document.getElementById("catalog");
+
+  const initial = (new URLSearchParams(window.location.search).get("q") || "").trim();
+  if (initial) {
+    input.value = initial;
+    searchTerm = initial;
+  }
+  clearBtn.hidden = !input.value;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const value = input.value.trim();
+    if (!hasCatalog) {
+      window.location.href = value ? `/?q=${encodeURIComponent(value)}` : "/";
+      return;
+    }
+    input.blur(); // en celular, cierra el teclado y deja ver los resultados
+  });
+
+  input.addEventListener("input", () => {
+    clearBtn.hidden = !input.value;
+    if (!hasCatalog) return;
+    searchTerm = input.value.trim();
+    applySearch();
+  });
+
+  clearBtn.addEventListener("click", () => {
+    input.value = "";
+    clearBtn.hidden = true;
+    searchTerm = "";
+    if (hasCatalog) applySearch();
+    input.focus();
+  });
+
+  if (initial && hasCatalog) applySearch();
+}
+
+function applySearch() {
+  // Si la Sheet ya cargó, se re-dibuja el catálogo desde los datos. Si el
+  // visitante alcanzó a escribir antes (las páginas vienen pre-renderizadas
+  // y se ven al instante), se filtran las tarjetas que ya están en pantalla.
+  if (PRODUCTS.length) {
+    renderCatalog();
+  } else {
+    filterPrerenderedCards();
+  }
+}
+
+function filterPrerenderedCards() {
+  const catalogEl = document.getElementById("catalog");
+  if (!catalogEl) return;
+  const term = normalizeText(searchTerm);
+  let visible = 0;
+  catalogEl.querySelectorAll(".product-card").forEach((card) => {
+    const match = !term || normalizeText(card.textContent).includes(term);
+    card.hidden = !match;
+    if (match) visible++;
+  });
+  renderSearchEmptyState(visible);
+}
+
+function renderSearchEmptyState(visibleCount) {
+  const catalogEl = document.getElementById("catalog");
+  if (!catalogEl) return;
+
+  const existing = document.getElementById("search-empty");
+  if (visibleCount > 0 || !searchTerm) {
+    if (existing) existing.remove();
+    return;
+  }
+
+  const el = existing || document.createElement("p");
+  el.id = "search-empty";
+  el.className = "search-empty";
+  el.innerHTML = `No encontramos productos para <strong>"${escapeHtml(searchTerm)}"</strong>. Prueba con otra palabra o <button type="button" id="search-empty-reset" class="search-empty-reset">ve todo el catálogo</button>.`;
+  if (!existing) catalogEl.insertAdjacentElement("afterend", el);
+
+  document.getElementById("search-empty-reset").addEventListener("click", () => {
+    const input = document.getElementById("search-input");
+    const clearBtn = document.getElementById("search-clear");
+    if (input) input.value = "";
+    if (clearBtn) clearBtn.hidden = true;
+    searchTerm = "";
+    applySearch();
+  });
 }
 
 function closePromoPopup() {
@@ -158,6 +353,14 @@ function getCategories() {
 function renderCategoryFilters() {
   const filtersEl = document.getElementById("category-filters");
   if (!filtersEl) return;
+
+  // Con una búsqueda activa se busca en todo el catálogo, así que dejar una
+  // pastilla de categoría marcada como "activa" sería mentira: se ocultan.
+  if (searchTerm) {
+    filtersEl.hidden = true;
+    return;
+  }
+
   const categories = getCategories();
 
   if (categories.length <= 1) {
@@ -225,8 +428,12 @@ function renderCatalog() {
   const catalogEl = document.getElementById("catalog");
   if (!catalogEl) return;
 
-  const visibleProducts =
-    activeCategory === "Todos"
+  // Con búsqueda activa se busca en TODO el catálogo, no solo dentro de la
+  // categoría abierta: quien escribe "martillo" estando en Porta Herramientas
+  // espera encontrarlo igual.
+  const visibleProducts = searchTerm
+    ? PRODUCTS.filter((p) => productMatchesSearch(p, searchTerm))
+    : activeCategory === "Todos"
       ? PRODUCTS
       : PRODUCTS.filter((p) => (p.categoria || "Sin categoría") === activeCategory);
 
@@ -259,6 +466,8 @@ function renderCatalog() {
       });
     }
   });
+
+  renderSearchEmptyState(visibleProducts.length);
 }
 
 // ---------- Modal de detalle de producto (vista rápida) ----------

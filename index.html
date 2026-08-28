@@ -69,6 +69,14 @@
   🎉 <strong>¡Celebramos 5 años!</strong> 🎉 Fabricando calidad y revolucionando la forma en que trabajas.
 </div>
 
+<div class="search-bar-wrap">
+  <form id="search-form" class="search-bar" role="search">
+    <span class="search-icon" aria-hidden="true">🔍</span>
+    <input type="search" id="search-input" class="search-input" placeholder="Buscar un producto..." aria-label="Buscar productos" autocomplete="off">
+    <button type="button" id="search-clear" class="search-clear" aria-label="Borrar búsqueda" hidden>✕</button>
+  </form>
+</div>
+
 <main>
 <section class="hero">
     <img class="hero-bg-img" src="/hero-banner-2.jpeg" alt="Porta herramientas Lexmonn fabricados en Colombia" width="1600" height="682" loading="eager" fetchpriority="high">
@@ -408,8 +416,21 @@
       <span class="footer-info-value">Lunes a viernes: 8:00 a.m. - 6:30 p.m.<br>Sábados: 9:00 a.m. - 3:00 p.m.</span>
     </div>
   </div>
-  <p class="footer-copy">© <span id="year"></span> Lexmonn. Todos los derechos reservados.</p>
+  <p class="footer-copy">© <span id="year"></span> Lexmonn. Todos los derechos reservados. · <a href="/privacidad.html">Privacidad y datos</a></p>
 </footer>
+
+<div id="consent-banner" class="consent-banner" hidden role="region" aria-label="Aviso de privacidad">
+  <div class="consent-inner">
+    <div class="consent-text">
+      <strong>Tu privacidad</strong>
+      <p>Guardamos tu <strong>carrito</strong> en este navegador para que no lo pierdas si cierras la página. Nada más sale de tu dispositivo. <strong>No usamos cookies de publicidad ni de seguimiento</strong>, y no compartimos tus datos con terceros. <a href="/privacidad.html">Leer más</a>.</p>
+    </div>
+    <div class="consent-actions">
+      <button type="button" id="consent-accept" class="consent-btn consent-btn-main">Aceptar</button>
+      <button type="button" id="consent-reject" class="consent-btn consent-btn-ghost">Solo lo necesario</button>
+    </div>
+  </div>
+</div>
 
 
 <!-- Panel del carrito -->

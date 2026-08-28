@@ -290,6 +290,56 @@ recomienda la opción automatizada de arriba.
 
 ---
 
+## El buscador
+
+Arriba del catálogo hay una barra de búsqueda. El cliente escribe y los
+productos se filtran al instante, sin recargar la página. Busca por
+**nombre, descripción, categoría y marca**, e ignora tildes y mayúsculas
+(escribir `flexometro` encuentra "Flexómetro").
+
+Mientras hay una búsqueda escrita, los botones de categoría se ocultan: la
+búsqueda mira **todo** el catálogo, no solo la categoría abierta, porque
+quien escribe "martillo" espera encontrarlo esté donde esté.
+
+No tienes que hacer nada para mantenerlo: usa los mismos productos de la
+Sheet. Un producto nuevo se puede buscar apenas aparece en el catálogo.
+
+También se pueden **compartir búsquedas** como un link:
+`https://lexmonn.com/?q=martillo` abre la tienda ya filtrada. Sirve para
+mandar por WhatsApp a un cliente que pregunta por algo puntual.
+
+## El aviso de privacidad
+
+Abajo aparece un aviso la primera vez que alguien entra, con dos botones:
+**Aceptar** y **Solo lo necesario**. La respuesta se recuerda para no volver
+a preguntar.
+
+Es importante que sepas **qué dice y por qué**, porque es distinto al de
+otras tiendas: esta página **no tiene publicidad ni herramientas de
+seguimiento** (no hay Google Analytics ni píxel de Facebook). Lo único que
+se guarda en el navegador del cliente es su carrito, para que no lo pierda.
+Por eso el aviso no promete "anuncios personalizados" — sería falso.
+
+Qué cambia según lo que elija el cliente:
+
+| Elección | Qué pasa |
+|---|---|
+| **Aceptar** | Todo igual que siempre, incluido el pop-up de promociones |
+| **Solo lo necesario** | El carrito sigue funcionando normal, pero **no se le muestra el pop-up de promociones** |
+
+Hay además una página de **[Privacidad y datos](https://lexmonn.com/privacidad.html)**,
+enlazada desde el pie de página, que explica qué datos pides al finalizar la
+compra, que se envían por WhatsApp, y cómo un cliente puede pedirte que los
+borres (Ley 1581 de 2012). Ahí mismo hay un botón para que cambie su
+decisión sobre el aviso.
+
+> **Importante si algún día agregas publicidad o estadísticas.** Si más
+> adelante quieres poner Google Analytics, el píxel de Facebook o similar,
+> hay que hacer dos cosas: cargarlo solo cuando el cliente haya aceptado
+> (en el código está la función `hasOptionalConsent()` justo para eso), y
+> actualizar el texto del aviso y la página de privacidad para que digan la
+> verdad. Pídeselo a quien te ayude con el sitio.
+
 ## Cómo funciona el carrito
 
 - Se guarda en el navegador del cliente (localStorage): si cierra la pestaña
