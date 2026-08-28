@@ -118,7 +118,7 @@ function buildHomePage(activeProducts, allCategories) {
 
   writeFile(
     "index.html",
-    Shell.renderPage({ head, main, includeProductModal: true })
+    Shell.renderPage({ head, main })
   );
 }
 
@@ -194,7 +194,6 @@ function buildProductPage(p, allCategories) {
     Shell.renderPage({
       head,
       main,
-      includeProductModal: false,
       bodyAttrs: `data-page="product" data-product-id="${Shared.escapeHtml(p.id)}"`,
     })
   );
@@ -216,7 +215,7 @@ function buildUnavailableProductPage(slug, nombre) {
     <p>${msg}</p>
     <a class="back-to-catalog" href="/">← Ver el catálogo completo</a>
   </section>`;
-  writeFile(`productos/${slug}.html`, Shell.renderPage({ head, main, includeProductModal: false }));
+  writeFile(`productos/${slug}.html`, Shell.renderPage({ head, main }));
 }
 
 // ---------- Privacidad ----------
@@ -288,7 +287,7 @@ function buildPrivacyPage() {
     <p class="legal-updated">Última actualización: 27 de agosto de 2026.</p>
   </section>`;
 
-  writeFile("privacidad.html", Shell.renderPage({ head, main, includeProductModal: false }));
+  writeFile("privacidad.html", Shell.renderPage({ head, main }));
 }
 
 // ---------- 404 ----------
@@ -318,7 +317,7 @@ function build404Page(categoryLinks) {
     ${catLinks ? `<p>O ve directo a una categoría:</p><ul class="not-found-cats">${catLinks}</ul>` : ""}
   </section>`;
 
-  writeFile("404.html", Shell.renderPage({ head, main, includeProductModal: false }));
+  writeFile("404.html", Shell.renderPage({ head, main }));
 }
 
 // ---------- Categoría ----------
@@ -369,7 +368,6 @@ function buildCategoryPage(catName, catSlug, products, allCategories) {
     Shell.renderPage({
       head,
       main,
-      includeProductModal: true,
       bodyAttrs: `data-page="category" data-category="${Shared.escapeHtml(catName)}"`,
     })
   );

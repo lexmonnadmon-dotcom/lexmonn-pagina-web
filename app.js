@@ -442,16 +442,9 @@ function wireProductCards(container, products) {
     const p = products.find((x) => x.id === id);
     if (!p) return;
 
-    const link = card.querySelector(".product-card-link");
-    if (link) {
-      link.addEventListener("click", (e) => {
-        // Deja que clic derecho / clic central / Ctrl/Cmd+clic abran la
-        // página real del producto en vez del modal de vista rápida.
-        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        e.preventDefault();
-        openProductModal(p);
-      });
-    }
+    // El enlace de la tarjeta ya abre la página del producto en una pestaña
+    // nueva por sí solo (target="_blank" en la plantilla). No se intercepta
+    // el clic: así funciona aunque el JavaScript todavía no haya cargado.
 
     const addBtn = card.querySelector(".add-btn");
     const qtyInput = card.querySelector(".qty-input");
@@ -518,82 +511,12 @@ function initOffers() {
   updateOffersArrows();
 }
 
-// ---------- Modal de detalle de producto (vista rápida) ----------
-
-function openProductModal(p) {
-  const mainImg = document.getElementById("product-modal-img");
-  if (!mainImg) return; // esta página no tiene modal de vista rápida (ej. página de producto)
-
-  const { images, thumbsHtml } = LexmonnTemplates.renderGalleryThumbs(p);
-  mainImg.src = images[0] || PLACEHOLDER_IMG;
-  mainImg.alt = p.nombre;
-  mainImg.onerror = () => { mainImg.src = PLACEHOLDER_IMG; };
-  mainImg.onclick = () => openLightbox(mainImg.src);
-
-  const thumbsEl = document.getElementById("product-modal-thumbs");
-  if (images.length > 1) {
-    thumbsEl.hidden = false;
-    thumbsEl.innerHTML = thumbsHtml;
-    thumbsEl.querySelectorAll(".product-modal-thumb").forEach((thumb) => {
-      thumb.addEventListener("click", () => {
-        mainImg.src = thumb.dataset.src;
-        thumbsEl.querySelectorAll(".product-modal-thumb").forEach((t) => t.classList.remove("active"));
-        thumb.classList.add("active");
-      });
-      thumb.addEventListener("error", () => { thumb.src = PLACEHOLDER_IMG; });
-    });
-  } else {
-    thumbsEl.hidden = true;
-    thumbsEl.innerHTML = "";
-  }
-
-  document.getElementById("product-modal-name").textContent = p.nombre;
-  document.getElementById("product-modal-desc").textContent = p.descripcion;
-
-  const priceEl = document.getElementById("product-modal-price");
-  const badgeEl = document.getElementById("product-modal-discount-badge");
-  if (hasDiscount(p)) {
-    priceEl.innerHTML = `${formatPrice(p.precioOferta)} <span class="product-modal-price-original">${formatPrice(p.precio)}</span>`;
-    badgeEl.textContent = `-${getDiscountPercent(p)}%`;
-    badgeEl.hidden = false;
-  } else {
-    priceEl.textContent = formatPrice(p.precio);
-    badgeEl.hidden = true;
-  }
-
-  const categoryEl = document.getElementById("product-modal-category");
-  if (p.categoria) {
-    categoryEl.innerHTML = `Categoría: <strong>${escapeHtml(p.categoria)}</strong>`;
-    categoryEl.hidden = false;
-  } else {
-    categoryEl.hidden = true;
-  }
-
-  const qtyInput = document.getElementById("product-modal-qty");
-  qtyInput.value = 1;
-
-  const addBtn = document.getElementById("product-modal-add");
-  addBtn.onclick = () => {
-    const qty = Math.max(1, parseInt(qtyInput.value, 10) || 1);
-    addToCart(p.id, qty);
-    closeProductModal();
-  };
-
-  document.getElementById("product-modal").hidden = false;
-  document.getElementById("product-overlay").hidden = false;
-  lockBodyScroll();
-}
-
-function closeProductModal() {
-  document.getElementById("product-modal").hidden = true;
-  document.getElementById("product-overlay").hidden = true;
-  unlockBodyScroll();
-}
-
 // ---------- Página estática de producto (/productos/slug.html) ----------
 
 // Engancha el botón de "Añadir al carrito" y la galería de la página de
-// producto pre-renderizada (no usa el modal, esa página YA es el detalle).
+// producto. Las clases y los ids `product-modal-*` que se ven aquí son los
+// del marcado de esta página: se conservaron al quitar el modal de vista
+// rápida para no reescribir también los estilos.
 function initStaticProductDetail() {
   if (!document.body || document.body.dataset.page !== "product") return;
 
@@ -825,11 +748,6 @@ function bindGlobalEvents() {
   document.getElementById("checkout-overlay").addEventListener("click", closeCheckout);
 
   document.getElementById("checkout-form").addEventListener("submit", handleCheckoutSubmit);
-
-  const productClose = document.getElementById("product-close");
-  const productOverlay = document.getElementById("product-overlay");
-  if (productClose) productClose.addEventListener("click", closeProductModal);
-  if (productOverlay) productOverlay.addEventListener("click", closeProductModal);
 
   document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
   document.getElementById("image-lightbox").addEventListener("click", (e) => {

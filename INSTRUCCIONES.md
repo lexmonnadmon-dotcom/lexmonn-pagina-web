@@ -110,9 +110,9 @@ que no son de fabricación propia.
 
 ### Galería de varias fotos por producto
 
-Al hacer clic en un producto se abre su ficha con toda su información
-(dentro de un modal en el catálogo, o directamente si entras a su página
-propia). Si solo llenas `Imagen_URL` se muestra esa única foto. Si quieres
+Al hacer clic en un producto se abre su página propia **en una pestaña
+nueva**, con toda su información. Si solo llenas `Imagen_URL` se muestra esa
+única foto. Si quieres
 varias fotos (como en las tiendas grandes, con miniaturas debajo de la foto
 principal), agrega la columna `Imagenes_Adicionales` y pega ahí las URLs de
 las fotos extra **separadas por coma**, por ejemplo:
@@ -222,7 +222,8 @@ el catálogo se pueda editar sin tocar código:
 Archivos del proyecto:
 - `index.html`, `productos/`, `categoria/`, `sitemap.xml` — **generados por
   `build.js`**. No los edites a mano: los vuelve a escribir el próximo build.
-- `templates/shell.js` — el header, footer, banner y modales del carrito. Si
+- `templates/shell.js` — el header, footer, banner, buscador, aviso de
+  privacidad y el carrito con su formulario de pedido. Si
   algún día quieres cambiar ese texto o diseño a mano, es este el archivo
   que se edita (no `index.html`).
 - `lib/shared.js` y `lib/templates.js` — la lógica de precios/parseo y las
@@ -289,6 +290,15 @@ producto/categoría hasta que alguien repita esos pasos a mano — por eso se
 recomienda la opción automatizada de arriba.
 
 ---
+
+## Al hacer clic en un producto
+
+Se abre su página propia **en una pestaña nueva**. El catálogo se queda
+abierto en la pestaña anterior, así que el cliente puede revisar varios
+productos sin perder dónde iba ni tener que devolverse.
+
+El botón **"Agregar"** de cada tarjeta funciona aparte: suma el producto al
+carrito sin salir del catálogo ni abrir nada.
 
 ## La franja "Ofertas para ti"
 

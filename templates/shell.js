@@ -208,43 +208,10 @@ function renderFooter() {
 </footer>`;
 }
 
-// includeProductModal: home y categoría lo usan (vista rápida); las páginas
-// de producto no lo necesitan porque la página ENTERA ya es el detalle.
-function renderCartAndModals(opts) {
-  opts = opts || {};
-  const includeProductModal = opts.includeProductModal !== false;
-
-  const productModal = includeProductModal
-    ? `
-<!-- Modal de detalle de producto (vista rápida) -->
-<div id="product-overlay" class="overlay" hidden></div>
-<div id="product-modal" class="modal product-modal" hidden>
-  <button id="product-close" class="icon-btn product-modal-close" aria-label="Cerrar">✕</button>
-  <div class="product-modal-body">
-    <div class="product-modal-gallery">
-      <div class="product-modal-img-wrap">
-        <img id="product-modal-img" class="product-modal-img" src="" alt="">
-        <span class="zoom-badge">🔍 Ampliar</span>
-      </div>
-      <div id="product-modal-thumbs" class="product-modal-thumbs"></div>
-    </div>
-    <div class="product-modal-info">
-      <span id="product-modal-discount-badge" class="discount-badge discount-badge-modal" hidden></span>
-      <h2 id="product-modal-name"></h2>
-      <p id="product-modal-category" class="product-modal-category"></p>
-      <p id="product-modal-desc" class="product-modal-desc"></p>
-      <div class="sticky-buy-bar">
-        <div id="product-modal-price" class="product-modal-price"></div>
-        <div class="product-modal-actions">
-          <input type="number" id="product-modal-qty" class="qty-input qty-input-lg" min="1" value="1">
-          <button id="product-modal-add" class="add-btn add-btn-lg">Añadir al carrito</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>`
-    : "";
-
+// Ya no hay modal de "vista rápida": al hacer clic en un producto se abre su
+// página propia en una pestaña nueva. Lo que queda aquí es el carrito, el
+// formulario del pedido, el visor de imagen y el pop-up de promoción.
+function renderCartAndModals() {
   return `
 <!-- Panel del carrito -->
 <div id="cart-overlay" class="overlay" hidden></div>
@@ -302,7 +269,6 @@ function renderCartAndModals(opts) {
 <button id="cart-fab" class="cart-fab" hidden>
   🛒 <span id="cart-fab-count">0</span>
 </button>
-${productModal}
 
 <!-- Visor de imagen con zoom -->
 <div id="image-lightbox" class="image-lightbox" hidden>
@@ -329,7 +295,7 @@ function renderScripts() {
 <script src="/app.js"></script>`;
 }
 
-// opts: { head, bodyAttrs, main, includeProductModal }
+// opts: { head, bodyAttrs, main }
 function renderPage(opts) {
   return `<!DOCTYPE html>
 <html lang="es">
@@ -350,7 +316,7 @@ ${renderFooter()}
 
 ${renderPrivacyNotice()}
 
-${renderCartAndModals({ includeProductModal: opts.includeProductModal })}
+${renderCartAndModals()}
 
 ${renderScripts()}
 </body>
