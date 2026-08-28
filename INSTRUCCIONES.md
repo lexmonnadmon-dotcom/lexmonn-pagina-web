@@ -290,6 +290,28 @@ recomienda la opción automatizada de arriba.
 
 ---
 
+## La franja "Ofertas para ti"
+
+Arriba del catálogo, justo antes de los botones de categoría, aparece una
+franja con los productos que tienen descuento. Se desliza **con el dedo**
+en celular y con las flechas ‹ › en computador.
+
+**No tienes que armarla ni mantenerla.** Se llena sola con los productos que
+tengan algo escrito en la columna `Precio_Oferta`:
+
+- Pones un precio en `Precio_Oferta` → ese producto **entra** a la franja.
+- Borras esa celda → **sale** de la franja.
+- Si ningún producto tiene oferta, la franja **desaparece** completa, sin
+  dejar un título vacío.
+
+Los cambios se ven en minutos, igual que los precios del catálogo.
+
+> **Cuidado con la celda `Precio_Oferta`.** Ahí va el **precio nuevo en
+> pesos**, no el porcentaje de descuento. Si un producto vale `323500` y
+> escribes `20`, la página entiende que lo estás vendiendo a **20 pesos** y
+> muestra "-100%". Para un 20% de descuento sobre 323.500 hay que escribir
+> `258800`.
+
 ## El buscador
 
 Arriba del catálogo hay una barra de búsqueda. El cliente escribe y los

@@ -26,7 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
   bindGlobalEvents();
   initSearch();
   initStaticProductDetail();
-  loadCatalog();
+  initOffers();
+  // Las ofertas se re-dibujan cuando llega la Sheet en vivo, para que un
+  // descuento puesto después del último build aparezca igual.
+  loadCatalog().then(renderOffers);
   renderCart();
   initPrivacyNotice();
   initPromoPopup();
@@ -421,10 +424,22 @@ function renderCatalog() {
   injectProductSchema(visibleProducts);
 
   catalogEl.innerHTML = visibleProducts.map(LexmonnTemplates.renderProductCard).join("");
+  wireProductCards(catalogEl, visibleProducts);
 
-  catalogEl.querySelectorAll(".product-card").forEach((card) => {
+  renderSearchEmptyState(visibleProducts.length);
+}
+
+// Engancha el modal de vista rápida y el botón "Agregar" de las tarjetas de
+// un contenedor. Lo usan la grilla del catálogo y el carrusel de ofertas.
+//
+// La cantidad se busca DENTRO de la tarjeta y no por un id global: un mismo
+// producto puede estar a la vez en las ofertas y en el catálogo, y dos
+// campos con el mismo id harían que "Agregar" leyera siempre el primero.
+function wireProductCards(container, products) {
+  if (!container) return;
+  container.querySelectorAll(".product-card").forEach((card) => {
     const id = card.dataset.id;
-    const p = visibleProducts.find((x) => x.id === id);
+    const p = products.find((x) => x.id === id);
     if (!p) return;
 
     const link = card.querySelector(".product-card-link");
@@ -439,16 +454,68 @@ function renderCatalog() {
     }
 
     const addBtn = card.querySelector(".add-btn");
+    const qtyInput = card.querySelector(".qty-input");
     if (addBtn) {
       addBtn.addEventListener("click", () => {
-        const qtyInput = document.getElementById(`qty-${id}`);
-        const qty = Math.max(1, parseInt(qtyInput.value, 10) || 1);
+        const qty = Math.max(1, parseInt(qtyInput && qtyInput.value, 10) || 1);
         addToCart(id, qty);
       });
     }
   });
+}
 
-  renderSearchEmptyState(visibleProducts.length);
+// ---------- Carrusel "Ofertas para ti" ----------
+
+function renderOffers() {
+  const section = document.getElementById("offers");
+  const track = document.getElementById("offers-track");
+  if (!section || !track) return;
+
+  const offers = LexmonnTemplates.getOfferProducts(PRODUCTS);
+  section.hidden = offers.length === 0;
+  track.innerHTML = offers.map(LexmonnTemplates.renderProductCard).join("");
+  wireProductCards(track, offers);
+  track.scrollLeft = 0;
+  updateOffersArrows();
+}
+
+// Las flechas solo aparecen si de verdad hay a dónde desplazarse, y cada una
+// se esconde al llegar a su extremo. En celular no se usan: se desliza con
+// el dedo.
+function updateOffersArrows() {
+  const track = document.getElementById("offers-track");
+  const prev = document.getElementById("offers-prev");
+  const next = document.getElementById("offers-next");
+  if (!track || !prev || !next) return;
+
+  const maxScroll = track.scrollWidth - track.clientWidth;
+  const desplazable = maxScroll > 4;
+  prev.hidden = !desplazable || track.scrollLeft <= 2;
+  next.hidden = !desplazable || track.scrollLeft >= maxScroll - 2;
+}
+
+function initOffers() {
+  const track = document.getElementById("offers-track");
+  if (!track) return;
+
+  // Avanza de a dos tarjetas, medidas en vivo para que siga funcionando si
+  // cambia el ancho de la tarjeta o el tamaño de la ventana.
+  const paso = () => {
+    const card = track.querySelector(".product-card");
+    const ancho = card ? card.getBoundingClientRect().width : 220;
+    return (ancho + 14) * 2;
+  };
+
+  document.getElementById("offers-prev").addEventListener("click", () => {
+    track.scrollBy({ left: -paso(), behavior: "smooth" });
+  });
+  document.getElementById("offers-next").addEventListener("click", () => {
+    track.scrollBy({ left: paso(), behavior: "smooth" });
+  });
+
+  track.addEventListener("scroll", updateOffersArrows, { passive: true });
+  window.addEventListener("resize", updateOffersArrows);
+  updateOffersArrows();
 }
 
 // ---------- Modal de detalle de producto (vista rápida) ----------

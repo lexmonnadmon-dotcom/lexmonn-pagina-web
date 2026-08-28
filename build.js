@@ -96,6 +96,8 @@ function buildHomePage(activeProducts, allCategories) {
     Revisa <code>SHEET_CSV_URL</code> en <code>config.js</code>.
   </section>
 
+  ${Templates.renderOffersSection(activeProducts)}
+
   ${renderCategoryFilterPillsHtml(allCategories, "Todos")}
 
   <section id="catalog" class="catalog">${activeProducts.map(Templates.renderProductCard).join("")}</section>
@@ -411,6 +413,20 @@ async function main() {
   }
 
   console.log(`[build] ${activeProducts.length} productos activos de ${allRows.length} filas totales.`);
+
+  // Un Precio_Oferta mal escrito (poner "20" donde iba "290000") publica el
+  // producto casi regalado y nadie se entera hasta que llega el pedido. No se
+  // bloquea el build — puede haber una liquidación real — pero se avisa fuerte.
+  activeProducts.filter(Shared.hasDiscount).forEach((p) => {
+    const pct = Shared.getDiscountPercent(p);
+    if (pct >= 90) {
+      console.warn(
+        `[build] ¡OJO! "${p.nombre}" queda con ${pct}% de descuento: ` +
+          `Precio ${p.precio} -> Precio_Oferta ${p.precioOferta}. ` +
+          `Revisa esa celda en la Sheet, suele ser un error de digitación.`
+      );
+    }
+  });
 
   const allCategories = getAllCategories(activeProducts);
 
