@@ -11,7 +11,7 @@
 
 const CART_STORAGE_KEY = "lexmonn_cart";
 const PROMO_STORAGE_KEY = "lexmonn_promo_shown";
-const CONSENT_STORAGE_KEY = "lexmonn_consent";
+const PRIVACY_NOTICE_KEY = "lexmonn_aviso_visto";
 
 let PRODUCTS = [];
 let cart = loadCart();
@@ -28,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initStaticProductDetail();
   loadCatalog();
   renderCart();
-  initConsent();
+  initPrivacyNotice();
+  initPromoPopup();
 });
 
 // ---------- Bloqueo del scroll de fondo mientras hay un panel/modal abierto ----------
@@ -49,7 +50,6 @@ function unlockBodyScroll() {
 
 // ---------- Pop-up de promoción ----------
 
-// Solo se llama cuando el visitante aceptó lo opcional (ver initConsent).
 function initPromoPopup() {
   document.getElementById("promo-close").addEventListener("click", closePromoPopup);
   document.getElementById("promo-overlay").addEventListener("click", closePromoPopup);
@@ -66,75 +66,56 @@ function initPromoPopup() {
 
 // ---------- Aviso de privacidad ----------
 //
-// Este sitio no tiene analítica, ni píxeles, ni publicidad: lo único
-// estrictamente necesario es el carrito (sin él la tienda no sirve), así que
-// el carrito NO pasa por este permiso. Lo opcional hoy es el pop-up de
-// promoción. El día que se agregue Google Analytics, Meta Pixel o similar,
-// hay que envolverlo en `hasOptionalConsent()` para no cargarlo hasta que el
-// visitante acepte.
+// Es un aviso INFORMATIVO, no un consentimiento, y es a propósito: este
+// sitio no tiene analítica, ni píxeles, ni publicidad. Lo único que se
+// guarda es el carrito, que es estrictamente necesario para que la tienda
+// funcione. No hay nada que el visitante pueda aceptar o rechazar, así que
+// darle dos botones sería una elección falsa: haría clic en cualquiera de
+// los dos y no cambiaría nada.
+//
+// El día que se agregue Google Analytics, Meta Pixel o similar, esto tiene
+// que convertirse en un consentimiento de verdad: dos opciones, guardar la
+// respuesta, y cargar el script únicamente si el visitante aceptó. También
+// hay que reescribir este texto y /privacidad.html, que hoy afirman que no
+// existe ningún seguimiento.
 
-function getConsent() {
+function initPrivacyNotice() {
+  const notice = document.getElementById("privacy-notice");
+  if (!notice) return;
+
+  let yaVisto = null;
   try {
-    return localStorage.getItem(CONSENT_STORAGE_KEY);
+    yaVisto = localStorage.getItem(PRIVACY_NOTICE_KEY);
   } catch {
-    return null;
+    // navegador con almacenamiento bloqueado: se mostrará el aviso otra vez,
+    // que es preferible a no mostrarlo nunca.
   }
-}
+  if (!yaVisto) notice.hidden = false;
 
-function setConsent(value) {
-  try {
-    localStorage.setItem(CONSENT_STORAGE_KEY, value);
-  } catch {
-    // navegador con almacenamiento bloqueado: se seguirá preguntando, que es
-    // el comportamiento correcto (nunca asumimos un "sí" que no se guardó).
-  }
-}
-
-function hasOptionalConsent() {
-  return getConsent() === "aceptado";
-}
-
-function initConsent() {
-  const banner = document.getElementById("consent-banner");
-  if (!banner) return;
-
-  const decision = getConsent();
-  if (!decision) {
-    banner.hidden = false;
-  } else if (decision === "aceptado") {
-    initPromoPopup();
+  const okBtn = document.getElementById("privacy-notice-ok");
+  if (okBtn) {
+    okBtn.addEventListener("click", () => {
+      notice.hidden = true;
+      try {
+        localStorage.setItem(PRIVACY_NOTICE_KEY, "1");
+      } catch {
+        // sin almacenamiento se volverá a mostrar en la próxima visita
+      }
+    });
   }
 
-  document.getElementById("consent-accept").addEventListener("click", () => {
-    setConsent("aceptado");
-    banner.hidden = true;
-    initPromoPopup();
-  });
-
-  // Botón de la página de privacidad para volver a ver el aviso.
-  const resetBtn = document.getElementById("consent-reset");
+  // Botón de /privacidad.html para volver a ver el aviso.
+  const resetBtn = document.getElementById("privacy-notice-reset");
   if (resetBtn) {
     resetBtn.addEventListener("click", () => {
       try {
-        localStorage.removeItem(CONSENT_STORAGE_KEY);
-        sessionStorage.removeItem(PROMO_STORAGE_KEY);
+        localStorage.removeItem(PRIVACY_NOTICE_KEY);
       } catch {
-        // sin almacenamiento no hay decisión guardada que borrar
+        // no hay nada guardado que borrar
       }
       window.location.reload();
     });
   }
-
-  document.getElementById("consent-reject").addEventListener("click", () => {
-    setConsent("rechazado");
-    banner.hidden = true;
-    // Borra la marca del pop-up: si rechaza, no dejamos nada opcional puesto.
-    try {
-      sessionStorage.removeItem(PROMO_STORAGE_KEY);
-    } catch {
-      // sin sessionStorage no hay nada que borrar
-    }
-  });
 }
 
 // ---------- Buscador ----------

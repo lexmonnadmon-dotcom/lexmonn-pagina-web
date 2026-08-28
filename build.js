@@ -249,9 +249,10 @@ function buildPrivacyPage() {
     <p>Muy poco, y nada de eso sale de tu dispositivo:</p>
     <ul>
       <li><strong>Tu carrito.</strong> Se guarda para que no lo pierdas si cierras la pestaña y vuelves. Sin esto la tienda no funcionaría, así que es almacenamiento necesario.</li>
-      <li><strong>Tu respuesta a este aviso</strong>, para no volver a preguntártelo en cada visita.</li>
-      <li><strong>Si ya viste el aviso de promociones</strong>, para no mostrártelo dos veces en la misma sesión. Esto es opcional y solo se guarda si aceptaste.</li>
+      <li><strong>Que ya viste el aviso de privacidad</strong>, para no repetírtelo en cada visita.</li>
+      <li><strong>Que ya viste el aviso de promociones</strong>, para no mostrártelo dos veces en la misma sesión.</li>
     </ul>
+    <p>Son tres datos técnicos que viven solo en tu navegador. Ninguno nos llega a nosotros, ninguno identifica quién eres, y puedes borrarlos cuando quieras limpiando los datos del sitio desde tu navegador.</p>
 
     <h2>Qué NO hacemos</h2>
     <p>Para que quede explícito, porque es distinto de lo que hacen muchas tiendas:</p>
@@ -275,9 +276,12 @@ function buildPrivacyPage() {
     <h2>Tus derechos</h2>
     <p>De acuerdo con la Ley 1581 de 2012 puedes conocer, actualizar y rectificar tus datos, pedir prueba de la autorización, ser informado del uso que les damos, presentar quejas ante la Superintendencia de Industria y Comercio, y revocar la autorización o pedir que los suprimamos. Para ejercer cualquiera de estos derechos escríbenos a <a href="mailto:lexmonn.admon@gmail.com">lexmonn.admon@gmail.com</a> y te respondemos.</p>
 
-    <h2>Cambiar tu decisión</h2>
-    <p>Puedes volver a ver el aviso y cambiar tu respuesta cuando quieras.</p>
-    <p><button type="button" id="consent-reset" class="consent-btn consent-btn-main">Cambiar mi decisión</button></p>
+    <h2>¿Por qué esta página no te pide aceptar cookies?</h2>
+    <p>Porque no tendría sentido. Los avisos de "Aceptar todo / Rechazar todo" existen donde hay cookies de publicidad y seguimiento que se activan según lo que elijas. Aquí no hay ninguna, así que darte dos botones sería pedirte permiso para algo que no ocurre. Preferimos decirte qué pasa y ya. Si algún día eso cambia, esta página lo dirá y sí te preguntaremos antes.</p>
+
+    <h2>Volver a ver el aviso</h2>
+    <p>Si cerraste el aviso de privacidad y quieres verlo de nuevo:</p>
+    <p><button type="button" id="privacy-notice-reset" class="privacy-notice-btn">Ver el aviso otra vez</button></p>
 
     <p class="legal-updated">Última actualización: 27 de agosto de 2026.</p>
   </section>`;

@@ -1200,7 +1200,7 @@ a { color: var(--teal); }
    Aviso de privacidad
    ============================================================ */
 
-.consent-banner {
+.privacy-notice {
   position: fixed;
   left: 0;
   right: 0;
@@ -1208,14 +1208,14 @@ a { color: var(--teal); }
   background: #ffffff;
   border-top: 3px solid var(--accent);
   box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.14);
-  padding: 16px 20px calc(16px + env(safe-area-inset-bottom, 0px));
+  padding: 14px 20px calc(14px + env(safe-area-inset-bottom, 0px));
   /* Encima de la barra fija de compra (10) y del botón flotante del
      carrito (25), pero debajo de los overlays y modales (30+). */
   z-index: 28;
 }
-.consent-banner[hidden] { display: none; }
+.privacy-notice[hidden] { display: none; }
 
-.consent-inner {
+.privacy-notice-inner {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
@@ -1223,51 +1223,34 @@ a { color: var(--teal); }
   gap: 20px;
 }
 
-.consent-text strong { display: block; margin-bottom: 4px; }
-.consent-text p {
+.privacy-notice-text {
   margin: 0;
   font-size: 0.87rem;
   line-height: 1.5;
   color: var(--text-muted);
 }
 
-.consent-actions {
-  display: flex;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.consent-btn {
+.privacy-notice-btn {
   font: inherit;
   font-weight: 700;
-  padding: 11px 20px;
+  padding: 11px 26px;
   border-radius: 50px;
   cursor: pointer;
   white-space: nowrap;
-}
-
-.consent-btn-main {
+  flex-shrink: 0;
   background: var(--accent);
   border: 1px solid var(--accent);
   color: #ffffff;
 }
-.consent-btn-main:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
-
-.consent-btn-ghost {
-  background: #ffffff;
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-.consent-btn-ghost:hover { border-color: var(--text-muted); }
+.privacy-notice-btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
 
 @media (max-width: 700px) {
-  .consent-inner {
+  .privacy-notice-inner {
     flex-direction: column;
     align-items: stretch;
-    gap: 14px;
+    gap: 12px;
   }
-  .consent-actions { flex-direction: column-reverse; }
-  .consent-btn { width: 100%; }
+  .privacy-notice-btn { width: 100%; }
   .search-bar-wrap { padding: 10px 14px; }
 }
 

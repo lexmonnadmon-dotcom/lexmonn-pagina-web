@@ -310,35 +310,32 @@ mandar por WhatsApp a un cliente que pregunta por algo puntual.
 
 ## El aviso de privacidad
 
-Abajo aparece un aviso la primera vez que alguien entra, con dos botones:
-**Aceptar** y **Solo lo necesario**. La respuesta se recuerda para no volver
-a preguntar.
+Abajo aparece un aviso la primera vez que alguien entra, con **un solo
+botón: "Entendido"**. Se cierra, se recuerda, y no vuelve a molestar.
 
-Es importante que sepas **qué dice y por qué**, porque es distinto al de
-otras tiendas: esta página **no tiene publicidad ni herramientas de
-seguimiento** (no hay Google Analytics ni píxel de Facebook). Lo único que
-se guarda en el navegador del cliente es su carrito, para que no lo pierda.
-Por eso el aviso no promete "anuncios personalizados" — sería falso.
+**Por qué un solo botón y no "Aceptar / Rechazar" como otras tiendas.** Esos
+avisos de dos botones existen donde hay cookies de publicidad y seguimiento
+que se prenden o apagan según lo que el visitante elija. Tu página **no
+tiene ninguna**: no hay Google Analytics, ni píxel de Facebook, ni
+publicidad. Lo único que se guarda es el carrito del cliente, para que no lo
+pierda.
 
-Qué cambia según lo que elija el cliente:
-
-| Elección | Qué pasa |
-|---|---|
-| **Aceptar** | Todo igual que siempre, incluido el pop-up de promociones |
-| **Solo lo necesario** | El carrito sigue funcionando normal, pero **no se le muestra el pop-up de promociones** |
+Si pusiéramos dos botones, el cliente haría clic en cualquiera de los dos y
+no pasaría absolutamente nada distinto. Sería pedirle permiso para algo que
+no ocurre, y se sentiría como un botón roto. Por eso el aviso simplemente le
+cuenta qué pasa y ya.
 
 Hay además una página de **[Privacidad y datos](https://lexmonn.com/privacidad.html)**,
 enlazada desde el pie de página, que explica qué datos pides al finalizar la
 compra, que se envían por WhatsApp, y cómo un cliente puede pedirte que los
-borres (Ley 1581 de 2012). Ahí mismo hay un botón para que cambie su
-decisión sobre el aviso.
+borres (Ley 1581 de 2012). Ahí mismo hay un botón para volver a ver el aviso.
 
 > **Importante si algún día agregas publicidad o estadísticas.** Si más
 > adelante quieres poner Google Analytics, el píxel de Facebook o similar,
-> hay que hacer dos cosas: cargarlo solo cuando el cliente haya aceptado
-> (en el código está la función `hasOptionalConsent()` justo para eso), y
-> actualizar el texto del aviso y la página de privacidad para que digan la
-> verdad. Pídeselo a quien te ayude con el sitio.
+> ahí sí hace falta un aviso de dos botones de verdad: hay que guardar la
+> respuesta y cargar esas herramientas **solo** si el cliente aceptó, y
+> reescribir el aviso y la página de privacidad, que hoy afirman que no
+> existe ningún seguimiento. Pídeselo a quien te ayude con el sitio.
 
 ## Cómo funciona el carrito
 

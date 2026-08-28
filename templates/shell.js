@@ -141,22 +141,23 @@ function renderSearchBar() {
 </div>`;
 }
 
-// Aviso de privacidad. Este sitio NO tiene analítica ni publicidad: lo
-// único que guarda es el carrito (necesario para que funcione) y la
-// preferencia de este mismo aviso. Por eso el texto no promete
-// "personalización" ni "anuncios" que no existen — y "Rechazar" sí hace
-// algo real: apaga el pop-up de promoción y su marca en sessionStorage.
-function renderConsentBanner() {
-  return `<div id="consent-banner" class="consent-banner" hidden role="region" aria-label="Aviso de privacidad">
-  <div class="consent-inner">
-    <div class="consent-text">
-      <strong>Tu privacidad</strong>
-      <p>Guardamos tu <strong>carrito</strong> en este navegador para que no lo pierdas si cierras la página. Nada más sale de tu dispositivo. <strong>No usamos cookies de publicidad ni de seguimiento</strong>, y no compartimos tus datos con terceros. <a href="/privacidad.html">Leer más</a>.</p>
-    </div>
-    <div class="consent-actions">
-      <button type="button" id="consent-accept" class="consent-btn consent-btn-main">Aceptar</button>
-      <button type="button" id="consent-reject" class="consent-btn consent-btn-ghost">Solo lo necesario</button>
-    </div>
+// Aviso de privacidad. NO es un banner de consentimiento, y es a propósito:
+// este sitio no tiene analítica, ni píxeles, ni publicidad, así que no hay
+// nada que el visitante pueda aceptar o rechazar. Poner "Aceptar" y
+// "Rechazar" sería una elección falsa — se hace clic en cualquiera de los
+// dos y no cambia absolutamente nada, que es justo lo que se siente como un
+// botón roto. Por eso es informativo, con un solo botón.
+//
+// El día que se agregue un rastreador de verdad, ESTO tiene que volverse un
+// consentimiento real: dos opciones, guardadas, y el script cargando solo si
+// el visitante acepta.
+function renderPrivacyNotice() {
+  return `<div id="privacy-notice" class="privacy-notice" hidden role="region" aria-label="Aviso de privacidad">
+  <div class="privacy-notice-inner">
+    <p class="privacy-notice-text">
+      <strong>Tu privacidad.</strong> Guardamos tu carrito en este navegador para que no lo pierdas si cierras la página. <strong>No usamos cookies de publicidad ni de seguimiento</strong>, no rastreamos tu navegación y no compartimos tus datos con nadie. <a href="/privacidad.html">Ver el detalle</a>.
+    </p>
+    <button type="button" id="privacy-notice-ok" class="privacy-notice-btn">Entendido</button>
   </div>
 </div>`;
 }
@@ -347,7 +348,7 @@ ${opts.main}
 
 ${renderFooter()}
 
-${renderConsentBanner()}
+${renderPrivacyNotice()}
 
 ${renderCartAndModals({ includeProductModal: opts.includeProductModal })}
 
@@ -364,7 +365,7 @@ module.exports = {
   renderHead,
   renderHeader,
   renderSearchBar,
-  renderConsentBanner,
+  renderPrivacyNotice,
   renderFooter,
   renderCartAndModals,
   renderScripts,
