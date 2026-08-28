@@ -11,6 +11,8 @@
 
 const CART_STORAGE_KEY = "lexmonn_cart";
 const PROMO_STORAGE_KEY = "lexmonn_promo_shown";
+// Cada cuánto se le puede volver a mostrar el pop-up al mismo visitante.
+const PROMO_REPETIR_MS = 24 * 60 * 60 * 1000;
 const PRIVACY_NOTICE_KEY = "lexmonn_aviso_visto";
 
 let PRODUCTS = [];
@@ -52,18 +54,50 @@ function unlockBodyScroll() {
 }
 
 // ---------- Pop-up de promoción ----------
+//
+// La marca de "ya se mostró" vive en localStorage y no en sessionStorage,
+// porque sessionStorage es POR PESTAÑA: al abrir un producto en una pestaña
+// nueva (y más con rel="noopener", que impide heredar la del origen) la
+// pestaña arranca sin la marca y el pop-up volvía a salir en cada producto
+// que el cliente abriera. localStorage es compartido entre pestañas.
+//
+// Como localStorage no se borra al cerrar el navegador, se guarda la FECHA y
+// se deja volver a mostrar pasado un día: así el visitante que vuelve la
+// semana entrante sí ve la promoción, pero no la sufre en cada clic.
+
+function promoYaSeMostro() {
+  try {
+    const marca = Number(localStorage.getItem(PROMO_STORAGE_KEY));
+    return marca > 0 && Date.now() - marca < PROMO_REPETIR_MS;
+  } catch {
+    // Sin almacenamiento se mostrará de nuevo: preferible a no mostrarlo.
+    return false;
+  }
+}
+
+function marcarPromoMostrado() {
+  try {
+    localStorage.setItem(PROMO_STORAGE_KEY, String(Date.now()));
+  } catch {
+    // navegador con almacenamiento bloqueado
+  }
+}
 
 function initPromoPopup() {
   document.getElementById("promo-close").addEventListener("click", closePromoPopup);
   document.getElementById("promo-overlay").addEventListener("click", closePromoPopup);
 
-  if (sessionStorage.getItem(PROMO_STORAGE_KEY)) return;
+  if (promoYaSeMostro()) return;
 
   setTimeout(() => {
+    // Se vuelve a comprobar justo antes de mostrarlo: si el cliente abrió
+    // varias pestañas casi a la vez, la primera en aparecer deja la marca y
+    // las demás ya no lo repiten.
+    if (promoYaSeMostro()) return;
+    marcarPromoMostrado();
     document.getElementById("promo-modal").hidden = false;
     document.getElementById("promo-overlay").hidden = false;
     lockBodyScroll();
-    sessionStorage.setItem(PROMO_STORAGE_KEY, "1");
   }, 1200);
 }
 

@@ -251,7 +251,7 @@ function buildPrivacyPage() {
     <ul>
       <li><strong>Tu carrito.</strong> Se guarda para que no lo pierdas si cierras la pestaña y vuelves. Sin esto la tienda no funcionaría, así que es almacenamiento necesario.</li>
       <li><strong>Que ya viste el aviso de privacidad</strong>, para no repetírtelo en cada visita.</li>
-      <li><strong>Que ya viste el aviso de promociones</strong>, para no mostrártelo dos veces en la misma sesión.</li>
+      <li><strong>La fecha en que viste el aviso de promociones</strong>, para no repetírtelo en cada página que abras. Pasado un día se puede volver a mostrar.</li>
     </ul>
     <p>Son tres datos técnicos que viven solo en tu navegador. Ninguno nos llega a nosotros, ninguno identifica quién eres, y puedes borrarlos cuando quieras limpiando los datos del sitio desde tu navegador.</p>
 
