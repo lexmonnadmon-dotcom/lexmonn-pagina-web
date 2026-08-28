@@ -1134,7 +1134,15 @@ a { color: var(--teal); }
   margin: 0 0 16px;
 }
 
-.offers-viewport { position: relative; }
+.offers-viewport {
+  position: relative;
+  /* Ancho de la tarjeta del carrusel. Del mismo valor dependen la tarjeta y
+     la altura de las flechas, que van centradas sobre la FOTO: como la foto
+     es cuadrada (aspect-ratio 1/1), su centro está a media tarjeta de ancho
+     más el relleno superior de la pista. Atándolo a una variable, cambiar el
+     ancho no deja las flechas flotando sobre el texto. */
+  --tarjeta: 230px;
+}
 
 .offers-track {
   display: flex;
@@ -1153,13 +1161,14 @@ a { color: var(--teal); }
    se le fija un ancho para que se vean varias y se intuya que hay más. */
 .offers-track .product-card {
   flex: 0 0 auto;
-  width: 230px;
+  width: var(--tarjeta);
   scroll-snap-align: start;
 }
 
 .offers-arrow {
   position: absolute;
-  top: 42%;
+  /* Centrada sobre la foto: 4px del relleno de la pista + media tarjeta */
+  top: calc(4px + var(--tarjeta) / 2);
   transform: translateY(-50%);
   width: 40px;
   height: 40px;
@@ -1181,10 +1190,21 @@ a { color: var(--teal); }
 @media (max-width: 700px) {
   .offers { padding: 0 14px; margin-top: 18px; }
   .offers-title { font-size: 1.25rem; }
-  /* Dos tarjetas y el borde de la tercera: así se ve que hay más al lado */
-  .offers-track .product-card { width: 44vw; }
-  /* En táctil se desliza con el dedo; las flechas solo estorban */
-  .offers-arrow { display: none; }
+  /* Dos tarjetas y el borde de la tercera: así se ve que hay más al lado.
+     Las flechas siguen este mismo valor y se recolocan solas. */
+  .offers-viewport { --tarjeta: 44vw; }
+
+  /* Las flechas también se ven en celular. Aunque ahí se desliza con el
+     dedo, son la señal visual de que hay más ofertas al lado — deslizar sin
+     que nada lo insinúe es un gesto que mucha gente no descubre.
+     Se mantienen en 40px para que sigan siendo un objetivo cómodo de tocar,
+     y se pegan al borde para no tapar el centro de la tarjeta. */
+  .offers-arrow {
+    font-size: 1.35rem;
+    background: rgba(255, 255, 255, 0.94);
+  }
+  .offers-arrow-prev { left: -10px; }
+  .offers-arrow-next { right: -10px; }
 }
 
 /* ============================================================
