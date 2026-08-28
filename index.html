@@ -23,9 +23,14 @@
 <meta name="twitter:description" content="Porta herramientas y herramientas de construcción fabricados en Colombia. Pide los tuyos online y recíbelos por WhatsApp, con envíos a toda Colombia hoy.">
 <meta name="twitter:image" content="https://lexmonn.com/hero-banner-2.jpeg">
 
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="/logo-cropped.png">
-<link rel="apple-touch-icon" href="/logo-cropped.png">
+<!-- Favicon. Google solo muestra el icono del sitio en sus resultados si es
+     CUADRADO y de 48px o un múltiplo (48, 96, 192...). Antes se usaba
+     /logo-cropped.png, que es el wordmark de 874x272 — al no ser cuadrado,
+     Google lo descartaba y pintaba el globo genérico. -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
 
 <!-- Preconnect / DNS-prefetch a dominios externos -->
 <link rel="preconnect" href="https://docs.google.com">
