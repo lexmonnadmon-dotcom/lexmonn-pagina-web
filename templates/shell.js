@@ -255,10 +255,6 @@ function renderCartAndModals() {
       <input type="tel" name="telefono" required>
     </label>
     <label>
-      Cédula / NIT (si es empresa) *
-      <input type="text" name="documento" required>
-    </label>
-    <label>
       Correo electrónico
       <input type="email" name="correo">
     </label>

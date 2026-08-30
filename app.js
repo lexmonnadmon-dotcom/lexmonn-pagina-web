@@ -819,7 +819,6 @@ function handleCheckoutSubmit(e) {
     direccion: form.direccion.value.trim(),
     ciudad: form.ciudad.value.trim(),
     telefono: form.telefono.value.trim(),
-    documento: form.documento.value.trim(),
     correo: form.correo.value.trim(),
   };
 
@@ -849,7 +848,6 @@ function buildWhatsAppMessage(buyer, entries) {
   lines.push(`Dirección: ${buyer.direccion}`);
   lines.push(`Ciudad/Municipio: ${buyer.ciudad}`);
   lines.push(`Teléfono: ${buyer.telefono}`);
-  lines.push(`Cédula/NIT: ${buyer.documento}`);
   if (buyer.correo) lines.push(`Correo: ${buyer.correo}`);
   lines.push("");
   lines.push(`*Productos*`);
