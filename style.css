@@ -143,13 +143,21 @@ a { color: var(--teal); }
 
 .hero h1 {
   margin-bottom: 6px;
-  color: #fff;
+  /* Verde de la marca, el mismo de la X del logo */
+  color: var(--accent);
   font-size: clamp(1.5rem, 5vw, 2rem);
   line-height: 1.2;
+  /* El título va sobre una foto de obra con zonas claras. En blanco se
+     sostenía a duras penas; en verde no se sostendría, así que lleva una
+     sombra oscura que lo despega del fondo sin taparlo. */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 3px rgba(0, 0, 0, 0.55);
 }
 .hero p {
   color: #fff;
   margin-top: 0;
+  /* Misma sombra que el título: si solo la llevara uno, el bloque se vería
+     desparejo. */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 3px rgba(0, 0, 0, 0.55);
 }
 
 .state-msg {
