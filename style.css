@@ -214,6 +214,31 @@ a { color: var(--teal); }
   color: #ffffff;
 }
 
+/* "Porta Herramientas" va en verde, distinta del resto: es la única
+   categoría de fabricación propia de Lexmonn, frente a las de reventa.
+   Se engancha al atributo data-cat que ya trae cada pastilla, así que no
+   hace falta tocar el JavaScript.
+
+   OJO: el nombre está escrito aquí tal cual aparece en la Sheet. Si se
+   renombra la categoría, la pastilla vuelve al gris sin avisar. */
+.filter-pill[data-cat="Porta Herramientas"] {
+  border-color: var(--accent);
+  /* Verde oscurecido: el --accent puro sobre blanco no da contraste
+     suficiente para texto de este tamaño. */
+  color: #4a7a12;
+}
+.filter-pill[data-cat="Porta Herramientas"]:hover {
+  border-color: var(--accent-dark);
+  color: #3c6410;
+}
+.filter-pill[data-cat="Porta Herramientas"].active {
+  background: var(--accent);
+  border-color: var(--accent);
+  /* Verde muy oscuro sobre el verde de marca, igual que el botón del
+     carrito: el blanco sobre --accent no se lee bien. */
+  color: #0d2b0d;
+}
+
 .catalog {
   max-width: 1100px;
   margin: 0 auto;
