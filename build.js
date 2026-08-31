@@ -464,6 +464,22 @@ async function main() {
     categoryLinks.push({ name: catName, slug: catSlug });
   });
 
+  // Categorías que existían en un build anterior y ya no están en la Sheet.
+  // A diferencia de los productos, una categoría retirada no tiene página
+  // "lápida": si no se borra el archivo, sigue publicado e indexable con un
+  // listado de productos que ya no existen.
+  const categoriaDir = path.join(ROOT, "categoria");
+  const slugsVigentes = new Set(categoryLinks.map((c) => c.slug));
+  if (fs.existsSync(categoriaDir)) {
+    fs.readdirSync(categoriaDir)
+      .filter((f) => f.endsWith(".html"))
+      .filter((f) => !slugsVigentes.has(f.replace(/\.html$/, "")))
+      .forEach((f) => {
+        fs.unlinkSync(path.join(categoriaDir, f));
+        console.log(`[build] Categoría retirada del sitio: ${f}`);
+      });
+  }
+
   build404Page(categoryLinks);
   buildPrivacyPage();
 
