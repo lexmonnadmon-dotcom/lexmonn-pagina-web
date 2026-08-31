@@ -67,7 +67,10 @@ function renderCategoryFilterPillsHtml(allCategories, activeCategory) {
 function buildHomePage(activeProducts, allCategories) {
   const title = "Porta Herramientas Colombia | Lexmonn";
   const description =
-    "Porta herramientas y herramientas de construcción fabricados en Colombia. Pide los tuyos online y recíbelos por WhatsApp, con envíos a toda Colombia hoy.";
+    // El pedido se ENVÍA por WhatsApp; el producto llega por transportadora.
+    // Y "fabricados en Colombia" solo aplica a los porta herramientas: el
+    // resto del catálogo es herramienta de marcas de reventa.
+    "Porta herramientas fabricados en Colombia y herramientas para drywall y construcción. Arma tu pedido en línea y envíalo por WhatsApp. Envíos a todo el país.";
 
   const head = Shell.renderHead({
     title,
@@ -130,10 +133,17 @@ function buildProductPage(p, allCategories) {
   const canonical = `${SITE_URL}/productos/${p.slug}.html`;
 
   const title = `${p.nombre} | Lexmonn`;
-  const description = Shared.truncateForMeta(
-    `${p.nombre}: ${p.descripcion} Fabricado en Colombia, envíos a toda Colombia.`,
-    160
-  );
+
+  // Sin "fabricado en Colombia": la mayoría del catálogo son marcas de
+  // reventa (Truper, DeWalt, Stanley...) y decirlo sería falso.
+  //
+  // El cierre se reserva su espacio y se pega DESPUÉS de truncar, en vez de
+  // ir dentro del texto que se corta. Si no, en los productos de nombre o
+  // descripción larga la frase quedaba partida a la mitad ("Envíos a…"), que
+  // es justo lo que ve el cliente en Google.
+  const cierre = " Envíos a toda Colombia, pedido por WhatsApp.";
+  const description =
+    Shared.truncateForMeta(`${p.nombre}: ${p.descripcion}`, 160 - cierre.length) + cierre;
 
   const head = Shell.renderHead({
     title,
@@ -326,7 +336,7 @@ function buildCategoryPage(catName, catSlug, products, allCategories) {
   const canonical = `${SITE_URL}/categoria/${catSlug}.html`;
   const title = `${catName} | Lexmonn`;
   const description = Shared.truncateForMeta(
-    `Compra ${catName.toLowerCase()} fabricados en Colombia. Envíos a toda Colombia, pedidos directo por WhatsApp.`,
+    `${catName} en Lexmonn: herramienta para obra con envíos a toda Colombia. Arma tu pedido y envíalo por WhatsApp.`,
     160
   );
 
@@ -356,7 +366,7 @@ function buildCategoryPage(catName, catSlug, products, allCategories) {
   const main = `<section class="category-hero">
     ${breadcrumbs}
     <h1>${Shared.escapeHtml(catName)}</h1>
-    <p>Productos de ${Shared.escapeHtml(catName)} fabricados en Colombia. Elige los tuyos y envía tu pedido directo por WhatsApp.</p>
+    <p>Productos de ${Shared.escapeHtml(catName)} disponibles en Lexmonn. Elige los tuyos y envía tu pedido directo por WhatsApp.</p>
   </section>
 
   ${renderCategoryFilterPillsHtml(allCategories, catName)}
