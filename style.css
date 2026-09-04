@@ -7,6 +7,10 @@
   --text-muted: #6b6b6b;
   --accent: #8dc63f;
   --accent-dark: #6ea62c;
+  /* Verde para TEXTO sobre blanco. El --accent puro da 1,9:1 de contraste y
+     no se lee ni en tamaño grande; este da 5,1:1. Usar siempre este para
+     letra verde, y --accent solo para fondos. */
+  --accent-text: #4a7a12;
   --teal: #1c5e6b;
   --danger: #d64545;
   --shadow: 0 2px 10px rgba(0,0,0,0.06);
@@ -23,16 +27,18 @@ body {
   color: var(--text);
 }
 
-main::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.32)), url('hero-bg.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(0.5px);
-  z-index: -1;
+/* Antes había una foto de taller fija como fondo de toda la página, con un
+   velo blanco encima. Funcionaba cuando la portada entraba por el hero, que
+   la tapaba; con el mosaico de categorías dejó de funcionar por dos razones:
+   el título verde quedaba ilegible sobre la madera, y una foto de fondo
+   compite con las seis fotos de las baldosas. El lienzo queda limpio y las
+   fotos son las que ponen el color.
+
+   Para recuperarla: volver a poner aquí el `main::before` con la imagen. El
+   archivo `hero-bg.jpeg` sigue en el repositorio. */
+main {
+  position: relative;
+  z-index: 0;
 }
 
 a { color: var(--teal); }
@@ -110,54 +116,307 @@ a { color: var(--teal); }
   font-weight: 900;
 }
 
-.hero {
-  position: relative;
-  max-width: 1100px;
+/* ---------- Mosaico de categorías (portada) ----------
+   Sustituye al hero con foto de obra: ahora la home entra por las
+   categorías. El título ya no va sobre una foto, así que no necesita
+   sombra — va en verde oscurecido sobre blanco. */
+
+.cat-mosaic-section {
+  max-width: 1200px;
   margin: 0 auto;
-  min-height: 220px;
-  border-radius: var(--radius);
+  padding: 18px 20px 0;
+}
+
+.cat-mosaic-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.cat-mosaic-title {
+  margin: 0;
+  /* Verde de la marca oscurecido. El --accent puro sobre blanco da 1,9:1 de
+     contraste y no se lee ni en tamaño grande; este da 5,1:1. */
+  color: var(--accent-text);
+  font-size: clamp(1.45rem, 4vw, 2.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  max-width: 26ch;
+}
+
+.cat-mosaic-all {
+  flex: none;
+  border: 1px solid var(--text);
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.cat-mosaic-all:hover {
+  background: var(--text);
+  color: #fff;
+}
+
+/* Doce columnas para poder repartir baldosas de 4 y de 6 de ancho.
+   `--fila` es la altura de una fila: la baldosa grande ocupa dos.
+
+   El reparto queda así:
+     fila 1-2:  [ PORTA HERRAMIENTAS 6x2 ] [ 6 ]
+     fila 2:                               [ 6 ]
+     fila 3:    [ 4 ] [ 4 ] [ 4 ]
+
+   Ninguna baldosa pasa de 2,5:1 a propósito. Con proporciones más alargadas
+   la foto del producto queda diminuta en medio de la baldosa. */
+.cat-mosaic {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  /* `minmax(..., auto)` y no una altura fija: si el texto de una baldosa no
+     cabe, la fila crece en vez de recortarlo. Pasó en celular con
+     "Herramientas de Construcción", cuyo bloque medía 156 px dentro de una
+     baldosa de 140 y dejaba la píldora cortada por arriba. */
+  grid-auto-rows: minmax(var(--fila), auto);
+  gap: 16px;
+  --fila: 232px;
+}
+
+/* Tamaño por posición, no por nombre de categoría: así el mosaico se
+   recompone cambiando solo estas reglas. Una categoría nueva que no tenga
+   regla propia cae en el `span 4` de abajo y el mosaico no se descuadra. */
+.cat-tile { grid-column: span 4; }
+.cat-tile-1 { grid-column: span 6; grid-row: span 2; }
+.cat-tile-2 { grid-column: span 6; }
+.cat-tile-3 { grid-column: span 6; }
+
+.cat-tile {
+  position: relative;
+  display: block;
   overflow: hidden;
+  border-radius: var(--radius);
+  background: #f1f1ef;
+  color: #fff;
+  text-decoration: none;
   isolation: isolate;
 }
 
-.hero-bg-img {
+.cat-tile-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 45%;
-  z-index: 0;
-  display: block;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+.cat-tile:hover .cat-tile-img { transform: scale(1.045); }
+
+/* Las fotos son de estudio sobre fondo claro, así que el texto blanco no se
+   sostiene solo: el degradado oscurece únicamente la franja de abajo y deja
+   el producto a la vista. */
+.cat-tile-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.74) 0%,
+    rgba(0, 0, 0, 0.38) 34%,
+    rgba(0, 0, 0, 0) 64%
+  );
 }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  padding: 46px 20px;
-  min-height: 220px;
+/* La flecha vive DENTRO del bloque de texto, no suelta en una esquina. Así
+   el contenido de la baldosa es un solo bloque que se puede centrar o pegar
+   abajo de una pieza, en vez de dejar un hueco en el medio. */
+.cat-tile-body {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 18px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.cat-tile-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 4px;
+  min-width: 0;
 }
 
-.hero h1 {
-  margin-bottom: 6px;
-  /* Verde de la marca, el mismo de la X del logo */
-  color: var(--accent);
-  font-size: clamp(1.5rem, 5vw, 2rem);
-  line-height: 1.2;
-  /* El título va sobre una foto de obra con zonas claras. En blanco se
-     sostenía a duras penas; en verde no se sostendría, así que lleva una
-     sombra oscura que lo despega del fondo sin taparlo. */
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 3px rgba(0, 0, 0, 0.55);
+.cat-tile-name {
+  font-size: clamp(1rem, 2.1vw, 1.55rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
 }
-.hero p {
-  color: #fff;
-  margin-top: 0;
-  /* Misma sombra que el título: si solo la llevara uno, el bloque se vería
-     desparejo. */
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 3px rgba(0, 0, 0, 0.55);
+
+.cat-tile-tagline {
+  font-size: 0.84rem;
+  line-height: 1.35;
+  opacity: 0.92;
+}
+
+.cat-tile-arrow {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  font-size: 1rem;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+.cat-tile:hover .cat-tile-arrow {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateX(3px);
+}
+
+/* La píldora va DENTRO del bloque de texto, justo encima del nombre. Estuvo
+   suelta en la esquina superior izquierda y en celular, con baldosas de
+   150 px de alto, se montaba encima del nombre de la categoría. */
+.cat-tile-tag {
+  align-self: flex-start;
+  margin-bottom: 6px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* ----- Baldosas 2 en adelante: tarjeta blanca, producto entero a la derecha
+   -----
+   La baldosa grande sí lleva la foto a sangre, porque el morral la llena.
+   Las demás no pueden: las fotos del catálogo son de estudio sobre fondo
+   blanco y casi todas VERTICALES (martillo, pinza, navaja). Recortarlas a lo
+   ancho con `cover` les cortaba la cabeza y dejaba una franja del mango.
+
+   Con `contain` se ve el producto completo, y como el fondo de la foto ya es
+   blanco, se funde con el de la tarjeta: parece un recorte flotando. El
+   texto se va a la izquierda, en oscuro, y no necesita degradado encima. */
+/* El texto de estas baldosas va en FLUJO NORMAL, no posicionado absoluto
+   como en la grande. Es lo que le permite a la baldosa crecer cuando el
+   nombre o la frase ocupan más de lo previsto; estando absoluto, el bloque
+   se salía por arriba y por abajo y `overflow: hidden` lo recortaba.
+   El `padding-right` reserva el hueco donde va la foto. */
+.cat-tile:not(.cat-tile-1) {
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  padding: 16px 42% 16px 20px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.cat-tile:not(.cat-tile-1):hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-hover);
+}
+.cat-tile:not(.cat-tile-1) .cat-tile-img {
+  inset: 12px 12px 12px auto;
+  width: 38%;
+  height: calc(100% - 24px);
+  object-fit: contain;
+}
+.cat-tile:not(.cat-tile-1) .cat-tile-scrim { display: none; }
+/* Centrado a lo alto por el `align-items: center` de la baldosa. Pegado
+   abajo dejaba un vacío grande en las baldosas anchas. */
+.cat-tile:not(.cat-tile-1) .cat-tile-body {
+  position: static;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+.cat-tile:not(.cat-tile-1) .cat-tile-name {
+  color: var(--text);
+  font-size: clamp(0.92rem, 1.35vw, 1.15rem);
+}
+.cat-tile:not(.cat-tile-1) .cat-tile-tagline {
+  color: var(--text-muted);
+  opacity: 1;
+  font-size: 0.8rem;
+}
+.cat-tile:not(.cat-tile-1) .cat-tile-tag {
+  background: #f2f2ef;
+  color: var(--text-muted);
+}
+.cat-tile:not(.cat-tile-1) .cat-tile-arrow {
+  border-color: var(--border);
+  color: var(--text);
+}
+.cat-tile:not(.cat-tile-1):hover .cat-tile-arrow {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0d2b0d;
+}
+
+/* Porta Herramientas es la única categoría de fabricación propia, así que
+   se separa con el verde de la marca — igual que su pastilla de filtro.
+   OJO: depende del nombre exacto en la Sheet; si se renombra, vuelve al
+   tratamiento neutro sin avisar. */
+.cat-tile[data-cat="Porta Herramientas"] .cat-tile-scrim {
+  background: linear-gradient(
+    to top,
+    rgba(16, 42, 8, 0.82) 0%,
+    rgba(16, 42, 8, 0.42) 38%,
+    rgba(16, 42, 8, 0) 66%
+  );
+}
+.cat-tile[data-cat="Porta Herramientas"] .cat-tile-tag {
+  background: var(--accent);
+  color: #0d2b0d;
+}
+
+/* El párrafo de presentación del catálogo y de las categorías dice cuántos
+   productos hay ("Los 44 productos disponibles hoy"). Con una búsqueda
+   activa quedaría encima de un solo resultado, así que se esconde en vez de
+   mentir. El <h1> se queda: sigue diciendo dónde está el visitante. */
+body.searching .category-hero p { display: none; }
+
+/* En celular todas las baldosas pasan a ancho completo. Partirlas en dos
+   columnas dejaría el texto en una tira de ~130 px, y "HERRAMIENTAS DE
+   CONSTRUCCIÓN" no cabe ahí de ninguna manera. */
+@media (max-width: 860px) {
+  .cat-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    --fila: 150px;
+  }
+  /* Estas dos reglas van DESPUÉS de las de escritorio a propósito: tienen la
+     misma especificidad, así que gana la última. */
+  .cat-tile { grid-column: span 2; }
+  .cat-tile-1 { grid-column: span 2; grid-row: span 2; }
+
+  .cat-tile-1 .cat-tile-body { left: 16px; right: 16px; bottom: 14px; }
+  .cat-tile:not(.cat-tile-1) { padding: 14px 38% 14px 16px; }
+  .cat-tile:not(.cat-tile-1) .cat-tile-body { gap: 9px; }
+  .cat-tile:not(.cat-tile-1) .cat-tile-img { width: 30%; }
+  .cat-tile-arrow { width: 28px; height: 28px; }
+}
+
+@media (max-width: 520px) {
+  .cat-mosaic { --fila: 140px; }
+  .cat-mosaic-head { margin-bottom: 14px; }
+  /* La baldosa grande es la única con la foto a sangre; ahí la frase compite
+     con el nombre por muy poco alto y se queda el nombre, que es lo que hace
+     falta para decidir. En las tarjetas blancas sí cabe. */
+  .cat-tile-1 .cat-tile-tagline { display: none; }
 }
 
 .state-msg {
@@ -225,7 +484,7 @@ a { color: var(--teal); }
   border-color: var(--accent);
   /* Verde oscurecido: el --accent puro sobre blanco no da contraste
      suficiente para texto de este tamaño. */
-  color: #4a7a12;
+  color: var(--accent-text);
 }
 .filter-pill[data-cat="Porta Herramientas"]:hover {
   border-color: var(--accent-dark);

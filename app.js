@@ -184,9 +184,14 @@ function initSearch() {
   const clearBtn = document.getElementById("search-clear");
   if (!form || !input || !clearBtn) return;
 
-  // Las páginas de producto, 404 y privacidad no tienen catálogo que
-  // filtrar: ahí el buscador manda a la home con ?q=, que sí lo lee.
+  // La portada, las páginas de producto, la 404 y privacidad no tienen
+  // catálogo que filtrar: ahí el buscador manda a /catalogo.html con ?q=,
+  // que sí lo lee al cargar.
+  //
+  // La home entró en esta lista el 2026-09-02, cuando la grilla de productos
+  // salió de la portada.
   const hasCatalog = !!document.getElementById("catalog");
+  const PAGINA_CATALOGO = "/catalogo.html";
 
   const initial = (new URLSearchParams(window.location.search).get("q") || "").trim();
   if (initial) {
@@ -199,7 +204,9 @@ function initSearch() {
     e.preventDefault();
     const value = input.value.trim();
     if (!hasCatalog) {
-      window.location.href = value ? `/?q=${encodeURIComponent(value)}` : "/";
+      window.location.href = value
+        ? `${PAGINA_CATALOGO}?q=${encodeURIComponent(value)}`
+        : PAGINA_CATALOGO;
       return;
     }
     input.blur(); // en celular, cierra el teclado y deja ver los resultados
@@ -224,6 +231,12 @@ function initSearch() {
 }
 
 function applySearch() {
+  // Con una búsqueda activa el mosaico de categorías de la portada estorba:
+  // el visitante ya sabe qué busca, y esas seis baldosas empujan sus
+  // resultados fuera de la pantalla. Se esconde por CSS (body.searching)
+  // para no tocar el HTML pre-generado.
+  document.body.classList.toggle("searching", Boolean(searchTerm));
+
   // Si la Sheet ya cargó, se re-dibuja el catálogo desde los datos. Si el
   // visitante alcanzó a escribir antes (las páginas vienen pre-renderizadas
   // y se ven al instante), se filtran las tarjetas que ya están en pantalla.

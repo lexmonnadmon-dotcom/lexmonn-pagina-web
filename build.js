@@ -4,10 +4,11 @@
 //
 // Lee el catálogo real desde la Google Sheet (SHEET_CSV_URL en
 // config.js) y genera:
-//   - index.html                    (catálogo completo, pre-renderizado)
+//   - index.html                    (portada: mosaico de categorías)
+//   - catalogo.html                 (los productos, todos, en una grilla)
 //   - productos/<slug>.html         (una página por producto activo)
 //   - categoria/<slug>.html         (una página por categoría)
-//   - sitemap.xml                   (home + productos + categorías)
+//   - sitemap.xml                   (home + catálogo + productos + categorías)
 //
 // Correr con:  node build.js
 //
@@ -48,6 +49,73 @@ function getAllCategories(products) {
   return seen;
 }
 
+// Cómo se presenta cada categoría en el mosaico de la portada: la frase que
+// la acompaña, la foto que la representa y el orden en que aparece.
+//
+// Esto vive aquí y NO en la Google Sheet a propósito. Son frases de marca,
+// no datos de catálogo: el negocio no debería tener que escribir una cada vez
+// que agrega un producto, y son seis, no cuarenta y cuatro.
+//
+// Si alguien renombra una categoría en la Sheet, su fila deja de coincidir y
+// la baldosa cae a los valores por defecto: la foto del primer producto de esa
+// categoría y ninguna frase. Se sigue viendo bien y el build NO se rompe; solo
+// se pierde el texto escrito a mano hasta que se actualice esta tabla.
+const CATEGORIA_PRESENTACION = {
+  "Porta Herramientas": {
+    orden: 1,
+    tagline: "Los que fabricamos nosotros, hechos para aguantar la obra.",
+    imagen: "/imagenes/lexmonn-morral-porta-herramientas.jpg",
+    // La única categoría de fabricación propia. Decirlo vale más que decir
+    // cuántos productos tiene.
+    insignia: "Fabricación propia",
+  },
+  "Drywall y Acabados": {
+    orden: 2,
+    tagline: "Tapizadoras, espátulas y lijas para dejar la junta lista.",
+    imagen: "/imagenes/truper-tapizadora-12.jpg",
+  },
+  "Corte y Cuchillas": {
+    orden: 3,
+    tagline: "Navajas y repuestos que mantienen el filo toda la jornada.",
+    imagen: "/imagenes/stanley-navaja-classic-99.jpg",
+  },
+  "Medición y Nivelación": {
+    orden: 4,
+    tagline: "Flexómetros, niveles y escuadras para no repetir el trabajo.",
+    imagen: "/imagenes/stanley-flexometro-global-plus-8m.jpg",
+  },
+  "Herramientas de Construcción": {
+    orden: 5,
+    tagline: "Martillos, pinzas y destornilladores para el día a día.",
+    imagen: "/imagenes/truper-martillo-una-27mm.jpg",
+  },
+  "Seguridad Industrial": {
+    orden: 6,
+    tagline: "Lo que protege al que está parado en la obra.",
+    imagen: "/imagenes/energizer-linterna-frontal-vision-hd.jpg",
+  },
+};
+
+// Arma los datos del mosaico a partir de las categorías que trajo la Sheet.
+// Las que no estén en la tabla de arriba (una categoría nueva) no se pierden:
+// van al final, con la foto de su primer producto y sin frase.
+function buildMosaicCategories(categoryMap) {
+  const cats = [];
+  categoryMap.forEach((products, name) => {
+    const pres = CATEGORIA_PRESENTACION[name] || {};
+    cats.push({
+      name,
+      slug: Shared.slugify(name) || "sin-categoria",
+      count: products.length,
+      image: pres.imagen || (products[0] && products[0].imagen) || "",
+      tagline: pres.tagline || "",
+      insignia: pres.insignia || "",
+      orden: pres.orden || 99,
+    });
+  });
+  return cats.sort((a, b) => a.orden - b.orden);
+}
+
 function renderCategoryFilterPillsHtml(allCategories, activeCategory) {
   if (allCategories.length <= 1) {
     return `<div id="category-filters" class="category-filters" hidden></div>`;
@@ -64,7 +132,7 @@ function renderCategoryFilterPillsHtml(allCategories, activeCategory) {
 
 // ---------- Home ----------
 
-function buildHomePage(activeProducts, allCategories) {
+function buildHomePage(activeProducts, allCategories, mosaicCats) {
   const title = "Porta Herramientas Colombia | Lexmonn";
   const description =
     // El pedido se ENVÍA por WhatsApp; el producto llega por transportadora.
@@ -79,31 +147,22 @@ function buildHomePage(activeProducts, allCategories) {
     breadcrumbJsonLd: Templates.renderBreadcrumbJsonLd([{ name: "Inicio", url: `${SITE_URL}/` }]),
   });
 
-  const main = `<section class="hero">
-    <img class="hero-bg-img" src="/hero-banner-2.jpeg" alt="Porta herramientas Lexmonn fabricados en Colombia" width="1600" height="682" loading="eager" fetchpriority="high">
-    <div class="hero-content">
-      <h1>Porta Herramientas fabricados en Colombia</h1>
-      <p>Selecciona los productos que quieres comprar y envía tu pedido directo por WhatsApp.</p>
+  // La portada entra por las CATEGORÍAS, no por un banner. La idea viene de
+  // una referencia que quiso seguir el negocio (wearenexus.com.co): quien
+  // llega no ve un anuncio, ve las puertas del catálogo y elige una.
+  //
+  // El <h1> vive aquí porque esta es la primera sección de la home. Antes
+  // estaba en el hero, que se retiró: mantener los dos habría dejado la
+  // página con dos <h1>.
+  const main = `<section class="cat-mosaic-section" aria-labelledby="cat-mosaic-title">
+    <div class="cat-mosaic-head">
+      <h1 id="cat-mosaic-title" class="cat-mosaic-title">Porta Herramientas fabricados en Colombia</h1>
+      <a class="cat-mosaic-all" href="/catalogo.html">Ver todo el catálogo</a>
     </div>
-  </section>
-
-  <section id="loading" class="state-msg" hidden>Cargando catálogo...</section>
-
-  <section id="sample-notice" class="notice-msg" hidden>
-    Estás viendo un <strong>catálogo de ejemplo</strong>. Conecta tu Google Sheet en <code>config.js</code>
-    (ver <code>INSTRUCCIONES.md</code>) para mostrar tus productos reales.
-  </section>
-
-  <section id="error" class="notice-msg error-msg" hidden>
-    No se pudo conectar con tu Google Sheet, así que se muestra un catálogo de ejemplo mientras tanto.
-    Revisa <code>SHEET_CSV_URL</code> en <code>config.js</code>.
+    ${Templates.renderCategoryTiles(mosaicCats)}
   </section>
 
   ${Templates.renderOffersSection(activeProducts)}
-
-  ${renderCategoryFilterPillsHtml(allCategories, "Todos")}
-
-  <section id="catalog" class="catalog">${activeProducts.map(Templates.renderProductCard).join("")}</section>
 
   <section class="our-story">
     <div class="our-story-inner">
@@ -123,6 +182,60 @@ function buildHomePage(activeProducts, allCategories) {
     "index.html",
     Shell.renderPage({ head, main })
   );
+}
+
+// ---------- Catálogo completo ----------
+
+// Desde el 2026-09-02 la home ya NO lleva la grilla de los 44 productos: se
+// entra por el mosaico de categorías. Esta página es la que recoge "ver
+// todo", y también donde aterriza el buscador desde cualquier otra página.
+//
+// Es la única página, junto con las de categoría, que trae la grilla y los
+// avisos de carga/error, porque es la única donde `app.js` tiene un
+// `#catalog` que rellenar.
+function buildCatalogPage(activeProducts, allCategories) {
+  const canonical = `${SITE_URL}/catalogo.html`;
+  const title = "Catálogo completo | Lexmonn";
+  const description = Shared.truncateForMeta(
+    `Los ${activeProducts.length} productos de Lexmonn: porta herramientas, drywall, corte, medición y seguridad. Envíos a toda Colombia, pedido por WhatsApp.`,
+    160
+  );
+
+  const head = Shell.renderHead({
+    title,
+    description,
+    canonical,
+    breadcrumbJsonLd: Templates.renderBreadcrumbJsonLd([
+      { name: "Inicio", url: `${SITE_URL}/` },
+      { name: "Catálogo", url: canonical },
+    ]),
+  });
+
+  const breadcrumbs = Templates.renderBreadcrumbs([{ name: "Inicio", href: "/" }, { name: "Catálogo" }]);
+
+  const main = `<section class="category-hero">
+    ${breadcrumbs}
+    <h1>Todo el catálogo</h1>
+    <p>Los ${activeProducts.length} productos disponibles hoy. Filtra por categoría o busca por nombre, arma tu pedido y envíalo por WhatsApp.</p>
+  </section>
+
+  <section id="loading" class="state-msg" hidden>Cargando catálogo...</section>
+
+  <section id="sample-notice" class="notice-msg" hidden>
+    Estás viendo un <strong>catálogo de ejemplo</strong>. Conecta tu Google Sheet en <code>config.js</code>
+    (ver <code>INSTRUCCIONES.md</code>) para mostrar tus productos reales.
+  </section>
+
+  <section id="error" class="notice-msg error-msg" hidden>
+    No se pudo conectar con tu Google Sheet, así que se muestra un catálogo de ejemplo mientras tanto.
+    Revisa <code>SHEET_CSV_URL</code> en <code>config.js</code>.
+  </section>
+
+  ${renderCategoryFilterPillsHtml(allCategories, "Todos")}
+
+  <section id="catalog" class="catalog">${activeProducts.map(Templates.renderProductCard).join("")}</section>`;
+
+  writeFile("catalogo.html", Shell.renderPage({ head, main }));
 }
 
 // ---------- Producto ----------
@@ -194,7 +307,7 @@ function buildProductPage(p, allCategories) {
         </div>
         <a class="whatsapp-direct-btn" href="${waLink}" target="_blank" rel="noopener">📲 Pedir por WhatsApp</a>
         <button id="product-share-btn" class="share-btn" type="button">🔗 Compartir producto</button>
-        <a class="back-to-catalog" href="/">← Volver al catálogo</a>
+        <a class="back-to-catalog" href="/catalogo.html">← Volver al catálogo</a>
       </div>
     </div>
   </section>`;
@@ -223,7 +336,7 @@ function buildUnavailableProductPage(slug, nombre) {
   const main = `<section class="product-unavailable">
     <h1>Producto no disponible</h1>
     <p>${msg}</p>
-    <a class="back-to-catalog" href="/">← Ver el catálogo completo</a>
+    <a class="back-to-catalog" href="/catalogo.html">← Ver el catálogo completo</a>
   </section>`;
   writeFile(`productos/${slug}.html`, Shell.renderPage({ head, main }));
 }
@@ -323,7 +436,7 @@ function build404Page(categoryLinks) {
   const main = `<section class="product-unavailable">
     <h1>Esta página no existe</h1>
     <p>Puede que el enlace esté mal escrito o que el producto haya cambiado de nombre.</p>
-    <a class="back-to-catalog" href="/">← Ver el catálogo completo</a>
+    <a class="back-to-catalog" href="/catalogo.html">← Ver el catálogo completo</a>
     ${catLinks ? `<p>O ve directo a una categoría:</p><ul class="not-found-cats">${catLinks}</ul>` : ""}
   </section>`;
 
@@ -332,7 +445,7 @@ function build404Page(categoryLinks) {
 
 // ---------- Categoría ----------
 
-function buildCategoryPage(catName, catSlug, products, allCategories) {
+function buildCategoryPage(catName, catSlug, products) {
   const canonical = `${SITE_URL}/categoria/${catSlug}.html`;
   const title = `${catName} | Lexmonn`;
   const description = Shared.truncateForMeta(
@@ -363,13 +476,17 @@ function buildCategoryPage(catName, catSlug, products, allCategories) {
 
   const breadcrumbs = Templates.renderBreadcrumbs([{ name: "Inicio", href: "/" }, { name: catName }]);
 
+  // Sin pastillas de filtro. Estando DENTRO de una categoría, la lista de las
+  // otras cinco no ayuda: ocupa media pantalla de celular antes del primer
+  // producto y le ofrece al visitante irse justo cuando acaba de elegir.
+  // Para cambiar de categoría está la miga "Inicio", que lleva al mosaico.
+  //
+  // En /catalogo.html sí van, porque ahí sirven de filtro sobre los 44.
   const main = `<section class="category-hero">
     ${breadcrumbs}
     <h1>${Shared.escapeHtml(catName)}</h1>
     <p>Productos de ${Shared.escapeHtml(catName)} disponibles en Lexmonn. Elige los tuyos y envía tu pedido directo por WhatsApp.</p>
   </section>
-
-  ${renderCategoryFilterPillsHtml(allCategories, catName)}
 
   <section id="catalog" class="catalog">${products.map(Templates.renderProductCard).join("")}</section>`;
 
@@ -389,6 +506,7 @@ function buildSitemap(activeProducts, categoryLinks) {
   const today = new Date().toISOString().slice(0, 10);
   const urls = [
     { loc: `${SITE_URL}/`, priority: "1.0" },
+    { loc: `${SITE_URL}/catalogo.html`, priority: "0.9" },
     ...categoryLinks.map((c) => ({ loc: `${SITE_URL}/categoria/${c.slug}.html`, priority: "0.7" })),
     ...activeProducts.map((p) => ({ loc: `${SITE_URL}/productos/${p.slug}.html`, priority: "0.8" })),
     { loc: `${SITE_URL}/privacidad.html`, priority: "0.3" },
@@ -438,7 +556,19 @@ async function main() {
 
   const allCategories = getAllCategories(activeProducts);
 
-  buildHomePage(activeProducts, allCategories);
+  // Se agrupa por categoría ANTES de la portada, porque ahora la home entra
+  // por el mosaico de categorías y necesita saber cuántos productos tiene
+  // cada una. Más abajo se reutiliza el mismo mapa para generar las páginas
+  // de categoría.
+  const categoryMap = new Map();
+  activeProducts.forEach((p) => {
+    const cat = p.categoria || "Sin categoría";
+    if (!categoryMap.has(cat)) categoryMap.set(cat, []);
+    categoryMap.get(cat).push(p);
+  });
+
+  buildHomePage(activeProducts, allCategories, buildMosaicCategories(categoryMap));
+  buildCatalogPage(activeProducts, allCategories);
 
   activeProducts.forEach((p) => buildProductPage(p, allCategories));
 
@@ -460,17 +590,10 @@ async function main() {
       .forEach((slug) => buildUnavailableProductPage(slug, null));
   }
 
-  const categoryMap = new Map();
-  activeProducts.forEach((p) => {
-    const cat = p.categoria || "Sin categoría";
-    if (!categoryMap.has(cat)) categoryMap.set(cat, []);
-    categoryMap.get(cat).push(p);
-  });
-
   const categoryLinks = [];
   categoryMap.forEach((products, catName) => {
     const catSlug = Shared.slugify(catName) || "sin-categoria";
-    buildCategoryPage(catName, catSlug, products, allCategories);
+    buildCategoryPage(catName, catSlug, products);
     categoryLinks.push({ name: catName, slug: catSlug });
   });
 
@@ -496,7 +619,7 @@ async function main() {
   buildSitemap(activeProducts, categoryLinks);
 
   console.log(
-    `[build] Listo: index.html, ${activeProducts.length} páginas de producto, ${categoryLinks.length} páginas de categoría, 404.html, privacidad.html, sitemap.xml.`
+    `[build] Listo: index.html, catalogo.html, ${activeProducts.length} páginas de producto, ${categoryLinks.length} páginas de categoría, 404.html, privacidad.html, sitemap.xml.`
   );
 }
 
