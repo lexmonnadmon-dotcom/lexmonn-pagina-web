@@ -170,12 +170,17 @@ a { color: var(--teal); }
 /* Doce columnas para poder repartir baldosas de 4 y de 6 de ancho.
    `--fila` es la altura de una fila: la baldosa grande ocupa dos.
 
-   El reparto queda así:
-     fila 1-2:  [ PORTA HERRAMIENTAS 6x2 ] [ 6 ]
+   El reparto queda así, con las SIETE categorías de hoy:
+     fila 1-3:  [ PORTA HERRAMIENTAS 6x3 ] [ 6 ]
      fila 2:                               [ 6 ]
-     fila 3:    [ 4 ] [ 4 ] [ 4 ]
+     fila 3:                               [ 6 ]
+     fila 4:    [ 4 ] [ 4 ] [ 4 ]
 
-   Ninguna baldosa pasa de 2,5:1 a propósito. Con proporciones más alargadas
+   Encaja exacto y sin huecos. Si el negocio agrega una categoría más, la
+   octava cae en `span 4` y deja un espacio a su derecha: ahí toca volver a
+   repartir estas reglas.
+
+   Ninguna baldosa pasa de 2,8:1 a propósito. Con proporciones más alargadas
    la foto del producto queda diminuta en medio de la baldosa. */
 .cat-mosaic {
   display: grid;
@@ -186,16 +191,17 @@ a { color: var(--teal); }
      baldosa de 140 y dejaba la píldora cortada por arriba. */
   grid-auto-rows: minmax(var(--fila), auto);
   gap: 16px;
-  --fila: 232px;
+  --fila: 212px;
 }
 
 /* Tamaño por posición, no por nombre de categoría: así el mosaico se
    recompone cambiando solo estas reglas. Una categoría nueva que no tenga
    regla propia cae en el `span 4` de abajo y el mosaico no se descuadra. */
 .cat-tile { grid-column: span 4; }
-.cat-tile-1 { grid-column: span 6; grid-row: span 2; }
+.cat-tile-1 { grid-column: span 6; grid-row: span 3; }
 .cat-tile-2 { grid-column: span 6; }
 .cat-tile-3 { grid-column: span 6; }
+.cat-tile-4 { grid-column: span 6; }
 
 .cat-tile {
   position: relative;

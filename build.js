@@ -69,28 +69,33 @@ const CATEGORIA_PRESENTACION = {
     // cuántos productos tiene.
     insignia: "Fabricación propia",
   },
-  "Drywall y Acabados": {
+  "Herramientas Eléctricas": {
     orden: 2,
+    tagline: "Taladros, pulidora y pistola de calor para el trabajo pesado.",
+    imagen: "/imagenes/total-taladro-inalambrico-12v.jpg",
+  },
+  "Drywall y Acabados": {
+    orden: 3,
     tagline: "Tapizadoras, espátulas y lijas para dejar la junta lista.",
     imagen: "/imagenes/truper-tapizadora-12.jpg",
   },
+  "Herramientas de Construcción": {
+    orden: 4,
+    tagline: "Martillos, pinzas y destornilladores para el día a día.",
+    imagen: "/imagenes/truper-martillo-una-27mm.jpg",
+  },
   "Corte y Cuchillas": {
-    orden: 3,
+    orden: 5,
     tagline: "Navajas y repuestos que mantienen el filo toda la jornada.",
     imagen: "/imagenes/stanley-navaja-classic-99.jpg",
   },
   "Medición y Nivelación": {
-    orden: 4,
+    orden: 6,
     tagline: "Flexómetros, niveles y escuadras para no repetir el trabajo.",
     imagen: "/imagenes/stanley-flexometro-global-plus-8m.jpg",
   },
-  "Herramientas de Construcción": {
-    orden: 5,
-    tagline: "Martillos, pinzas y destornilladores para el día a día.",
-    imagen: "/imagenes/truper-martillo-una-27mm.jpg",
-  },
   "Seguridad Industrial": {
-    orden: 6,
+    orden: 7,
     tagline: "Lo que protege al que está parado en la obra.",
     imagen: "/imagenes/energizer-linterna-frontal-vision-hd.jpg",
   },
