@@ -15,6 +15,12 @@ const PROMO_STORAGE_KEY = "lexmonn_promo_shown";
 const PROMO_REPETIR_MS = 24 * 60 * 60 * 1000;
 const PRIVACY_NOTICE_KEY = "lexmonn_aviso_visto";
 
+// Dominio del sitio, fijo a propósito y no `location.origin`: este valor solo
+// se usa para los enlaces que van dentro del pedido de WhatsApp, y quien lo
+// recibe debe poder abrirlos siempre. Con location.origin, un pedido hecho
+// desde una vista previa local llegaría con enlaces a localhost.
+const SITIO_URL = "https://lexmonn.com";
+
 let PRODUCTS = [];
 let cart = loadCart();
 let activeCategory = (document.body && document.body.dataset.category) || "Todos";
@@ -851,6 +857,13 @@ function handleCheckoutSubmit(e) {
   form.reset();
 }
 
+// El mensaje incluye el ENLACE de cada producto debajo de su línea.
+//
+// No se pueden adjuntar imágenes: un enlace wa.me solo admite el parámetro
+// `text`, y WhatsApp no expone ninguna forma de mandar archivos por ahí. El
+// enlace es lo más cerca que se llega: WhatsApp le arma una vista previa con
+// foto al PRIMER enlace del mensaje, y los demás quedan tocables para que
+// quien recibe el pedido abra el producto y vea foto, descripción y precio.
 function buildWhatsAppMessage(buyer, entries) {
   let total = 0;
   const lines = [];
@@ -872,6 +885,9 @@ function buildWhatsAppMessage(buyer, entries) {
       ? `${formatPrice(price)} (antes ${formatPrice(product.precio)})`
       : formatPrice(price);
     lines.push(`- ${product.nombre} | Cant: ${qty} | Precio: ${precioLabel} | Subtotal: ${formatPrice(subtotal)}`);
+    // Con `https://` explícito: sin el esquema, WhatsApp a veces no lo
+    // reconoce como enlace y no arma la vista previa.
+    if (product.slug) lines.push(`${SITIO_URL}/productos/${product.slug}.html`);
   });
   lines.push("");
   lines.push(`*TOTAL: ${formatPrice(total)}*`);
