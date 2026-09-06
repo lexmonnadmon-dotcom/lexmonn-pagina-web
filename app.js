@@ -756,7 +756,7 @@ function renderCart() {
     const item = document.createElement("div");
     item.className = "cart-item";
     item.innerHTML = `
-      <img src="${product.imagen || PLACEHOLDER_IMG}" alt="${escapeHtml(product.nombre)}" width="56" height="56" loading="lazy" decoding="async" onerror="this.src='${PLACEHOLDER_IMG}'">
+      <img src="${escapeHtml(product.imagen || PLACEHOLDER_IMG)}" alt="${escapeHtml(product.nombre)}" width="56" height="56" loading="lazy" decoding="async" onerror="this.src='${PLACEHOLDER_IMG}'">
       <div class="cart-item-info">
         <p class="cart-item-name">${escapeHtml(product.nombre)}</p>
         <p class="cart-item-price">${formatPrice(price)} c/u${hasDiscount(product) ? " <span class=\"cart-item-was\">antes " + formatPrice(product.precio) + "</span>" : ""}</p>

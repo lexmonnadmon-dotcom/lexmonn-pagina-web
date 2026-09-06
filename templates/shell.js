@@ -9,6 +9,8 @@
 // regeneran a partir de aquí con `node build.js`.
 // ============================================================
 
+const { escapeHtml } = require("../lib/shared.js");
+
 const SITE_URL = "https://lexmonn.com";
 
 const ORG_JSON_LD = {
@@ -50,15 +52,24 @@ const ORG_JSON_LD = {
 };
 
 function jsonLdScript(obj, id) {
-  return `<script type="application/ld+json"${id ? ` id="${id}"` : ""}>\n${JSON.stringify(obj)}\n</script>`;
+  // JSON.stringify escapa comillas para que el JSON sea válido, pero no
+  // escapa "<". Un valor con "</script>" (ej. el nombre de un producto)
+  // cerraría este bloque a nivel del parser HTML y abriría uno nuevo,
+  // ejecutable. < es indistinguible de "<" para JSON.parse, así que
+  // esto no cambia el dato, solo impide que el HTML lo lea como una etiqueta.
+  const json = JSON.stringify(obj).replace(/</g, "\\u003c");
+  return `<script type="application/ld+json"${id ? ` id="${id}"` : ""}>\n${json}\n</script>`;
 }
 
 // meta: { title, description, canonical, ogImage, robots, breadcrumbJsonLd, extraJsonLd }
 function renderHead(meta) {
-  const title = meta.title;
-  const description = meta.description;
-  const canonical = meta.canonical;
-  const ogImage = meta.ogImage || `${SITE_URL}/hero-banner-2.jpeg`;
+  // title/description/ogImage llegan del nombre, descripción e imagen del
+  // producto en la Sheet: sin escapar, un nombre con `</title>` o `">` rompe
+  // el <head> de la página, que es lo primero que parsea el navegador.
+  const title = escapeHtml(meta.title);
+  const description = escapeHtml(meta.description);
+  const canonical = escapeHtml(meta.canonical);
+  const ogImage = escapeHtml(meta.ogImage || `${SITE_URL}/hero-banner-2.jpeg`);
   const robots = meta.robots || "index, follow";
 
   // Cada entrada es un objeto JSON-LD normal, o {id, json} cuando el script

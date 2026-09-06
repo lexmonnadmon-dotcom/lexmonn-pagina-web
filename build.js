@@ -293,7 +293,7 @@ function buildProductPage(p, allCategories) {
     <div class="product-modal-body product-detail-body">
       <div class="product-modal-gallery">
         <div class="product-modal-img-wrap">
-          <img id="product-modal-img" class="product-modal-img" src="${mainImg}" alt="${Shared.escapeHtml(p.nombre)}" loading="eager" fetchpriority="high" onerror="this.src='${Shared.PLACEHOLDER_IMG}'">
+          <img id="product-modal-img" class="product-modal-img" src="${Shared.escapeHtml(mainImg)}" alt="${Shared.escapeHtml(p.nombre)}" loading="eager" fetchpriority="high" onerror="this.src='${Shared.PLACEHOLDER_IMG}'">
           <span class="zoom-badge">🔍 Ampliar</span>
         </div>
         <div id="product-modal-thumbs" class="product-modal-thumbs"${thumbsHtml ? "" : " hidden"}>${thumbsHtml}</div>
