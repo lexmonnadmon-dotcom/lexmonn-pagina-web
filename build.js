@@ -468,13 +468,16 @@ function buildCategoryPage(catName, catSlug, products) {
     ]),
     extraJsonLd: [
       {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        itemListElement: products.map((p, idx) => ({
-          "@type": "ListItem",
-          position: idx + 1,
-          item: Templates.renderProductJsonLd(p, `${SITE_URL}/productos/${p.slug}.html`),
-        })),
+        id: "product-schema",
+        json: {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          itemListElement: products.map((p, idx) => ({
+            "@type": "ListItem",
+            position: idx + 1,
+            item: Templates.renderProductJsonLd(p, `${SITE_URL}/productos/${p.slug}.html`),
+          })),
+        },
       },
     ],
   });

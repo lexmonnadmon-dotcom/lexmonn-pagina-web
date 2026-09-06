@@ -61,7 +61,12 @@ function renderHead(meta) {
   const ogImage = meta.ogImage || `${SITE_URL}/hero-banner-2.jpeg`;
   const robots = meta.robots || "index, follow";
 
-  const extraJsonLd = (meta.extraJsonLd || []).map((obj) => jsonLdScript(obj)).join("\n");
+  // Cada entrada es un objeto JSON-LD normal, o {id, json} cuando el script
+  // necesita un id para que app.js lo encuentre y lo actualice en vivo, en
+  // vez de agregarle uno nuevo al lado.
+  const extraJsonLd = (meta.extraJsonLd || [])
+    .map((entry) => (entry && entry.json ? jsonLdScript(entry.json, entry.id) : jsonLdScript(entry)))
+    .join("\n");
 
   return `<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
