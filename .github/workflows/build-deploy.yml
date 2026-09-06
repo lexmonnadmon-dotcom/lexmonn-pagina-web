@@ -2,12 +2,16 @@ name: Build y deploy a GitHub Pages
 
 on:
   schedule:
-    # Una vez al día, 6:00 a.m. hora Colombia (11:00 UTC). Los cambios de
-    # precio/stock ya se ven en minutos gracias al fetch en vivo del
-    # navegador — este cron es solo para que los productos NUEVOS o
-    # eliminados en la Sheet generen sus páginas propias (SEO) sin que
-    # nadie tenga que acordarse de correr el build a mano.
-    - cron: "0 11 * * *"
+    # Cada 2 horas. Los cambios de precio/stock ya se ven en minutos gracias
+    # al fetch en vivo del navegador — este cron es solo para que los
+    # productos NUEVOS o eliminados en la Sheet generen sus páginas propias
+    # (SEO) sin que nadie tenga que acordarse de correr el build a mano.
+    #
+    # Antes era una vez al día porque en Netlify cada corrida gastaba
+    # créditos del plan gratis. GitHub Pages no cobra por frecuencia en un
+    # repo público, así que no hay razón de costo para dejar esperando hasta
+    # 24h a que un producto nuevo tenga página — solo hasta 2h.
+    - cron: "0 */2 * * *"
   workflow_dispatch: {}
   push:
     branches: [main]
