@@ -69,9 +69,9 @@ const CATEGORIA_PRESENTACION = {
     // cuántos productos tiene.
     insignia: "Fabricación propia",
   },
-  "Herramientas Eléctricas": {
+  "Herramientas Total": {
     orden: 2,
-    tagline: "Taladros, pulidora y pistola de calor para el trabajo pesado.",
+    tagline: "Taladros, pulidora, martillos y navajas: toda la línea Total en un solo lugar.",
     imagen: "/imagenes/total-taladro-inalambrico-12v.jpg",
   },
   "Drywall y Acabados": {
