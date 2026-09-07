@@ -104,6 +104,16 @@ const CATEGORIA_PRESENTACION = {
     tagline: "Lo que protege al que está parado en la obra.",
     imagen: "/imagenes/energizer-linterna-frontal-vision-hd.jpg",
   },
+  "Discos y Brocas": {
+    orden: 9,
+    tagline: "Discos de corte, desbaste y brocas para dejar cada corte limpio.",
+    imagen: "/imagenes/dewalt-disco-corte-metal-4-5.jpg",
+  },
+  "Herrajes y Accesorios": {
+    orden: 10,
+    tagline: "Candados, grapas y los pequeños accesorios que no pueden faltar en la caja.",
+    imagen: "/imagenes/hermex-candado-cable-bicicleta.jpg",
+  },
 };
 
 // Arma los datos del mosaico a partir de las categorías que trajo la Sheet.
