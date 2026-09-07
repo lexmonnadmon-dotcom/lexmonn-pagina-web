@@ -300,7 +300,7 @@ productos sin perder dónde iba ni tener que devolverse.
 El botón **"Agregar"** de cada tarjeta funciona aparte: suma el producto al
 carrito sin salir del catálogo ni abrir nada.
 
-## La franja "Ofertas para ti"
+## La franja "Ofertas de Aniversario"
 
 Arriba del catálogo, justo antes de los botones de categoría, aparece una
 franja con los productos que tienen descuento. Se desliza **con el dedo**

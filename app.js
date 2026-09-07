@@ -510,7 +510,7 @@ function wireProductCards(container, products) {
   });
 }
 
-// ---------- Carrusel "Ofertas para ti" ----------
+// ---------- Carrusel "Ofertas de Aniversario" ----------
 
 function renderOffers() {
   const section = document.getElementById("offers");
