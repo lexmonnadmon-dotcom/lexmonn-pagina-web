@@ -74,28 +74,33 @@ const CATEGORIA_PRESENTACION = {
     tagline: "Taladros, pulidora, martillos y navajas: toda la línea Total en un solo lugar.",
     imagen: "/imagenes/total-taladro-inalambrico-12v.jpg",
   },
-  "Drywall y Acabados": {
+  "Herramientas Truper": {
     orden: 3,
-    tagline: "Tapizadoras, espátulas y lijas para dejar la junta lista.",
+    tagline: "Tapizadoras, espátulas, navajas y niveles: toda la línea Truper en un solo lugar.",
     imagen: "/imagenes/truper-tapizadora-12.jpg",
   },
-  "Herramientas de Construcción": {
+  "Drywall y Acabados": {
     orden: 4,
-    tagline: "Martillos, pinzas y destornilladores para el día a día.",
-    imagen: "/imagenes/truper-martillo-una-27mm.jpg",
+    tagline: "Espátulas, serrucho y mezclador para dejar la junta lista.",
+    imagen: "/imagenes/husky-espatula-encintadora-8.jpg",
+  },
+  "Herramientas de Construcción": {
+    orden: 5,
+    tagline: "Pinzas, destornilladores y soportes para el día a día.",
+    imagen: "/imagenes/stanley-destornillador.jpg",
   },
   "Corte y Cuchillas": {
-    orden: 5,
+    orden: 6,
     tagline: "Navajas y repuestos que mantienen el filo toda la jornada.",
     imagen: "/imagenes/stanley-navaja-classic-99.jpg",
   },
   "Medición y Nivelación": {
-    orden: 6,
+    orden: 7,
     tagline: "Flexómetros, niveles y escuadras para no repetir el trabajo.",
     imagen: "/imagenes/stanley-flexometro-global-plus-8m.jpg",
   },
   "Seguridad Industrial": {
-    orden: 7,
+    orden: 8,
     tagline: "Lo que protege al que está parado en la obra.",
     imagen: "/imagenes/energizer-linterna-frontal-vision-hd.jpg",
   },
