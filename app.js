@@ -329,10 +329,10 @@ async function loadCatalog() {
     if (loadingEl) loadingEl.hidden = true;
     if (!hasPrerendered) {
       if (noticeEl) noticeEl.hidden = false;
-      PRODUCTS = FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo));
+      PRODUCTS = sortByNombre(FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo)));
       if (catalogEl) renderCatalog();
     } else {
-      PRODUCTS = FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo));
+      PRODUCTS = sortByNombre(FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo)));
     }
     renderCart();
     return;
@@ -344,16 +344,18 @@ async function loadCatalog() {
     const res = await fetch(getSheetUrl(), { cache: "default" });
     if (!res.ok) throw new Error("HTTP " + res.status);
     const csvText = await res.text();
-    const parsed = parseCSV(csvText)
-      .map(normalizeProduct)
-      .filter((p) => p.id && isActive(p.activo));
+    const parsed = sortByNombre(
+      parseCSV(csvText)
+        .map(normalizeProduct)
+        .filter((p) => p.id && isActive(p.activo))
+    );
 
     if (loadingEl) loadingEl.hidden = true;
 
     if (parsed.length === 0) {
       if (!hasPrerendered) {
         if (noticeEl) noticeEl.hidden = false;
-        PRODUCTS = FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo));
+        PRODUCTS = sortByNombre(FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo)));
         if (catalogEl) renderCatalog();
       }
       renderCart();
@@ -369,7 +371,7 @@ async function loadCatalog() {
     if (loadingEl) loadingEl.hidden = true;
     if (!hasPrerendered) {
       if (errorEl) errorEl.hidden = false;
-      PRODUCTS = FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo));
+      PRODUCTS = sortByNombre(FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo)));
       if (catalogEl) renderCatalog();
     }
     renderCart();

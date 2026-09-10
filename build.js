@@ -551,7 +551,9 @@ function buildSitemap(activeProducts, categoryLinks) {
 async function main() {
   console.log("[build] Descargando catálogo desde Google Sheets...");
   const csvText = await fetchCsv(CONFIG.SHEET_CSV_URL);
-  const allRows = Shared.parseCSV(csvText).map(Shared.normalizeProduct).filter((p) => p.id && p.nombre);
+  const allRows = Shared.sortByNombre(
+    Shared.parseCSV(csvText).map(Shared.normalizeProduct).filter((p) => p.id && p.nombre)
+  );
   const activeProducts = allRows.filter((p) => Shared.isActive(p.activo));
 
   if (activeProducts.length === 0) {
