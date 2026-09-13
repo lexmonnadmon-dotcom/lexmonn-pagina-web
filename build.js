@@ -153,7 +153,7 @@ function renderCategoryFilterPillsHtml(allCategories, activeCategory) {
 // ---------- Home ----------
 
 function buildHomePage(activeProducts, allCategories, mosaicCats) {
-  const title = "Porta Herramientas Colombia | Lexmonn";
+  const title = "Lexmonn – Fabricando calidad y revolucionando la forma en que trabajas";
   const description =
     // El pedido se ENVÍA por WhatsApp; el producto llega por transportadora.
     // Y "fabricados en Colombia" solo aplica a los porta herramientas: el
