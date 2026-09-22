@@ -1,0 +1,36 @@
+# Lexmonn
+
+> Lexmonn es una empresa colombiana de Bello, Antioquia, que fabrica porta herramientas (cinturones, morrales, bolsos, cargaderas y bolsillos) y vende herramientas para construcción y drywall de marcas como Total, Truper, DeWalt y Stanley. Los pedidos se arman en el sitio y se envían por WhatsApp; despacha a toda Colombia.
+
+## Datos del negocio
+
+- Dirección: Cll 54 cr 53-34, Bello, Antioquia, Colombia
+- WhatsApp y teléfono: +57 301 559 7873
+- Correo: lexmonn.admon@gmail.com
+- Horario: lunes a viernes 8:00 a.m. – 6:30 p.m.; sábados 9:00 a.m. – 3:00 p.m.
+- Envíos: a toda Colombia por transportadora
+- NIT: 901923669
+
+## Catálogo
+
+- [Todo el catálogo](https://lexmonn.com/catalogo.html): 147 productos
+- [Porta Herramientas](https://lexmonn.com/categoria/porta-herramientas.html): Cinturones, morrales, bolsos, cargaderas y bolsillos porta herramientas diseñados y fabricados por Lexmonn en Bello, Antioquia. Líneas pensadas para drywall, electricidad y construcción, con materiales reforzados para el trabajo diario en obra.
+- [Herramientas Total](https://lexmonn.com/categoria/herramientas-total.html): Herramienta eléctrica, inalámbrica y manual de la marca Total: taladros, rotomartillos, pulidoras, sierras, baterías y cargadores de 20V, además de martillos, flexómetros, alicates y accesorios para obra.
+- [Herramientas Truper](https://lexmonn.com/categoria/herramientas-truper.html): Herramienta Truper y Truper Expert para acabados y construcción: tapizadoras, espátulas, niveles, escuadras, pinzas, martillos, brocas, discos y accesorios de corte.
+- [Drywall y Acabados](https://lexmonn.com/categoria/drywall-y-acabados.html): Todo para instalar y dar acabado a drywall: espátulas profesionales de varios anchos, encintadoras, cajas y cabezales de acabado, esquineros, lijadoras, mezcladores y repuestos para dejar la junta lista.
+- [Herramientas de Construcción](https://lexmonn.com/categoria/herramientas-de-construccion.html): Herramienta para el día a día en obra: pinzas, destornilladores, llaves combinadas, discos de corte y desbaste, brocas, cautines y fijación.
+- [Corte y Cuchillas](https://lexmonn.com/categoria/corte-y-cuchillas.html): Navajas, bisturís y cuchillas de repuesto para cortar drywall, cartón, cinta y materiales de obra, con hojas de uso general, trapezoidales y dentadas.
+- [Medición y Nivelación](https://lexmonn.com/categoria/medicion-y-nivelacion.html): Flexómetros, escuadras y accesorios para nivel láser para medir, trazar y nivelar con precisión en obra.
+- [Seguridad Industrial](https://lexmonn.com/categoria/seguridad-industrial.html): Elementos de protección personal para obra: cascos, gafas de seguridad, chalecos reflectivos, rodilleras y linternas frontales.
+- [Herrajes y Accesorios](https://lexmonn.com/categoria/herrajes-y-accesorios.html): Grapas, candados, pulseras magnéticas porta tornillos y los accesorios pequeños que no pueden faltar en la caja de herramientas.
+
+## Cómo comprar
+
+1. Agregar productos al carrito en lexmonn.com.
+2. Completar nombre, dirección, ciudad y teléfono; el sitio abre WhatsApp con el pedido armado.
+3. Lexmonn confirma disponibilidad, costo de envío y forma de pago por WhatsApp y despacha.
+
+## Otras páginas
+
+- [Privacidad y tratamiento de datos](https://lexmonn.com/privacidad.html)
+- [Mapa del sitio](https://lexmonn.com/sitemap.xml)

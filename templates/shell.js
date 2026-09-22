@@ -1,53 +1,120 @@
 // ============================================================
 // LEXMONN - "Cascarón" (chrome) de la página: todo lo que se repite
 // en Home, páginas de producto y páginas de categoría (head, header,
-// carrito, modales, footer, scripts). Solo lo usa build.js (Node).
+// navegación, carrito, modales, footer, scripts). Solo lo usa build.js.
 //
-// Si quieres cambiar el header, el footer, el banner de aniversario
+// Si quieres cambiar el header, el footer, la franja de aniversario
 // o los modales del carrito a mano, este es el archivo que debes
 // editar — index.html y las páginas de producto/categoría se
 // regeneran a partir de aquí con `node build.js`.
 // ============================================================
 
 const { escapeHtml } = require("../lib/shared.js");
+const { icon } = require("../lib/templates.js");
 
 const SITE_URL = "https://lexmonn.com";
+const WHATSAPP_URL = "https://wa.me/573015597873";
+const PHONE_DISPLAY = "301 559 7873";
+const EMAIL = "lexmonn.admon@gmail.com";
+const ADDRESS = "Cll 54 cr 53-34, Bello, Antioquia";
+const SOCIAL = {
+  instagram: "https://www.instagram.com/lexmonn_sas?igsh=c3I3eGVrZ3F4OHRi",
+  facebook: "https://www.facebook.com/share/18Bj6WAGWX/?mibextid=wwXIfr",
+  tiktok: "https://www.tiktok.com/@lexmonn_sas",
+};
 
-const ORG_JSON_LD = {
+// build.js llena esto antes de generar páginas: las categorías vigentes (para
+// la barra de navegación y el pie) y la versión de cada archivo estático.
+const state = {
+  navCategories: [],
+  assetVersions: {},
+};
+
+function configure(opts) {
+  Object.assign(state, opts || {});
+}
+
+function asset(pathName) {
+  const v = state.assetVersions[pathName];
+  return v ? `${pathName}?v=${v}` : pathName;
+}
+
+// ---------- Datos estructurados de la empresa ----------
+// Van SOLO en la portada: Google los lee de la home y no necesita el mismo
+// bloque repetido en 160 páginas. Los productos apuntan a la organización
+// por su @id.
+const ORG_ID = `${SITE_URL}/#organization`;
+
+const ORG_GRAPH = {
   "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness"],
-  name: "Lexmonn",
-  url: `${SITE_URL}/`,
-  logo: `${SITE_URL}/logo-cropped.png`,
-  image: `${SITE_URL}/logo-cropped.png`,
-  taxID: "901923669",
-  telephone: "+57 301 559 7873",
-  email: "lexmonn.admon@gmail.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Cll 54 cr 53-34",
-    addressLocality: "Bello",
-    addressRegion: "Antioquia",
-    addressCountry: "CO",
-  },
-  openingHoursSpecification: [
+  "@graph": [
     {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "08:00",
-      closes: "18:30",
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: "Lexmonn",
+      alternateName: "Lexmonn Tool Holders",
+      url: `${SITE_URL}/`,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-cropped.png`, width: 874, height: 272 },
+      image: `${SITE_URL}/favicon-192.png`,
+      taxID: "901923669",
+      email: EMAIL,
+      telephone: "+57 301 559 7873",
+      foundingLocation: { "@type": "Place", name: "Bello, Antioquia, Colombia" },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        telephone: "+57 301 559 7873",
+        areaServed: "CO",
+        availableLanguage: "es",
+      },
+      sameAs: [SOCIAL.instagram, SOCIAL.facebook, SOCIAL.tiktok],
     },
     {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: "Saturday",
-      opens: "09:00",
-      closes: "15:00",
+      // HardwareStore es el subtipo de LocalBusiness para ferreterías y
+      // tiendas de herramientas: más preciso que LocalBusiness a secas.
+      "@type": "HardwareStore",
+      "@id": `${SITE_URL}/#store`,
+      name: "Lexmonn",
+      url: `${SITE_URL}/`,
+      image: `${SITE_URL}/hero-banner-2.jpeg`,
+      logo: `${SITE_URL}/logo-cropped.png`,
+      telephone: "+57 301 559 7873",
+      email: EMAIL,
+      parentOrganization: { "@id": ORG_ID },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Cll 54 cr 53-34",
+        addressLocality: "Bello",
+        addressRegion: "Antioquia",
+        addressCountry: "CO",
+      },
+      areaServed: { "@type": "Country", name: "Colombia" },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "08:00",
+          closes: "18:30",
+        },
+        { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "15:00" },
+      ],
     },
-  ],
-  sameAs: [
-    "https://www.instagram.com/lexmonn_sas?igsh=c3I3eGVrZ3F4OHRi",
-    "https://www.facebook.com/share/18Bj6WAGWX/?mibextid=wwXIfr",
-    "https://www.tiktok.com/@lexmonn_sas",
+    {
+      // Le dice a Google cómo se llama el sitio (el nombre que muestra encima
+      // del resultado) y en qué idioma está.
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: "Lexmonn",
+      alternateName: "Lexmonn Tool Holders",
+      url: `${SITE_URL}/`,
+      inLanguage: "es-CO",
+      publisher: { "@id": ORG_ID },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: { "@type": "EntryPoint", urlTemplate: `${SITE_URL}/catalogo.html?q={search_term_string}` },
+        "query-input": "required name=search_term_string",
+      },
+    },
   ],
 };
 
@@ -58,10 +125,13 @@ function jsonLdScript(obj, id) {
   // ejecutable. < es indistinguible de "<" para JSON.parse, así que
   // esto no cambia el dato, solo impide que el HTML lo lea como una etiqueta.
   const json = JSON.stringify(obj).replace(/</g, "\\u003c");
-  return `<script type="application/ld+json"${id ? ` id="${id}"` : ""}>\n${json}\n</script>`;
+  return `<script type="application/ld+json"${id ? ` id="${id}"` : ""}>${json}</script>`;
 }
 
-// meta: { title, description, canonical, ogImage, robots, breadcrumbJsonLd, extraJsonLd }
+// meta: {
+//   title, description, canonical, ogImage, ogImageAlt, ogType, robots,
+//   productPrice, preloadImage, breadcrumbJsonLd, extraJsonLd, includeOrg
+// }
 function renderHead(meta) {
   // title/description/ogImage llegan del nombre, descripción e imagen del
   // producto en la Sheet: sin escapar, un nombre con `</title>` o `">` rompe
@@ -70,7 +140,11 @@ function renderHead(meta) {
   const description = escapeHtml(meta.description);
   const canonical = escapeHtml(meta.canonical);
   const ogImage = escapeHtml(meta.ogImage || `${SITE_URL}/hero-banner-2.jpeg`);
-  const robots = meta.robots || "index, follow";
+  const ogImageAlt = escapeHtml(meta.ogImageAlt || "Lexmonn — porta herramientas fabricados en Colombia");
+  // max-image-preview:large deja que Google muestre las fotos de producto en
+  // tamaño grande (Discover, imágenes); sin eso se limita a miniaturas.
+  const robots = meta.robots || "index, follow, max-image-preview:large, max-snippet:-1";
+  const ogType = meta.ogType || "website";
 
   // Cada entrada es un objeto JSON-LD normal, o {id, json} cuando el script
   // necesita un id para que app.js lo encuentre y lo actualice en vivo, en
@@ -79,162 +153,200 @@ function renderHead(meta) {
     .map((entry) => (entry && entry.json ? jsonLdScript(entry.json, entry.id) : jsonLdScript(entry)))
     .join("\n");
 
+  const productMeta = meta.productPrice
+    ? `<meta property="product:price:amount" content="${escapeHtml(String(meta.productPrice))}">
+<meta property="product:price:currency" content="COP">
+<meta property="product:availability" content="in stock">
+<meta property="product:condition" content="new">`
+    : "";
+
   return `<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title}</title>
 <meta name="description" content="${description}">
 <meta name="robots" content="${robots}">
 <link rel="canonical" href="${canonical}">
+<meta name="theme-color" content="#111614">
+<meta name="format-detection" content="telephone=no">
 
-<!-- Open Graph -->
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${description}">
 <meta property="og:image" content="${ogImage}">
+<meta property="og:image:alt" content="${ogImageAlt}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="Lexmonn">
 <meta property="og:locale" content="es_CO">
-
-<!-- Twitter Card -->
+${productMeta}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${description}">
 <meta name="twitter:image" content="${ogImage}">
 
 <!-- Favicon. Google solo muestra el icono del sitio en sus resultados si es
-     CUADRADO y de 48px o un múltiplo (48, 96, 192...). Antes se usaba
-     /logo-cropped.png, que es el wordmark de 874x272 — al no ser cuadrado,
-     Google lo descartaba y pintaba el globo genérico. -->
+     CUADRADO y de 48px o un múltiplo (48, 96, 192...). -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" href="/favicon-192.png">
+<link rel="manifest" href="/site.webmanifest">
 
-<!-- Preconnect / DNS-prefetch a dominios externos -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://docs.google.com">
-<link rel="dns-prefetch" href="https://docs.google.com">
-<link rel="preconnect" href="https://i.postimg.cc">
 <link rel="dns-prefetch" href="https://i.postimg.cc">
-<link rel="preconnect" href="https://cdn.phototourl.com">
-<link rel="dns-prefetch" href="https://cdn.phototourl.com">
+${meta.preloadImage ? `<link rel="preload" as="image" href="${escapeHtml(meta.preloadImage)}" fetchpriority="high">` : ""}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="${asset("/style.css")}">
 
-<link rel="stylesheet" href="/style.css">
-
-<!-- Schema.org: Organization + LocalBusiness -->
-${jsonLdScript(ORG_JSON_LD)}
+${meta.includeOrg ? jsonLdScript(ORG_GRAPH) : ""}
 ${meta.breadcrumbJsonLd ? jsonLdScript(meta.breadcrumbJsonLd) : ""}
 ${extraJsonLd}`;
 }
 
+// ---------- Encabezado ----------
+
+function renderTopbar() {
+  return `<div class="topbar">
+  <div class="container topbar-inner">
+    <p class="topbar-msg"><strong>¡Celebramos 5 años!</strong> <span class="topbar-long">Fabricando calidad y revolucionando la forma en que trabajas.</span></p>
+    <ul class="topbar-links">
+      <li class="topbar-hide-sm">${icon("truck", 16)} Envíos a toda Colombia</li>
+      <li><a href="${WHATSAPP_URL}" target="_blank" rel="noopener">${icon("whatsapp", 16)} ${PHONE_DISPLAY}</a></li>
+    </ul>
+  </div>
+</div>`;
+}
+
+// Barra de búsqueda. En las páginas que tienen catálogo filtra en vivo; en las
+// demás (portada, producto, 404, privacidad) lleva a /catalogo.html?q=...
+// El formulario funciona igual sin JavaScript: es un GET normal a esa URL.
+function renderSearchForm() {
+  return `<form id="search-form" class="search-bar" role="search" action="/catalogo.html" method="get">
+      <label class="visually-hidden" for="search-input">Buscar productos</label>
+      <span class="search-icon" aria-hidden="true">${icon("search", 18)}</span>
+      <input type="search" id="search-input" name="q" class="search-input" placeholder="Buscar taladros, espátulas, cinturones…" autocomplete="off" enterkeyhint="search">
+      <button type="button" id="search-clear" class="search-clear" aria-label="Borrar búsqueda" hidden>${icon("x", 16)}</button>
+    </form>`;
+}
+
 function renderHeader() {
   return `<header class="site-header">
-  <div class="header-inner">
-    <div class="brand">
-      <a href="/"><img class="brand-logo-img" src="/logo-cropped.png" alt="Lexmonn Tool Holders" width="874" height="272" loading="eager" fetchpriority="high"></a>
-      <p class="tagline" id="store-tagline">Porta herramientas fabricados en Colombia, hechos para durar</p>
-    </div>
-    <button id="cart-btn" class="cart-btn">
-      🛒 Carrito <span id="cart-count" class="cart-count">0</span>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Lexmonn, ir al inicio">
+      <img class="brand-logo" src="/logo-cropped.png" alt="Lexmonn Tool Holders" width="874" height="272" fetchpriority="high">
+    </a>
+    ${renderSearchForm()}
+    <button id="cart-btn" class="cart-btn" type="button" aria-label="Abrir carrito">
+      ${icon("cart", 22)}
+      <span class="cart-btn-label">Carrito</span>
+      <span id="cart-count" class="cart-count" aria-live="polite">0</span>
     </button>
   </div>
-</header>
-
-<div class="anniversary-banner">
-  🎉 <strong>¡Celebramos 5 años!</strong> 🎉 Fabricando calidad y revolucionando la forma en que trabajas.
-</div>`;
+</header>`;
 }
 
-// Barra de búsqueda. Va en todas las páginas: en las que tienen catálogo
-// (home y categoría) filtra en vivo; en las que no (página de producto,
-// 404, privacidad) manda a /?q=<término>, que la home lee al cargar.
-function renderSearchBar() {
-  return `<div class="search-bar-wrap">
-  <form id="search-form" class="search-bar" role="search">
-    <span class="search-icon" aria-hidden="true">🔍</span>
-    <input type="search" id="search-input" class="search-input" placeholder="Buscar un producto..." aria-label="Buscar productos" autocomplete="off">
-    <button type="button" id="search-clear" class="search-clear" aria-label="Borrar búsqueda" hidden>✕</button>
-  </form>
-</div>`;
+// Navegación por categorías en TODAS las páginas: además de ayudar al que
+// compra, son enlaces internos hacia cada categoría desde las ~160 páginas
+// del sitio, que es lo que le dice a Google cuáles son las páginas importantes.
+function renderCategoryNav(currentSlug) {
+  const cats = state.navCategories || [];
+  if (!cats.length) return "";
+  const links = cats
+    .map(
+      (c) =>
+        `<li><a href="/categoria/${c.slug}.html"${c.slug === currentSlug ? ' aria-current="page"' : ""}${c.name === "Porta Herramientas" ? ' class="is-own"' : ""}>${escapeHtml(c.name)}</a></li>`
+    )
+    .join("");
+  return `<nav class="cat-nav" aria-label="Categorías">
+  <div class="container">
+    <ul class="cat-nav-list">
+      <li><a href="/catalogo.html"${currentSlug === "catalogo" ? ' aria-current="page"' : ""}>${icon("list", 16)} Todo el catálogo</a></li>
+      ${links}
+    </ul>
+  </div>
+</nav>`;
 }
 
-// Aviso de privacidad. NO es un banner de consentimiento, y es a propósito:
-// este sitio no tiene analítica, ni píxeles, ni publicidad, así que no hay
-// nada que el visitante pueda aceptar o rechazar. Poner "Aceptar" y
-// "Rechazar" sería una elección falsa — se hace clic en cualquiera de los
-// dos y no cambia absolutamente nada, que es justo lo que se siente como un
-// botón roto. Por eso es informativo, con un solo botón.
+// ---------- Aviso de privacidad ----------
+// NO es un banner de consentimiento, y es a propósito: este sitio no tiene
+// analítica, ni píxeles, ni publicidad, así que no hay nada que el visitante
+// pueda aceptar o rechazar. Poner "Aceptar" y "Rechazar" sería una elección
+// falsa. Por eso es informativo, con un solo botón.
 //
 // El día que se agregue un rastreador de verdad, ESTO tiene que volverse un
 // consentimiento real: dos opciones, guardadas, y el script cargando solo si
 // el visitante acepta.
 function renderPrivacyNotice() {
   return `<div id="privacy-notice" class="privacy-notice" hidden role="region" aria-label="Aviso de privacidad">
-  <div class="privacy-notice-inner">
-    <p class="privacy-notice-text">
-      <strong>Tu privacidad.</strong> Guardamos tu carrito en este navegador para que no lo pierdas si cierras la página. <strong>No usamos cookies de publicidad ni de seguimiento</strong>, no rastreamos tu navegación y no compartimos tus datos con nadie. <a href="/privacidad.html">Ver el detalle</a>.
-    </p>
-    <button type="button" id="privacy-notice-ok" class="privacy-notice-btn">Entendido</button>
-  </div>
+  <p class="privacy-notice-text">
+    <strong>Tu privacidad.</strong> Guardamos tu carrito en este navegador para que no lo pierdas si cierras la página. <strong>No usamos cookies de publicidad ni de seguimiento</strong> y no compartimos tus datos con nadie. <a href="/privacidad.html">Ver el detalle</a>.
+  </p>
+  <button type="button" id="privacy-notice-ok" class="btn btn-dark btn-sm">Entendido</button>
 </div>`;
 }
 
+// ---------- Pie de página ----------
+
 function renderFooter() {
+  const cats = (state.navCategories || [])
+    .map((c) => `<li><a href="/categoria/${c.slug}.html">${escapeHtml(c.name)}</a></li>`)
+    .join("");
   return `<footer class="site-footer">
-  <div class="footer-shipping">🚚 Envíos a todo Colombia</div>
-  <div class="footer-info-bar">
-    <div class="footer-info-item">
-      <span class="footer-info-label">NIT</span>
-      <span class="footer-info-value">901923669</span>
+  <div class="ruler" aria-hidden="true"></div>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo" aria-label="Lexmonn, ir al inicio">
+        <img src="/favicon-192.png" alt="" width="56" height="56" loading="lazy">
+        <span>Lexmonn</span>
+      </a>
+      <p>Porta herramientas fabricados en Bello, Antioquia, y herramienta de las marcas que ya conoces para la obra. Cinco años hechos para durar.</p>
+      <ul class="footer-social" aria-label="Redes sociales">
+        <li><a href="${SOCIAL.instagram}" target="_blank" rel="noopener" aria-label="Instagram de Lexmonn">${icon("instagram")}</a></li>
+        <li><a href="${SOCIAL.facebook}" target="_blank" rel="noopener" aria-label="Facebook de Lexmonn">${icon("facebook")}</a></li>
+        <li><a href="${SOCIAL.tiktok}" target="_blank" rel="noopener" aria-label="TikTok de Lexmonn">${icon("tiktok")}</a></li>
+      </ul>
     </div>
-    <div class="footer-info-item">
-      <span class="footer-info-label">Correo</span>
-      <span class="footer-info-value">lexmonn.admon@gmail.com</span>
+    <div class="footer-col">
+      <h2 class="footer-title">Categorías</h2>
+      <ul class="footer-links">
+        <li><a href="/catalogo.html">Todo el catálogo</a></li>
+        ${cats}
+      </ul>
     </div>
-    <div class="footer-info-item">
-      <span class="footer-info-label">Dirección</span>
-      <span class="footer-info-value" id="store-location">Cll 54 cr 53-34, Bello, Antioquia</span>
+    <div class="footer-col">
+      <h2 class="footer-title">Contacto</h2>
+      <ul class="footer-contact">
+        <li>${icon("whatsapp", 18)} <a href="${WHATSAPP_URL}" target="_blank" rel="noopener">WhatsApp ${PHONE_DISPLAY}</a></li>
+        <li>${icon("mail", 18)} <a href="mailto:${EMAIL}">${EMAIL}</a></li>
+        <li>${icon("pin", 18)} <span id="store-location">${ADDRESS}</span></li>
+      </ul>
     </div>
-    <div class="footer-info-item">
-      <span class="footer-info-label">Contáctanos</span>
-      <span class="footer-info-value">301-559-7873</span>
-    </div>
-    <div class="footer-info-item">
-      <span class="footer-info-label">Síguenos</span>
-      <div class="footer-social-links">
-        <a href="https://www.instagram.com/lexmonn_sas?igsh=c3I3eGVrZ3F4OHRi" target="_blank" rel="noopener" class="footer-social-link">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          <span>@lexmonn_sas</span>
-        </a>
-        <a href="https://www.facebook.com/share/18Bj6WAGWX/?mibextid=wwXIfr" target="_blank" rel="noopener" class="footer-social-link">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.3-1.5 1.6-1.5H16V4.2C15.7 4.1 14.8 4 13.7 4 11.4 4 9.9 5.4 9.9 8v2.5H7.4v3h2.5V21h3.6z"/></svg>
-          <span>Lexmonn</span>
-        </a>
-        <a href="https://www.tiktok.com/@lexmonn_sas" target="_blank" rel="noopener" class="footer-social-link">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M16.5 3c.3 2 1.7 3.6 3.7 4v3c-1.4 0-2.7-.4-3.7-1.2v6.4a5.7 5.7 0 1 1-5.7-5.7c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.8 2.5V3h3z"/></svg>
-          <span>@lexmonn_sas</span>
-        </a>
-      </div>
-    </div>
-    <div class="footer-info-item">
-      <span class="footer-info-label">Horarios de atención</span>
-      <span class="footer-info-value">Lunes a viernes: 8:00 a.m. - 6:30 p.m.<br>Sábados: 9:00 a.m. - 3:00 p.m.</span>
+    <div class="footer-col">
+      <h2 class="footer-title">Horarios</h2>
+      <ul class="footer-contact">
+        <li>${icon("clock", 18)} <span>Lunes a viernes<br>8:00 a.m. – 6:30 p.m.</span></li>
+        <li>${icon("clock", 18)} <span>Sábados<br>9:00 a.m. – 3:00 p.m.</span></li>
+        <li>${icon("truck", 18)} <span>Envíos a toda Colombia</span></li>
+      </ul>
     </div>
   </div>
-  <p class="footer-copy">© <span id="year"></span> Lexmonn. Todos los derechos reservados. · <a href="/privacidad.html">Privacidad y datos</a></p>
+  <div class="container footer-bottom">
+    <p>© <span id="year">2026</span> Lexmonn · NIT 901923669</p>
+    <p><a href="/privacidad.html">Privacidad y tratamiento de datos</a></p>
+  </div>
 </footer>`;
 }
 
-// Ya no hay modal de "vista rápida": al hacer clic en un producto se abre su
-// página propia en una pestaña nueva. Lo que queda aquí es el carrito, el
-// formulario del pedido, el visor de imagen y el pop-up de promoción.
+// ---------- Carrito, pedido, visor de imagen y promoción ----------
+
 function renderCartAndModals() {
   return `
-<!-- Panel del carrito -->
 <div id="cart-overlay" class="overlay" hidden></div>
-<aside id="cart-panel" class="cart-panel" hidden>
+<aside id="cart-panel" class="cart-panel" hidden aria-labelledby="cart-title" role="dialog" aria-modal="true">
   <div class="cart-panel-header">
-    <h2>Tu pedido</h2>
-    <button id="cart-close" class="icon-btn" aria-label="Cerrar carrito">✕</button>
+    <h2 id="cart-title">Tu pedido</h2>
+    <button id="cart-close" class="icon-btn" type="button" aria-label="Cerrar carrito">${icon("x", 22)}</button>
   </div>
   <div id="cart-items" class="cart-items"></div>
   <div class="cart-summary">
@@ -242,85 +354,85 @@ function renderCartAndModals() {
       <span>Total</span>
       <span id="cart-total">$0</span>
     </div>
-    <button id="checkout-btn" class="btn-primary" disabled>Finalizar pedido por WhatsApp</button>
+    <p class="cart-note">${icon("check", 16)} Te confirmamos disponibilidad y envío por WhatsApp antes de despachar.</p>
+    <button id="checkout-btn" class="btn btn-lime btn-block" type="button" disabled>${icon("whatsapp", 20)} Finalizar pedido por WhatsApp</button>
   </div>
 </aside>
 
-<!-- Modal de datos del comprador -->
 <div id="checkout-overlay" class="overlay" hidden></div>
-<div id="checkout-modal" class="modal" hidden>
+<div id="checkout-modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="checkout-title">
   <div class="modal-header">
-    <h2>Datos para tu pedido</h2>
-    <button id="checkout-close" class="icon-btn" aria-label="Cerrar">✕</button>
+    <h2 id="checkout-title">Datos para tu pedido</h2>
+    <button id="checkout-close" class="icon-btn" type="button" aria-label="Cerrar">${icon("x", 22)}</button>
   </div>
-  <form id="checkout-form">
-    <label>
-      Nombre completo *
-      <input type="text" name="nombre" required>
+  <p class="modal-intro">Con estos datos armamos el mensaje del pedido. No pedimos cédula ni ningún documento.</p>
+  <form id="checkout-form" novalidate>
+    <label class="field">
+      <span class="field-label">Nombre completo <span aria-hidden="true">*</span></span>
+      <input type="text" name="nombre" required autocomplete="name">
     </label>
-    <label>
-      Dirección de entrega *
-      <input type="text" name="direccion" required>
+    <label class="field">
+      <span class="field-label">Dirección de entrega <span aria-hidden="true">*</span></span>
+      <input type="text" name="direccion" required autocomplete="street-address">
     </label>
-    <label>
-      Ciudad / Municipio *
-      <input type="text" name="ciudad" required>
+    <label class="field">
+      <span class="field-label">Ciudad / Municipio <span aria-hidden="true">*</span></span>
+      <input type="text" name="ciudad" required autocomplete="address-level2">
     </label>
-    <label>
-      Número de teléfono *
-      <input type="tel" name="telefono" required>
+    <label class="field">
+      <span class="field-label">Número de teléfono <span aria-hidden="true">*</span></span>
+      <input type="tel" name="telefono" required autocomplete="tel" inputmode="tel">
     </label>
-    <label>
-      Correo electrónico
-      <input type="email" name="correo">
+    <label class="field">
+      <span class="field-label">Correo electrónico <span class="field-optional">(opcional)</span></span>
+      <input type="email" name="correo" autocomplete="email" inputmode="email">
     </label>
-    <button type="submit" class="btn-primary">Enviar pedido por WhatsApp</button>
+    <p id="checkout-error" class="form-error" role="alert" hidden></p>
+    <button type="submit" class="btn btn-lime btn-block">${icon("whatsapp", 20)} Enviar pedido por WhatsApp</button>
   </form>
 </div>
 
-<button id="cart-fab" class="cart-fab" hidden>
-  🛒 <span id="cart-fab-count">0</span>
+<button id="cart-fab" class="cart-fab" type="button" hidden aria-label="Abrir carrito">
+  ${icon("cart", 22)} <span id="cart-fab-count">0</span>
 </button>
 
-<!-- Visor de imagen con zoom -->
-<div id="image-lightbox" class="image-lightbox" hidden>
-  <button id="lightbox-close" class="icon-btn lightbox-close" aria-label="Cerrar">✕</button>
-  <div id="lightbox-hint" class="lightbox-hint">Toca la imagen para hacer zoom</div>
+<div id="image-lightbox" class="image-lightbox" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button id="lightbox-close" class="icon-btn lightbox-close" type="button" aria-label="Cerrar">${icon("x", 24)}</button>
+  <p id="lightbox-hint" class="lightbox-hint">Toca la imagen para hacer zoom</p>
   <img id="lightbox-img" class="lightbox-img" src="" alt="">
 </div>
 
-<!-- Pop-up de promoción -->
 <div id="promo-overlay" class="overlay" hidden></div>
-<div id="promo-modal" class="promo-modal" hidden>
-  <button id="promo-close" class="icon-btn promo-modal-close" aria-label="Cerrar">✕</button>
-  <a href="https://wa.me/573015597873?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20promoci%C3%B3n%20de%20aniversario%20de%20Lexmonn" target="_blank" rel="noopener">
-    <img src="/promo-sorteo.jpeg" alt="Promoción de aniversario Lexmonn" class="promo-modal-img">
+<div id="promo-modal" class="promo-modal" hidden role="dialog" aria-modal="true" aria-label="Promoción de aniversario">
+  <button id="promo-close" class="icon-btn promo-modal-close" type="button" aria-label="Cerrar">${icon("x", 22)}</button>
+  <a href="${WHATSAPP_URL}?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20promoci%C3%B3n%20de%20aniversario%20de%20Lexmonn" target="_blank" rel="noopener">
+    <img src="/promo-sorteo.jpeg" alt="Promoción de aniversario Lexmonn" class="promo-modal-img" loading="lazy">
   </a>
 </div>`;
 }
 
+// `defer` mantiene el orden de ejecución y no bloquea el dibujo de la página.
 function renderScripts() {
-  return `<script src="/config.js"></script>
-<script src="/sample-products.js"></script>
-<script src="/lib/shared.js"></script>
-<script src="/lib/templates.js"></script>
-<script src="/app.js"></script>`;
+  return ["/config.js", "/sample-products.js", "/lib/shared.js", "/lib/templates.js", "/app.js"]
+    .map((src) => `<script src="${asset(src)}" defer></script>`)
+    .join("\n");
 }
 
-// opts: { head, bodyAttrs, main }
+// opts: { head, bodyAttrs, main, navCurrent }
 function renderPage(opts) {
   return `<!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
 ${opts.head}
 </head>
 <body${opts.bodyAttrs ? " " + opts.bodyAttrs : ""}>
+<a class="skip-link" href="#main">Saltar al contenido</a>
 
+${renderTopbar()}
 ${renderHeader()}
+${renderCategoryNav(opts.navCurrent)}
 
-${renderSearchBar()}
-
-<main>
+<main id="main">
 ${opts.main}
 </main>
 
@@ -338,11 +450,16 @@ ${renderScripts()}
 
 module.exports = {
   SITE_URL,
-  ORG_JSON_LD,
+  WHATSAPP_URL,
+  PHONE_DISPLAY,
+  EMAIL,
+  ADDRESS,
+  ORG_GRAPH,
+  configure,
+  asset,
   jsonLdScript,
   renderHead,
   renderHeader,
-  renderSearchBar,
   renderPrivacyNotice,
   renderFooter,
   renderCartAndModals,

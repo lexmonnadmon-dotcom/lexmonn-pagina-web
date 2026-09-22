@@ -21,18 +21,24 @@ const PRIVACY_NOTICE_KEY = "lexmonn_aviso_visto";
 // desde una vista previa local llegaría con enlaces a localhost.
 const SITIO_URL = "https://lexmonn.com";
 
+const icon = (name, size) => LexmonnTemplates.icon(name, size);
+
 let PRODUCTS = [];
 let cart = loadCart();
 let activeCategory = (document.body && document.body.dataset.category) || "Todos";
 let searchTerm = "";
+let sortMode = "nombre";
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("year").textContent = new Date().getFullYear();
-  if (CONFIG.STORE_TAGLINE) document.getElementById("store-tagline").textContent = CONFIG.STORE_TAGLINE;
-  if (CONFIG.STORE_LOCATION) document.getElementById("store-location").textContent = CONFIG.STORE_LOCATION;
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  const locationEl = document.getElementById("store-location");
+  if (locationEl && CONFIG.STORE_LOCATION) locationEl.textContent = CONFIG.STORE_LOCATION;
 
+  revealCurrentNavItem();
   bindGlobalEvents();
   initSearch();
+  initSort();
   initStaticProductDetail();
   initOffers();
   // Las ofertas se re-dibujan cuando llega la Sheet en vivo, para que un
@@ -43,12 +49,23 @@ document.addEventListener("DOMContentLoaded", () => {
   initPromoPopup();
 });
 
-// ---------- Bloqueo del scroll de fondo mientras hay un panel/modal abierto ----------
-// Evita que, al llegar al final del scroll dentro de un modal/panel (en
-// especial en celular), el navegador "empuje" el scroll hacia el catálogo
-// de atrás. Usa un contador porque a veces un panel abre a otro (ej. el
-// carrito se abre al agregar desde el modal de producto, que se cierra
-// justo después) y no debe desbloquearse hasta que no quede ninguno abierto.
+// En celular la barra de categorías se desliza de lado: si la categoría
+// actual quedó fuera de la pantalla, se corre hasta ella (solo en horizontal,
+// sin mover la página).
+function revealCurrentNavItem() {
+  const list = document.querySelector(".cat-nav-list");
+  const current = list && list.querySelector('a[aria-current="page"]');
+  if (!current) return;
+  const item = current.parentElement;
+  if (item.offsetLeft + item.offsetWidth > list.clientWidth) {
+    list.scrollLeft = item.offsetLeft - 16;
+  }
+}
+
+// ---------- Paneles y modales: scroll, Escape y foco ----------
+// Bloquea el scroll de fondo mientras hay algo abierto, para que al llegar al
+// final del carrito (en especial en celular) el navegador no "empuje" el
+// catálogo de atrás. Usa un contador porque a veces un panel abre a otro.
 let openOverlaysCount = 0;
 function lockBodyScroll() {
   openOverlaysCount++;
@@ -59,17 +76,34 @@ function unlockBodyScroll() {
   if (openOverlaysCount === 0) document.body.style.overflow = "";
 }
 
+// Pila de lo que está abierto, para que Escape cierre lo de más arriba y el
+// foco vuelva al botón que lo abrió.
+const openStack = [];
+function pushOpen(closeFn, focusTarget) {
+  openStack.push({ closeFn, returnTo: document.activeElement });
+  if (focusTarget) setTimeout(() => focusTarget.focus(), 30);
+}
+function popOpen(closeFn) {
+  const idx = openStack.findIndex((e) => e.closeFn === closeFn);
+  if (idx === -1) return;
+  const [entry] = openStack.splice(idx, 1);
+  if (entry.returnTo && typeof entry.returnTo.focus === "function" && document.contains(entry.returnTo)) {
+    entry.returnTo.focus();
+  }
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && openStack.length) {
+    openStack[openStack.length - 1].closeFn();
+  }
+});
+
 // ---------- Pop-up de promoción ----------
 //
 // La marca de "ya se mostró" vive en localStorage y no en sessionStorage,
 // porque sessionStorage es POR PESTAÑA: al abrir un producto en una pestaña
-// nueva (y más con rel="noopener", que impide heredar la del origen) la
-// pestaña arranca sin la marca y el pop-up volvía a salir en cada producto
-// que el cliente abriera. localStorage es compartido entre pestañas.
-//
-// Como localStorage no se borra al cerrar el navegador, se guarda la FECHA y
-// se deja volver a mostrar pasado un día: así el visitante que vuelve la
-// semana entrante sí ve la promoción, pero no la sufre en cada clic.
+// nueva la pestaña arranca sin la marca y el pop-up volvía a salir en cada
+// producto. Se guarda la FECHA y se deja volver a mostrar pasado un día.
 
 function promoYaSeMostro() {
   try {
@@ -97,14 +131,23 @@ function initPromoPopup() {
 
   setTimeout(() => {
     // Se vuelve a comprobar justo antes de mostrarlo: si el cliente abrió
-    // varias pestañas casi a la vez, la primera en aparecer deja la marca y
-    // las demás ya no lo repiten.
+    // varias pestañas casi a la vez, la primera en aparecer deja la marca.
     if (promoYaSeMostro()) return;
     marcarPromoMostrado();
     document.getElementById("promo-modal").hidden = false;
     document.getElementById("promo-overlay").hidden = false;
     lockBodyScroll();
+    pushOpen(closePromoPopup, document.getElementById("promo-close"));
   }, 1200);
+}
+
+function closePromoPopup() {
+  const modal = document.getElementById("promo-modal");
+  if (modal.hidden) return;
+  modal.hidden = true;
+  document.getElementById("promo-overlay").hidden = true;
+  unlockBodyScroll();
+  popOpen(closePromoPopup);
 }
 
 // ---------- Aviso de privacidad ----------
@@ -112,15 +155,11 @@ function initPromoPopup() {
 // Es un aviso INFORMATIVO, no un consentimiento, y es a propósito: este
 // sitio no tiene analítica, ni píxeles, ni publicidad. Lo único que se
 // guarda es el carrito, que es estrictamente necesario para que la tienda
-// funcione. No hay nada que el visitante pueda aceptar o rechazar, así que
-// darle dos botones sería una elección falsa: haría clic en cualquiera de
-// los dos y no cambiaría nada.
+// funcione. No hay nada que el visitante pueda aceptar o rechazar.
 //
 // El día que se agregue Google Analytics, Meta Pixel o similar, esto tiene
-// que convertirse en un consentimiento de verdad: dos opciones, guardar la
-// respuesta, y cargar el script únicamente si el visitante aceptó. También
-// hay que reescribir este texto y /privacidad.html, que hoy afirman que no
-// existe ningún seguimiento.
+// que convertirse en un consentimiento de verdad (y hay que reescribir este
+// texto y /privacidad.html, que hoy afirman que no existe seguimiento).
 
 function initPrivacyNotice() {
   const notice = document.getElementById("privacy-notice");
@@ -130,8 +169,7 @@ function initPrivacyNotice() {
   try {
     yaVisto = localStorage.getItem(PRIVACY_NOTICE_KEY);
   } catch {
-    // navegador con almacenamiento bloqueado: se mostrará el aviso otra vez,
-    // que es preferible a no mostrarlo nunca.
+    // se mostrará el aviso otra vez, preferible a no mostrarlo nunca
   }
   if (!yaVisto) notice.hidden = false;
 
@@ -165,7 +203,7 @@ function initPrivacyNotice() {
 
 // Compara sin tildes ni mayúsculas, para que "percutor" encuentre
 // "Percutor" y "bateria" encuentre "batería".
-const DIACRITICS_RE = new RegExp("[\u0300-\u036f]", "g");
+const DIACRITICS_RE = new RegExp("[̀-ͯ]", "g");
 
 function normalizeText(value) {
   return (value || "")
@@ -192,12 +230,8 @@ function initSearch() {
 
   // La portada, las páginas de producto, la 404 y privacidad no tienen
   // catálogo que filtrar: ahí el buscador manda a /catalogo.html con ?q=,
-  // que sí lo lee al cargar.
-  //
-  // La home entró en esta lista el 2026-09-02, cuando la grilla de productos
-  // salió de la portada.
+  // que sí lo lee al cargar. Sin JavaScript el formulario hace lo mismo.
   const hasCatalog = !!document.getElementById("catalog");
-  const PAGINA_CATALOGO = "/catalogo.html";
 
   const initial = (new URLSearchParams(window.location.search).get("q") || "").trim();
   if (initial) {
@@ -207,14 +241,8 @@ function initSearch() {
   clearBtn.hidden = !input.value;
 
   form.addEventListener("submit", (e) => {
+    if (!hasCatalog) return; // deja que el GET normal vaya a /catalogo.html?q=
     e.preventDefault();
-    const value = input.value.trim();
-    if (!hasCatalog) {
-      window.location.href = value
-        ? `${PAGINA_CATALOGO}?q=${encodeURIComponent(value)}`
-        : PAGINA_CATALOGO;
-      return;
-    }
     input.blur(); // en celular, cierra el teclado y deja ver los resultados
   });
 
@@ -237,10 +265,8 @@ function initSearch() {
 }
 
 function applySearch() {
-  // Con una búsqueda activa el mosaico de categorías de la portada estorba:
-  // el visitante ya sabe qué busca, y esas seis baldosas empujan sus
-  // resultados fuera de la pantalla. Se esconde por CSS (body.searching)
-  // para no tocar el HTML pre-generado.
+  // Con una búsqueda activa, la presentación de la página ("17 productos,
+  // desde $7.000") quedaría encima de un solo resultado: se esconde por CSS.
   document.body.classList.toggle("searching", Boolean(searchTerm));
 
   // Si la Sheet ya cargó, se re-dibuja el catálogo desde los datos. Si el
@@ -263,7 +289,16 @@ function filterPrerenderedCards() {
     card.hidden = !match;
     if (match) visible++;
   });
+  updateResultCount(visible);
   renderSearchEmptyState(visible);
+}
+
+function updateResultCount(n) {
+  const el = document.getElementById("result-count");
+  if (!el) return;
+  el.textContent = searchTerm
+    ? `${n} ${n === 1 ? "resultado" : "resultados"} para “${searchTerm}”`
+    : `${n} ${n === 1 ? "producto" : "productos"}`;
 }
 
 function renderSearchEmptyState(visibleCount) {
@@ -276,10 +311,12 @@ function renderSearchEmptyState(visibleCount) {
     return;
   }
 
-  const el = existing || document.createElement("p");
+  const el = existing || document.createElement("div");
   el.id = "search-empty";
   el.className = "search-empty";
-  el.innerHTML = `No encontramos productos para <strong>"${escapeHtml(searchTerm)}"</strong>. Prueba con otra palabra o <button type="button" id="search-empty-reset" class="search-empty-reset">ve todo el catálogo</button>.`;
+  el.innerHTML = `${icon("search", 32)}
+    <p>No encontramos productos para <strong>“${escapeHtml(searchTerm)}”</strong>.</p>
+    <p>Prueba con otra palabra, o <button type="button" id="search-empty-reset" class="text-btn text-btn-inline">ve todo el catálogo</button>.</p>`;
   if (!existing) catalogEl.insertAdjacentElement("afterend", el);
 
   document.getElementById("search-empty-reset").addEventListener("click", () => {
@@ -292,25 +329,58 @@ function renderSearchEmptyState(visibleCount) {
   });
 }
 
-function closePromoPopup() {
-  document.getElementById("promo-modal").hidden = true;
-  document.getElementById("promo-overlay").hidden = true;
-  unlockBodyScroll();
+// ---------- Orden ----------
+
+function sortProducts(list) {
+  if (sortMode === "precio-asc") return [...list].sort((a, b) => getEffectivePrice(a) - getEffectivePrice(b));
+  if (sortMode === "precio-desc") return [...list].sort((a, b) => getEffectivePrice(b) - getEffectivePrice(a));
+  return sortByNombre(list);
+}
+
+function initSort() {
+  const select = document.getElementById("sort-select");
+  if (!select) return;
+  select.addEventListener("change", () => {
+    sortMode = select.value;
+    if (PRODUCTS.length) {
+      renderCatalog();
+    } else {
+      sortPrerenderedCards();
+    }
+  });
+}
+
+// Antes de que llegue la Sheet, ordena las tarjetas que ya están en pantalla
+// usando el precio que el build dejó en cada una (data-price).
+function sortPrerenderedCards() {
+  const catalogEl = document.getElementById("catalog");
+  if (!catalogEl) return;
+  const cards = [...catalogEl.querySelectorAll(".product-card")];
+  const name = (c) => (c.querySelector(".product-name") || {}).textContent || "";
+  cards.sort((a, b) => {
+    if (sortMode === "precio-asc") return Number(a.dataset.price) - Number(b.dataset.price);
+    if (sortMode === "precio-desc") return Number(b.dataset.price) - Number(a.dataset.price);
+    return name(a).localeCompare(name(b), "es", { sensitivity: "base" });
+  });
+  cards.forEach((c) => catalogEl.appendChild(c));
 }
 
 // ---------- Carga del catálogo desde Google Sheets ----------
 
 // Cachea la respuesta del CSV en el navegador, pero la renueva cada 5 minutos:
-// el parámetro "v" cambia por bloques de tiempo, así que dentro de esos 5 minutos
-// las recargas usan la caché normal del navegador (más rápido) y, pasado ese tiempo,
-// la URL cambia y fuerza una descarga fresca (los cambios del cliente en la Sheet
-// tardan como máximo 5 minutos en verse, en vez de horas).
+// el parámetro "v" cambia por bloques de tiempo, así que dentro de esos 5
+// minutos las recargas usan la caché normal (más rápido) y, pasado ese tiempo,
+// la URL cambia y fuerza una descarga fresca.
 const SHEET_CACHE_BUCKET_MS = 5 * 60 * 1000;
 
 function getSheetUrl() {
   const bucket = Math.floor(Date.now() / SHEET_CACHE_BUCKET_MS);
   const sep = CONFIG.SHEET_CSV_URL.includes("?") ? "&" : "?";
   return `${CONFIG.SHEET_CSV_URL}${sep}v=${bucket}`;
+}
+
+function fallbackProducts() {
+  return sortByNombre(FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo)));
 }
 
 async function loadCatalog() {
@@ -327,12 +397,10 @@ async function loadCatalog() {
 
   if (!sheetConfigured) {
     if (loadingEl) loadingEl.hidden = true;
+    PRODUCTS = fallbackProducts();
     if (!hasPrerendered) {
       if (noticeEl) noticeEl.hidden = false;
-      PRODUCTS = sortByNombre(FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo)));
       if (catalogEl) renderCatalog();
-    } else {
-      PRODUCTS = sortByNombre(FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo)));
     }
     renderCart();
     return;
@@ -355,7 +423,7 @@ async function loadCatalog() {
     if (parsed.length === 0) {
       if (!hasPrerendered) {
         if (noticeEl) noticeEl.hidden = false;
-        PRODUCTS = sortByNombre(FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo)));
+        PRODUCTS = fallbackProducts();
         if (catalogEl) renderCatalog();
       }
       renderCart();
@@ -371,7 +439,7 @@ async function loadCatalog() {
     if (loadingEl) loadingEl.hidden = true;
     if (!hasPrerendered) {
       if (errorEl) errorEl.hidden = false;
-      PRODUCTS = sortByNombre(FALLBACK_PRODUCTS.filter((p) => p.id && isActive(p.activo)));
+      PRODUCTS = fallbackProducts();
       if (catalogEl) renderCatalog();
     }
     renderCart();
@@ -413,14 +481,9 @@ function renderCategoryFilters() {
   }
 
   filtersEl.hidden = false;
-  const allBtn = `<button class="filter-pill${activeCategory === "Todos" ? " active" : ""}" data-cat="Todos">Todos</button>`;
-  const catBtns = categories
-    .map(
-      (cat) =>
-        `<button class="filter-pill${activeCategory === cat ? " active" : ""}" data-cat="${escapeHtml(cat)}">${escapeHtml(cat)}</button>`
-    )
-    .join("");
-  filtersEl.innerHTML = allBtn + catBtns;
+  const pill = (cat, label) =>
+    `<button type="button" class="filter-pill${activeCategory === cat ? " active" : ""}" data-cat="${escapeHtml(cat)}" aria-pressed="${activeCategory === cat}">${escapeHtml(label)}</button>`;
+  filtersEl.innerHTML = pill("Todos", "Todos") + categories.map((cat) => pill(cat, cat)).join("");
 
   filtersEl.querySelectorAll(".filter-pill").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -430,6 +493,8 @@ function renderCategoryFilters() {
   });
 }
 
+// ItemList con la URL de cada producto visible: el formato que Google pide
+// para listados. Los datos completos de cada producto viven en su página.
 function injectProductSchema(products) {
   let script = document.getElementById("product-schema");
   if (!script) {
@@ -441,22 +506,12 @@ function injectProductSchema(products) {
   script.textContent = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "ItemList",
+    numberOfItems: products.length,
     itemListElement: products.map((p, idx) => ({
       "@type": "ListItem",
       position: idx + 1,
-      item: {
-        "@type": "Product",
-        name: p.nombre,
-        description: p.descripcion,
-        brand: { "@type": "Brand", name: p.marca || "Lexmonn" },
-        image: p.imagen || undefined,
-        offers: {
-          "@type": "Offer",
-          price: String(getEffectivePrice(p)),
-          priceCurrency: "COP",
-          availability: "https://schema.org/InStock",
-        },
-      },
+      url: `${SITIO_URL}/productos/${p.slug}.html`,
+      name: p.nombre,
     })),
   });
 }
@@ -470,46 +525,19 @@ function renderCatalog() {
   // Con búsqueda activa se busca en TODO el catálogo, no solo dentro de la
   // categoría abierta: quien escribe "martillo" estando en Porta Herramientas
   // espera encontrarlo igual.
-  const visibleProducts = searchTerm
+  const filtered = searchTerm
     ? PRODUCTS.filter((p) => productMatchesSearch(p, searchTerm))
     : activeCategory === "Todos"
       ? PRODUCTS
       : PRODUCTS.filter((p) => (p.categoria || "Sin categoría") === activeCategory);
+  const visibleProducts = sortProducts(filtered);
 
   injectProductSchema(visibleProducts);
 
   catalogEl.innerHTML = visibleProducts.map(LexmonnTemplates.renderProductCard).join("");
-  wireProductCards(catalogEl, visibleProducts);
 
+  updateResultCount(visibleProducts.length);
   renderSearchEmptyState(visibleProducts.length);
-}
-
-// Engancha el modal de vista rápida y el botón "Agregar" de las tarjetas de
-// un contenedor. Lo usan la grilla del catálogo y el carrusel de ofertas.
-//
-// La cantidad se busca DENTRO de la tarjeta y no por un id global: un mismo
-// producto puede estar a la vez en las ofertas y en el catálogo, y dos
-// campos con el mismo id harían que "Agregar" leyera siempre el primero.
-function wireProductCards(container, products) {
-  if (!container) return;
-  container.querySelectorAll(".product-card").forEach((card) => {
-    const id = card.dataset.id;
-    const p = products.find((x) => x.id === id);
-    if (!p) return;
-
-    // El enlace de la tarjeta ya abre la página del producto en una pestaña
-    // nueva por sí solo (target="_blank" en la plantilla). No se intercepta
-    // el clic: así funciona aunque el JavaScript todavía no haya cargado.
-
-    const addBtn = card.querySelector(".add-btn");
-    const qtyInput = card.querySelector(".qty-input");
-    if (addBtn) {
-      addBtn.addEventListener("click", () => {
-        const qty = Math.max(1, parseInt(qtyInput && qtyInput.value, 10) || 1);
-        addToCart(id, qty);
-      });
-    }
-  });
 }
 
 // ---------- Carrusel "Ofertas de Aniversario" ----------
@@ -522,14 +550,12 @@ function renderOffers() {
   const offers = LexmonnTemplates.getOfferProducts(PRODUCTS);
   section.hidden = offers.length === 0;
   track.innerHTML = offers.map(LexmonnTemplates.renderProductCard).join("");
-  wireProductCards(track, offers);
   track.scrollLeft = 0;
   updateOffersArrows();
 }
 
 // Las flechas solo aparecen si de verdad hay a dónde desplazarse, y cada una
-// se esconde al llegar a su extremo. En celular no se usan: se desliza con
-// el dedo.
+// se esconde al llegar a su extremo. En celular se desliza con el dedo.
 function updateOffersArrows() {
   const track = document.getElementById("offers-track");
   const prev = document.getElementById("offers-prev");
@@ -550,8 +576,8 @@ function initOffers() {
   // cambia el ancho de la tarjeta o el tamaño de la ventana.
   const paso = () => {
     const card = track.querySelector(".product-card");
-    const ancho = card ? card.getBoundingClientRect().width : 220;
-    return (ancho + 14) * 2;
+    const ancho = card ? card.getBoundingClientRect().width : 240;
+    return (ancho + 16) * 2;
   };
 
   document.getElementById("offers-prev").addEventListener("click", () => {
@@ -566,23 +592,37 @@ function initOffers() {
   updateOffersArrows();
 }
 
+// ---------- Agregar al carrito ----------
+// Un solo manejador para TODOS los botones "Agregar" del sitio (catálogo,
+// ofertas, relacionados, página de producto), incluso los que se dibujan
+// después con la Sheet en vivo. La cantidad sale del campo que indique
+// data-qty-input; si no hay, se agrega una unidad.
+function handleAddClick(e) {
+  const btn = e.target.closest("[data-add]");
+  if (!btn) return;
+  const input = btn.dataset.qtyInput ? document.getElementById(btn.dataset.qtyInput) : null;
+  const qty = Math.max(1, parseInt(input && input.value, 10) || 1);
+  addToCart(btn.dataset.add, qty);
+
+  // Confirmación visible en el propio botón, sin depender de abrir el carrito.
+  if (!btn.classList.contains("is-added")) {
+    btn.classList.add("is-added");
+    setTimeout(() => btn.classList.remove("is-added"), 1400);
+  }
+}
+
 // ---------- Página estática de producto (/productos/slug.html) ----------
 
-// Engancha el botón de "Añadir al carrito" y la galería de la página de
-// producto. Las clases y los ids `product-modal-*` que se ven aquí son los
-// del marcado de esta página: se conservaron al quitar el modal de vista
-// rápida para no reescribir también los estilos.
 function initStaticProductDetail() {
   if (!document.body || document.body.dataset.page !== "product") return;
 
-  const addBtn = document.getElementById("product-modal-add");
   const qtyInput = document.getElementById("product-modal-qty");
-  if (addBtn && qtyInput && addBtn.dataset.id) {
-    addBtn.addEventListener("click", () => {
-      const qty = Math.max(1, parseInt(qtyInput.value, 10) || 1);
-      addToCart(addBtn.dataset.id, qty);
+  document.querySelectorAll("[data-qty-step]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const next = (parseInt(qtyInput.value, 10) || 1) + Number(btn.dataset.qtyStep);
+      qtyInput.value = Math.max(1, Math.min(999, next));
     });
-  }
+  });
 
   const shareBtn = document.getElementById("product-share-btn");
   if (shareBtn) {
@@ -591,17 +631,24 @@ function initStaticProductDetail() {
 
   const mainImg = document.getElementById("product-modal-img");
   const thumbsEl = document.getElementById("product-modal-thumbs");
+  const zoomBtn = document.getElementById("zoom-btn");
   if (mainImg) {
-    mainImg.addEventListener("click", () => openLightbox(mainImg.src));
+    mainImg.addEventListener("click", () => openLightbox(mainImg.src, mainImg.alt));
   }
-  if (thumbsEl) {
-    thumbsEl.querySelectorAll(".product-modal-thumb").forEach((thumb) => {
+  if (zoomBtn && mainImg) {
+    zoomBtn.addEventListener("click", () => openLightbox(mainImg.src, mainImg.alt));
+  }
+  if (thumbsEl && mainImg) {
+    thumbsEl.querySelectorAll(".gallery-thumb").forEach((thumb) => {
       thumb.addEventListener("click", () => {
         mainImg.src = thumb.dataset.src;
-        thumbsEl.querySelectorAll(".product-modal-thumb").forEach((t) => t.classList.remove("active"));
+        thumbsEl.querySelectorAll(".gallery-thumb").forEach((t) => {
+          t.classList.remove("active");
+          t.removeAttribute("aria-current");
+        });
         thumb.classList.add("active");
+        thumb.setAttribute("aria-current", "true");
       });
-      thumb.addEventListener("error", () => { thumb.src = PLACEHOLDER_IMG; });
     });
   }
 }
@@ -611,30 +658,32 @@ function initStaticProductDetail() {
 async function shareCurrentProduct(btn) {
   const url = window.location.href;
   const name = document.getElementById("product-modal-name")?.textContent || document.title;
+  const label = btn.querySelector(".text-btn-label");
 
   if (navigator.share) {
     try {
       await navigator.share({ title: name, text: `Mira este producto de Lexmonn: ${name}`, url });
     } catch (err) {
-      // el usuario cerró el menú de compartir sin elegir nada, no hacemos nada
+      // el usuario cerró el menú de compartir sin elegir nada
     }
     return;
   }
 
-  const originalText = btn.textContent;
+  const originalText = label ? label.textContent : "";
   try {
     await navigator.clipboard.writeText(url);
-    btn.textContent = "✅ ¡Enlace copiado!";
+    if (label) label.textContent = "¡Enlace copiado!";
   } catch (err) {
     try {
       window.prompt("Copia este link para compartirlo:", url);
     } catch (promptErr) {
-      // algunos navegadores (ej. ciertos navegadores embebidos en apps)
-      // tampoco soportan prompt() — no queda más respaldo posible.
+      // algunos navegadores embebidos en apps tampoco soportan prompt()
     }
     return;
   }
-  setTimeout(() => { btn.textContent = originalText; }, 2200);
+  setTimeout(() => {
+    if (label) label.textContent = originalText;
+  }, 2200);
 }
 
 // Refresca el precio mostrado en la página de producto con el dato más
@@ -649,33 +698,33 @@ function hydrateProductDetail() {
   const badgeEl = document.getElementById("product-modal-discount-badge");
   if (!priceEl) return;
 
-  if (hasDiscount(p)) {
-    priceEl.innerHTML = `${formatPrice(p.precioOferta)} <span class="product-modal-price-original">${formatPrice(p.precio)}</span>`;
-    if (badgeEl) {
-      badgeEl.textContent = `-${getDiscountPercent(p)}%`;
-      badgeEl.hidden = false;
-    }
-  } else {
-    priceEl.textContent = formatPrice(p.precio);
-    if (badgeEl) badgeEl.hidden = true;
+  priceEl.innerHTML = LexmonnTemplates.renderPriceHtml(p, { large: true });
+  if (badgeEl) {
+    badgeEl.hidden = !hasDiscount(p);
+    badgeEl.textContent = hasDiscount(p) ? `-${getDiscountPercent(p)}%` : "";
   }
 }
 
 // ---------- Visor de imagen con zoom ----------
 
-function openLightbox(src) {
+function openLightbox(src, alt) {
   const lightboxImg = document.getElementById("lightbox-img");
   lightboxImg.src = src;
+  lightboxImg.alt = alt || "";
   lightboxImg.classList.remove("zoomed");
   lightboxImg.style.transformOrigin = "center center";
   document.getElementById("image-lightbox").hidden = false;
   lockBodyScroll();
+  pushOpen(closeLightbox, document.getElementById("lightbox-close"));
 }
 
 function closeLightbox() {
-  document.getElementById("image-lightbox").hidden = true;
+  const box = document.getElementById("image-lightbox");
+  if (box.hidden) return;
+  box.hidden = true;
   document.getElementById("lightbox-img").classList.remove("zoomed");
   unlockBodyScroll();
+  popOpen(closeLightbox);
 }
 
 function toggleLightboxZoom(e) {
@@ -702,7 +751,11 @@ function loadCart() {
 }
 
 function saveCart() {
-  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  try {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  } catch {
+    // sin almacenamiento el carrito vive solo mientras la pestaña esté abierta
+  }
 }
 
 function addToCart(id, qty) {
@@ -744,34 +797,38 @@ function renderCart() {
   document.getElementById("cart-fab").hidden = countTotal === 0;
 
   if (entries.length === 0) {
-    itemsEl.innerHTML = `<p class="empty-cart">Tu carrito está vacío</p>`;
+    itemsEl.innerHTML = `<div class="empty-cart">${icon("cart", 36)}<p>Tu carrito está vacío</p><a class="text-btn" href="/catalogo.html">Ver el catálogo ${icon("arrowRight", 16)}</a></div>`;
     totalEl.textContent = formatPrice(0);
     checkoutBtn.disabled = true;
     return;
   }
 
-  itemsEl.innerHTML = "";
   let total = 0;
-  entries.forEach(({ product, qty }) => {
-    const price = getEffectivePrice(product);
-    total += price * qty;
-    const item = document.createElement("div");
-    item.className = "cart-item";
-    item.innerHTML = `
-      <img src="${escapeHtml(product.imagen || PLACEHOLDER_IMG)}" alt="${escapeHtml(product.nombre)}" width="56" height="56" loading="lazy" decoding="async" onerror="this.src='${PLACEHOLDER_IMG}'">
-      <div class="cart-item-info">
-        <p class="cart-item-name">${escapeHtml(product.nombre)}</p>
-        <p class="cart-item-price">${formatPrice(price)} c/u${hasDiscount(product) ? " <span class=\"cart-item-was\">antes " + formatPrice(product.precio) + "</span>" : ""}</p>
-        <div class="cart-item-qty">
-          <button data-action="minus" data-id="${product.id}">−</button>
-          <span>${qty}</span>
-          <button data-action="plus" data-id="${product.id}">+</button>
-          <button class="remove-btn" data-action="remove" data-id="${product.id}">Eliminar</button>
+  itemsEl.innerHTML = entries
+    .map(({ product, qty }) => {
+      const price = getEffectivePrice(product);
+      total += price * qty;
+      const id = escapeHtml(product.id);
+      const nombre = escapeHtml(product.nombre);
+      const href = product.slug ? `/productos/${product.slug}.html` : "#";
+      return `<div class="cart-item">
+        <img src="${escapeHtml(product.imagen || PLACEHOLDER_IMG)}" alt="" width="64" height="64" loading="lazy" decoding="async" onerror="this.src='${PLACEHOLDER_IMG}'">
+        <div class="cart-item-info">
+          <a class="cart-item-name" href="${href}">${nombre}</a>
+          <p class="cart-item-price">${formatPrice(price)} c/u${hasDiscount(product) ? ` <span class="cart-item-was">antes ${formatPrice(product.precio)}</span>` : ""}</p>
+          <div class="cart-item-row">
+            <div class="qty-stepper qty-stepper-sm" role="group" aria-label="Cantidad de ${nombre}">
+              <button type="button" class="qty-btn" data-action="minus" data-id="${id}" aria-label="Quitar una unidad">${icon("minus", 16)}</button>
+              <span class="qty-value">${qty}</span>
+              <button type="button" class="qty-btn" data-action="plus" data-id="${id}" aria-label="Agregar una unidad">${icon("plus", 16)}</button>
+            </div>
+            <strong class="cart-item-subtotal">${formatPrice(price * qty)}</strong>
+          </div>
         </div>
-      </div>
-    `;
-    itemsEl.appendChild(item);
-  });
+        <button type="button" class="icon-btn remove-btn" data-action="remove" data-id="${id}" aria-label="Eliminar ${nombre} del carrito">${icon("trash", 18)}</button>
+      </div>`;
+    })
+    .join("");
 
   itemsEl.querySelectorAll("button[data-action]").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -790,6 +847,8 @@ function renderCart() {
 // ---------- UI: paneles y modal ----------
 
 function bindGlobalEvents() {
+  document.addEventListener("click", handleAddClick);
+
   document.getElementById("cart-btn").addEventListener("click", openCart);
   document.getElementById("cart-fab").addEventListener("click", openCart);
   document.getElementById("cart-close").addEventListener("click", closeCart);
@@ -812,29 +871,69 @@ function bindGlobalEvents() {
 }
 
 function openCart() {
-  document.getElementById("cart-panel").hidden = false;
+  const panel = document.getElementById("cart-panel");
+  if (!panel.hidden) return;
+  panel.hidden = false;
   document.getElementById("cart-overlay").hidden = false;
   lockBodyScroll();
+  pushOpen(closeCart, document.getElementById("cart-close"));
 }
 function closeCart() {
-  document.getElementById("cart-panel").hidden = true;
+  const panel = document.getElementById("cart-panel");
+  if (panel.hidden) return;
+  panel.hidden = true;
   document.getElementById("cart-overlay").hidden = true;
   unlockBodyScroll();
+  popOpen(closeCart);
 }
 function openCheckout() {
   document.getElementById("checkout-modal").hidden = false;
   document.getElementById("checkout-overlay").hidden = false;
   lockBodyScroll();
+  pushOpen(closeCheckout, document.querySelector("#checkout-form input"));
 }
 function closeCheckout() {
-  document.getElementById("checkout-modal").hidden = true;
+  const modal = document.getElementById("checkout-modal");
+  if (modal.hidden) return;
+  modal.hidden = true;
   document.getElementById("checkout-overlay").hidden = true;
   unlockBodyScroll();
+  popOpen(closeCheckout);
+}
+
+// Validación propia en vez de los globos del navegador: el error aparece
+// junto al formulario, en español siempre, y el foco va al primer campo
+// que falta.
+function validateCheckout(form) {
+  const errorEl = document.getElementById("checkout-error");
+  const missing = [];
+  let firstInvalid = null;
+  form.querySelectorAll("input").forEach((input) => {
+    const empty = input.required && !input.value.trim();
+    const badEmail = input.type === "email" && input.value.trim() && !input.checkValidity();
+    const invalid = empty || badEmail;
+    input.setAttribute("aria-invalid", invalid ? "true" : "false");
+    if (invalid) {
+      const label = input.closest(".field").querySelector(".field-label").firstChild.textContent.trim();
+      missing.push(badEmail ? "un correo válido" : label.toLowerCase());
+      if (!firstInvalid) firstInvalid = input;
+    }
+  });
+  if (firstInvalid) {
+    errorEl.textContent = `Falta: ${missing.join(", ")}.`;
+    errorEl.hidden = false;
+    firstInvalid.focus();
+    return false;
+  }
+  errorEl.hidden = true;
+  return true;
 }
 
 function handleCheckoutSubmit(e) {
   e.preventDefault();
   const form = e.target;
+  if (!validateCheckout(form)) return;
+
   const data = {
     nombre: form.nombre.value.trim(),
     direccion: form.direccion.value.trim(),
@@ -862,10 +961,8 @@ function handleCheckoutSubmit(e) {
 // El mensaje incluye el ENLACE de cada producto debajo de su línea.
 //
 // No se pueden adjuntar imágenes: un enlace wa.me solo admite el parámetro
-// `text`, y WhatsApp no expone ninguna forma de mandar archivos por ahí. El
-// enlace es lo más cerca que se llega: WhatsApp le arma una vista previa con
-// foto al PRIMER enlace del mensaje, y los demás quedan tocables para que
-// quien recibe el pedido abra el producto y vea foto, descripción y precio.
+// `text`. El enlace es lo más cerca que se llega: WhatsApp le arma una vista
+// previa con foto al PRIMER enlace del mensaje, y los demás quedan tocables.
 function buildWhatsAppMessage(buyer, entries) {
   let total = 0;
   const lines = [];
