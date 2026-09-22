@@ -173,6 +173,16 @@ function initPrivacyNotice() {
   }
   if (!yaVisto) notice.hidden = false;
 
+  // Mientras el aviso está abajo, el botón flotante del carrito sube justo
+  // por encima: la altura del aviso cambia con el ancho de la pantalla.
+  const syncNoticeOffset = () => {
+    if (!notice.hidden) {
+      document.documentElement.style.setProperty("--notice-offset", `${notice.offsetHeight + 28}px`);
+    }
+  };
+  syncNoticeOffset();
+  window.addEventListener("resize", syncNoticeOffset);
+
   const okBtn = document.getElementById("privacy-notice-ok");
   if (okBtn) {
     okBtn.addEventListener("click", () => {

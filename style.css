@@ -146,7 +146,9 @@ p { text-wrap: pretty; }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 .btn-lg { min-height: 56px; padding: 0 28px; font-size: 1.05rem; }
 .btn-sm { min-height: 40px; padding: 0 16px; font-size: 0.9rem; }
-.btn-block { width: 100%; }
+/* Los botones a lo ancho sí pueden partirse en dos líneas en pantallas muy
+   angostas, en vez de empujar la página hacia el costado. */
+.btn-block { width: 100%; white-space: normal; text-align: center; padding-block: 10px; }
 
 .btn-lime { background: var(--lime); color: var(--ink); }
 .btn-lime:hover:not(:disabled) { background: var(--lime-deep); }
@@ -206,11 +208,13 @@ p { text-wrap: pretty; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  min-height: 44px;
   color: var(--text);
   font-weight: 700;
-  text-decoration: none;
-  border-bottom: 2px solid var(--lime);
-  padding-bottom: 2px;
+  text-decoration: underline;
+  text-decoration-color: var(--lime);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
 }
 .link-arrow .icon { transition: transform 180ms var(--ease); }
 .link-arrow:hover .icon { transform: translateX(4px); }
@@ -247,6 +251,11 @@ p { text-wrap: pretty; }
 
 @media (max-width: 899px) { .topbar-long { display: none !important; } }
 @media (max-width: 560px) { .topbar-hide-sm { display: none !important; } }
+/* En celular el teléfono de la franja tiene que poder tocarse con el dedo. */
+@media (max-width: 899px) {
+  .topbar-inner { min-height: 44px; }
+  .topbar-links a { min-height: 44px; }
+}
 
 /* ---------- Encabezado ---------- */
 
@@ -263,7 +272,7 @@ p { text-wrap: pretty; }
   gap: 24px;
   padding-block: 14px;
 }
-.brand { grid-area: brand; display: block; line-height: 0; }
+.brand { grid-area: brand; display: flex; align-items: center; min-height: 44px; line-height: 0; }
 .brand-logo { height: 46px; width: auto; }
 
 .search-bar {
@@ -657,7 +666,7 @@ p { text-wrap: pretty; }
   border-radius: 999px;
   background: var(--paper);
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -777,9 +786,9 @@ p { text-wrap: pretty; }
   border-radius: 4px;
   background: var(--ink);
   color: var(--lime);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
@@ -793,7 +802,7 @@ p { text-wrap: pretty; }
 .product-eyebrow {
   margin: 0;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1055,7 +1064,7 @@ body.searching .page-hero .eyebrow { display: none; }
 .breadcrumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin: 0; padding: 0; list-style: none; }
 .breadcrumbs li { display: inline-flex; align-items: center; color: var(--muted); }
 .breadcrumbs li + li::before { content: "/"; margin-right: 6px; color: var(--line-strong); }
-.breadcrumbs a { color: var(--muted); text-decoration: none; }
+.breadcrumbs a { display: inline-block; padding: 12px 0; margin: -12px 0; color: var(--muted); text-decoration: none; }
 .breadcrumbs a:hover { color: var(--text); text-decoration: underline; }
 .breadcrumbs [aria-current="page"] { color: var(--text); font-weight: 600; }
 
@@ -1145,8 +1154,8 @@ body.searching .page-hero .eyebrow { display: none; }
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-height: 36px;
-  padding: 0 12px;
+  min-height: 44px;
+  padding: 0 14px;
   border: 0;
   border-radius: 999px;
   background: rgba(17, 22, 20, 0.84);
@@ -1186,7 +1195,8 @@ body.searching .page-hero .eyebrow { display: none; }
   text-transform: uppercase;
   color: var(--muted);
 }
-.product-info-cat a { color: var(--lime-text); text-decoration: none; }
+/* Relleno invisible: la zona que se puede tocar llega a 44 px sin mover el texto. */
+.product-info-cat a { display: inline-block; padding: 14px 0; margin: -14px 0; color: var(--lime-text); text-decoration: none; }
 .product-info-cat a:hover { text-decoration: underline; }
 .product-info-title {
   margin: 0 0 14px;
@@ -1284,7 +1294,10 @@ body.searching .page-hero .eyebrow { display: none; }
 .product-info .text-btn { margin-top: 14px; }
 
 @media (max-width: 899px) {
-  .product-layout { grid-template-columns: 1fr; }
+  /* minmax(0, …) y no 1fr a secas: con 1fr, un botón de texto largo fijaba
+     el ancho mínimo de la columna y en celulares de 320 px la página se salía
+     por el costado. */
+  .product-layout { grid-template-columns: minmax(0, 1fr); }
   .gallery { position: static; }
 }
 @media (max-width: 420px) {
@@ -1389,12 +1402,12 @@ body.searching .page-hero .eyebrow { display: none; }
   color: #fff;
 }
 .footer-links { margin: 0; padding: 0; list-style: none; }
-.footer-links a { display: inline-block; padding: 5px 0; color: #c5cec1; text-decoration: none; font-size: 0.94rem; }
+.footer-links a { display: inline-flex; align-items: center; min-height: 36px; color: #c5cec1; text-decoration: none; font-size: 0.94rem; }
 .footer-links a:hover { color: var(--lime); }
 .footer-contact { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; font-size: 0.94rem; line-height: 1.45; }
 .footer-contact li { display: flex; align-items: flex-start; gap: 10px; }
 .footer-contact .icon { color: var(--lime); margin-top: 1px; }
-.footer-contact a { color: #e4e9e1; text-decoration: none; word-break: break-word; }
+.footer-contact a { display: inline-block; padding: 11px 0; margin: -11px 0; color: #e4e9e1; text-decoration: none; word-break: break-word; }
 .footer-contact a:hover { color: var(--lime); text-decoration: underline; }
 .footer-bottom {
   display: flex;
@@ -1407,9 +1420,14 @@ body.searching .page-hero .eyebrow { display: none; }
   color: #9ba797;
 }
 .footer-bottom p { margin: 0; }
-.footer-bottom a { color: #c5cec1; }
+.footer-bottom a { display: inline-block; padding: 13px 0; margin: -13px 0; color: #c5cec1; }
 @media (max-width: 1000px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; padding-bottom: 96px; } }
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; padding-bottom: 96px; }
+  /* Dos columnas: cada enlace alcanza 44 px de alto sin volver kilométrica la lista. */
+  .footer-links { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; }
+  .footer-links a { min-height: 44px; }
+}
 
 /* ---------- Capas: fondo, carrito, formulario ---------- */
 
@@ -1586,6 +1604,9 @@ body.searching .page-hero .eyebrow { display: none; }
 }
 /* En escritorio el encabezado es fijo y ya tiene el carrito a la vista. */
 @media (min-width: 900px) { .cart-fab { display: none !important; } }
+/* Mientras el aviso de privacidad está abajo, el botón del carrito sube para
+   no quedar tapado detrás de él. */
+.privacy-notice:not([hidden]) ~ .cart-fab { bottom: var(--notice-offset, 220px); }
 
 /* ---------- Visor de imagen ---------- */
 
