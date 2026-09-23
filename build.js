@@ -95,7 +95,7 @@ const CATEGORIA_PRESENTACION = {
     // cuántos productos tiene.
     insignia: "Fabricación propia",
     intro:
-      "Cinturones, morrales, bolsos, cargaderas y bolsillos porta herramientas diseñados y fabricados por Lexmonn en Bello, Antioquia. Líneas pensadas para drywall, electricidad y construcción, con materiales reforzados para el trabajo diario en obra.",
+      "Cinturones, morrales, bolsos, cargaderas y bolsillos porta herramientas diseñados y fabricados por Lexmonn en Colombia. Líneas pensadas para drywall, electricidad y construcción, con materiales reforzados para el trabajo diario en obra.",
     metaDescription:
       "Porta herramientas fabricados en Colombia por Lexmonn: cinturones, morrales, bolsos, cargaderas y bolsillos para drywall y electricistas. Envíos a todo el país.",
   },
@@ -262,11 +262,11 @@ const FAQ = [
   },
   {
     q: "¿Hacen envíos a toda Colombia?",
-    a: "Sí. Despachamos a todo el país por transportadora. El costo y el tiempo de entrega te los confirmamos por WhatsApp según tu ciudad.",
+    a: "Sí. Despachamos a todo el país por transportadora. Los detalles del envío a tu ciudad te los confirmamos por WhatsApp al recibir tu pedido.",
   },
   {
     q: "¿Los porta herramientas los fabrican ustedes?",
-    a: "Sí. Los cinturones, morrales, bolsos y bolsillos porta herramientas Lexmonn los diseñamos y fabricamos nosotros en Bello, Antioquia. El resto del catálogo son herramientas de marcas como Total, Truper, DeWalt y Stanley.",
+    a: "Sí. Los cinturones, morrales, bolsos y bolsillos porta herramientas Lexmonn los diseñamos y fabricamos nosotros, en Colombia. El resto del catálogo son herramientas de marcas como Total, Truper, DeWalt y Stanley.",
   },
   {
     q: "¿Dónde están ubicados y en qué horario atienden?",
@@ -314,7 +314,7 @@ function buildHomePage(activeProducts, cats) {
   const hero = `<section class="hero" aria-labelledby="hero-title">
     <img class="hero-img" src="${HERO_IMAGE}" alt="" width="1600" height="682" fetchpriority="high" decoding="async">
     <div class="container hero-inner">
-      <p class="eyebrow eyebrow-dark">${icon("factory", 16)} Fabricación propia · Bello, Antioquia</p>
+      <p class="eyebrow eyebrow-dark">${icon("factory", 16)} Fabricación propia · Hecho en Colombia</p>
       <h1 id="hero-title" class="hero-title">Porta herramientas <span>fabricados en Colombia</span></h1>
       <p class="hero-lead">Cinturones, morrales y bolsillos hechos para aguantar la obra, y la herramienta de las marcas que ya conoces${topBrands.length ? ` — ${esc(joinList(topBrands))}` : ""}. Armas tu pedido aquí y lo envías por WhatsApp.</p>
       <div class="hero-actions">
@@ -332,7 +332,7 @@ function buildHomePage(activeProducts, cats) {
 
   const trust = `<section class="trust" aria-label="Por qué comprar en Lexmonn">
     <div class="container trust-grid">
-      <div class="trust-item">${icon("factory", 28)}<div><strong>Fabricación propia</strong><span>Porta herramientas hechos en Bello, Antioquia.</span></div></div>
+      <div class="trust-item">${icon("factory", 28)}<div><strong>Fabricación propia</strong><span>Porta herramientas diseñados y hechos en Colombia.</span></div></div>
       <div class="trust-item">${icon("truck", 28)}<div><strong>Envíos a toda Colombia</strong><span>Despachamos por transportadora a tu ciudad.</span></div></div>
       <div class="trust-item">${icon("whatsapp", 28)}<div><strong>Pedido por WhatsApp</strong><span>Te confirmamos disponibilidad antes de despachar.</span></div></div>
       <div class="trust-item">${icon("clock", 28)}<div><strong>Atención de lunes a sábado</strong><span>L–V 8:00–6:30 · Sáb 9:00–3:00.</span></div></div>
@@ -375,7 +375,7 @@ function buildHomePage(activeProducts, cats) {
         <li class="step">
           <span class="step-num">3</span>
           <h3>Te confirmamos y despachamos</h3>
-          <p>Te respondemos con disponibilidad, costo de envío y forma de pago, y lo mandamos a tu ciudad.</p>
+          <p>Te respondemos por WhatsApp para confirmar disponibilidad, pago y envío, y lo despachamos a tu ciudad.</p>
         </li>
       </ol>
     </div>
@@ -608,7 +608,7 @@ function buildProductPage(p, cat) {
 
           <ul class="assurance">
             <li>${icon("truck", 20)} <span><strong>Envíos a toda Colombia</strong> por transportadora.</span></li>
-            <li>${icon("check", 20)} <span><strong>Confirmamos por WhatsApp</strong> disponibilidad y costo de envío antes de despachar.</span></li>
+            <li>${icon("check", 20)} <span><strong>Confirmamos por WhatsApp</strong> disponibilidad y detalles del envío antes de despachar.</span></li>
             <li>${icon("pin", 20)} <span><strong>Bello, Antioquia.</strong> L–V 8:00–6:30 · Sáb 9:00–3:00.</span></li>
           </ul>
 
@@ -680,15 +680,44 @@ function buildRedirectPage(oldSlug, target) {
 // Los IDs de la Sheet se reutilizan (el ID de un producto borrado puede
 // quedar para otro distinto), así que el ID solo no alcanza para decidir que
 // es el mismo producto renombrado: además el nombre viejo y el nuevo tienen
-// que compartir al menos dos palabras.
-function findRenamedTarget(oldSlug, activeById) {
+// que compartir al menos la mitad de las palabras del nombre viejo.
+//
+// No cuentan las marcas ni las palabras genéricas de la tienda: dos productos
+// Total distintos comparten "total" y no por eso son el mismo producto.
+const MARCAS_EN_SLUG = new Set([
+  "total", "truper", "dewalt", "stanley", "milwaukee", "husky", "marshalltown", "level5", "tapetech",
+  "tajima", "pretul", "wadfow", "energizer", "anvil", "arrow", "hermex", "empire", "ramset", "forte",
+  "toolpro", "yesbes", "rankee", "lexmonn",
+]);
+const PALABRAS_QUE_NO_IDENTIFICAN = new Set([
+  ...MARCAS_EN_SLUG,
+  "porta", "herramientas", "para", "pulgadas", "pulgada", "unidades", "piezas", "profesional",
+]);
+
+const nombreDelSlug = (slug) => slug.replace(/-\d+$/, "");
+const marcaDelSlug = (slug) => slug.split("-").find((w) => MARCAS_EN_SLUG.has(w)) || "";
+
+// Orden de las pruebas:
+// 1. El mismo ID, si comparte al menos la mitad de las palabras propias del
+//    nombre viejo y NO es de otra marca (un martillo Truper cuyo ID quedó
+//    para un martillo Total no es el mismo producto).
+// 2. Si no, un producto activo con exactamente el mismo nombre y otro ID
+//    (el producto siguió existiendo pero con ID nuevo).
+function findRenamedTarget(oldSlug, activeById, activeByName) {
   const m = oldSlug.match(/-(\d+)$/);
-  const target = m && activeById.get(m[1]);
-  if (!target) return null;
-  const words = (s) => new Set(s.split("-").filter((w) => w.length >= 4 && !/^\d+$/.test(w)));
-  const nuevas = words(target.slug);
-  const comunes = [...words(oldSlug)].filter((w) => nuevas.has(w));
-  return comunes.length >= 2 ? target : null;
+  const sameId = m && activeById.get(m[1]);
+  if (sameId) {
+    const marcaVieja = marcaDelSlug(oldSlug);
+    const marcaNueva = marcaDelSlug(sameId.slug);
+    const otraMarca = marcaVieja && marcaNueva && marcaVieja !== marcaNueva;
+    const words = (s) =>
+      new Set(s.split("-").filter((w) => w.length >= 4 && !/^\d+$/.test(w) && !PALABRAS_QUE_NO_IDENTIFICAN.has(w)));
+    const viejas = [...words(oldSlug)];
+    const nuevas = words(sameId.slug);
+    const comunes = viejas.filter((w) => nuevas.has(w)).length;
+    if (!otraMarca && viejas.length && comunes >= Math.max(1, Math.ceil(viejas.length / 2))) return sameId;
+  }
+  return activeByName.get(nombreDelSlug(oldSlug)) || null;
 }
 
 // ---------- Privacidad ----------
@@ -959,7 +988,7 @@ function buildLlmsTxt(activeProducts, cats) {
     "",
     "1. Agregar productos al carrito en lexmonn.com.",
     "2. Completar nombre, dirección, ciudad y teléfono; el sitio abre WhatsApp con el pedido armado.",
-    "3. Lexmonn confirma disponibilidad, costo de envío y forma de pago por WhatsApp y despacha.",
+    "3. Lexmonn confirma disponibilidad, pago y envío por WhatsApp y despacha.",
     "",
     "## Otras páginas",
     "",
@@ -1054,6 +1083,7 @@ async function main() {
   const productsDir = path.join(ROOT, "productos");
   const presentSlugs = new Set(allRows.map((p) => p.slug));
   const activeById = new Map(activeProducts.map((p) => [p.id, p]));
+  const activeByName = new Map(activeProducts.map((p) => [nombreDelSlug(p.slug), p]));
   let redirects = 0;
   if (fs.existsSync(productsDir)) {
     fs.readdirSync(productsDir)
@@ -1061,7 +1091,7 @@ async function main() {
       .map((f) => f.replace(/\.html$/, ""))
       .filter((slug) => !presentSlugs.has(slug))
       .forEach((slug) => {
-        const target = findRenamedTarget(slug, activeById);
+        const target = findRenamedTarget(slug, activeById, activeByName);
         if (target) {
           buildRedirectPage(slug, target);
           redirects++;

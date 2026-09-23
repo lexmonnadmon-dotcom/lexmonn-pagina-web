@@ -59,7 +59,6 @@ const ORG_GRAPH = {
       taxID: "901923669",
       email: EMAIL,
       telephone: "+57 301 559 7873",
-      foundingLocation: { "@type": "Place", name: "Bello, Antioquia, Colombia" },
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "sales",
@@ -300,7 +299,7 @@ function renderFooter() {
         <img src="/favicon-192.png" alt="" width="56" height="56" loading="lazy">
         <span>Lexmonn</span>
       </a>
-      <p>Porta herramientas fabricados en Bello, Antioquia, y herramienta de las marcas que ya conoces para la obra. Cinco años hechos para durar.</p>
+      <p>Porta herramientas fabricados en Colombia y herramienta de las marcas que ya conoces para la obra. Desde Bello, Antioquia, hace cinco años.</p>
       <ul class="footer-social" aria-label="Redes sociales">
         <li><a href="${SOCIAL.instagram}" target="_blank" rel="noopener" aria-label="Instagram de Lexmonn">${icon("instagram")}</a></li>
         <li><a href="${SOCIAL.facebook}" target="_blank" rel="noopener" aria-label="Facebook de Lexmonn">${icon("facebook")}</a></li>

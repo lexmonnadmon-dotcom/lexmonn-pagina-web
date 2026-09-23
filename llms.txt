@@ -13,8 +13,8 @@
 
 ## Catálogo
 
-- [Todo el catálogo](https://lexmonn.com/catalogo.html): 147 productos
-- [Porta Herramientas](https://lexmonn.com/categoria/porta-herramientas.html): Cinturones, morrales, bolsos, cargaderas y bolsillos porta herramientas diseñados y fabricados por Lexmonn en Bello, Antioquia. Líneas pensadas para drywall, electricidad y construcción, con materiales reforzados para el trabajo diario en obra.
+- [Todo el catálogo](https://lexmonn.com/catalogo.html): 146 productos
+- [Porta Herramientas](https://lexmonn.com/categoria/porta-herramientas.html): Cinturones, morrales, bolsos, cargaderas y bolsillos porta herramientas diseñados y fabricados por Lexmonn en Colombia. Líneas pensadas para drywall, electricidad y construcción, con materiales reforzados para el trabajo diario en obra.
 - [Herramientas Total](https://lexmonn.com/categoria/herramientas-total.html): Herramienta eléctrica, inalámbrica y manual de la marca Total: taladros, rotomartillos, pulidoras, sierras, baterías y cargadores de 20V, además de martillos, flexómetros, alicates y accesorios para obra.
 - [Herramientas Truper](https://lexmonn.com/categoria/herramientas-truper.html): Herramienta Truper y Truper Expert para acabados y construcción: tapizadoras, espátulas, niveles, escuadras, pinzas, martillos, brocas, discos y accesorios de corte.
 - [Drywall y Acabados](https://lexmonn.com/categoria/drywall-y-acabados.html): Todo para instalar y dar acabado a drywall: espátulas profesionales de varios anchos, encintadoras, cajas y cabezales de acabado, esquineros, lijadoras, mezcladores y repuestos para dejar la junta lista.
@@ -28,7 +28,7 @@
 
 1. Agregar productos al carrito en lexmonn.com.
 2. Completar nombre, dirección, ciudad y teléfono; el sitio abre WhatsApp con el pedido armado.
-3. Lexmonn confirma disponibilidad, costo de envío y forma de pago por WhatsApp y despacha.
+3. Lexmonn confirma disponibilidad, pago y envío por WhatsApp y despacha.
 
 ## Otras páginas
 
