@@ -127,9 +127,13 @@ function jsonLdScript(obj, id) {
   return `<script type="application/ld+json"${id ? ` id="${id}"` : ""}>${json}</script>`;
 }
 
+// Imágenes fijas del sitio (logo, ícono, promoción): se muestran en WebP
+// desde imagenes/opt/sitio/ y, si ese archivo faltara, vuelven a la original.
+const FIJA_ONERROR = "this.onerror=null;this.removeAttribute('srcset');this.src=this.dataset.orig";
+
 // meta: {
 //   title, description, canonical, ogImage, ogImageAlt, ogType, robots,
-//   productPrice, preloadImage, breadcrumbJsonLd, extraJsonLd, includeOrg
+//   productPrice, breadcrumbJsonLd, extraJsonLd, includeOrg
 // }
 function renderHead(meta) {
   // title/description/ogImage llegan del nombre, descripción e imagen del
@@ -190,12 +194,12 @@ ${productMeta}
 <link rel="apple-touch-icon" href="/favicon-192.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- La letra se sirve desde el propio sitio (fuentes/, licencia OFL). Desde
+     Google Fonts obligaba a abrir dos conexiones más antes de dibujar nada.
+     Se precargan los dos pesos que se ven apenas abre la página. -->
+<link rel="preload" as="font" type="font/woff2" href="/fuentes/barlow-condensed-800.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fuentes/barlow-400.woff2" crossorigin>
 <link rel="preconnect" href="https://docs.google.com">
-<link rel="dns-prefetch" href="https://i.postimg.cc">
-${meta.preloadImage ? `<link rel="preload" as="image" href="${escapeHtml(meta.preloadImage)}" fetchpriority="high">` : ""}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="${asset("/style.css")}">
 
 ${meta.includeOrg ? jsonLdScript(ORG_GRAPH) : ""}
@@ -233,7 +237,7 @@ function renderHeader() {
   return `<header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="Lexmonn, ir al inicio">
-      <img class="brand-logo" src="/logo-cropped.png" alt="Lexmonn Tool Holders" width="874" height="272" fetchpriority="high">
+      <img class="brand-logo" src="/imagenes/opt/sitio/logo-lexmonn-296.webp" srcset="/imagenes/opt/sitio/logo-lexmonn-296.webp 296w, /imagenes/opt/sitio/logo-lexmonn-444.webp 444w" sizes="148px" data-orig="/logo-cropped.png" onerror="${FIJA_ONERROR}" alt="Lexmonn Tool Holders" width="296" height="92">
     </a>
     ${renderSearchForm()}
     <button id="cart-btn" class="cart-btn" type="button" aria-label="Abrir carrito">
@@ -296,7 +300,7 @@ function renderFooter() {
   <div class="container footer-grid">
     <div class="footer-brand">
       <a href="/" class="footer-logo" aria-label="Lexmonn, ir al inicio">
-        <img src="/favicon-192.png" alt="" width="56" height="56" loading="lazy">
+        <img src="/imagenes/opt/sitio/lex-icono-112.webp" data-orig="/favicon-192.png" onerror="${FIJA_ONERROR}" alt="" width="56" height="56" loading="lazy" decoding="async">
         <span>Lexmonn</span>
       </a>
       <p>Porta herramientas fabricados en Colombia y herramienta de las marcas que ya conoces para la obra. Desde Bello, Antioquia, hace cinco años.</p>
@@ -398,21 +402,25 @@ function renderCartAndModals() {
 <div id="image-lightbox" class="image-lightbox" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
   <button id="lightbox-close" class="icon-btn lightbox-close" type="button" aria-label="Cerrar">${icon("x", 24)}</button>
   <p id="lightbox-hint" class="lightbox-hint">Toca la imagen para hacer zoom</p>
-  <img id="lightbox-img" class="lightbox-img" src="" alt="">
+  <img id="lightbox-img" class="lightbox-img" alt="">
 </div>
 
 <div id="promo-overlay" class="overlay" hidden></div>
 <div id="promo-modal" class="promo-modal" hidden role="dialog" aria-modal="true" aria-label="Promoción de aniversario">
   <button id="promo-close" class="icon-btn promo-modal-close" type="button" aria-label="Cerrar">${icon("x", 22)}</button>
   <a href="${WHATSAPP_URL}?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20promoci%C3%B3n%20de%20aniversario%20de%20Lexmonn" target="_blank" rel="noopener">
-    <img src="/promo-sorteo.jpeg" alt="Promoción de aniversario Lexmonn" class="promo-modal-img" loading="lazy">
+    <!-- Sin src a propósito: loading="lazy" no impedía que el navegador la
+         bajara en TODAS las páginas aunque el pop-up no fuera a salir.
+         app.js (abrirPromo) le pone src y srcset justo antes de mostrarla. -->
+    <img data-src="/imagenes/opt/sitio/promo-sorteo-480.webp" data-srcset="/imagenes/opt/sitio/promo-sorteo-480.webp 480w, /imagenes/opt/sitio/promo-sorteo-720.webp 720w, /imagenes/opt/sitio/promo-sorteo-960.webp 960w" sizes="(min-width: 492px) 460px, calc(100vw - 32px)" data-orig="/promo-sorteo.jpeg" onerror="${FIJA_ONERROR}" alt="Promoción de aniversario Lexmonn" class="promo-modal-img" width="960" height="960" decoding="async">
   </a>
 </div>`;
 }
 
 // `defer` mantiene el orden de ejecución y no bloquea el dibujo de la página.
+// fotos-optimizadas.js va antes que shared.js, que lee su lista.
 function renderScripts() {
-  return ["/config.js", "/sample-products.js", "/lib/shared.js", "/lib/templates.js", "/app.js"]
+  return ["/config.js", "/sample-products.js", "/lib/fotos-optimizadas.js", "/lib/shared.js", "/lib/templates.js", "/app.js"]
     .map((src) => `<script src="${asset(src)}" defer></script>`)
     .join("\n");
 }

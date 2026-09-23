@@ -14,6 +14,54 @@
    sobre fondo blanco y en un tema oscuro quedarían como recuadros blancos.
    ============================================================ */
 
+/* ---------- Letras ----------
+   Barlow y Barlow Condensed servidas desde /fuentes/ (licencia SIL OFL, ver
+   fuentes/OFL.txt), solo el subconjunto latino: cubre tildes, ñ, ¿ y ¡. Son
+   los cinco pesos que usa esta hoja: 700 y 800 en títulos; 400, 600 y 700 en
+   el texto. Con font-display: swap el texto se ve enseguida con la letra del
+   sistema y cambia apenas llega la propia. */
+
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fuentes/barlow-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fuentes/barlow-600.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fuentes/barlow-700.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fuentes/barlow-condensed-700.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fuentes/barlow-condensed-800.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   color-scheme: light;
 
@@ -437,6 +485,10 @@ p { text-wrap: pretty; }
   align-items: center;
   min-height: clamp(460px, 44vw, 580px);
 }
+/* El <picture> (versión WebP y recorte para celular) no debe ocupar una fila
+   de la grilla del héroe: con display: contents, la foto se ubica como si
+   fuera hija directa, igual que antes. */
+.hero-picture { display: contents; }
 .hero-img {
   position: absolute;
   inset: 0;

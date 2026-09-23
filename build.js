@@ -33,7 +33,15 @@ const SITE_URL = Shell.SITE_URL;
 const { icon } = Templates;
 const esc = Shared.escapeHtml;
 
+// La original (JPEG) es la que se comparte en redes y va a Google; en la
+// página se muestran las versiones WebP de imagenes/opt/sitio/, y en celular
+// un recorte más chico con el mismo encuadre (ver tools/optimizar-fotos.js).
 const HERO_IMAGE = "/hero-banner-2.jpeg";
+const HERO_PICTURE = `<picture class="hero-picture">
+      <source media="(max-width: 480px)" type="image/webp" srcset="/imagenes/opt/sitio/hero-movil-960.webp">
+      <source type="image/webp" srcset="/imagenes/opt/sitio/hero-1100.webp 1100w, /imagenes/opt/sitio/hero-1600.webp 1600w" sizes="100vw">
+      <img class="hero-img" src="${HERO_IMAGE}" alt="" width="1600" height="682" fetchpriority="high" decoding="async">
+    </picture>`;
 
 function writeFile(relPath, content) {
   const full = path.join(ROOT, relPath);
@@ -51,7 +59,7 @@ async function fetchCsv(url) {
 // contenido. Va como ?v=... en la URL: cuando el archivo cambia, el
 // navegador baja el nuevo en vez de mezclar un CSS viejo con HTML nuevo.
 function computeAssetVersions() {
-  const files = ["/style.css", "/app.js", "/config.js", "/sample-products.js", "/lib/shared.js", "/lib/templates.js"];
+  const files = ["/style.css", "/app.js", "/config.js", "/sample-products.js", "/lib/fotos-optimizadas.js", "/lib/shared.js", "/lib/templates.js"];
   const versions = {};
   files.forEach((f) => {
     const full = path.join(ROOT, f);
@@ -302,7 +310,6 @@ function buildHomePage(activeProducts, cats) {
     canonical: `${SITE_URL}/`,
     ogImage: `${SITE_URL}${HERO_IMAGE}`,
     ogImageAlt: "Instalador de drywall con cinturón porta herramientas Lexmonn en obra",
-    preloadImage: HERO_IMAGE,
     includeOrg: true,
     extraJsonLd: [faqJsonLd],
   });
@@ -312,7 +319,7 @@ function buildHomePage(activeProducts, cats) {
   // El <h1> es el mismo texto que ya tenía la portada: es la frase que
   // describe lo que hace Lexmonn y la que se busca.
   const hero = `<section class="hero" aria-labelledby="hero-title">
-    <img class="hero-img" src="${HERO_IMAGE}" alt="" width="1600" height="682" fetchpriority="high" decoding="async">
+    ${HERO_PICTURE}
     <div class="container hero-inner">
       <p class="eyebrow eyebrow-dark">${icon("factory", 16)} Fabricación propia · Hecho en Colombia</p>
       <h1 id="hero-title" class="hero-title">Porta herramientas <span>fabricados en Colombia</span></h1>
@@ -536,7 +543,6 @@ function buildProductPage(p, cat) {
     ogImageAlt: p.nombre,
     ogType: "product",
     productPrice: Shared.getEffectivePrice(p),
-    preloadImage: p.imagen || undefined,
     breadcrumbJsonLd: Templates.renderBreadcrumbJsonLd([
       { name: "Inicio", url: `${SITE_URL}/` },
       { name: catName, url: `${SITE_URL}/categoria/${catSlug}.html` },
@@ -551,8 +557,7 @@ function buildProductPage(p, cat) {
     { name: p.nombre },
   ]);
 
-  const { images, thumbsHtml } = Templates.renderGalleryThumbs(p);
-  const mainImg = images[0] || Shared.PLACEHOLDER_IMG;
+  const { thumbsHtml } = Templates.renderGalleryThumbs(p);
   const onSale = Shared.hasDiscount(p);
   const priceHtml = Templates.renderPriceHtml(p, { large: true });
   const waLink = Templates.buildWhatsAppLink(CONFIG.WHATSAPP_NUMBER, Templates.buildProductWhatsAppText(p));
@@ -580,7 +585,7 @@ function buildProductPage(p, cat) {
       <div class="product-layout">
         <div class="gallery">
           <div class="gallery-main">
-            <img id="product-modal-img" class="gallery-img" src="${esc(mainImg)}" alt="${esc(p.nombre)}" width="800" height="800" fetchpriority="high" onerror="this.src='${Shared.PLACEHOLDER_IMG}'">
+            ${Templates.renderMainPhoto(p)}
             <button type="button" id="zoom-btn" class="zoom-badge">${icon("zoom", 16)} Ampliar</button>
             <span id="product-modal-discount-badge" class="discount-badge discount-badge-lg"${onSale ? "" : " hidden"}>${onSale ? `-${Shared.getDiscountPercent(p)}%` : ""}</span>
           </div>
@@ -1035,6 +1040,15 @@ async function main() {
   }
 
   console.log(`[build] ${activeProducts.length} productos activos de ${allRows.length} filas totales.`);
+
+  // Una foto nueva de la Sheet se publica igual con su original; solo avisa
+  // que todavía no tiene versión liviana, para correr la herramienta.
+  const sinVersion = [...new Set(activeProducts.flatMap((p) => p.imagenes))].filter(
+    (url) => Shared.fotoClave(url) && !Shared.fotoVersiones(url, 400).optimizada
+  );
+  if (sinVersion.length) {
+    console.log(`[build] ${sinVersion.length} fotos todavía sin versión liviana (se usa la original). Para generarlas: node tools/optimizar-fotos.js`);
+  }
 
   // Un Precio_Oferta mal escrito (poner "20" donde iba "290000") publica el
   // producto casi regalado y nadie se entera hasta que llega el pedido. No se

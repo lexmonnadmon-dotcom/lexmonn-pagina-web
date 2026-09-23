@@ -129,16 +129,44 @@ function initPromoPopup() {
 
   if (promoYaSeMostro()) return;
 
-  setTimeout(() => {
-    // Se vuelve a comprobar justo antes de mostrarlo: si el cliente abrió
-    // varias pestañas casi a la vez, la primera en aparecer deja la marca.
-    if (promoYaSeMostro()) return;
-    marcarPromoMostrado();
-    document.getElementById("promo-modal").hidden = false;
-    document.getElementById("promo-overlay").hidden = false;
-    lockBodyScroll();
-    pushOpen(closePromoPopup, document.getElementById("promo-close"));
-  }, 1200);
+  // Sale cuando la página terminó de cargar, y nunca antes de 1,2 s: antes
+  // salía a los 1,2 s fijos y su imagen le quitaba conexión a la foto
+  // principal justo mientras cargaba, que es lo que Google mide (LCP). En
+  // una conexión rápida sigue saliendo a los 1,2 s como siempre.
+  const inicio = Date.now();
+  const programar = () => setTimeout(abrirPromo, Math.max(500, 1200 - (Date.now() - inicio)));
+  if (document.readyState === "complete") programar();
+  else window.addEventListener("load", programar, { once: true });
+}
+
+async function abrirPromo() {
+  // Se vuelve a comprobar justo antes de mostrarlo: si el cliente abrió
+  // varias pestañas casi a la vez, la primera en aparecer deja la marca.
+  if (promoYaSeMostro()) return;
+  const modal = document.getElementById("promo-modal");
+  // La imagen se baja y decodifica antes de abrir, para que el cuadro no
+  // aparezca vacío y se rellene (y salte) un momento después.
+  // Con tope de 3 s: en una pestaña que está en segundo plano el navegador
+  // puede no decodificar hasta que se la mire, y el pop-up no debe quedar
+  // esperando para siempre.
+  const img = modal.querySelector("img");
+  if (img) {
+    // El HTML la trae sin src para que no se baje en cada página; recién
+    // ahora que el pop-up va a salir se le pone la dirección.
+    if (!img.getAttribute("src") && img.dataset.src) {
+      img.srcset = img.dataset.srcset || "";
+      img.src = img.dataset.src;
+    }
+    const tope = new Promise((resolve) => setTimeout(resolve, 3000));
+    // si la versión liviana falla, onerror pasa a la original: se abre igual
+    await Promise.race([img.decode().catch(() => {}), tope]);
+  }
+  if (promoYaSeMostro()) return;
+  marcarPromoMostrado();
+  modal.hidden = false;
+  document.getElementById("promo-overlay").hidden = false;
+  lockBodyScroll();
+  pushOpen(closePromoPopup, document.getElementById("promo-close"));
 }
 
 function closePromoPopup() {
@@ -559,7 +587,7 @@ function renderOffers() {
 
   const offers = LexmonnTemplates.getOfferProducts(PRODUCTS);
   section.hidden = offers.length === 0;
-  track.innerHTML = offers.map(LexmonnTemplates.renderProductCard).join("");
+  track.innerHTML = offers.map((p) => LexmonnTemplates.renderProductCard(p, { sizes: LexmonnTemplates.SIZES.oferta })).join("");
   track.scrollLeft = 0;
   updateOffersArrows();
 }
@@ -642,16 +670,29 @@ function initStaticProductDetail() {
   const mainImg = document.getElementById("product-modal-img");
   const thumbsEl = document.getElementById("product-modal-thumbs");
   const zoomBtn = document.getElementById("zoom-btn");
+  // Al ampliar se abre data-full: la foto en su resolución completa, que es
+  // donde el cliente quiere ver el detalle (ver fotoVersiones en shared.js).
+  const ampliar = () => openLightbox(mainImg.dataset.full || mainImg.currentSrc || mainImg.src, mainImg.alt);
   if (mainImg) {
-    mainImg.addEventListener("click", () => openLightbox(mainImg.src, mainImg.alt));
+    mainImg.addEventListener("click", ampliar);
   }
   if (zoomBtn && mainImg) {
-    zoomBtn.addEventListener("click", () => openLightbox(mainImg.src, mainImg.alt));
+    zoomBtn.addEventListener("click", ampliar);
   }
   if (thumbsEl && mainImg) {
     thumbsEl.querySelectorAll(".gallery-thumb").forEach((thumb) => {
       thumb.addEventListener("click", () => {
+        // srcset primero: si quedara el de la foto anterior, el navegador
+        // seguiría mostrando esa aunque cambie src.
+        if (thumb.dataset.srcset) {
+          mainImg.srcset = thumb.dataset.srcset;
+          mainImg.dataset.orig = thumb.dataset.orig;
+        } else {
+          mainImg.removeAttribute("srcset");
+          delete mainImg.dataset.orig;
+        }
         mainImg.src = thumb.dataset.src;
+        mainImg.dataset.full = thumb.dataset.full;
         thumbsEl.querySelectorAll(".gallery-thumb").forEach((t) => {
           t.classList.remove("active");
           t.removeAttribute("aria-current");
@@ -822,7 +863,7 @@ function renderCart() {
       const nombre = escapeHtml(product.nombre);
       const href = product.slug ? `/productos/${product.slug}.html` : "#";
       return `<div class="cart-item">
-        <img src="${escapeHtml(product.imagen || PLACEHOLDER_IMG)}" alt="" width="64" height="64" loading="lazy" decoding="async" onerror="this.src='${PLACEHOLDER_IMG}'">
+        <img ${LexmonnTemplates.fotoAttrs(product.imagen, { preferido: 200, srcset: false })} alt="" width="64" height="64" loading="lazy" decoding="async">
         <div class="cart-item-info">
           <a class="cart-item-name" href="${href}">${nombre}</a>
           <p class="cart-item-price">${formatPrice(price)} c/u${hasDiscount(product) ? ` <span class="cart-item-was">antes ${formatPrice(product.precio)}</span>` : ""}</p>

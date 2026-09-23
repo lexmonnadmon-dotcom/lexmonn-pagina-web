@@ -32,13 +32,13 @@
 <link rel="apple-touch-icon" href="/favicon-192.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- La letra se sirve desde el propio sitio (fuentes/, licencia OFL). Desde
+     Google Fonts obligaba a abrir dos conexiones más antes de dibujar nada.
+     Se precargan los dos pesos que se ven apenas abre la página. -->
+<link rel="preload" as="font" type="font/woff2" href="/fuentes/barlow-condensed-800.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fuentes/barlow-400.woff2" crossorigin>
 <link rel="preconnect" href="https://docs.google.com">
-<link rel="dns-prefetch" href="https://i.postimg.cc">
-<link rel="preload" as="image" href="/hero-banner-2.jpeg" fetchpriority="high">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/style.css?v=98d1f426">
+<link rel="stylesheet" href="/style.css?v=fbb9691f">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://lexmonn.com/#organization","name":"Lexmonn","alternateName":"Lexmonn Tool Holders","url":"https://lexmonn.com/","logo":{"@type":"ImageObject","url":"https://lexmonn.com/logo-cropped.png","width":874,"height":272},"image":"https://lexmonn.com/favicon-192.png","taxID":"901923669","email":"lexmonn.admon@gmail.com","telephone":"+57 301 559 7873","contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+57 301 559 7873","areaServed":"CO","availableLanguage":"es"},"sameAs":["https://www.instagram.com/lexmonn_sas?igsh=c3I3eGVrZ3F4OHRi","https://www.facebook.com/share/18Bj6WAGWX/?mibextid=wwXIfr","https://www.tiktok.com/@lexmonn_sas"]},{"@type":"HardwareStore","@id":"https://lexmonn.com/#store","name":"Lexmonn","url":"https://lexmonn.com/","image":"https://lexmonn.com/hero-banner-2.jpeg","logo":"https://lexmonn.com/logo-cropped.png","telephone":"+57 301 559 7873","email":"lexmonn.admon@gmail.com","parentOrganization":{"@id":"https://lexmonn.com/#organization"},"address":{"@type":"PostalAddress","streetAddress":"Cll 54 cr 53-34","addressLocality":"Bello","addressRegion":"Antioquia","addressCountry":"CO"},"areaServed":{"@type":"Country","name":"Colombia"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"15:00"}]},{"@type":"WebSite","@id":"https://lexmonn.com/#website","name":"Lexmonn","alternateName":"Lexmonn Tool Holders","url":"https://lexmonn.com/","inLanguage":"es-CO","publisher":{"@id":"https://lexmonn.com/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://lexmonn.com/catalogo.html?q={search_term_string}"},"query-input":"required name=search_term_string"}}]}</script>
 
@@ -59,7 +59,7 @@
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="Lexmonn, ir al inicio">
-      <img class="brand-logo" src="/logo-cropped.png" alt="Lexmonn Tool Holders" width="874" height="272" fetchpriority="high">
+      <img class="brand-logo" src="/imagenes/opt/sitio/logo-lexmonn-296.webp" srcset="/imagenes/opt/sitio/logo-lexmonn-296.webp 296w, /imagenes/opt/sitio/logo-lexmonn-444.webp 444w" sizes="148px" data-orig="/logo-cropped.png" onerror="this.onerror=null;this.removeAttribute('srcset');this.src=this.dataset.orig" alt="Lexmonn Tool Holders" width="296" height="92">
     </a>
     <form id="search-form" class="search-bar" role="search" action="/catalogo.html" method="get">
       <label class="visually-hidden" for="search-input">Buscar productos</label>
@@ -85,7 +85,11 @@
 
 <main id="main">
 <section class="hero" aria-labelledby="hero-title">
-    <img class="hero-img" src="/hero-banner-2.jpeg" alt="" width="1600" height="682" fetchpriority="high" decoding="async">
+    <picture class="hero-picture">
+      <source media="(max-width: 480px)" type="image/webp" srcset="/imagenes/opt/sitio/hero-movil-960.webp">
+      <source type="image/webp" srcset="/imagenes/opt/sitio/hero-1100.webp 1100w, /imagenes/opt/sitio/hero-1600.webp 1600w" sizes="100vw">
+      <img class="hero-img" src="/hero-banner-2.jpeg" alt="" width="1600" height="682" fetchpriority="high" decoding="async">
+    </picture>
     <div class="container hero-inner">
       <p class="eyebrow eyebrow-dark"><svg class="icon icon-factory" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg> Fabricación propia · Hecho en Colombia</p>
       <h1 id="hero-title" class="hero-title">Porta herramientas <span>fabricados en Colombia</span></h1>
@@ -121,8 +125,8 @@
       </div>
       <div class="cat-grid"><a class="cat-card cat-card--featured" href="/categoria/porta-herramientas.html" data-cat="Porta Herramientas">
         <span class="cat-card-media">
-          <img class="cat-card-img" src="/imagenes/lexmonn-morral-porta-herramientas.jpg" alt=""
-            width="480" height="360" loading="eager" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="cat-card-img" src="/imagenes/opt/lexmonn-morral-porta-herramientas-400.webp" srcset="/imagenes/opt/lexmonn-morral-porta-herramientas-200.webp 200w, /imagenes/opt/lexmonn-morral-porta-herramientas-400.webp 400w, /imagenes/opt/lexmonn-morral-porta-herramientas-750.webp 750w" sizes="(min-width: 700px) 400px, calc(62vw - 55px)" data-orig="/imagenes/lexmonn-morral-porta-herramientas.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt=""
+            width="480" height="360" loading="eager" decoding="async">
         </span>
         <span class="cat-card-body">
           <span class="cat-card-tag">Fabricación propia</span>
@@ -132,8 +136,8 @@
         </span>
       </a><a class="cat-card" href="/categoria/herramientas-total.html" data-cat="Herramientas Total">
         <span class="cat-card-media">
-          <img class="cat-card-img" src="/imagenes/total-taladro-inalambrico-12v.jpg" alt=""
-            width="480" height="360" loading="eager" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="cat-card-img" src="/imagenes/opt/total-taladro-inalambrico-12v-400.webp" srcset="/imagenes/opt/total-taladro-inalambrico-12v-200.webp 200w, /imagenes/opt/total-taladro-inalambrico-12v-400.webp 400w, /imagenes/opt/total-taladro-inalambrico-12v-800.webp 800w" sizes="(min-width: 1240px) 190px, (min-width: 1040px) calc(19vw - 44px), (min-width: 700px) calc(25vw - 45px), calc(37vw - 38px)" data-orig="/imagenes/total-taladro-inalambrico-12v.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt=""
+            width="480" height="360" loading="eager" decoding="async">
         </span>
         <span class="cat-card-body">
           <span class="cat-card-tag">38 productos</span>
@@ -143,8 +147,8 @@
         </span>
       </a><a class="cat-card" href="/categoria/herramientas-truper.html" data-cat="Herramientas Truper">
         <span class="cat-card-media">
-          <img class="cat-card-img" src="/imagenes/truper-tapizadora-12.jpg" alt=""
-            width="480" height="360" loading="eager" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="cat-card-img" src="/imagenes/opt/truper-tapizadora-12-400.webp" srcset="/imagenes/opt/truper-tapizadora-12-200.webp 200w, /imagenes/opt/truper-tapizadora-12-400.webp 400w, /imagenes/opt/truper-tapizadora-12-800.webp 800w" sizes="(min-width: 1240px) 190px, (min-width: 1040px) calc(19vw - 44px), (min-width: 700px) calc(25vw - 45px), calc(37vw - 38px)" data-orig="/imagenes/truper-tapizadora-12.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt=""
+            width="480" height="360" loading="eager" decoding="async">
         </span>
         <span class="cat-card-body">
           <span class="cat-card-tag">28 productos</span>
@@ -154,8 +158,8 @@
         </span>
       </a><a class="cat-card" href="/categoria/drywall-y-acabados.html" data-cat="Drywall y Acabados">
         <span class="cat-card-media">
-          <img class="cat-card-img" src="/imagenes/husky-espatula-encintadora-8.jpg" alt=""
-            width="480" height="360" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="cat-card-img" src="/imagenes/opt/husky-espatula-encintadora-8-400.webp" srcset="/imagenes/opt/husky-espatula-encintadora-8-200.webp 200w, /imagenes/opt/husky-espatula-encintadora-8-400.webp 400w, /imagenes/opt/husky-espatula-encintadora-8-800.webp 800w" sizes="(min-width: 1240px) 190px, (min-width: 1040px) calc(19vw - 44px), (min-width: 700px) calc(25vw - 45px), calc(37vw - 38px)" data-orig="/imagenes/husky-espatula-encintadora-8.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt=""
+            width="480" height="360" loading="lazy" decoding="async">
         </span>
         <span class="cat-card-body">
           <span class="cat-card-tag">29 productos</span>
@@ -165,8 +169,8 @@
         </span>
       </a><a class="cat-card" href="/categoria/herramientas-de-construccion.html" data-cat="Herramientas de Construcción">
         <span class="cat-card-media">
-          <img class="cat-card-img" src="/imagenes/stanley-destornillador.jpg" alt=""
-            width="480" height="360" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="cat-card-img" src="/imagenes/opt/stanley-destornillador-400.webp" srcset="/imagenes/opt/stanley-destornillador-200.webp 200w, /imagenes/opt/stanley-destornillador-400.webp 400w, /imagenes/opt/stanley-destornillador-800.webp 800w" sizes="(min-width: 1240px) 190px, (min-width: 1040px) calc(19vw - 44px), (min-width: 700px) calc(25vw - 45px), calc(37vw - 38px)" data-orig="/imagenes/stanley-destornillador.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt=""
+            width="480" height="360" loading="lazy" decoding="async">
         </span>
         <span class="cat-card-body">
           <span class="cat-card-tag">17 productos</span>
@@ -176,8 +180,8 @@
         </span>
       </a><a class="cat-card" href="/categoria/corte-y-cuchillas.html" data-cat="Corte y Cuchillas">
         <span class="cat-card-media">
-          <img class="cat-card-img" src="/imagenes/stanley-navaja-classic-99.jpg" alt=""
-            width="480" height="360" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="cat-card-img" src="/imagenes/opt/stanley-navaja-classic-99-400.webp" srcset="/imagenes/opt/stanley-navaja-classic-99-200.webp 200w, /imagenes/opt/stanley-navaja-classic-99-400.webp 400w, /imagenes/opt/stanley-navaja-classic-99-800.webp 800w" sizes="(min-width: 1240px) 190px, (min-width: 1040px) calc(19vw - 44px), (min-width: 700px) calc(25vw - 45px), calc(37vw - 38px)" data-orig="/imagenes/stanley-navaja-classic-99.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt=""
+            width="480" height="360" loading="lazy" decoding="async">
         </span>
         <span class="cat-card-body">
           <span class="cat-card-tag">7 productos</span>
@@ -187,8 +191,8 @@
         </span>
       </a><a class="cat-card" href="/categoria/medicion-y-nivelacion.html" data-cat="Medición y Nivelación">
         <span class="cat-card-media">
-          <img class="cat-card-img" src="/imagenes/stanley-flexometro-global-plus-8m.jpg" alt=""
-            width="480" height="360" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="cat-card-img" src="/imagenes/opt/stanley-flexometro-global-plus-8m-400.webp" srcset="/imagenes/opt/stanley-flexometro-global-plus-8m-200.webp 200w, /imagenes/opt/stanley-flexometro-global-plus-8m-400.webp 400w, /imagenes/opt/stanley-flexometro-global-plus-8m-800.webp 800w" sizes="(min-width: 1240px) 190px, (min-width: 1040px) calc(19vw - 44px), (min-width: 700px) calc(25vw - 45px), calc(37vw - 38px)" data-orig="/imagenes/stanley-flexometro-global-plus-8m.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt=""
+            width="480" height="360" loading="lazy" decoding="async">
         </span>
         <span class="cat-card-body">
           <span class="cat-card-tag">6 productos</span>
@@ -198,8 +202,8 @@
         </span>
       </a><a class="cat-card" href="/categoria/seguridad-industrial.html" data-cat="Seguridad Industrial">
         <span class="cat-card-media">
-          <img class="cat-card-img" src="/imagenes/energizer-linterna-frontal-vision-hd.jpg" alt=""
-            width="480" height="360" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="cat-card-img" src="/imagenes/opt/energizer-linterna-frontal-vision-hd-400.webp" srcset="/imagenes/opt/energizer-linterna-frontal-vision-hd-200.webp 200w, /imagenes/opt/energizer-linterna-frontal-vision-hd-400.webp 400w, /imagenes/opt/energizer-linterna-frontal-vision-hd-800.webp 800w" sizes="(min-width: 1240px) 190px, (min-width: 1040px) calc(19vw - 44px), (min-width: 700px) calc(25vw - 45px), calc(37vw - 38px)" data-orig="/imagenes/energizer-linterna-frontal-vision-hd.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt=""
+            width="480" height="360" loading="lazy" decoding="async">
         </span>
         <span class="cat-card-body">
           <span class="cat-card-tag">5 productos</span>
@@ -209,8 +213,8 @@
         </span>
       </a><a class="cat-card" href="/categoria/herrajes-y-accesorios.html" data-cat="Herrajes y Accesorios">
         <span class="cat-card-media">
-          <img class="cat-card-img" src="/imagenes/hermex-candado-cable-bicicleta.jpg" alt=""
-            width="480" height="360" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="cat-card-img" src="/imagenes/opt/hermex-candado-cable-bicicleta-400.webp" srcset="/imagenes/opt/hermex-candado-cable-bicicleta-200.webp 200w, /imagenes/opt/hermex-candado-cable-bicicleta-400.webp 400w, /imagenes/opt/hermex-candado-cable-bicicleta-778.webp 778w" sizes="(min-width: 1240px) 190px, (min-width: 1040px) calc(19vw - 44px), (min-width: 700px) calc(25vw - 45px), calc(37vw - 38px)" data-orig="/imagenes/hermex-candado-cable-bicicleta.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt=""
+            width="480" height="360" loading="lazy" decoding="async">
         </span>
         <span class="cat-card-body">
           <span class="cat-card-tag">4 productos</span>
@@ -318,7 +322,7 @@
   <div class="container footer-grid">
     <div class="footer-brand">
       <a href="/" class="footer-logo" aria-label="Lexmonn, ir al inicio">
-        <img src="/favicon-192.png" alt="" width="56" height="56" loading="lazy">
+        <img src="/imagenes/opt/sitio/lex-icono-112.webp" data-orig="/favicon-192.png" onerror="this.onerror=null;this.removeAttribute('srcset');this.src=this.dataset.orig" alt="" width="56" height="56" loading="lazy" decoding="async">
         <span>Lexmonn</span>
       </a>
       <p>Porta herramientas fabricados en Colombia y herramienta de las marcas que ya conoces para la obra. Desde Bello, Antioquia, hace cinco años.</p>
@@ -423,21 +427,25 @@
 <div id="image-lightbox" class="image-lightbox" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
   <button id="lightbox-close" class="icon-btn lightbox-close" type="button" aria-label="Cerrar"><svg class="icon icon-x" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
   <p id="lightbox-hint" class="lightbox-hint">Toca la imagen para hacer zoom</p>
-  <img id="lightbox-img" class="lightbox-img" src="" alt="">
+  <img id="lightbox-img" class="lightbox-img" alt="">
 </div>
 
 <div id="promo-overlay" class="overlay" hidden></div>
 <div id="promo-modal" class="promo-modal" hidden role="dialog" aria-modal="true" aria-label="Promoción de aniversario">
   <button id="promo-close" class="icon-btn promo-modal-close" type="button" aria-label="Cerrar"><svg class="icon icon-x" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
   <a href="https://wa.me/573015597873?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20promoci%C3%B3n%20de%20aniversario%20de%20Lexmonn" target="_blank" rel="noopener">
-    <img src="/promo-sorteo.jpeg" alt="Promoción de aniversario Lexmonn" class="promo-modal-img" loading="lazy">
+    <!-- Sin src a propósito: loading="lazy" no impedía que el navegador la
+         bajara en TODAS las páginas aunque el pop-up no fuera a salir.
+         app.js (abrirPromo) le pone src y srcset justo antes de mostrarla. -->
+    <img data-src="/imagenes/opt/sitio/promo-sorteo-480.webp" data-srcset="/imagenes/opt/sitio/promo-sorteo-480.webp 480w, /imagenes/opt/sitio/promo-sorteo-720.webp 720w, /imagenes/opt/sitio/promo-sorteo-960.webp 960w" sizes="(min-width: 492px) 460px, calc(100vw - 32px)" data-orig="/promo-sorteo.jpeg" onerror="this.onerror=null;this.removeAttribute('srcset');this.src=this.dataset.orig" alt="Promoción de aniversario Lexmonn" class="promo-modal-img" width="960" height="960" decoding="async">
   </a>
 </div>
 
 <script src="/config.js?v=96a70dc5" defer></script>
 <script src="/sample-products.js?v=9bb3c815" defer></script>
-<script src="/lib/shared.js?v=fe5e2cab" defer></script>
-<script src="/lib/templates.js?v=38125aa7" defer></script>
-<script src="/app.js?v=eade59a6" defer></script>
+<script src="/lib/fotos-optimizadas.js?v=e7382d02" defer></script>
+<script src="/lib/shared.js?v=8bec1eb0" defer></script>
+<script src="/lib/templates.js?v=7ad4b2ea" defer></script>
+<script src="/app.js?v=80ebdc20" defer></script>
 </body>
 </html>

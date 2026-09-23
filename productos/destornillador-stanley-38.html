@@ -35,13 +35,13 @@
 <link rel="apple-touch-icon" href="/favicon-192.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- La letra se sirve desde el propio sitio (fuentes/, licencia OFL). Desde
+     Google Fonts obligaba a abrir dos conexiones más antes de dibujar nada.
+     Se precargan los dos pesos que se ven apenas abre la página. -->
+<link rel="preload" as="font" type="font/woff2" href="/fuentes/barlow-condensed-800.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fuentes/barlow-400.woff2" crossorigin>
 <link rel="preconnect" href="https://docs.google.com">
-<link rel="dns-prefetch" href="https://i.postimg.cc">
-<link rel="preload" as="image" href="https://lexmonn.com/imagenes/stanley-destornillador.jpg" fetchpriority="high">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/style.css?v=98d1f426">
+<link rel="stylesheet" href="/style.css?v=fbb9691f">
 
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://lexmonn.com/"},{"@type":"ListItem","position":2,"name":"Herramientas de Construcción","item":"https://lexmonn.com/categoria/herramientas-de-construccion.html"},{"@type":"ListItem","position":3,"name":"Destornillador Stanley","item":"https://lexmonn.com/productos/destornillador-stanley-38.html"}]}</script>
@@ -62,7 +62,7 @@
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="Lexmonn, ir al inicio">
-      <img class="brand-logo" src="/logo-cropped.png" alt="Lexmonn Tool Holders" width="874" height="272" fetchpriority="high">
+      <img class="brand-logo" src="/imagenes/opt/sitio/logo-lexmonn-296.webp" srcset="/imagenes/opt/sitio/logo-lexmonn-296.webp 296w, /imagenes/opt/sitio/logo-lexmonn-444.webp 444w" sizes="148px" data-orig="/logo-cropped.png" onerror="this.onerror=null;this.removeAttribute('srcset');this.src=this.dataset.orig" alt="Lexmonn Tool Holders" width="296" height="92">
     </a>
     <form id="search-form" class="search-bar" role="search" action="/catalogo.html" method="get">
       <label class="visually-hidden" for="search-input">Buscar productos</label>
@@ -93,7 +93,7 @@
       <div class="product-layout">
         <div class="gallery">
           <div class="gallery-main">
-            <img id="product-modal-img" class="gallery-img" src="https://lexmonn.com/imagenes/stanley-destornillador.jpg" alt="Destornillador Stanley" width="800" height="800" fetchpriority="high" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+            <img id="product-modal-img" class="gallery-img" src="/imagenes/opt/stanley-destornillador-800.webp" srcset="/imagenes/opt/stanley-destornillador-200.webp 200w, /imagenes/opt/stanley-destornillador-400.webp 400w, /imagenes/opt/stanley-destornillador-800.webp 800w" sizes="(min-width: 1240px) 552px, (min-width: 900px) calc(47vw - 37px), calc(100vw - 60px)" data-orig="https://lexmonn.com/imagenes/stanley-destornillador.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" data-full="https://lexmonn.com/imagenes/stanley-destornillador.jpg" alt="Destornillador Stanley" width="800" height="800" fetchpriority="high">
             <button type="button" id="zoom-btn" class="zoom-badge"><svg class="icon icon-zoom" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg> Ampliar</button>
             <span id="product-modal-discount-badge" class="discount-badge discount-badge-lg" hidden></span>
           </div>
@@ -145,8 +145,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/dewalt-disco-corte-metal-4-5.jpg" alt="Disco de Corte para Metal 4.5 Pulgadas DeWalt"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/dewalt-disco-corte-metal-4-5-400.webp" srcset="/imagenes/opt/dewalt-disco-corte-metal-4-5-200.webp 200w, /imagenes/opt/dewalt-disco-corte-metal-4-5-400.webp 400w, /imagenes/opt/dewalt-disco-corte-metal-4-5-750.webp 750w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/dewalt-disco-corte-metal-4-5.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Disco de Corte para Metal 4.5 Pulgadas DeWalt"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">DeWalt</p>
@@ -164,8 +164,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/dewalt-disco-desbaste-metal-9.jpg" alt="Disco de Desbaste para Metal 9 Pulgadas DeWalt"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/dewalt-disco-desbaste-metal-9-400.webp" srcset="/imagenes/opt/dewalt-disco-desbaste-metal-9-200.webp 200w, /imagenes/opt/dewalt-disco-desbaste-metal-9-400.webp 400w, /imagenes/opt/dewalt-disco-desbaste-metal-9-563.webp 563w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/dewalt-disco-desbaste-metal-9.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Disco de Desbaste para Metal 9 Pulgadas DeWalt"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">DeWalt</p>
@@ -183,8 +183,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/wadfow-disco-diamantado-115mm.jpg" alt="Disco Diamantado 115mm Wadfow"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/wadfow-disco-diamantado-115mm-400.webp" srcset="/imagenes/opt/wadfow-disco-diamantado-115mm-200.webp 200w, /imagenes/opt/wadfow-disco-diamantado-115mm-400.webp 400w, /imagenes/opt/wadfow-disco-diamantado-115mm-450.webp 450w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/wadfow-disco-diamantado-115mm.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Disco Diamantado 115mm Wadfow"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Wadfow</p>
@@ -202,8 +202,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/pretul-juego-3-pinzas-6.jpg" alt="Juego de 3 Pinzas 6 Pulgadas Pretul"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/pretul-juego-3-pinzas-6-400.webp" srcset="/imagenes/opt/pretul-juego-3-pinzas-6-200.webp 200w, /imagenes/opt/pretul-juego-3-pinzas-6-400.webp 400w, /imagenes/opt/pretul-juego-3-pinzas-6-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/pretul-juego-3-pinzas-6.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Juego de 3 Pinzas 6 Pulgadas Pretul"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Pretul</p>
@@ -221,8 +221,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/wadfow-destornilladores-100mm.jpg" alt="Juego de Destornilladores 100mm Wadfow"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/wadfow-destornilladores-100mm-400.webp" srcset="/imagenes/opt/wadfow-destornilladores-100mm-200.webp 200w, /imagenes/opt/wadfow-destornilladores-100mm-400.webp 400w, /imagenes/opt/wadfow-destornilladores-100mm-750.webp 750w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/wadfow-destornilladores-100mm.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Juego de Destornilladores 100mm Wadfow"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Wadfow</p>
@@ -240,8 +240,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/llave-combinada-18mm.jpg" alt="Llave Combinada 15mm"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/llave-combinada-18mm-400.webp" srcset="/imagenes/opt/llave-combinada-18mm-200.webp 200w, /imagenes/opt/llave-combinada-18mm-400.webp 400w, /imagenes/opt/llave-combinada-18mm-750.webp 750w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/llave-combinada-18mm.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Llave Combinada 15mm"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Herramientas de Construcción</p>
@@ -259,8 +259,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/llave-combinada-17mm.jpg" alt="Llave Combinada 17mm"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/llave-combinada-17mm-400.webp" srcset="/imagenes/opt/llave-combinada-17mm-200.webp 200w, /imagenes/opt/llave-combinada-17mm-400.webp 400w, /imagenes/opt/llave-combinada-17mm-750.webp 750w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/llave-combinada-17mm.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Llave Combinada 17mm"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Herramientas de Construcción</p>
@@ -278,8 +278,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/llave-combinada-13mm.jpg" alt="Llave Combinada 19mm"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/llave-combinada-13mm-400.webp" srcset="/imagenes/opt/llave-combinada-13mm-200.webp 200w, /imagenes/opt/llave-combinada-13mm-400.webp 400w, /imagenes/opt/llave-combinada-13mm-750.webp 750w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/llave-combinada-13mm.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Llave Combinada 19mm"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Herramientas de Construcción</p>
@@ -301,7 +301,7 @@
   <div class="container footer-grid">
     <div class="footer-brand">
       <a href="/" class="footer-logo" aria-label="Lexmonn, ir al inicio">
-        <img src="/favicon-192.png" alt="" width="56" height="56" loading="lazy">
+        <img src="/imagenes/opt/sitio/lex-icono-112.webp" data-orig="/favicon-192.png" onerror="this.onerror=null;this.removeAttribute('srcset');this.src=this.dataset.orig" alt="" width="56" height="56" loading="lazy" decoding="async">
         <span>Lexmonn</span>
       </a>
       <p>Porta herramientas fabricados en Colombia y herramienta de las marcas que ya conoces para la obra. Desde Bello, Antioquia, hace cinco años.</p>
@@ -406,21 +406,25 @@
 <div id="image-lightbox" class="image-lightbox" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
   <button id="lightbox-close" class="icon-btn lightbox-close" type="button" aria-label="Cerrar"><svg class="icon icon-x" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
   <p id="lightbox-hint" class="lightbox-hint">Toca la imagen para hacer zoom</p>
-  <img id="lightbox-img" class="lightbox-img" src="" alt="">
+  <img id="lightbox-img" class="lightbox-img" alt="">
 </div>
 
 <div id="promo-overlay" class="overlay" hidden></div>
 <div id="promo-modal" class="promo-modal" hidden role="dialog" aria-modal="true" aria-label="Promoción de aniversario">
   <button id="promo-close" class="icon-btn promo-modal-close" type="button" aria-label="Cerrar"><svg class="icon icon-x" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
   <a href="https://wa.me/573015597873?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20promoci%C3%B3n%20de%20aniversario%20de%20Lexmonn" target="_blank" rel="noopener">
-    <img src="/promo-sorteo.jpeg" alt="Promoción de aniversario Lexmonn" class="promo-modal-img" loading="lazy">
+    <!-- Sin src a propósito: loading="lazy" no impedía que el navegador la
+         bajara en TODAS las páginas aunque el pop-up no fuera a salir.
+         app.js (abrirPromo) le pone src y srcset justo antes de mostrarla. -->
+    <img data-src="/imagenes/opt/sitio/promo-sorteo-480.webp" data-srcset="/imagenes/opt/sitio/promo-sorteo-480.webp 480w, /imagenes/opt/sitio/promo-sorteo-720.webp 720w, /imagenes/opt/sitio/promo-sorteo-960.webp 960w" sizes="(min-width: 492px) 460px, calc(100vw - 32px)" data-orig="/promo-sorteo.jpeg" onerror="this.onerror=null;this.removeAttribute('srcset');this.src=this.dataset.orig" alt="Promoción de aniversario Lexmonn" class="promo-modal-img" width="960" height="960" decoding="async">
   </a>
 </div>
 
 <script src="/config.js?v=96a70dc5" defer></script>
 <script src="/sample-products.js?v=9bb3c815" defer></script>
-<script src="/lib/shared.js?v=fe5e2cab" defer></script>
-<script src="/lib/templates.js?v=38125aa7" defer></script>
-<script src="/app.js?v=eade59a6" defer></script>
+<script src="/lib/fotos-optimizadas.js?v=e7382d02" defer></script>
+<script src="/lib/shared.js?v=8bec1eb0" defer></script>
+<script src="/lib/templates.js?v=7ad4b2ea" defer></script>
+<script src="/app.js?v=80ebdc20" defer></script>
 </body>
 </html>

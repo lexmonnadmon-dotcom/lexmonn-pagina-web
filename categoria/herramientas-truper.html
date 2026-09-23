@@ -32,13 +32,13 @@
 <link rel="apple-touch-icon" href="/favicon-192.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- La letra se sirve desde el propio sitio (fuentes/, licencia OFL). Desde
+     Google Fonts obligaba a abrir dos conexiones más antes de dibujar nada.
+     Se precargan los dos pesos que se ven apenas abre la página. -->
+<link rel="preload" as="font" type="font/woff2" href="/fuentes/barlow-condensed-800.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fuentes/barlow-400.woff2" crossorigin>
 <link rel="preconnect" href="https://docs.google.com">
-<link rel="dns-prefetch" href="https://i.postimg.cc">
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/style.css?v=98d1f426">
+<link rel="stylesheet" href="/style.css?v=fbb9691f">
 
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://lexmonn.com/"},{"@type":"ListItem","position":2,"name":"Herramientas Truper","item":"https://lexmonn.com/categoria/herramientas-truper.html"}]}</script>
@@ -59,7 +59,7 @@
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="Lexmonn, ir al inicio">
-      <img class="brand-logo" src="/logo-cropped.png" alt="Lexmonn Tool Holders" width="874" height="272" fetchpriority="high">
+      <img class="brand-logo" src="/imagenes/opt/sitio/logo-lexmonn-296.webp" srcset="/imagenes/opt/sitio/logo-lexmonn-296.webp 296w, /imagenes/opt/sitio/logo-lexmonn-444.webp 444w" sizes="148px" data-orig="/logo-cropped.png" onerror="this.onerror=null;this.removeAttribute('srcset');this.src=this.dataset.orig" alt="Lexmonn Tool Holders" width="296" height="92">
     </a>
     <form id="search-form" class="search-bar" role="search" action="/catalogo.html" method="get">
       <label class="visually-hidden" for="search-input">Buscar productos</label>
@@ -116,8 +116,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-adaptador-angular-14.jpg" alt="Adaptador Angular 1/4&quot; Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-adaptador-angular-14-400.webp" srcset="/imagenes/opt/truper-adaptador-angular-14-200.webp 200w, /imagenes/opt/truper-adaptador-angular-14-400.webp 400w, /imagenes/opt/truper-adaptador-angular-14-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-adaptador-angular-14.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Adaptador Angular 1/4&quot; Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -135,8 +135,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-navaja-retractil-18mm-estuche.jpg" alt="Bisturí Cutter 18 mm Profesional 3 Chuchillas Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-navaja-retractil-18mm-estuche-400.webp" srcset="/imagenes/opt/truper-navaja-retractil-18mm-estuche-200.webp 200w, /imagenes/opt/truper-navaja-retractil-18mm-estuche-400.webp 400w, /imagenes/opt/truper-navaja-retractil-18mm-estuche-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-navaja-retractil-18mm-estuche.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Bisturí Cutter 18 mm Profesional 3 Chuchillas Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -154,8 +154,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-navaja-retractil-18mm.jpg" alt="Bisturí Eco Cutter 18mm plástico Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-navaja-retractil-18mm-400.webp" srcset="/imagenes/opt/truper-navaja-retractil-18mm-200.webp 200w, /imagenes/opt/truper-navaja-retractil-18mm-400.webp 400w, /imagenes/opt/truper-navaja-retractil-18mm-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-navaja-retractil-18mm.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Bisturí Eco Cutter 18mm plástico Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -173,8 +173,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-broca-escalonada-bes13.jpg" alt="Broca Escalonada BES-13 Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-broca-escalonada-bes13-400.webp" srcset="/imagenes/opt/truper-broca-escalonada-bes13-200.webp 200w, /imagenes/opt/truper-broca-escalonada-bes13-400.webp 400w, /imagenes/opt/truper-broca-escalonada-bes13-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-broca-escalonada-bes13.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Broca Escalonada BES-13 Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -192,8 +192,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-broca-sds-plus-1-4.jpg" alt="Broca SDS-Plus 1/4 Pulgada Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-broca-sds-plus-1-4-400.webp" srcset="/imagenes/opt/truper-broca-sds-plus-1-4-200.webp 200w, /imagenes/opt/truper-broca-sds-plus-1-4-400.webp 400w, /imagenes/opt/truper-broca-sds-plus-1-4-750.webp 750w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-broca-sds-plus-1-4.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Broca SDS-Plus 1/4 Pulgada Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -211,8 +211,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-cautin-lapiz-30w.jpg" alt="Cautín Tipo Lápiz 30 W Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-cautin-lapiz-30w-400.webp" srcset="/imagenes/opt/truper-cautin-lapiz-30w-200.webp 200w, /imagenes/opt/truper-cautin-lapiz-30w-400.webp 400w, /imagenes/opt/truper-cautin-lapiz-30w-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-cautin-lapiz-30w.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Cautín Tipo Lápiz 30 W Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -230,8 +230,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-cuchillas-repuesto-cutter-18mm.jpg" alt="Cuchillas de Repuesto para Cutter 18mm Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-cuchillas-repuesto-cutter-18mm-400.webp" srcset="/imagenes/opt/truper-cuchillas-repuesto-cutter-18mm-200.webp 200w, /imagenes/opt/truper-cuchillas-repuesto-cutter-18mm-400.webp 400w, /imagenes/opt/truper-cuchillas-repuesto-cutter-18mm-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-cuchillas-repuesto-cutter-18mm.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Cuchillas de Repuesto para Cutter 18mm Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -249,8 +249,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-destornillador-comfort-grip.jpg" alt="Destornillador De Cruz Comfort Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-destornillador-comfort-grip-400.webp" srcset="/imagenes/opt/truper-destornillador-comfort-grip-200.webp 200w, /imagenes/opt/truper-destornillador-comfort-grip-400.webp 400w, /imagenes/opt/truper-destornillador-comfort-grip-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-destornillador-comfort-grip.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Destornillador De Cruz Comfort Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -268,8 +268,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-disco-diamantado-7.jpg" alt="Disco Diamantado 7 Pulgadas Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-disco-diamantado-7-400.webp" srcset="/imagenes/opt/truper-disco-diamantado-7-200.webp 200w, /imagenes/opt/truper-disco-diamantado-7-400.webp 400w, /imagenes/opt/truper-disco-diamantado-7-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-disco-diamantado-7.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Disco Diamantado 7 Pulgadas Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -287,8 +287,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-discos-lija-5-grano-180.jpg" alt="Discos de Lija Roto-Orbital 5&quot; Grano 180 Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-discos-lija-5-grano-180-400.webp" srcset="/imagenes/opt/truper-discos-lija-5-grano-180-200.webp 200w, /imagenes/opt/truper-discos-lija-5-grano-180-400.webp 400w, /imagenes/opt/truper-discos-lija-5-grano-180-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-discos-lija-5-grano-180.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Discos de Lija Roto-Orbital 5&quot; Grano 180 Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -306,8 +306,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-escuadra-rapida.jpg" alt="Escuadra Rápida Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-escuadra-rapida-400.webp" srcset="/imagenes/opt/truper-escuadra-rapida-200.webp 200w, /imagenes/opt/truper-escuadra-rapida-400.webp 400w, /imagenes/opt/truper-escuadra-rapida-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-escuadra-rapida.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Escuadra Rápida Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -325,8 +325,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-espatula-flexible-4.jpg" alt="Espátula Flexible 4&quot; Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-espatula-flexible-4-400.webp" srcset="/imagenes/opt/truper-espatula-flexible-4-200.webp 200w, /imagenes/opt/truper-espatula-flexible-4-400.webp 400w, /imagenes/opt/truper-espatula-flexible-4-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-espatula-flexible-4.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Espátula Flexible 4&quot; Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -344,8 +344,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-espatula-flexible-6.jpg" alt="Espátula Flexible 6&quot; Truper Expert"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-espatula-flexible-6-400.webp" srcset="/imagenes/opt/truper-espatula-flexible-6-200.webp 200w, /imagenes/opt/truper-espatula-flexible-6-400.webp 400w, /imagenes/opt/truper-espatula-flexible-6-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-espatula-flexible-6.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Espátula Flexible 6&quot; Truper Expert"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -363,8 +363,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-flexometro-gripper-5m.jpg" alt="Flexómetro Contra Impactos  5m Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-flexometro-gripper-5m-400.webp" srcset="/imagenes/opt/truper-flexometro-gripper-5m-200.webp 200w, /imagenes/opt/truper-flexometro-gripper-5m-400.webp 400w, /imagenes/opt/truper-flexometro-gripper-5m-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-flexometro-gripper-5m.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Flexómetro Contra Impactos  5m Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -382,8 +382,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-grapas-10-8mm-1000pzas.jpg" alt="Grapas 10.8mm 1000 Piezas Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-grapas-10-8mm-1000pzas-400.webp" srcset="/imagenes/opt/truper-grapas-10-8mm-1000pzas-200.webp 200w, /imagenes/opt/truper-grapas-10-8mm-1000pzas-400.webp 400w, /imagenes/opt/truper-grapas-10-8mm-1000pzas-750.webp 750w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-grapas-10-8mm-1000pzas.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Grapas 10.8mm 1000 Piezas Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -401,8 +401,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-lija-agua-grano-150.jpg" alt="Lija de Agua Grano 150 Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-lija-agua-grano-150-400.webp" srcset="/imagenes/opt/truper-lija-agua-grano-150-200.webp 200w, /imagenes/opt/truper-lija-agua-grano-150-400.webp 400w, /imagenes/opt/truper-lija-agua-grano-150-730.webp 730w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-lija-agua-grano-150.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Lija de Agua Grano 150 Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -420,8 +420,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-lijadora-manual.jpg" alt="Lijadora Manual Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-lijadora-manual-400.webp" srcset="/imagenes/opt/truper-lijadora-manual-200.webp 200w, /imagenes/opt/truper-lijadora-manual-400.webp 400w, /imagenes/opt/truper-lijadora-manual-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-lijadora-manual.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Lijadora Manual Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -439,8 +439,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-llana-dentada-11x5.jpg" alt="Llana Dentada 11x5 Pulgadas Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-llana-dentada-11x5-400.webp" srcset="/imagenes/opt/truper-llana-dentada-11x5-200.webp 200w, /imagenes/opt/truper-llana-dentada-11x5-400.webp 400w, /imagenes/opt/truper-llana-dentada-11x5-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-llana-dentada-11x5.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Llana Dentada 11x5 Pulgadas Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -458,8 +458,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-martillo-una-27mm.jpg" alt="Martillo de Uña 27 mm Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-martillo-una-27mm-400.webp" srcset="/imagenes/opt/truper-martillo-una-27mm-200.webp 200w, /imagenes/opt/truper-martillo-una-27mm-400.webp 400w, /imagenes/opt/truper-martillo-una-27mm-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-martillo-una-27mm.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Martillo de Uña 27 mm Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -477,8 +477,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-navaja-abatible-nv6x.jpg" alt="Navaja Abatible NV-6X Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-navaja-abatible-nv6x-400.webp" srcset="/imagenes/opt/truper-navaja-abatible-nv6x-200.webp 200w, /imagenes/opt/truper-navaja-abatible-nv6x-400.webp 400w, /imagenes/opt/truper-navaja-abatible-nv6x-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-navaja-abatible-nv6x.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Navaja Abatible NV-6X Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -496,8 +496,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-nivel-torpedo-9-magnetico.jpg" alt="Nivel Torpedo 9&quot; con Base Magnética Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-nivel-torpedo-9-magnetico-400.webp" srcset="/imagenes/opt/truper-nivel-torpedo-9-magnetico-200.webp 200w, /imagenes/opt/truper-nivel-torpedo-9-magnetico-400.webp 400w, /imagenes/opt/truper-nivel-torpedo-9-magnetico-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-nivel-torpedo-9-magnetico.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Nivel Torpedo 9&quot; con Base Magnética Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -515,8 +515,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-pinza-electricista-9-ponchadora.jpg" alt="Pinza de Electricista 9&quot; con Ponchadora Truper Expert"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-pinza-electricista-9-ponchadora-400.webp" srcset="/imagenes/opt/truper-pinza-electricista-9-ponchadora-200.webp 200w, /imagenes/opt/truper-pinza-electricista-9-ponchadora-400.webp 400w, /imagenes/opt/truper-pinza-electricista-9-ponchadora-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-pinza-electricista-9-ponchadora.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Pinza de Electricista 9&quot; con Ponchadora Truper Expert"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -534,8 +534,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-pinza-presion-10.jpg" alt="Pinza de Presión 10&quot; Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-pinza-presion-10-400.webp" srcset="/imagenes/opt/truper-pinza-presion-10-200.webp 200w, /imagenes/opt/truper-pinza-presion-10-400.webp 400w, /imagenes/opt/truper-pinza-presion-10-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-pinza-presion-10.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Pinza de Presión 10&quot; Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -553,8 +553,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-pinza-presion-tipo-c-6.jpg" alt="Pinza de Presión Tipo C 6 Pulgadas Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-pinza-presion-tipo-c-6-400.webp" srcset="/imagenes/opt/truper-pinza-presion-tipo-c-6-200.webp 200w, /imagenes/opt/truper-pinza-presion-tipo-c-6-400.webp 400w, /imagenes/opt/truper-pinza-presion-tipo-c-6-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-pinza-presion-tipo-c-6.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Pinza de Presión Tipo C 6 Pulgadas Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -572,8 +572,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-serrucho-dorado-20.jpg" alt="Serrucho 20 Pulgadas Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-serrucho-dorado-20-400.webp" srcset="/imagenes/opt/truper-serrucho-dorado-20-200.webp 200w, /imagenes/opt/truper-serrucho-dorado-20-400.webp 400w, /imagenes/opt/truper-serrucho-dorado-20-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-serrucho-dorado-20.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Serrucho 20 Pulgadas Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -591,8 +591,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-tapizadora-10.jpg" alt="Tapizadora Acero Azul 10&quot; Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-tapizadora-10-400.webp" srcset="/imagenes/opt/truper-tapizadora-10-200.webp 200w, /imagenes/opt/truper-tapizadora-10-400.webp 400w, /imagenes/opt/truper-tapizadora-10-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-tapizadora-10.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Tapizadora Acero Azul 10&quot; Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -610,8 +610,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-tapizadora-12.jpg" alt="Tapizadora Acero Azul 12&quot; Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-tapizadora-12-400.webp" srcset="/imagenes/opt/truper-tapizadora-12-200.webp 200w, /imagenes/opt/truper-tapizadora-12-400.webp 400w, /imagenes/opt/truper-tapizadora-12-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-tapizadora-12.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Tapizadora Acero Azul 12&quot; Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -629,8 +629,8 @@
         <div class="product-media">
           
           
-          <img class="product-img" src="https://lexmonn.com/imagenes/truper-tapizadora-8.jpg" alt="Tapizadora Acero Azul 8&quot; Truper"
-            width="400" height="400" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f2f4f2%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%231c5e6b%22%20font-size%3D%2224%22%20font-weight%3D%22800%22%20font-family%3D%22sans-serif%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3ELEXMONN%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E'">
+          <img class="product-img" src="/imagenes/opt/truper-tapizadora-8-400.webp" srcset="/imagenes/opt/truper-tapizadora-8-200.webp 200w, /imagenes/opt/truper-tapizadora-8-400.webp 400w, /imagenes/opt/truper-tapizadora-8-800.webp 800w" sizes="(min-width: 1240px) 262px, (min-width: 1040px) calc(25vw - 48px), (min-width: 700px) calc(33vw - 40px), calc(50vw - 40px)" data-orig="https://lexmonn.com/imagenes/truper-tapizadora-8.jpg" onerror="if(this.dataset.orig){this.removeAttribute('srcset');this.src=this.dataset.orig;delete this.dataset.orig}else{this.onerror=null;this.src='/imagenes/sin-foto.svg'}" alt="Tapizadora Acero Azul 8&quot; Truper"
+            width="400" height="400" loading="lazy" decoding="async">
         </div>
         <div class="product-body">
           <p class="product-eyebrow">Truper</p>
@@ -659,7 +659,7 @@
   <div class="container footer-grid">
     <div class="footer-brand">
       <a href="/" class="footer-logo" aria-label="Lexmonn, ir al inicio">
-        <img src="/favicon-192.png" alt="" width="56" height="56" loading="lazy">
+        <img src="/imagenes/opt/sitio/lex-icono-112.webp" data-orig="/favicon-192.png" onerror="this.onerror=null;this.removeAttribute('srcset');this.src=this.dataset.orig" alt="" width="56" height="56" loading="lazy" decoding="async">
         <span>Lexmonn</span>
       </a>
       <p>Porta herramientas fabricados en Colombia y herramienta de las marcas que ya conoces para la obra. Desde Bello, Antioquia, hace cinco años.</p>
@@ -764,21 +764,25 @@
 <div id="image-lightbox" class="image-lightbox" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
   <button id="lightbox-close" class="icon-btn lightbox-close" type="button" aria-label="Cerrar"><svg class="icon icon-x" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
   <p id="lightbox-hint" class="lightbox-hint">Toca la imagen para hacer zoom</p>
-  <img id="lightbox-img" class="lightbox-img" src="" alt="">
+  <img id="lightbox-img" class="lightbox-img" alt="">
 </div>
 
 <div id="promo-overlay" class="overlay" hidden></div>
 <div id="promo-modal" class="promo-modal" hidden role="dialog" aria-modal="true" aria-label="Promoción de aniversario">
   <button id="promo-close" class="icon-btn promo-modal-close" type="button" aria-label="Cerrar"><svg class="icon icon-x" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
   <a href="https://wa.me/573015597873?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20promoci%C3%B3n%20de%20aniversario%20de%20Lexmonn" target="_blank" rel="noopener">
-    <img src="/promo-sorteo.jpeg" alt="Promoción de aniversario Lexmonn" class="promo-modal-img" loading="lazy">
+    <!-- Sin src a propósito: loading="lazy" no impedía que el navegador la
+         bajara en TODAS las páginas aunque el pop-up no fuera a salir.
+         app.js (abrirPromo) le pone src y srcset justo antes de mostrarla. -->
+    <img data-src="/imagenes/opt/sitio/promo-sorteo-480.webp" data-srcset="/imagenes/opt/sitio/promo-sorteo-480.webp 480w, /imagenes/opt/sitio/promo-sorteo-720.webp 720w, /imagenes/opt/sitio/promo-sorteo-960.webp 960w" sizes="(min-width: 492px) 460px, calc(100vw - 32px)" data-orig="/promo-sorteo.jpeg" onerror="this.onerror=null;this.removeAttribute('srcset');this.src=this.dataset.orig" alt="Promoción de aniversario Lexmonn" class="promo-modal-img" width="960" height="960" decoding="async">
   </a>
 </div>
 
 <script src="/config.js?v=96a70dc5" defer></script>
 <script src="/sample-products.js?v=9bb3c815" defer></script>
-<script src="/lib/shared.js?v=fe5e2cab" defer></script>
-<script src="/lib/templates.js?v=38125aa7" defer></script>
-<script src="/app.js?v=eade59a6" defer></script>
+<script src="/lib/fotos-optimizadas.js?v=e7382d02" defer></script>
+<script src="/lib/shared.js?v=8bec1eb0" defer></script>
+<script src="/lib/templates.js?v=7ad4b2ea" defer></script>
+<script src="/app.js?v=80ebdc20" defer></script>
 </body>
 </html>

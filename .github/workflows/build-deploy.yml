@@ -44,6 +44,18 @@ jobs:
         with:
           node-version: "20"
 
+      # Las fotos cargadas en la Sheet después del último commit todavía no
+      # tienen versión liviana (WebP) en el repositorio. Se generan aquí para
+      # esta publicación, y solo cuando hace falta: instalar ffmpeg tarda
+      # alrededor de un minuto. Si algo falla, el sitio se publica igual con
+      # las fotos originales (continue-on-error).
+      - name: Versiones livianas de fotos nuevas
+        continue-on-error: true
+        run: |
+          if node tools/optimizar-fotos.js --revisar; then exit 0; fi
+          command -v ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null)
+          node tools/optimizar-fotos.js
+
       - name: Generar las páginas (build.js)
         run: node build.js
 
