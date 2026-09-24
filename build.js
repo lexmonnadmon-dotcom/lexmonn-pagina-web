@@ -282,7 +282,7 @@ const FAQ = [
   },
   {
     q: "¿Qué datos me piden para comprar?",
-    a: "Solo lo necesario para llevarte el pedido: nombre, dirección, ciudad y teléfono. El correo es opcional. No pedimos cédula ni ningún documento de identidad.",
+    a: "Nombre, cédula o NIT, dirección, ciudad, teléfono y correo. La cédula (o el NIT de tu empresa) y el correo son para la factura electrónica y el envío. El sitio no guarda esos datos: van solo en el mensaje de WhatsApp con tu pedido.",
   },
 ];
 
@@ -774,7 +774,7 @@ function buildPrivacyPage() {
         </ul>
 
         <h2>Los datos que nos das al hacer un pedido</h2>
-        <p>Cuando finalizas una compra te pedimos solo lo necesario para llevarte el pedido: nombre, dirección, ciudad, teléfono y, opcionalmente, correo. <strong>No te pedimos el número de cédula ni ningún documento de identidad.</strong> Esos datos <strong>no se guardan en este sitio web</strong>: se usan para armar el mensaje del pedido y se envían por <strong>WhatsApp</strong> al número de Lexmonn, donde quedan en esa conversación. Los usamos únicamente para procesar, despachar y contactarte si hay algo que aclarar. Ten en cuenta que WhatsApp es un servicio de Meta y tiene sus propias condiciones.</p>
+        <p>Cuando finalizas una compra te pedimos nombre, <strong>cédula o NIT</strong>, dirección, ciudad, teléfono y <strong>correo</strong>. La cédula (o el NIT de tu empresa) y el correo los usamos para expedir la <strong>factura electrónica</strong> y para el <strong>envío</strong>; el resto, para llevarte el pedido y contactarte si hay algo que aclarar. Esos datos <strong>no se guardan en este sitio web</strong>: se usan para armar el mensaje del pedido y se envían por <strong>WhatsApp</strong> al número de Lexmonn, donde quedan en esa conversación. No los usamos para nada distinto de tu compra. Ten en cuenta que WhatsApp es un servicio de Meta y tiene sus propias condiciones.</p>
 
         <h2>Responsable del tratamiento</h2>
         <p>
@@ -794,7 +794,7 @@ function buildPrivacyPage() {
         <p>Si cerraste el aviso de privacidad y quieres verlo de nuevo:</p>
         <p><button type="button" id="privacy-notice-reset" class="btn btn-dark btn-sm">Ver el aviso otra vez</button></p>
 
-        <p class="legal-updated">Última actualización: 27 de agosto de 2026.</p>
+        <p class="legal-updated">Última actualización: 24 de septiembre de 2026.</p>
       </div>
     </div>
   </section>`;

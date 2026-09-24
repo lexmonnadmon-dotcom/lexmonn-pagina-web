@@ -368,11 +368,15 @@ function renderCartAndModals() {
     <h2 id="checkout-title">Datos para tu pedido</h2>
     <button id="checkout-close" class="icon-btn" type="button" aria-label="Cerrar">${icon("x", 22)}</button>
   </div>
-  <p class="modal-intro">Con estos datos armamos el mensaje del pedido. No pedimos cédula ni ningún documento.</p>
+  <p class="modal-intro">Con estos datos armamos el mensaje del pedido. La cédula (o el NIT de tu empresa) y el correo son para la factura electrónica y el envío. El sitio no los guarda: van solo en tu mensaje de WhatsApp.</p>
   <form id="checkout-form" novalidate>
     <label class="field">
       <span class="field-label">Nombre completo <span aria-hidden="true">*</span></span>
       <input type="text" name="nombre" required autocomplete="name">
+    </label>
+    <label class="field">
+      <span class="field-label">Cédula o NIT <span aria-hidden="true">*</span></span>
+      <input type="text" name="cedula" required inputmode="numeric" autocomplete="off">
     </label>
     <label class="field">
       <span class="field-label">Dirección de entrega <span aria-hidden="true">*</span></span>
@@ -387,8 +391,8 @@ function renderCartAndModals() {
       <input type="tel" name="telefono" required autocomplete="tel" inputmode="tel">
     </label>
     <label class="field">
-      <span class="field-label">Correo electrónico <span class="field-optional">(opcional)</span></span>
-      <input type="email" name="correo" autocomplete="email" inputmode="email">
+      <span class="field-label">Correo electrónico <span aria-hidden="true">*</span></span>
+      <input type="email" name="correo" required autocomplete="email" inputmode="email">
     </label>
     <p id="checkout-error" class="form-error" role="alert" hidden></p>
     <button type="submit" class="btn btn-lime btn-block">${icon("whatsapp", 20)} Enviar pedido por WhatsApp</button>

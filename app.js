@@ -960,13 +960,18 @@ function validateCheckout(form) {
   const missing = [];
   let firstInvalid = null;
   form.querySelectorAll("input").forEach((input) => {
-    const empty = input.required && !input.value.trim();
-    const badEmail = input.type === "email" && input.value.trim() && !input.checkValidity();
-    const invalid = empty || badEmail;
+    const value = input.value.trim();
+    const empty = input.required && !value;
+    const badEmail = input.type === "email" && value && !input.checkValidity();
+    // Cédula o NIT: se aceptan puntos, espacios o el guion del dígito de
+    // verificación, pero tiene que haber entre 5 y 12 números.
+    const digitos = value.replace(/\D/g, "").length;
+    const badDoc = input.name === "cedula" && value && (digitos < 5 || digitos > 12);
+    const invalid = empty || badEmail || badDoc;
     input.setAttribute("aria-invalid", invalid ? "true" : "false");
     if (invalid) {
       const label = input.closest(".field").querySelector(".field-label").firstChild.textContent.trim();
-      missing.push(badEmail ? "un correo válido" : label.toLowerCase());
+      missing.push(badEmail ? "un correo válido" : badDoc ? "una cédula o NIT válido" : label.toLowerCase().replace(/\bnit\b/, "NIT"));
       if (!firstInvalid) firstInvalid = input;
     }
   });
@@ -987,6 +992,7 @@ function handleCheckoutSubmit(e) {
 
   const data = {
     nombre: form.nombre.value.trim(),
+    cedula: form.cedula.value.trim(),
     direccion: form.direccion.value.trim(),
     ciudad: form.ciudad.value.trim(),
     telefono: form.telefono.value.trim(),
@@ -1021,10 +1027,11 @@ function buildWhatsAppMessage(buyer, entries) {
   lines.push("");
   lines.push(`*Datos del comprador*`);
   lines.push(`Nombre: ${buyer.nombre}`);
+  lines.push(`Cédula/NIT: ${buyer.cedula}`);
   lines.push(`Dirección: ${buyer.direccion}`);
   lines.push(`Ciudad/Municipio: ${buyer.ciudad}`);
   lines.push(`Teléfono: ${buyer.telefono}`);
-  if (buyer.correo) lines.push(`Correo: ${buyer.correo}`);
+  lines.push(`Correo: ${buyer.correo}`);
   lines.push("");
   lines.push(`*Productos*`);
   entries.forEach(({ product, qty }) => {

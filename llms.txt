@@ -13,7 +13,7 @@
 
 ## Catálogo
 
-- [Todo el catálogo](https://lexmonn.com/catalogo.html): 146 productos
+- [Todo el catálogo](https://lexmonn.com/catalogo.html): 147 productos
 - [Porta Herramientas](https://lexmonn.com/categoria/porta-herramientas.html): Cinturones, morrales, bolsos, cargaderas y bolsillos porta herramientas diseñados y fabricados por Lexmonn en Colombia. Líneas pensadas para drywall, electricidad y construcción, con materiales reforzados para el trabajo diario en obra.
 - [Herramientas Total](https://lexmonn.com/categoria/herramientas-total.html): Herramienta eléctrica, inalámbrica y manual de la marca Total: taladros, rotomartillos, pulidoras, sierras, baterías y cargadores de 20V, además de martillos, flexómetros, alicates y accesorios para obra.
 - [Herramientas Truper](https://lexmonn.com/categoria/herramientas-truper.html): Herramienta Truper y Truper Expert para acabados y construcción: tapizadoras, espátulas, niveles, escuadras, pinzas, martillos, brocas, discos y accesorios de corte.
@@ -23,6 +23,7 @@
 - [Medición y Nivelación](https://lexmonn.com/categoria/medicion-y-nivelacion.html): Flexómetros, escuadras y accesorios para nivel láser para medir, trazar y nivelar con precisión en obra.
 - [Seguridad Industrial](https://lexmonn.com/categoria/seguridad-industrial.html): Elementos de protección personal para obra: cascos, gafas de seguridad, chalecos reflectivos, rodilleras y linternas frontales.
 - [Herrajes y Accesorios](https://lexmonn.com/categoria/herrajes-y-accesorios.html): Grapas, candados, pulseras magnéticas porta tornillos y los accesorios pequeños que no pueden faltar en la caja de herramientas.
+- [LEO PUMP](https://lexmonn.com/categoria/leo-pump.html): Productos de LEO PUMP disponibles en Lexmonn, con envío a toda Colombia.
 
 ## Cómo comprar
 
