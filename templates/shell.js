@@ -93,7 +93,7 @@ const ORG_GRAPH = {
           "@type": "OpeningHoursSpecification",
           dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
           opens: "08:00",
-          closes: "18:30",
+          closes: "17:00",
         },
         { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "15:00" },
       ],
@@ -328,7 +328,7 @@ function renderFooter() {
     <div class="footer-col">
       <h2 class="footer-title">Horarios</h2>
       <ul class="footer-contact">
-        <li>${icon("clock", 18)} <span>Lunes a viernes<br>8:00 a.m. – 6:30 p.m.</span></li>
+        <li>${icon("clock", 18)} <span>Lunes a viernes<br>8:00 a.m. – 5:00 p.m.</span></li>
         <li>${icon("clock", 18)} <span>Sábados<br>9:00 a.m. – 3:00 p.m.</span></li>
         <li>${icon("truck", 18)} <span>Envíos a toda Colombia</span></li>
       </ul>

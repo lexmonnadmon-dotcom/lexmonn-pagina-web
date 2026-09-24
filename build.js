@@ -278,7 +278,7 @@ const FAQ = [
   },
   {
     q: "¿Dónde están ubicados y en qué horario atienden?",
-    a: "Estamos en la Cll 54 cr 53-34, Bello, Antioquia. Atendemos de lunes a viernes de 8:00 a.m. a 6:30 p.m. y los sábados de 9:00 a.m. a 3:00 p.m.",
+    a: "Estamos en la Cll 54 cr 53-34, Bello, Antioquia. Atendemos de lunes a viernes de 8:00 a.m. a 5:00 p.m. y los sábados de 9:00 a.m. a 3:00 p.m.",
   },
   {
     q: "¿Qué datos me piden para comprar?",
@@ -342,7 +342,7 @@ function buildHomePage(activeProducts, cats) {
       <div class="trust-item">${icon("factory", 28)}<div><strong>Fabricación propia</strong><span>Porta herramientas diseñados y hechos en Colombia.</span></div></div>
       <div class="trust-item">${icon("truck", 28)}<div><strong>Envíos a toda Colombia</strong><span>Despachamos por transportadora a tu ciudad.</span></div></div>
       <div class="trust-item">${icon("whatsapp", 28)}<div><strong>Pedido por WhatsApp</strong><span>Te confirmamos disponibilidad antes de despachar.</span></div></div>
-      <div class="trust-item">${icon("clock", 28)}<div><strong>Atención de lunes a sábado</strong><span>L–V 8:00–6:30 · Sáb 9:00–3:00.</span></div></div>
+      <div class="trust-item">${icon("clock", 28)}<div><strong>Atención de lunes a sábado</strong><span>L–V 8:00–5:00 · Sáb 9:00–3:00.</span></div></div>
     </div>
   </section>`;
 
@@ -614,7 +614,7 @@ function buildProductPage(p, cat) {
           <ul class="assurance">
             <li>${icon("truck", 20)} <span><strong>Envíos a toda Colombia</strong> por transportadora.</span></li>
             <li>${icon("check", 20)} <span><strong>Confirmamos por WhatsApp</strong> disponibilidad y detalles del envío antes de despachar.</span></li>
-            <li>${icon("pin", 20)} <span><strong>Bello, Antioquia.</strong> L–V 8:00–6:30 · Sáb 9:00–3:00.</span></li>
+            <li>${icon("pin", 20)} <span><strong>Bello, Antioquia.</strong> L–V 8:00–5:00 · Sáb 9:00–3:00.</span></li>
           </ul>
 
           <button id="product-share-btn" class="text-btn" type="button">${icon("share", 18)} <span class="text-btn-label">Compartir producto</span></button>
@@ -980,7 +980,7 @@ function buildLlmsTxt(activeProducts, cats) {
     "- Dirección: Cll 54 cr 53-34, Bello, Antioquia, Colombia",
     "- WhatsApp y teléfono: +57 301 559 7873",
     "- Correo: lexmonn.admon@gmail.com",
-    "- Horario: lunes a viernes 8:00 a.m. – 6:30 p.m.; sábados 9:00 a.m. – 3:00 p.m.",
+    "- Horario: lunes a viernes 8:00 a.m. – 5:00 p.m.; sábados 9:00 a.m. – 3:00 p.m.",
     "- Envíos: a toda Colombia por transportadora",
     "- NIT: 901923669",
     "",
