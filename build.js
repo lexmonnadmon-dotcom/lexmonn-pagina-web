@@ -98,7 +98,10 @@ const CATEGORIA_PRESENTACION = {
   "Porta Herramientas": {
     orden: 1,
     tagline: "Los que fabricamos nosotros, hechos para aguantar la obra.",
-    imagen: "/imagenes/lexmonn-morral-porta-herramientas.jpg",
+    // El cinturón Línea Premium, elegido por Christian el 2026-09-24 en lugar
+    // del morral. Es la misma foto de su ficha (postimg.cc), así que usa sus
+    // versiones livianas de imagenes/opt/ como cualquier producto.
+    imagen: "https://i.postimg.cc/QMhv6rNh/IMG-20260908-WA0020.jpg",
     // La única categoría de fabricación propia. Decirlo vale más que decir
     // cuántos productos tiene.
     insignia: "Fabricación propia",
