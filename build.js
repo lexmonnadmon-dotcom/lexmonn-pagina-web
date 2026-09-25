@@ -967,6 +967,82 @@ function buildSitemap(activeProducts, cats) {
   writeFile("sitemap.xml", xml);
 }
 
+// ---------- Listado de productos para Google Merchant Center ----------
+//
+// Google Shopping muestra gratis los productos de las tiendas registradas en
+// Merchant Center. En vez de que Google lea el sitio página por página (el
+// 2026-09-20 tenía solo 9 páginas indexadas), se le entrega este listado con
+// todo el catálogo en su formato (RSS 2.0 con el espacio de nombres g:), y
+// Merchant Center lo vuelve a leer solo, a diario, desde:
+//   https://lexmonn.com/productos-google.xml
+// Se regenera en cada build desde la Sheet, igual que las páginas, así que
+// precios y productos siempre coinciden con los del sitio.
+//
+// Envíos y devoluciones NO van aquí: se configuran una vez en la cuenta de
+// Merchant Center, que los aplica a todos los productos.
+function buildMerchantFeed(activeProducts) {
+  const xmlEsc = (s) =>
+    String(s)
+      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  const absoluta = (u) => (/^https?:\/\//i.test(u) ? u : `${SITE_URL}/${String(u).replace(/^\/+/, "")}`);
+  const precio = (n) => `${Math.round(n)} COP`;
+  const omitidos = [];
+
+  const items = activeProducts
+    .map((p) => {
+      const fotos = (p.imagenes && p.imagenes.length ? p.imagenes : [p.imagen]).filter(Boolean).map(absoluta);
+      if (!p.precio || !fotos.length) {
+        omitidos.push(p.id);
+        return "";
+      }
+      const propio = p.marca === "Lexmonn";
+      // Google exige descripción. Si la Sheet no la tiene, una frase honesta
+      // con lo que sí se sabe del producto (la misma idea que la meta
+      // descripción de su página).
+      const descripcion =
+        p.descripcion ||
+        (propio
+          ? `${p.nombre}, porta herramientas fabricado en Colombia por Lexmonn.`
+          : `${p.nombre}${p.marca && !p.nombre.includes(p.marca) ? ` ${p.marca}` : ""}, en la categoría ${p.categoria} de Lexmonn.`);
+      const campos = [
+        ["g:id", p.id],
+        ["g:title", p.nombre],
+        ["g:description", descripcion],
+        ["g:link", `${SITE_URL}/productos/${p.slug}.html`],
+        ["g:image_link", fotos[0]],
+        ...fotos.slice(1, 11).map((f) => ["g:additional_image_link", f]),
+        ["g:availability", "in_stock"],
+        ["g:condition", "new"],
+        ["g:price", precio(p.precio)],
+        ...(Shared.hasDiscount(p) ? [["g:sale_price", precio(p.precioOferta)]] : []),
+        ...(p.marca ? [["g:brand", p.marca]] : []),
+        // Los porta herramientas los fabrica Lexmonn y los genéricos no tienen
+        // marca: ninguno trae código de barras de fábrica (GTIN), y así se le
+        // dice a Google. Las herramientas de marca sí lo tienen, pero la Sheet
+        // no lo guarda, así que ahí no se afirma nada.
+        ...(propio || !p.marca ? [["g:identifier_exists", "no"]] : []),
+        ["g:product_type", p.categoria],
+      ];
+      return `    <item>\n${campos.map(([k, v]) => `      <${k}>${xmlEsc(v)}</${k}>`).join("\n")}\n    </item>`;
+    })
+    .filter(Boolean);
+
+  const xml =
+    `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">\n  <channel>\n` +
+    `    <title>Lexmonn</title>\n    <link>${SITE_URL}/</link>\n` +
+    `    <description>Porta herramientas fabricados en Colombia y herramientas de marca.</description>\n` +
+    `${items.join("\n")}\n  </channel>\n</rss>\n`;
+  writeFile("productos-google.xml", xml);
+  if (omitidos.length) {
+    console.log(`[build] ${omitidos.length} productos fuera del listado de Google (sin precio o sin foto): IDs ${omitidos.join(", ")}`);
+  }
+  return items.length;
+}
+
 // ---------- llms.txt ----------
 
 // Resumen en texto plano para asistentes de IA (ChatGPT, Gemini, Perplexity)
@@ -1141,11 +1217,12 @@ async function main() {
   buildPrivacyPage();
 
   buildSitemap(activeProducts, cats);
+  const enGoogle = buildMerchantFeed(activeProducts);
   buildLlmsTxt(activeProducts, cats);
   buildManifest();
 
   console.log(
-    `[build] Listo: index.html, catalogo.html, ${activeProducts.length} páginas de producto, ${cats.length} páginas de categoría, 404.html, privacidad.html, sitemap.xml, llms.txt.`
+    `[build] Listo: index.html, catalogo.html, ${activeProducts.length} páginas de producto, ${cats.length} páginas de categoría, 404.html, privacidad.html, sitemap.xml, productos-google.xml (${enGoogle} productos), llms.txt.`
   );
 }
 
