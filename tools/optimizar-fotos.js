@@ -5,7 +5,7 @@
 // Las fotos originales pesan de 60 a 400 KB, pero en celular se ven chicas:
 // una tarjeta de producto mide ~180 px de ancho y una miniatura de la
 // galería, 68. Este script genera, por cada foto de producto, copias en WebP
-// de 200, 400 y 800 px de ancho en imagenes/opt/, y la lista
+// de 200, 400, 480 y 800 px de ancho en imagenes/opt/, y la lista
 // lib/fotos-optimizadas.js con la que el sitio elige la adecuada para cada
 // pantalla (srcset). También las versiones de la foto de portada, el logo,
 // el ícono del pie y el pop-up de aniversario (imagenes/opt/sitio/).
@@ -45,7 +45,14 @@ const SOLO_REVISAR = process.argv.includes("--revisar");
 // Anchos de las versiones: 200 para miniaturas y carrito, 400 para tarjetas
 // en celular, 800 para la foto grande del producto. Nunca se agranda una
 // foto: si la original es más angosta, su ancho real es la versión mayor.
-const ANCHOS = [200, 400, 800];
+//
+// La de 480 (desde el 2026-09-30) es para las tarjetas en los celulares de
+// hoy: con pantalla densa (2,6-3 pixeles por punto) una tarjeta de ~160
+// puntos pide 420-470 px, y Chrome toma la versión más chica que alcance,
+// así que sin la de 480 saltaba a la de 800: las 147 tarjetas del catálogo
+// bajaban 4,6 MB de fotos, con ella 2,4. Lo mismo con la baldosa destacada
+// del mosaico y las ofertas de la portada.
+const ANCHOS = [200, 400, 480, 800];
 const CALIDAD = 80;
 
 // Imágenes fijas del sitio, con su propio tamaño. El recorte de la portada
