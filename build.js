@@ -334,9 +334,9 @@ function buildHomePage(activeProducts, cats) {
         <a class="btn btn-lime btn-lg" href="/catalogo.html">Ver el catálogo ${icon("arrowRight", 20)}</a>
         <a class="btn btn-ghost-light btn-lg" href="${Shell.WHATSAPP_URL}" target="_blank" rel="noopener">${icon("whatsapp", 20)} Escríbenos</a>
       </div>
+      <!-- Solo los 5 años: Gimena pidió quitar la cantidad de productos y de
+           categorías (2026-09-30). -->
       <ul class="hero-stats">
-        <li><strong>${activeProducts.length}</strong><span>productos</span></li>
-        <li><strong>${cats.length}</strong><span>categorías</span></li>
         <li><strong>5</strong><span>años en el gremio</span></li>
       </ul>
     </div>
