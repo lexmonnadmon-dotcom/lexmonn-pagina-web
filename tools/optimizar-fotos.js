@@ -130,8 +130,12 @@ async function enParalelo(tareas, n) {
   return resultados;
 }
 
+// Tope de espera por descarga: el 2026-09-29 i.postimg.cc dejó de responder
+// y cada foto se quedaba colgada; en GitHub el paso tardó 9 minutos.
+const ESPERA_MAXIMA_MS = 30000;
+
 async function fotosDeLaSheet() {
-  const res = await fetch(CONFIG.SHEET_CSV_URL, { cache: "no-store" });
+  const res = await fetch(CONFIG.SHEET_CSV_URL, { cache: "no-store", signal: AbortSignal.timeout(ESPERA_MAXIMA_MS) });
   if (!res.ok) throw new Error(`HTTP ${res.status} al leer la Sheet`);
   return Shared.parseCSV(await res.text())
     .map(Shared.normalizeProduct)
@@ -143,7 +147,7 @@ async function descargar(url, clave) {
   fs.mkdirSync(CACHE_DIR, { recursive: true });
   const destino = path.join(CACHE_DIR, `${clave}${path.extname(new URL(url).pathname) || ".jpg"}`);
   if (!fs.existsSync(destino)) {
-    const res = await fetch(url);
+    const res = await fetch(url, { signal: AbortSignal.timeout(ESPERA_MAXIMA_MS) });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     fs.writeFileSync(destino, Buffer.from(await res.arrayBuffer()));
   }
