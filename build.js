@@ -317,7 +317,6 @@ function buildHomePage(activeProducts, cats) {
     extraJsonLd: [faqJsonLd],
   });
 
-  const topBrands = uniqueBrands(activeProducts).filter((b) => b !== "Lexmonn").slice(0, 4);
 
   // El <h1> es el mismo texto que ya tenía la portada: es la frase que
   // describe lo que hace Lexmonn y la que se busca.
@@ -326,7 +325,11 @@ function buildHomePage(activeProducts, cats) {
     <div class="container hero-inner">
       <p class="eyebrow eyebrow-dark">${icon("factory", 16)} Fabricación propia · Hecho en Colombia</p>
       <h1 id="hero-title" class="hero-title">Porta herramientas <span>fabricados en Colombia</span></h1>
-      <p class="hero-lead">Cinturones, morrales y bolsillos hechos para aguantar la obra, y la herramienta de las marcas que ya conoces${topBrands.length ? ` — ${esc(joinList(topBrands))}` : ""}. Armas tu pedido aquí y lo envías por WhatsApp.</p>
+      <div class="hero-lead">
+        <!-- Texto de Christian y Gimena, 2026-09-29. -->
+        <p>Con nosotros encuentra soluciones funcionales y resistentes para organizar, transportar y tener tus herramientas siempre a la mano, con opciones para diferentes oficios y necesidades.</p>
+        <p>Adicional contamos con gran variedad de herramientas.<br><strong>Conócenos.</strong></p>
+      </div>
       <div class="hero-actions">
         <a class="btn btn-lime btn-lg" href="/catalogo.html">Ver el catálogo ${icon("arrowRight", 20)}</a>
         <a class="btn btn-ghost-light btn-lg" href="${Shell.WHATSAPP_URL}" target="_blank" rel="noopener">${icon("whatsapp", 20)} Escríbenos</a>

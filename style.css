@@ -527,6 +527,9 @@ p { text-wrap: pretty; }
   color: #d4dbd0;
   max-width: 54ch;
 }
+.hero-lead p { margin: 0; }
+.hero-lead p + p { margin-top: 12px; }
+.hero-lead strong { color: #fff; font-weight: 700; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-stats {
   display: flex;
