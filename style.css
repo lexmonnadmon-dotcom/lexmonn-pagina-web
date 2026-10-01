@@ -112,7 +112,9 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-padding-top: 96px; }
+/* scroll-behavior: el botón "Ver las categorías" de la portada baja
+   deslizando, no de golpe (con movimiento reducido salta: ver el final). */
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -406,6 +408,9 @@ p { text-wrap: pretty; }
 
 @media (min-width: 900px) {
   .site-header { position: sticky; top: 0; }
+  /* Para que el encabezado fijo no tape el destino de un enlace interno. En
+     celular no se queda fijo, así que ahí el destino va arriba del todo. */
+  html { scroll-padding-top: 96px; }
 }
 
 @media (max-width: 899px) {
@@ -510,6 +515,10 @@ p { text-wrap: pretty; }
 .hero-inner { padding-block: 56px; }
 .hero-inner > * { max-width: 620px; }
 .hero-inner > .hero-title { max-width: 700px; }
+/* Los tres botones ocupan 614 px con Barlow y hasta 641 con la letra de
+   reserva: en 620 el tercero saltaba de fila mientras cargaba la letra y
+   toda la página se movía 68 px al volver. */
+.hero-inner > .hero-actions { max-width: 700px; }
 .hero-title {
   margin: 14px 0 18px;
   font-family: var(--font-display);

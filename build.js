@@ -332,6 +332,9 @@ function buildHomePage(activeProducts, cats) {
       </div>
       <div class="hero-actions">
         <a class="btn btn-lime btn-lg" href="/catalogo.html">Ver el catálogo ${icon("arrowRight", 20)}</a>
+        <!-- Baja al mosaico de categorías, que queda más abajo y quien entra
+             no lo nota (Christian, 2026-09-30). -->
+        <a class="btn btn-lime btn-lg" href="#categorias">Ver las categorías ${icon("arrowDown", 20)}</a>
         <a class="btn btn-ghost-light btn-lg" href="${Shell.WHATSAPP_URL}" target="_blank" rel="noopener">${icon("whatsapp", 20)} Escríbenos</a>
       </div>
       <!-- Solo los 5 años: Gimena pidió quitar la cantidad de productos y de
@@ -352,7 +355,7 @@ function buildHomePage(activeProducts, cats) {
     </div>
   </section>`;
 
-  const categories = `<section class="section" aria-labelledby="cats-title">
+  const categories = `<section id="categorias" class="section" aria-labelledby="cats-title">
     <div class="container">
       <div class="section-head">
         <div>
