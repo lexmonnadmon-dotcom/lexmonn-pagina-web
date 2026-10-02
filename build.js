@@ -406,6 +406,8 @@ function buildHomePage(activeProducts, cats) {
     </div>
   </section>`;
 
+  // El texto de la historia es de Christian (2026-10-01). Ya no dice "la
+  // primera empresa colombiana": dice "una empresa colombiana especializada".
   const story = `<section class="section story" aria-labelledby="story-title">
     <div class="container story-grid">
       <div class="story-aside">
@@ -418,11 +420,12 @@ function buildHomePage(activeProducts, cats) {
         </ul>
       </div>
       <div class="story-body">
-        <p>Detrás de Lexmonn hay una familia que ha estado ligada durante toda su vida al sector de la construcción. Crecer cerca de este gremio nos permitió conocer de primera mano las necesidades de quienes trabajan diariamente con herramientas y entender qué productos realmente necesitan en su día a día.</p>
-        <p>Hace cinco años, ese conocimiento se convirtió en Lexmonn, con la idea de comercializar productos y soluciones para quienes hacen parte de este sector. Desde el comienzo fabricamos nuestros propios porta herramientas, desarrollados a partir de las necesidades de nuestros clientes y de la experiencia que ya teníamos con este gremio.</p>
-        <p>Con el tiempo, las herramientas se convirtieron en un complemento fundamental para nuestro crecimiento. Entendimos que nuestros clientes no solo necesitaban productos para llevar sus herramientas, sino también las herramientas necesarias para realizar su trabajo. Así fuimos ampliando nuestra oferta y construyendo una propuesta cada vez más completa.</p>
-        <p>Hoy somos la primera empresa colombiana especializada en la fabricación de porta herramientas de calidad garantizada, con más de diez líneas diseñadas para diferentes necesidades y tipos de trabajo.</p>
-        <p class="story-close">Cinco años después, seguimos creciendo con el mismo propósito: crear soluciones para quienes hacen el trabajo real.</p>
+        <p>Detrás de Lexmonn hay una familia que ha estado ligada durante toda su vida al sector de la construcción. Crecer cerca de este gremio nos permitió conocer de primera mano las necesidades de quienes trabajan diariamente con herramientas y entender qué realmente necesitan para hacer mejor su trabajo.</p>
+        <p>Hace cinco años, ese conocimiento se convirtió en Lexmonn, una empresa creada para desarrollar, comercializar productos y brindar soluciones pensados para quienes hacen parte de este sector.</p>
+        <p>Desde el comienzo fabricamos nuestros propios porta herramientas, desarrollados a partir de las necesidades reales de nuestros clientes y de la experiencia que ya teníamos junto a este gremio.</p>
+        <p>Con el tiempo, entendimos que nuestros clientes no solo necesitaban una forma de llevar sus herramientas, sino también las herramientas adecuadas para realizar su trabajo. Así ampliamos nuestra oferta y construimos una propuesta cada vez más completa.</p>
+        <p>Hoy, Lexmonn es una empresa colombiana especializada en porta herramientas y soluciones para el trabajo, con más de diez líneas diseñadas para diferentes necesidades y formas de trabajar.</p>
+        <p class="story-close">Pero nuestro propósito va más allá de vender productos, queremos que cada trabajador encuentre una mejor manera de llevar sus herramientas, organizar su trabajo y hacer lo que sabe hacer mejor.</p>
       </div>
     </div>
   </section>`;
