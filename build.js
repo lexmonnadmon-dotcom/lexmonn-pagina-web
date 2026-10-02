@@ -371,7 +371,7 @@ function buildHomePage(activeProducts, cats) {
   </section>`;
 
   // Tres pasos de verdad en secuencia: aquí sí tiene sentido numerarlos.
-  // Los textos de los pasos 1 y 2 son de Christian (2026-10-01); el paso 1
+  // Los textos de los tres pasos son de Christian (2026-10-01); el paso 1
   // antes era "Arma tu carrito".
   const steps = `<section class="section section-alt" aria-labelledby="steps-title">
     <div class="container">
@@ -394,8 +394,8 @@ function buildHomePage(activeProducts, cats) {
         </li>
         <li class="step">
           <span class="step-num">3</span>
-          <h3>Te confirmamos y despachamos</h3>
-          <p>Te respondemos por WhatsApp para confirmar disponibilidad, pago y envío, y lo despachamos a tu ciudad.</p>
+          <h3>Confirmamos y despachamos</h3>
+          <p>Te contactamos por WhatsApp para confirmar tu pedido, pago y envío. Luego lo despachamos hasta tu ciudad.</p>
         </li>
       </ol>
     </div>
