@@ -331,12 +331,12 @@ function filterPrerenderedCards() {
   renderSearchEmptyState(visible);
 }
 
+// Solo al buscar: sin búsqueda no se dice cuántos productos hay (ver
+// renderCatalogToolbar en build.js).
 function updateResultCount(n) {
   const el = document.getElementById("result-count");
   if (!el) return;
-  el.textContent = searchTerm
-    ? `${n} ${n === 1 ? "resultado" : "resultados"} para “${searchTerm}”`
-    : `${n} ${n === 1 ? "producto" : "productos"}`;
+  el.textContent = searchTerm ? `${n} ${n === 1 ? "resultado" : "resultados"} para “${searchTerm}”` : "";
 }
 
 function renderSearchEmptyState(visibleCount) {

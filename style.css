@@ -1183,7 +1183,9 @@ body.searching .page-hero .eyebrow { display: none; }
   margin-bottom: 16px;
 }
 .result-count { margin: 0; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
-.sort-control { display: inline-flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--muted); font-weight: 600; }
+/* margin-left: auto lo deja a la derecha también cuando está solo en su fila
+   (sin búsqueda no hay conteo a su izquierda). */
+.sort-control { display: inline-flex; align-items: center; gap: 10px; margin-left: auto; font-size: 0.9rem; color: var(--muted); font-weight: 600; }
 .sort-control select {
   min-height: 42px;
   padding: 0 38px 0 14px;

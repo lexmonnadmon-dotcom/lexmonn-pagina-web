@@ -247,11 +247,13 @@ function renderCategoryFilterPillsHtml(allCategories, activeCategory) {
   return `<div id="category-filters" class="category-filters" role="toolbar" aria-label="Filtrar por categoría">${allBtn}${catBtns}</div>`;
 }
 
-// Barra de herramientas sobre la grilla: cuántos productos se ven y cómo
-// ordenarlos. `app.js` actualiza el conteo en vivo al buscar o filtrar.
-function renderCatalogToolbar(count) {
+// Barra de herramientas sobre la grilla: cómo ordenar los productos y, al
+// buscar, cuántos resultados hubo (eso lo escribe `app.js`). No dice cuántos
+// productos hay: Christian pidió quitarlo el 2026-10-01, porque el negocio
+// vende muchos más productos que los publicados y la cifra daba otra idea.
+function renderCatalogToolbar() {
   return `<div class="catalog-toolbar">
-      <p class="result-count" id="result-count" aria-live="polite">${count} ${count === 1 ? "producto" : "productos"}</p>
+      <p class="result-count" id="result-count" aria-live="polite"></p>
       <label class="sort-control">
         <span>Ordenar por</span>
         <select id="sort-select">
@@ -473,8 +475,10 @@ function buildHomePage(activeProducts, cats) {
 function buildCatalogPage(activeProducts, allCategories) {
   const canonical = `${SITE_URL}/catalogo.html`;
   const title = "Catálogo de porta herramientas y herramientas | Lexmonn";
+  // Sin la cantidad de productos (antes decía "Los 143 productos de
+  // Lexmonn"): el negocio vende muchos más que los publicados.
   const description = Shared.truncateForMeta(
-    `Los ${activeProducts.length} productos de Lexmonn: porta herramientas fabricados en Colombia, herramientas Total y Truper, drywall, corte, medición y seguridad. Envíos a toda Colombia.`,
+    "Catálogo de Lexmonn: porta herramientas fabricados en Colombia, herramientas Total y Truper, drywall, corte, medición y seguridad. Envíos a toda Colombia.",
     160
   );
 
@@ -511,7 +515,7 @@ function buildCatalogPage(activeProducts, allCategories) {
       </div>
 
       ${renderCategoryFilterPillsHtml(allCategories, "Todos")}
-      ${renderCatalogToolbar(activeProducts.length)}
+      ${renderCatalogToolbar()}
 
       <div id="catalog" class="product-grid">${activeProducts.map(Templates.renderProductCard).join("")}</div>
     </div>
@@ -905,8 +909,8 @@ function buildCategoryPage(cat, allCats) {
   // En la de fabricación propia no se listan marcas: todo es Lexmonn, y un
   // producto de reventa cargado ahí por error la haría ver como "de marcas".
   // Tampoco la marca que ya está en el nombre de la categoría ("Herramientas
-  // Total" no necesita decir "Marcas: Total"). La cantidad de productos no va
-  // aquí: la dice la barra de la grilla, que además se actualiza al buscar.
+  // Total" no necesita decir "Marcas: Total"). La cantidad de productos no se
+  // muestra en ningún lado de la página (ver renderCatalogToolbar).
   const brands = cat.insignia ? [] : cat.brands.filter((b) => b !== "Lexmonn" && !catName.includes(b));
   const facts = [cat.minPrice ? `Desde ${Shared.formatPrice(cat.minPrice)}` : "", "Envíos a toda Colombia"].filter(Boolean);
 
@@ -934,7 +938,7 @@ function buildCategoryPage(cat, allCats) {
 
   <section class="section section-tight" aria-label="Productos de ${esc(catName)}">
     <div class="container">
-      ${renderCatalogToolbar(products.length)}
+      ${renderCatalogToolbar()}
       <div id="catalog" class="product-grid">${products.map(Templates.renderProductCard).join("")}</div>
     </div>
   </section>
@@ -1088,7 +1092,7 @@ function buildLlmsTxt(activeProducts, cats) {
     "",
     "## Catálogo",
     "",
-    `- [Todo el catálogo](${SITE_URL}/catalogo.html): ${activeProducts.length} productos`,
+    `- [Todo el catálogo](${SITE_URL}/catalogo.html): todos los productos publicados en el sitio`,
     ...cats.map((c) => `- [${c.name}](${SITE_URL}/categoria/${c.slug}.html): ${c.intro}`),
     "",
     "## Cómo comprar",
