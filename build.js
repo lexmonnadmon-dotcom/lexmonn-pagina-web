@@ -466,6 +466,10 @@ function buildHomePage(activeProducts, cats) {
 // Desde el 2026-09-02 la home ya NO lleva la grilla de productos: se entra por
 // las categorías. Esta página es la que recoge "ver todo", y también donde
 // aterriza el buscador desde cualquier otra página.
+//
+// El título y la frase que se ven arriba son de Christian (2026-10-01); antes
+// el título era "Todo el catálogo". El <title> y la descripción para Google
+// no cambiaron: siguen diciendo "catálogo", que es lo que la gente busca.
 function buildCatalogPage(activeProducts, allCategories) {
   const canonical = `${SITE_URL}/catalogo.html`;
   const title = "Catálogo de porta herramientas y herramientas | Lexmonn";
@@ -489,8 +493,8 @@ function buildCatalogPage(activeProducts, allCategories) {
   const main = `<section class="page-hero">
     <div class="container">
       ${breadcrumbs}
-      <h1 class="page-title">Todo el catálogo</h1>
-      <p class="page-lead">Porta herramientas fabricados por Lexmonn y herramienta de las mejores marcas para la obra. Filtra por categoría o busca por nombre, arma tu pedido y envíalo por WhatsApp.</p>
+      <h1 class="page-title">Todo lo que necesitas para trabajar a tu manera</h1>
+      <p class="page-lead">Desde nuestros porta herramientas hasta las herramientas de las marcas que conoces. Elige, combina y arma tu equipo según lo que haces y cómo trabajas.</p>
     </div>
   </section>
 
