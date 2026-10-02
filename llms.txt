@@ -13,7 +13,7 @@
 
 ## Catálogo
 
-- [Todo el catálogo](https://lexmonn.com/catalogo.html): 147 productos
+- [Todo el catálogo](https://lexmonn.com/catalogo.html): 143 productos
 - [Porta Herramientas](https://lexmonn.com/categoria/porta-herramientas.html): Cinturones, morrales, bolsos, cargaderas y bolsillos porta herramientas diseñados y fabricados por Lexmonn en Colombia. Líneas pensadas para drywall, electricidad y construcción, con materiales reforzados para el trabajo diario en obra.
 - [Herramientas Total](https://lexmonn.com/categoria/herramientas-total.html): Herramienta eléctrica, inalámbrica y manual de la marca Total: taladros, rotomartillos, pulidoras, sierras, baterías y cargadores de 20V, además de martillos, flexómetros, alicates y accesorios para obra.
 - [Herramientas Truper](https://lexmonn.com/categoria/herramientas-truper.html): Herramienta Truper y Truper Expert para acabados y construcción: tapizadoras, espátulas, niveles, escuadras, pinzas, martillos, brocas, discos y accesorios de corte.

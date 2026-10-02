@@ -97,7 +97,9 @@ function getAllCategories(products) {
 const CATEGORIA_PRESENTACION = {
   "Porta Herramientas": {
     orden: 1,
-    tagline: "Los que fabricamos nosotros, hechos para aguantar la obra.",
+    // Frase pedida por Christian el 2026-10-01; antes decía "Los que
+    // fabricamos nosotros, hechos para aguantar la obra."
+    tagline: "Llegamos para revolucionar la forma en que trabajas.",
     // El cinturón Línea Premium, elegido por Christian el 2026-09-24 en lugar
     // del morral. Es la misma foto de su ficha; desde el 2026-09-30 vive en el
     // repositorio (antes en postimg.cc) y usa sus versiones livianas.
