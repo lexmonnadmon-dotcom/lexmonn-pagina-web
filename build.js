@@ -283,8 +283,10 @@ const FAQ = [
     a: "Tú eliges cómo trabajar. Nuestras líneas son armables y puedes configurarlas a tu medida, adaptando el porta taladro y agregando las cargaderas como complemento.",
   },
   {
-    q: "¿Dónde están ubicados y en qué horario atienden?",
-    a: "Estamos en la Cll 54 cr 53-34, Bello, Antioquia. Atendemos de lunes a viernes de 8:00 a.m. a 5:00 p.m. y los sábados de 9:00 a.m. a 3:00 p.m.",
+    // De Christian (2026-10-01), en lugar de "¿Dónde están ubicados y en qué
+    // horario atienden?": la dirección y el horario ya están en el pie.
+    q: "¿Puedo comprar a crédito?",
+    a: "¡Sí! Con Sistecrédito puedes comprar en Lexmonn estés donde estés. En nuestro punto físico o desde el enlace de compra si estás en otra ciudad. Todo sujeto a aprobación de Sistecrédito.",
   },
   {
     q: "¿Qué datos me piden para comprar?",
