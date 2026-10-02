@@ -277,8 +277,10 @@ const FAQ = [
     a: "Sí. Despachamos a todo el país por transportadora. Los detalles del envío a tu ciudad te los confirmamos por WhatsApp al recibir tu pedido.",
   },
   {
-    q: "¿Los porta herramientas los fabrican ustedes?",
-    a: "Sí. Los cinturones, morrales, bolsos y bolsillos porta herramientas Lexmonn los diseñamos y fabricamos nosotros, en Colombia. El resto del catálogo son herramientas de marcas como Total, Truper, DeWalt y Stanley.",
+    // De Christian (2026-10-01), en lugar de "¿Los porta herramientas los
+    // fabrican ustedes?".
+    q: "¿Cómo puedo armar mi porta herramientas?",
+    a: "Tú eliges cómo trabajar. Nuestras líneas son armables y puedes configurarlas a tu medida, adaptando el porta taladro y agregando las cargaderas como complemento.",
   },
   {
     q: "¿Dónde están ubicados y en qué horario atienden?",
