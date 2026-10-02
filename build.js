@@ -406,13 +406,14 @@ function buildHomePage(activeProducts, cats) {
     </div>
   </section>`;
 
-  // El texto de la historia es de Christian (2026-10-01). Ya no dice "la
-  // primera empresa colombiana": dice "una empresa colombiana especializada".
+  // El título y el texto de la historia son de Christian (2026-10-01). El
+  // texto ya no dice "la primera empresa colombiana": dice "una empresa
+  // colombiana especializada".
   const story = `<section class="section story" aria-labelledby="story-title">
     <div class="container story-grid">
       <div class="story-aside">
         <p class="eyebrow">Nuestra historia</p>
-        <h2 id="story-title" class="section-title">Cinco años de Lexmonn. Toda una vida entendiendo el gremio.</h2>
+        <h2 id="story-title" class="section-title">Cinco años construyendo una mejor manera de trabajar</h2>
         <ul class="story-facts">
           <li><strong>5</strong><span>años fabricando</span></li>
           <li><strong>+10</strong><span>líneas de porta herramientas</span></li>
