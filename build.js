@@ -289,8 +289,10 @@ const FAQ = [
     a: "¡Sí! Con Sistecrédito puedes comprar en Lexmonn estés donde estés. En nuestro punto físico o desde el enlace de compra si estás en otra ciudad. Todo sujeto a aprobación de Sistecrédito.",
   },
   {
-    q: "¿Qué datos me piden para comprar?",
-    a: "Nombre, cédula o NIT, dirección, ciudad, teléfono y correo. La cédula (o el NIT de tu empresa) y el correo son para la factura electrónica y el envío. El sitio no guarda esos datos: van solo en el mensaje de WhatsApp con tu pedido.",
+    // De Christian (2026-10-01). Que el sitio no guarda esos datos lo siguen
+    // diciendo el formulario del pedido y la página de privacidad.
+    q: "¿Qué datos necesito para comprar?",
+    a: "Nombre, cédula o NIT, teléfono, correo, ciudad y dirección de entrega. Estos datos los usamos para gestionar tu compra, facturación y envío.",
   },
 ];
 
