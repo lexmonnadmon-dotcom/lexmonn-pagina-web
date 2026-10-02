@@ -1009,22 +1009,38 @@ p { text-wrap: pretty; }
   padding: 0;
   list-style: none;
 }
+/* Las cifras van a la derecha de su columna y los textos a la izquierda de
+   la suya: así la separación entre cifra y texto es la misma en las tres
+   filas y los textos empiezan alineados. Antes las cifras iban a la
+   izquierda con un ancho mínimo, y "5" quedaba a 42 px de su texto y "+10"
+   a 14. El 1.2em es el ancho de la cifra más ancha ("+10"): si algún día
+   hay una más ancha, se sube. */
 .story-facts li {
   display: flex;
-  align-items: baseline;
-  gap: 14px;
-  padding: 14px 0;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 0;
   border-top: 1px solid var(--line-strong);
 }
+.story-facts li:last-child { border-bottom: 1px solid var(--line-strong); }
 .story-facts strong {
-  min-width: 2.6ch;
+  flex: none;
+  min-width: 1.2em;
+  text-align: right;
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 2.4rem;
   line-height: 1;
   color: var(--lime-text);
 }
-.story-facts span { color: var(--muted); font-weight: 600; }
+.story-facts span {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
 .story-body p { margin: 0 0 18px; font-size: 1.06rem; line-height: 1.75; color: #29302c; max-width: 65ch; }
 .story-body .story-close {
   margin-top: 28px;
@@ -1037,13 +1053,11 @@ p { text-wrap: pretty; }
   text-transform: uppercase;
   color: var(--ink);
 }
+/* En celular las cifras siguen en filas, como en computador: antes iban en
+   tres columnas angostas, donde los textos en mayúscula no caben bien. */
 @media (max-width: 899px) {
   .story-grid { grid-template-columns: 1fr; }
   .story-aside { position: static; }
-  .story-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-  .story-facts li { flex-direction: column; gap: 4px; }
-  .story-facts strong { font-size: 2rem; }
-  .story-facts span { font-size: 0.85rem; }
 }
 
 /* ---------- Preguntas frecuentes ---------- */
