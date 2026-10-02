@@ -291,6 +291,8 @@ function renderPrivacyNotice() {
 
 // ---------- Pie de página ----------
 
+// El lema y la frase bajo el logo son de Christian (2026-10-01). El lema va
+// escrito normal y lo pone en mayúsculas el CSS (.footer-lema).
 function renderFooter() {
   const cats = (state.navCategories || [])
     .map((c) => `<li><a href="/categoria/${c.slug}.html">${escapeHtml(c.name)}</a></li>`)
@@ -303,7 +305,8 @@ function renderFooter() {
         <img src="/imagenes/opt/sitio/lex-icono-112.webp" data-orig="/favicon-192.png" onerror="${FIJA_ONERROR}" alt="" width="56" height="56" loading="lazy" decoding="async">
         <span>Lexmonn</span>
       </a>
-      <p>Porta herramientas fabricados en Colombia y herramienta de las marcas que ya conoces para la obra. Desde Bello, Antioquia, hace cinco años.</p>
+      <p class="footer-lema">Colombia merece una mejor manera de trabajar.</p>
+      <p>Nosotros estamos construyéndola, creando la forma de llevar tus herramientas al siguiente nivel.</p>
       <ul class="footer-social" aria-label="Redes sociales">
         <li><a href="${SOCIAL.instagram}" target="_blank" rel="noopener" aria-label="Instagram de Lexmonn">${icon("instagram")}</a></li>
         <li><a href="${SOCIAL.facebook}" target="_blank" rel="noopener" aria-label="Facebook de Lexmonn">${icon("facebook")}</a></li>

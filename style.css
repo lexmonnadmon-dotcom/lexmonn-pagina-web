@@ -1444,6 +1444,18 @@ body.searching .page-hero .eyebrow { display: none; }
 }
 .footer-logo img { width: 52px; height: 52px; border-radius: 10px; }
 .footer-brand p { margin: 16px 0 20px; font-size: 0.94rem; line-height: 1.6; max-width: 38ch; }
+.footer-brand .footer-lema {
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: #fff;
+}
+.footer-brand .footer-lema + p { margin-top: 0; }
 .footer-social { display: flex; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .footer-social a {
   display: grid;
