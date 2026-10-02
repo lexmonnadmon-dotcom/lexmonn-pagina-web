@@ -268,11 +268,10 @@ function renderCatalogToolbar(count) {
 // Preguntas frecuentes. Todo lo que dicen sale de cómo funciona el sitio de
 // verdad (pedido por WhatsApp, envíos por transportadora, datos que se piden)
 // y de los datos del negocio. Si algo de eso cambia, hay que cambiarlo aquí.
+//
+// No está "¿Cómo hago un pedido?": Christian pidió quitarla el 2026-10-01,
+// porque ya lo responden los tres pasos de "Cómo comprar en Lexmonn".
 const FAQ = [
-  {
-    q: "¿Cómo hago un pedido en Lexmonn?",
-    a: "Agrega los productos al carrito, toca “Finalizar pedido por WhatsApp” y completa tus datos de entrega. Se abre WhatsApp con el pedido ya armado para que lo envíes a Lexmonn, y ahí te confirmamos disponibilidad y envío.",
-  },
   {
     q: "¿Hacen envíos a toda Colombia?",
     a: "Sí. Despachamos a todo el país por transportadora. Los detalles del envío a tu ciudad te los confirmamos por WhatsApp al recibir tu pedido.",
