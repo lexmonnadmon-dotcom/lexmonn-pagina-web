@@ -308,6 +308,18 @@ Se adapta a cinturones de trabajo</g:description>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
+      <g:id>104</g:id>
+      <g:title>Cabezal lijador de poste para paneles de yeso</g:title>
+      <g:description>el cabezal de lijadora de poste de yeso mide aproximadamente 9 x 3.25 pulgadas y cuenta con una rosca externa compatible con postes roscados de 3/4 pulgadas. Puede utilizar postes de diferentes longitudes según sea necesario, por lo que es ideal para tareas de lijado de paredes y techos.</g:description>
+      <g:link>https://lexmonn.com/productos/cabezal-lijador-de-poste-para-paneles-de-yeso-104.html</g:link>
+      <g:image_link>https://lexmonn.com/imagenes/cabezal-lija-rectangular-pertiga.jpg</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>110000 COP</g:price>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:product_type>Drywall y Acabados</g:product_type>
+    </item>
+    <item>
       <g:id>136</g:id>
       <g:title>Caja de Acabado para Drywall TapeTech</g:title>
       <g:description>Caja lisa para acabado de drywall, en aluminio anodizado dorado, con ruedas guía en ambos extremos y resortes tensores.</g:description>
@@ -947,6 +959,18 @@ Se adapta a cinturones de trabajo</g:description>
       <g:product_type>Seguridad Industrial</g:product_type>
     </item>
     <item>
+      <g:id>43</g:id>
+      <g:title>Gancho Para Taladro Drywall</g:title>
+      <g:description>Pieza de repuesto alternativo para Taladros, gancho de acero resistente</g:description>
+      <g:link>https://lexmonn.com/productos/gancho-para-taladro-drywall-43.html</g:link>
+      <g:image_link>https://i.postimg.cc/1zv6Q7fJ/Whats-App-Image-2026-10-05-at-2-26-53-PM.jpg</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>25000 COP</g:price>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:product_type>Herramientas de Construcción</g:product_type>
+    </item>
+    <item>
       <g:id>52</g:id>
       <g:title>Grapadora Manual 3 en 1 Total</g:title>
       <g:description>Grapadora manual de cuerpo metálico que admite grapas tipo U, tipo T y puntillas. Incluye grapas de repuesto.</g:description>
@@ -1238,23 +1262,11 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
-      <g:id>49</g:id>
-      <g:title>Martillo de Uña 16 oz Total</g:title>
-      <g:description>Martillo de uña de 16 onzas con cabeza forjada y mango de fibra de vidrio con agarre antideslizante.</g:description>
-      <g:link>https://lexmonn.com/productos/martillo-de-una-16-oz-total-49.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/total-martillo-una-16oz.jpg</g:image_link>
-      <g:availability>in_stock</g:availability>
-      <g:condition>new</g:condition>
-      <g:price>32000 COP</g:price>
-      <g:brand>Total</g:brand>
-      <g:product_type>Herramientas Total</g:product_type>
-    </item>
-    <item>
       <g:id>33</g:id>
       <g:title>Martillo de Uña 27 mm Truper</g:title>
       <g:description>Martillo de uña con cabeza forjada de 27 mm y mango de fibra de vidrio con agarre antideslizante.</g:description>
       <g:link>https://lexmonn.com/productos/martillo-de-una-27-mm-truper-33.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/truper-martillo-una-27mm.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/xdsKsQqg/Whats-App-Image-2026-10-05-at-9-50-34-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>35000 COP</g:price>
@@ -1266,7 +1278,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:title>Mezclador de Pasta 24&quot; Wal-Board</g:title>
       <g:description>Mezclador manual de 24 pulgadas en construcción metálica, para mezclar masilla y pasta rápidamente.</g:description>
       <g:link>https://lexmonn.com/productos/mezclador-de-pasta-24-wal-board-11.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/walboard-mezclador-pasta-24.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/y8scsxZN/Whats-App-Image-2026-10-05-at-9-52-43-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>159800 COP</g:price>
@@ -1291,7 +1303,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:title>Navaja Abatible NV-6X Truper</g:title>
       <g:description>Navaja abatible con cambio rápido de cuchilla, doble bisel para cortes precisos e incluye 5 cuchillas de repuesto.</g:description>
       <g:link>https://lexmonn.com/productos/navaja-abatible-nv-6x-truper-19.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/truper-navaja-abatible-nv6x.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/pL3vKhJT/Whats-App-Image-2026-10-05-at-9-54-57-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>40000 COP</g:price>
@@ -1303,7 +1315,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:title>Navaja de Punta Intercambiable 25 mm DeWalt</g:title>
       <g:description>Navaja de cuerpo metálico con hoja de 25 mm intercambiable y avance por segmentos.</g:description>
       <g:link>https://lexmonn.com/productos/navaja-de-punta-intercambiable-25-mm-dewalt-21.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/dewalt-navaja-25mm.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/1R7jgxHR/Whats-App-Image-2026-10-05-at-10-01-52-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>96600 COP</g:price>
@@ -1315,7 +1327,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:title>Navaja Plegable Compacta Husky</g:title>
       <g:description>Navaja plegable de uso general con seguro de bloqueo y mango texturizado.</g:description>
       <g:link>https://lexmonn.com/productos/navaja-plegable-compacta-husky-16.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/husky-navaja-plegable-compacta.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/xTCV7ys1/Whats-App-Image-2026-10-05-at-9-59-28-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>60800 COP</g:price>
@@ -1347,7 +1359,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Nivel Magnetico De 9&quot; Total</g:title>
       <g:description>Nivel compacto de 225 mm con tres viales de lectura y cuerpo de aluminio, para espacios donde no entra un nivel largo.</g:description>
       <g:link>https://lexmonn.com/productos/nivel-magnetico-de-9-total-53.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/total-nivel-mini-225mm.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/0QFXBDrd/Whats-App-Image-2026-10-05-at-10-03-09-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>10000 COP</g:price>
@@ -1359,7 +1371,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Nivel Torpedo 9&quot; con Base Magnética Truper</g:title>
       <g:description>Nivel torpedo de 23 cm con base magnética para trabajar con las manos libres, tres viales de lectura.</g:description>
       <g:link>https://lexmonn.com/productos/nivel-torpedo-9-con-base-magnetica-truper-27.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/truper-nivel-torpedo-9-magnetico.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/pTfkq4bP/Whats-App-Image-2026-10-05-at-10-16-24-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>18700 COP</g:price>
@@ -1371,7 +1383,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Palustre 150mm Total</g:title>
       <g:description>Paleta de albañil con hoja de acero en punta de 150mm (6 pulgadas), mango bimaterial antideslizante.</g:description>
       <g:link>https://lexmonn.com/productos/palustre-150mm-total-103.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/total-paleta-albanil-150mm.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/m22Vymmp/Whats-App-Image-2026-10-05-at-10-17-48-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>11000 COP</g:price>
@@ -1383,7 +1395,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Pinza de Electricista 9&quot; con Ponchadora Truper Expert</g:title>
       <g:description>Pinza de electricista de alta palanca con zona de ponchado para conectores y terminales. Línea Expert.</g:description>
       <g:link>https://lexmonn.com/productos/pinza-de-electricista-9-con-ponchadora-truper-expert-35.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/truper-pinza-electricista-9-ponchadora.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/3N6yprS7/Whats-App-Image-2026-10-05-at-10-20-10-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>48000 COP</g:price>
@@ -1395,7 +1407,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Pinza de Presión 10&quot; Truper</g:title>
       <g:description>Pinza de presión de mordaza recta de 10 pulgadas, con tornillo de ajuste y apertura de hasta 50 mm.</g:description>
       <g:link>https://lexmonn.com/productos/pinza-de-presion-10-truper-34.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/truper-pinza-presion-10.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/PJzXftgz/Whats-App-Image-2026-10-05-at-10-24-15-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>40500 COP</g:price>
@@ -1407,7 +1419,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Pinza de Presión Tipo C 6 Pulgadas Truper</g:title>
       <g:description>Pinza de presión tipo C de 6 pulgadas (150mm), apertura máxima de 2 pulgadas (50mm), mordazas autoajustables. Modelo 17413.</g:description>
       <g:link>https://lexmonn.com/productos/pinza-de-presion-tipo-c-6-pulgadas-truper-74.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/truper-pinza-presion-tipo-c-6.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/qRvXxRLz/Whats-App-Image-2026-10-05-at-10-32-35-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>55000 COP</g:price>
@@ -1443,7 +1455,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Pistola de Calor 1600 W Total</g:title>
       <g:description>Pistola de calor de 1600 W con tres niveles de temperatura hasta 550 grados, para decapar pintura y termoencoger.</g:description>
       <g:link>https://lexmonn.com/productos/pistola-de-calor-1600-w-total-64.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/total-pistola-calor-1600w.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/W1cGfSnH/Whats-App-Image-2026-10-05-at-10-36-04-AM.jpg</g:image_link>
       <g:additional_image_link>https://lexmonn.com/imagenes/foto-SNjFQRYv.jpg</g:additional_image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
@@ -1456,7 +1468,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Pistola de Fijación a Pólvora .22 Ramset</g:title>
       <g:description>Herramienta de fijación directa activada por pólvora calibre .22, para anclaje en concreto, acero y madera. Penetración de hasta 3 pulgadas.</g:description>
       <g:link>https://lexmonn.com/productos/pistola-de-fijacion-a-polvora-22-ramset-102.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/ramset-pistola-fijacion-22.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/MT95CRT1/Whats-App-Image-2026-09-29-at-7-27-38-PM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>665000 COP</g:price>
@@ -1504,7 +1516,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Placa de Puntería Roja para Nivel Láser</g:title>
       <g:description>Placa reflectiva con diana,  graduación en pulgadas y centímetros, mejora la visibilidad del láser rojo.</g:description>
       <g:link>https://lexmonn.com/productos/placa-de-punteria-roja-para-nivel-laser-31.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/placa-punteria-laser-roja.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/VkHDZXJt/Whats-App-Image-2026-10-05-at-10-50-45-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>33000 COP</g:price>
@@ -1516,7 +1528,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Placa de Puntería Verde para Nivel Láser</g:title>
       <g:description>Placa reflectiva con diana, graduación en pulgadas y centímetros, para niveles láser de haz verde.</g:description>
       <g:link>https://lexmonn.com/productos/placa-de-punteria-verde-para-nivel-laser-32.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/placa-punteria-laser-verde.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/yYH50hR0/Whats-App-Image-2026-10-05-at-10-49-37-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>33000 COP</g:price>
@@ -1543,9 +1555,12 @@ Materiales de alta calidad</g:description>
     <item>
       <g:id>50</g:id>
       <g:title>Pulidora Angular Inalámbrica 20V Total</g:title>
-      <g:description>Pulidora Angular Inalámbrica 20V Total, en la categoría Herramientas Total de Lexmonn.</g:description>
+      <g:description>Motor con tecnología sin escobillas que reduce el mantenimiento y optimiza la transmisión de potencia en cortes. Batería de 20 V y 4.0 AH que mantiene la autonomía operativa necesaria para completar tareas de desbaste continuas.
+Sistema de velocidad variable que permite ajustar las revoluciones según la densidad del material a procesar.
+Manija desmontable que permite el agarre necesario para realizar maniobras en espacios reducidos o ángulos difíciles.
+Incluye cargador, batería y 5 discos de 4 1/2 pulgadas para iniciar aplicaciones de corte de forma inmediata.</g:description>
       <g:link>https://lexmonn.com/productos/pulidora-angular-inalambrica-20v-total-50.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/total-pulidora-angular-20v.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/d1SsLH36/Whats-App-Image-2026-10-05-at-10-53-53-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>575000 COP</g:price>
@@ -1555,7 +1570,8 @@ Materiales de alta calidad</g:description>
     <item>
       <g:id>127</g:id>
       <g:title>Pulsera Magnética Porta Tornillos</g:title>
-      <g:description>Pulsera Magnética Porta Tornillos, en la categoría Herrajes y Accesorios de Lexmonn.</g:description>
+      <g:description>Imanes súper potentes incorporados, Ideal para muchos proyectos de carpintería, mejoras del hogar y bricolaje
+Tamaño ajustable. Se adapta a todos, hombres y mujeres.</g:description>
       <g:link>https://lexmonn.com/productos/pulsera-magnetica-porta-tornillos-127.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/pulsera-magnetica-porta-tornillos.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
@@ -1567,7 +1583,15 @@ Materiales de alta calidad</g:description>
     <item>
       <g:id>81</g:id>
       <g:title>Rotomartillo SDS-Plus Total</g:title>
-      <g:description>Rotomartillo SDS-Plus Total, en la categoría Herramientas Total de Lexmonn.</g:description>
+      <g:description>Voltaje: 110-120V~50/60Hz, Potencia: 800WMaterial: Plástico - Metal.
+Energía de impacto: 2.5J
+Velocidad sin carga: 0-1100/min
+Tasa de impacto: 0-4000bpm
+Mandril: SDS Plus
+Perforación en concreto: 26mm
+Perforación en acero: 13mm
+Perforación en madera: 30mm
+Incluye: (3) brocas, (2) cinceles y maletín.</g:description>
       <g:link>https://lexmonn.com/productos/rotomartillo-sds-plus-total-81.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/total-rotomartillo-sds-plus.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
@@ -1575,18 +1599,6 @@ Materiales de alta calidad</g:description>
       <g:price>395000 COP</g:price>
       <g:brand>Total</g:brand>
       <g:product_type>Herramientas Total</g:product_type>
-    </item>
-    <item>
-      <g:id>104</g:id>
-      <g:title>Sander Rectangular</g:title>
-      <g:description>Sander Rectangular, en la categoría Drywall y Acabados de Lexmonn.</g:description>
-      <g:link>https://lexmonn.com/productos/sander-rectangular-104.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/cabezal-lija-rectangular-pertiga.jpg</g:image_link>
-      <g:availability>in_stock</g:availability>
-      <g:condition>new</g:condition>
-      <g:price>110000 COP</g:price>
-      <g:identifier_exists>no</g:identifier_exists>
-      <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
       <g:id>128</g:id>
@@ -1605,7 +1617,7 @@ Materiales de alta calidad</g:description>
       <g:title>Serrucho para Drywall 150 mm Total</g:title>
       <g:description>Serrucho para Drywall 150 mm Total, en la categoría Herramientas Total de Lexmonn.</g:description>
       <g:link>https://lexmonn.com/productos/serrucho-para-drywall-150-mm-total-56.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/total-serrucho-drywall-150mm.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/tRwvpKpy/Whats-App-Image-2026-10-05-at-11-02-01-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>40000 COP</g:price>
@@ -1617,7 +1629,7 @@ Materiales de alta calidad</g:description>
       <g:title>Serrucho para Drywall Milwaukee</g:title>
       <g:description>Serrucho para Drywall Milwaukee, en la categoría Drywall y Acabados de Lexmonn.</g:description>
       <g:link>https://lexmonn.com/productos/serrucho-para-drywall-milwaukee-10.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/milwaukee-serrucho-drywall.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/cHV7GNYY/Whats-App-Image-2026-10-05-at-11-03-51-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>75000 COP</g:price>
@@ -1627,9 +1639,13 @@ Materiales de alta calidad</g:description>
     <item>
       <g:id>61</g:id>
       <g:title>Serrucho Plegable 180 mm Total</g:title>
-      <g:description>Serrucho Plegable 180 mm Total, en la categoría Herramientas Total de Lexmonn.</g:description>
+      <g:description>Tamaño: 7'' / 180 mm, Material: Acero SK5
+7 dientes por pulgada (TPI), dientes tratados térmicamente.
+Dientes triples (afilados con precisión en 3 bordes)
+Función de protección para la mano.
+Corte rápido y larga duración.</g:description>
       <g:link>https://lexmonn.com/productos/serrucho-plegable-180-mm-total-61.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/total-serrucho-plegable-180mm.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/XvBpSBgR/Whats-App-Image-2026-10-05-at-11-05-43-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>47000 COP</g:price>
@@ -1639,9 +1655,14 @@ Materiales de alta calidad</g:description>
     <item>
       <g:id>55</g:id>
       <g:title>Set de Herramientas 7 Piezas Total</g:title>
-      <g:description>Set de Herramientas 7 Piezas Total, en la categoría Herramientas Total de Lexmonn.</g:description>
+      <g:description>1 uds 7'' alicate combinado, 1 pcs lápiz de prueba (voltaje de prueba: 100-500VAC) 
+1 Uds 6'' Llave ajustable 
+1 uds 9mm cuchillo de cuchilla de presión 
+1 Pcs SL5.5x100 Destornillador 
+1 uds PH1x100 Destornillador 
+1 pcs cinta de medición de acero de 3M&amp;nbsp</g:description>
       <g:link>https://lexmonn.com/productos/set-de-herramientas-7-piezas-total-55.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/total-juego-herramientas-7-piezas.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/s2bKsSCZ/Whats-App-Image-2026-10-05-at-11-13-52-AM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>38000 COP</g:price>
@@ -1650,9 +1671,19 @@ Materiales de alta calidad</g:description>
     </item>
     <item>
       <g:id>93</g:id>
-      <g:title>Sierra Circular 1600W 185mm Total</g:title>
-      <g:description>Sierra Circular 1600W 185mm Total, en la categoría Herramientas Total de Lexmonn.</g:description>
-      <g:link>https://lexmonn.com/productos/sierra-circular-1600w-185mm-total-93.html</g:link>
+      <g:title>Sierra Circular Industrial 1600W 185mm Total</g:title>
+      <g:description>-Voltaje: 110-120V~50/60Hz, Potencia de entrada: 1600W
+-Velocidad sin carga: 5000 rpm
+-Diámetro de la cuchilla: 7-1/4&quot; x 20 mm (0.78&quot;)
+-Diámetro del eje: 20 mm (0.78&quot;)
+-Capacidad de corte:
+-45°: 1-3/4&quot;
+-90°: 2-9/16&quot;
+-Profundidad de corte ajustable.
+-Corte biselado ajustable.
+-Incluye 1 cuchilla de 7-1/4&quot;
+-Incluye 1 juego de escobillas de carbón extra.</g:description>
+      <g:link>https://lexmonn.com/productos/sierra-circular-industrial-1600w-185mm-total-93.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/total-sierra-circular-1600w.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
@@ -1663,7 +1694,11 @@ Materiales de alta calidad</g:description>
     <item>
       <g:id>86</g:id>
       <g:title>Sopladora 3 Velocidades Total</g:title>
-      <g:description>Resistente a salpicaduras</g:description>
+      <g:description>Motor sin escobillas (Brushless), Voltaje: 20V-Velocidad sin carga: 13,000 / 16,000 / 19,500 rpm
+-Velocidad máxima del aire: 72 m/s
+-Flujo máximo de aire: 2.8 m³/min
+-Control de 3 velocidades
+-Batería y cargador se venden por separado</g:description>
       <g:link>https://lexmonn.com/productos/sopladora-3-velocidades-total-86.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/total-soplador-inalambrico-20v.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
@@ -1673,23 +1708,17 @@ Materiales de alta calidad</g:description>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
-      <g:id>43</g:id>
-      <g:title>Soporte Metálico de Anclaje</g:title>
-      <g:description>Soporte Metálico de Anclaje, en la categoría Herramientas de Construcción de Lexmonn.</g:description>
-      <g:link>https://lexmonn.com/productos/soporte-metalico-de-anclaje-43.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/soporte-metalico-anclaje.jpg</g:image_link>
-      <g:availability>in_stock</g:availability>
-      <g:condition>new</g:condition>
-      <g:price>25000 COP</g:price>
-      <g:identifier_exists>no</g:identifier_exists>
-      <g:product_type>Herramientas de Construcción</g:product_type>
-    </item>
-    <item>
       <g:id>54</g:id>
       <g:title>Taladro Chuck 12V Total</g:title>
-      <g:description>Batería de ion-litio recargable</g:description>
+      <g:description>Velocidad sin carga: 0-750rpm, Torque máximo: 20Nm
+– Capacidad de mandril: 0.8-10mm
+– Configuraciones de torque: 15+1
+– Luz de trabajo integrada.
+– Incluye 1 paquete de batería de 1.5Ah 
+– Puerto de carga de la batería: USB tipo C
+– Cargador se vende por separado.</g:description>
       <g:link>https://lexmonn.com/productos/taladro-chuck-12v-total-54.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/total-taladro-inalambrico-12v.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/ht6fgJnX/Whats-App-Image-2026-10-05-at-2-35-38-PM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>110000 COP</g:price>
@@ -1699,9 +1728,21 @@ Materiales de alta calidad</g:description>
     <item>
       <g:id>63</g:id>
       <g:title>Taladro de Impacto 20V Brushless Total</g:title>
-      <g:description>Taladro de Impacto 20V Brushless Total, en la categoría Herramientas Total de Lexmonn.</g:description>
+      <g:description>Motor sin escobillas.  - Velocidad sin carga: 0-500/0-2000 rpm
+- Máxima tasa de impacto: 30,000 bpm
+- Par máximo: 55 Nm
+- Capacidad del portabrocas: 1/2''
+- Ajustes de torque: 22+1+1
+- Engranaje mecánico de 2 velocidades.
+- Función de bloqueo del husillo.
+- Luz de trabajo LED integrada.
+- Indicador LED de nivel de batería.
+- Incluye: 2 paquetes de baterías de 2.0Ah 
+- 1 cargador 
+- Voltaje de carga: 110-120V~50/60Hz
+- 3 brocas para mampostería.</g:description>
       <g:link>https://lexmonn.com/productos/taladro-de-impacto-20v-brushless-total-63.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/total-taladro-impacto-20v-brushless.jpg</g:image_link>
+      <g:image_link>https://i.postimg.cc/R02ZQDd1/Whats-App-Image-2026-10-05-at-5-14-18-PM.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>465000 COP</g:price>

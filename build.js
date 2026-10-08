@@ -94,6 +94,12 @@ function getAllCategories(products) {
 // Si alguien renombra una categoría en la Sheet, su fila deja de coincidir y
 // la categoría cae a los valores por defecto (foto del primer producto, sin
 // frase, y un texto genérico). El build NO se rompe.
+//
+// Las portadas del mosaico son imagenes/portada-<categoría>.jpg (desde el
+// 2026-10-07): la foto de un producto recortada y centrada en un lienzo 4:3,
+// para que todas las baldosas muestren el producto al mismo tamaño y la
+// portada no cambie si la Sheet cambia la foto del producto. Se hacen con
+// `node tools/hacer-portada.js <categoría> <foto>`.
 const CATEGORIA_PRESENTACION = {
   "Porta Herramientas": {
     orden: 1,
@@ -115,7 +121,8 @@ const CATEGORIA_PRESENTACION = {
   "Herramientas Total": {
     orden: 2,
     tagline: "Taladros, pulidora, martillos y navajas: toda la línea Total en un solo lugar.",
-    imagen: "/imagenes/total-taladro-inalambrico-12v.jpg",
+    // Kit del Taladro de Impacto 20V Brushless (ID 63). Antes, un taladro 12V.
+    imagen: "/imagenes/portada-herramientas-total.jpg",
     intro:
       "Herramienta eléctrica, inalámbrica y manual de la marca Total: taladros, rotomartillos, pulidoras, sierras, baterías y cargadores de 20V, además de martillos, flexómetros, alicates y accesorios para obra.",
     metaDescription:
@@ -124,7 +131,8 @@ const CATEGORIA_PRESENTACION = {
   "Herramientas Truper": {
     orden: 3,
     tagline: "Tapizadoras, espátulas, navajas y niveles: toda la línea Truper en un solo lugar.",
-    imagen: "/imagenes/truper-tapizadora-12.jpg",
+    // Flexómetro Contra Impactos 5M (ID 24). Antes, una tapizadora de 12".
+    imagen: "/imagenes/portada-herramientas-truper.jpg",
     intro:
       "Herramienta Truper y Truper Expert para acabados y construcción: tapizadoras, espátulas, niveles, escuadras, pinzas, martillos, brocas, discos y accesorios de corte.",
     metaDescription:
@@ -133,7 +141,8 @@ const CATEGORIA_PRESENTACION = {
   "Drywall y Acabados": {
     orden: 4,
     tagline: "Espátulas, serrucho y mezclador para dejar la junta lista.",
-    imagen: "/imagenes/husky-espatula-encintadora-8.jpg",
+    // Espátula Encintadora Profesional 8" DeWalt (ID 6). Antes, una Husky.
+    imagen: "/imagenes/portada-drywall-y-acabados.jpg",
     intro:
       "Todo para instalar y dar acabado a drywall: espátulas profesionales de varios anchos, encintadoras, cajas y cabezales de acabado, esquineros, lijadoras, mezcladores y repuestos para dejar la junta lista.",
     metaDescription:
@@ -142,7 +151,8 @@ const CATEGORIA_PRESENTACION = {
   "Herramientas de Construcción": {
     orden: 5,
     tagline: "Pinzas, destornilladores y soportes para el día a día.",
-    imagen: "/imagenes/stanley-destornillador.jpg",
+    // Disco Diamantado 115mm Wadfow (ID 106). Antes, un destornillador Stanley.
+    imagen: "/imagenes/portada-herramientas-de-construccion.jpg",
     intro:
       "Herramienta para el día a día en obra: pinzas, destornilladores, llaves combinadas, discos de corte y desbaste, brocas, cautines y fijación.",
     metaDescription:
@@ -151,7 +161,8 @@ const CATEGORIA_PRESENTACION = {
   "Corte y Cuchillas": {
     orden: 6,
     tagline: "Navajas y repuestos que mantienen el filo toda la jornada.",
-    imagen: "/imagenes/stanley-navaja-classic-99.jpg",
+    // Navaja Plegable Compacta Husky (ID 16). Antes, una Stanley Classic 99.
+    imagen: "/imagenes/portada-corte-y-cuchillas.jpg",
     intro:
       "Navajas, bisturís y cuchillas de repuesto para cortar drywall, cartón, cinta y materiales de obra, con hojas de uso general, trapezoidales y dentadas.",
     metaDescription:
@@ -160,7 +171,8 @@ const CATEGORIA_PRESENTACION = {
   "Medición y Nivelación": {
     orden: 7,
     tagline: "Flexómetros, niveles y escuadras para no repetir el trabajo.",
-    imagen: "/imagenes/stanley-flexometro-global-plus-8m.jpg",
+    // Nivel Láser Pretul 360° (ID 155). Antes, un flexómetro Stanley.
+    imagen: "/imagenes/portada-medicion-y-nivelacion.jpg",
     intro:
       "Flexómetros, escuadras y accesorios para nivel láser para medir, trazar y nivelar con precisión en obra.",
     metaDescription:
@@ -169,7 +181,8 @@ const CATEGORIA_PRESENTACION = {
   "Seguridad Industrial": {
     orden: 8,
     tagline: "Lo que protege al que está parado en la obra.",
-    imagen: "/imagenes/energizer-linterna-frontal-vision-hd.jpg",
+    // Chaleco de Seguridad Reflectivo (ID 130). Antes, una linterna frontal.
+    imagen: "/imagenes/portada-seguridad-industrial.jpg",
     intro:
       "Elementos de protección personal para obra: cascos, gafas de seguridad, chalecos reflectivos, rodilleras y linternas frontales.",
     metaDescription:
@@ -185,10 +198,16 @@ const CATEGORIA_PRESENTACION = {
   "Herrajes y Accesorios": {
     orden: 10,
     tagline: "Candados, grapas y los pequeños accesorios que no pueden faltar en la caja.",
-    imagen: "/imagenes/hermex-candado-cable-bicicleta.jpg",
+    // Grapas Acero Inoxidable T50 Arrow (ID 134). Antes, un candado de cable.
+    imagen: "/imagenes/portada-herrajes-y-accesorios.jpg",
     intro: "Grapas, candados, pulseras magnéticas porta tornillos y los accesorios pequeños que no pueden faltar en la caja de herramientas.",
     metaDescription:
       "Grapas, candados, pulseras magnéticas porta tornillos y accesorios para la caja de herramientas. Envíos a toda Colombia, pedido por WhatsApp.",
+  },
+  // Solo la portada: el resto (frase, textos) cae a los valores por defecto,
+  // como antes. Es la Bomba Periférica (ID 156), su único producto.
+  "LEO PUMP": {
+    imagen: "/imagenes/portada-leo-pump.jpg",
   },
 };
 
