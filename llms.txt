@@ -8,7 +8,9 @@
 - WhatsApp y teléfono: +57 301 559 7873
 - Correo: lexmonn.admon@gmail.com
 - Horario: lunes a viernes 8:00 a.m. – 5:00 p.m.; sábados 9:00 a.m. – 3:00 p.m.
-- Envíos: a toda Colombia por transportadora
+- Envíos: a toda Colombia por transportadora; el costo depende de la ciudad y la entrega tarda de 1 a 5 días hábiles según la zona
+- Pagos: efectivo, transferencia, Nequi y crédito con Sistecrédito (sujeto a aprobación de Sistecrédito)
+- Devoluciones: 7 días desde que se recibe el pedido
 - NIT: 901923669
 
 ## Catálogo
@@ -27,11 +29,12 @@
 
 ## Cómo comprar
 
-1. Agregar productos al carrito en lexmonn.com.
-2. Completar nombre, dirección, ciudad y teléfono; el sitio abre WhatsApp con el pedido armado.
-3. Lexmonn confirma disponibilidad, pago y envío por WhatsApp y despacha.
+1. Elegir productos en el catálogo y agregarlos al carrito en lexmonn.com.
+2. Completar los datos (nombre, cédula o NIT, teléfono, correo, ciudad y dirección de entrega) y enviar el pedido por WhatsApp; el sitio lo deja armado.
+3. Lexmonn contacta por WhatsApp para confirmar el pedido, el pago y el envío, y lo despacha.
 
 ## Otras páginas
 
+- [Envíos, pagos y devoluciones](https://lexmonn.com/envios-pagos-devoluciones.html)
 - [Privacidad y tratamiento de datos](https://lexmonn.com/privacidad.html)
 - [Mapa del sitio](https://lexmonn.com/sitemap.xml)

@@ -333,13 +333,13 @@ function renderFooter() {
       <ul class="footer-contact">
         <li>${icon("clock", 18)} <span>Lunes a viernes<br>8:00 a.m. – 5:00 p.m.</span></li>
         <li>${icon("clock", 18)} <span>Sábados<br>9:00 a.m. – 3:00 p.m.</span></li>
-        <li>${icon("truck", 18)} <span>Envíos a toda Colombia</span></li>
+        <li>${icon("truck", 18)} <a href="/envios-pagos-devoluciones.html">Envíos a toda Colombia</a></li>
       </ul>
     </div>
   </div>
   <div class="container footer-bottom">
     <p>© <span id="year">2026</span> Lexmonn · NIT 901923669</p>
-    <p><a href="/privacidad.html">Privacidad y tratamiento de datos</a></p>
+    <p class="footer-legal"><a href="/envios-pagos-devoluciones.html">Envíos, pagos y devoluciones</a><a href="/privacidad.html">Privacidad y tratamiento de datos</a></p>
   </div>
 </footer>`;
 }

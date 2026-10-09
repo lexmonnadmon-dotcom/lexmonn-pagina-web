@@ -1512,6 +1512,10 @@ body.searching .page-hero .eyebrow { display: none; }
   color: #9ba797;
 }
 .footer-bottom p { margin: 0; }
+/* Los enlaces legales (envíos y devoluciones, privacidad) van lado a lado
+   en computador y uno bajo el otro en celular, sin un separador que quede
+   colgando al final de una línea. */
+.footer-bottom .footer-legal { display: flex; flex-wrap: wrap; gap: 0 22px; }
 .footer-bottom a { display: inline-block; padding: 13px 0; margin: -13px 0; color: #c5cec1; }
 @media (max-width: 1000px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) {
