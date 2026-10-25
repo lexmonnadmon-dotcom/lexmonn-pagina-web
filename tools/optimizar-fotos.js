@@ -151,6 +151,10 @@ async function fotosDeLaSheet() {
 }
 
 async function descargar(url, clave) {
+  // Si la foto ya está guardada en el sitio (tools/guardar-fotos-externas.js),
+  // se usa esa y no se vuelve a pedir a postimg.
+  const copia = Shared.copiaLocalFoto(url);
+  if (copia && fs.existsSync(path.join(ROOT, copia))) return path.join(ROOT, copia);
   fs.mkdirSync(CACHE_DIR, { recursive: true });
   const destino = path.join(CACHE_DIR, `${clave}${path.extname(new URL(url).pathname) || ".jpg"}`);
   if (!fs.existsSync(destino)) {

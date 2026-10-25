@@ -72,7 +72,8 @@
       <g:image_link>https://lexmonn.com/imagenes/total-atornillador-impacto-20v.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
-      <g:price>570000 COP</g:price>
+      <g:price>590000 COP</g:price>
+      <g:sale_price>560500 COP</g:sale_price>
       <g:brand>Total</g:brand>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
@@ -147,6 +148,18 @@
       <g:price>9500 COP</g:price>
       <g:brand>Truper</g:brand>
       <g:product_type>Herramientas Truper</g:product_type>
+    </item>
+    <item>
+      <g:id>161</g:id>
+      <g:title>Bnadeja de acero inoxidable de 12&quot;</g:title>
+      <g:description>Con mango antideslizante, lados cónicos, herramienta de paneles de yeso, cubo de bandeja, fácil de limpiar</g:description>
+      <g:link>https://lexmonn.com/productos/bnadeja-de-acero-inoxidable-de-12-161.html</g:link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/JzQ8wvqJ.jpg</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>99900 COP</g:price>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
       <g:id>151</g:id>
@@ -224,6 +237,19 @@ Se adapta a cinturones de trabajo</g:description>
       <g:product_type>LEO PUMP</g:product_type>
     </item>
     <item>
+      <g:id>162</g:id>
+      <g:title>Bosch GLL50-20 - Láser autonivelante de línea cruzada de 50 pies</g:title>
+      <g:description>El láser de línea cruzada autonivelante GLL50-20 de Bosch cuenta con un rango de 50 pies y un modo de línea cruzada que proyecta líneas rojas horizontales y verticales, lo que permite nivelar con un 5/16 pulgadas. Con su flexibilidad de potencia, opere con las baterías AA incluidas o compre la batería de iones de litio de 3.7 V de Bosch (se vende por separado) que permite el uso de la herramienta mientras se carga para disminuir el tiempo de inactividad. Su diseño ergonómico, compacto y ligero y clasificación IP55 al polvo y al agua proporcionan un funcionamiento cómodo y confiable. La carcasa de goma completa ayuda a proteger todos los puntos de impacto importantes, actuando como una jaula antivuelco para proteger. Equipado con un sistema de péndulo inteligente, los autoniveles de la herramienta, indicarán cualquier condición fuera de nivel parpadeando y luego se bloquea cuando se apaga para un transporte seguro. Simplemente incline el láser para usar las líneas en ángulo con facilidad. Coloque la herramienta con el soporte magnético integrado incluido o utilice el 1/4 de pulgada. soporte de rosca que se adapta a trípodes de tamaño similar.</g:description>
+      <g:link>https://lexmonn.com/productos/bosch-gll50-20-laser-autonivelante-de-linea-cruzada-de-50-pies-162.html</g:link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/W1xspHr2.jpg</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>360000 COP</g:price>
+      <g:sale_price>330000 COP</g:sale_price>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:product_type>Medición y Nivelación</g:product_type>
+    </item>
+    <item>
       <g:id>94</g:id>
       <g:title>Broca Escalonada BES-13 Truper</g:title>
       <g:description>Broca escalonada con punta split point, 13 tamaños de orificio de 1/8 a 1/2 pulgada y vástago hexagonal antideslizante.</g:description>
@@ -252,7 +278,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Broca para Madera 3/16 Pulgada Forte</g:title>
       <g:description>Broca cilíndrica tipo brad point para madera, de 3/16 pulgada (4.8mm). Referencia 39232.</g:description>
       <g:link>https://lexmonn.com/productos/broca-para-madera-3-16-pulgada-forte-126.html</g:link>
-      <g:image_link>https://i.postimg.cc/HnZTvhfw/Whats-App-Image-2026-10-01-at-11-34-39-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/HnZTvhfw.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>11700 COP</g:price>
@@ -303,7 +329,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:image_link>https://lexmonn.com/imagenes/fullcircle-cabezal-lijado-radius360.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
-      <g:price>260000 COP</g:price>
+      <g:price>270000 COP</g:price>
+      <g:sale_price>256500 COP</g:sale_price>
       <g:identifier_exists>no</g:identifier_exists>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
@@ -378,6 +405,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>415000 COP</g:price>
+      <g:sale_price>394250 COP</g:sale_price>
       <g:brand>Milwaukee</g:brand>
       <g:product_type>Seguridad Industrial</g:product_type>
     </item>
@@ -449,7 +477,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:image_link>https://lexmonn.com/imagenes/total-combo-3-en-1-20v.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
-      <g:price>995000 COP</g:price>
+      <g:price>1000000 COP</g:price>
+      <g:sale_price>930000 COP</g:sale_price>
       <g:brand>Total</g:brand>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
@@ -530,7 +559,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Destornillador 2 en 1 Total</g:title>
       <g:description>Destornillador con barra reversible de punta plana y estrella en una sola herramienta, con mango antideslizante.</g:description>
       <g:link>https://lexmonn.com/productos/destornillador-2-en-1-total-57.html</g:link>
-      <g:image_link>https://i.postimg.cc/LXVP5mZC/Whats-App-Image-2026-10-01-at-11-43-12-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/LXVP5mZC.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>13000 COP</g:price>
@@ -542,7 +571,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Destornillador De Cruz Comfort Truper</g:title>
       <g:description>Destornillador de punta plana con mango Comfort Grip antideslizante y barra de acero cromado.</g:description>
       <g:link>https://lexmonn.com/productos/destornillador-de-cruz-comfort-truper-37.html</g:link>
-      <g:image_link>https://i.postimg.cc/c4LRKthV/Whats-App-Image-2026-10-01-at-11-39-54-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/c4LRKthV.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>10600 COP</g:price>
@@ -554,7 +583,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Destornillador Stanley</g:title>
       <g:description>Destornillador con mango amarillo resistente a solventes y barra de acero templado.</g:description>
       <g:link>https://lexmonn.com/productos/destornillador-stanley-38.html</g:link>
-      <g:image_link>https://i.postimg.cc/Z5yy38dL/Whats-App-Image-2026-10-01-at-11-44-49-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/Z5yy38dL.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>36000 COP</g:price>
@@ -590,7 +619,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Disco Diamantado 115mm Wadfow</g:title>
       <g:description>Disco diamantado de 115mm (4-1/2 pulgadas) con eje de 22.2mm, para corte en seco o húmedo.</g:description>
       <g:link>https://lexmonn.com/productos/disco-diamantado-115mm-wadfow-106.html</g:link>
-      <g:image_link>https://i.postimg.cc/PqQJz2rd/Whats-App-Image-2026-10-01-at-11-46-42-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/PqQJz2rd.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>8000 COP</g:price>
@@ -622,14 +651,33 @@ Se adapta a cinturones de trabajo</g:description>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
+      <g:id>163</g:id>
+      <g:title>Emplacador para drywall Makita XSF03</g:title>
+      <g:description>• Motor Sin escobillas (Brushless o motor BL).
+• Potencia y Batería: Funciona con el sistema de baterías 18V LXT de Makita.
+• Velocidad sin carga: Variable de 0 a 4,000 RPM.
+• Tipo de inserción: Hexagonal de 1/4&quot;.
+• Peso: Aproximadamente 1.7 kg (3.8 lbs) con batería instalada, lo que reduce la fatiga del operario.
+• Longitud total Compacto, midiendo solo 9-7/8&quot; (251 mm)</g:description>
+      <g:link>https://lexmonn.com/productos/emplacador-para-drywall-makita-xsf03-163.html</g:link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/rygj6XXr.jpg</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>830000 COP</g:price>
+      <g:sale_price>780000 COP</g:sale_price>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:product_type>Drywall y Acabados</g:product_type>
+    </item>
+    <item>
       <g:id>91</g:id>
       <g:title>Encintadora Banjo para Drywall Anvil</g:title>
       <g:description>Encintadora tipo banjo de carga rápida con capacidad para 500 pies lineales de cinta de drywall. Cuerpo metálico y correa ajustable.</g:description>
       <g:link>https://lexmonn.com/productos/encintadora-banjo-para-drywall-anvil-91.html</g:link>
-      <g:image_link>https://i.postimg.cc/W3rvw4nL/Whats-App-Image-2026-10-01-at-11-54-33-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/W3rvw4nL.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
-      <g:price>510200 COP</g:price>
+      <g:price>520000 COP</g:price>
+      <g:sale_price>478400 COP</g:sale_price>
       <g:brand>Anvil</g:brand>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
@@ -638,10 +686,11 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Encintadora para Drywall QLT Marshalltown</g:title>
       <g:description>Encintadora manual tipo banjo para cinta de drywall, cuerpo en aluminio con mango bimaterial. Diseño plegable con broche y correa de transporte.</g:description>
       <g:link>https://lexmonn.com/productos/encintadora-para-drywall-qlt-marshalltown-87.html</g:link>
-      <g:image_link>https://i.postimg.cc/qqJkL3v0/Whats-App-Image-2026-10-01-at-12-09-28-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/qqJkL3v0.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>745000 COP</g:price>
+      <g:sale_price>700300 COP</g:sale_price>
       <g:brand>Marshalltown</g:brand>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
@@ -674,7 +723,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Escuadra Rápida 7&quot; Empire Gris</g:title>
       <g:description>Escuadra rápida de 7 pulgadas en aluminio, fabricada en Estados Unidos, con graduación grabada.</g:description>
       <g:link>https://lexmonn.com/productos/escuadra-rapida-7-empire-gris-29.html</g:link>
-      <g:image_link>https://i.postimg.cc/zGmQY1TX/Whats-App-Image-2026-10-01-at-12-11-45-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/zGmQY1TX.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>85200 COP</g:price>
@@ -686,7 +735,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Escuadra Rápida Truper</g:title>
       <g:description>Escuadra rápida de aluminio con escalas de grados, common y pivot, para trazos y cortes en ángulo.</g:description>
       <g:link>https://lexmonn.com/productos/escuadra-rapida-truper-28.html</g:link>
-      <g:image_link>https://i.postimg.cc/C5Sjsm8L/Whats-App-Image-2026-10-01-at-12-16-36-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/C5Sjsm8L.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>33000 COP</g:price>
@@ -698,7 +747,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Espátula 8&quot; Husky</g:title>
       <g:description>Espátula encintadora de acero inoxidable flexible, hoja biselada para esquinas y mango de agarre suave.</g:description>
       <g:link>https://lexmonn.com/productos/espatula-8-husky-8.html</g:link>
-      <g:image_link>https://i.postimg.cc/wjq9YJXF/Whats-App-Image-2026-10-01-at-12-24-20-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/wjq9YJXF.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>68700 COP</g:price>
@@ -710,7 +759,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Espátula Encintadora 6&quot; Marshalltown</g:title>
       <g:description>Espátula encintadora fabricada en Estados Unidos, hoja de acero azul y mango DuraSoft de alta durabilidad.</g:description>
       <g:link>https://lexmonn.com/productos/espatula-encintadora-6-marshalltown-7.html</g:link>
-      <g:image_link>https://i.postimg.cc/T25shw2T/Whats-App-Image-2026-10-01-at-12-42-05-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/T25shw2T.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>58800 COP</g:price>
@@ -722,7 +771,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Espátula Encintadora Profesional 8&quot; DeWalt</g:title>
       <g:description>Espátula encintadora de acero inoxidable de 20 cm con mango de agarre suave, para juntas de drywall.</g:description>
       <g:link>https://lexmonn.com/productos/espatula-encintadora-profesional-8-dewalt-6.html</g:link>
-      <g:image_link>https://i.postimg.cc/25CGwjNP/Whats-App-Image-2026-10-01-at-12-39-59-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/25CGwjNP.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>110000 COP</g:price>
@@ -734,7 +783,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Espátula Flexible 4&quot; Truper</g:title>
       <g:description>Espátula de acero inoxidable flexible de 10 cm con mango Comfort Grip. Para resanes y detalles.</g:description>
       <g:link>https://lexmonn.com/productos/espatula-flexible-4-truper-4.html</g:link>
-      <g:image_link>https://i.postimg.cc/BnpHJxdb/Whats-App-Image-2026-10-01-at-12-33-15-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/BnpHJxdb.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>20000 COP</g:price>
@@ -746,7 +795,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Espátula Flexible 6&quot; Truper Expert</g:title>
       <g:description>Espátula de acero inoxidable flexible de 15 cm, línea Expert, con mango Comfort Grip antideslizante.</g:description>
       <g:link>https://lexmonn.com/productos/espatula-flexible-6-truper-expert-5.html</g:link>
-      <g:image_link>https://i.postimg.cc/NFKpHNvj/Whats-App-Image-2026-10-01-at-12-36-14-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/NFKpHNvj.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>26000 COP</g:price>
@@ -854,7 +903,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Flexómetro 5M Stanley</g:title>
       <g:description>Recubrimiento de hoja duradero</g:description>
       <g:link>https://lexmonn.com/productos/flexometro-5m-stanley-158.html</g:link>
-      <g:image_link>https://i.postimg.cc/dVQ3Jg2G/Whats-App-Image-2026-10-01-at-1-04-45-PM-(1).jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/dVQ3Jg2G.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>37000 COP</g:price>
@@ -878,7 +927,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Flexómetro 7,5 m YesBes</g:title>
       <g:description>Cinta métrica de 7,5 metros y 25 mm de ancho, con correa de sujeción y carcasa antideslizante.</g:description>
       <g:link>https://lexmonn.com/productos/flexometro-7-5-m-yesbes-26.html</g:link>
-      <g:image_link>https://i.postimg.cc/ZYvhXNnZ/Whats-App-Image-2026-10-01-at-2-32-47-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/ZYvhXNnZ.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>35700 COP</g:price>
@@ -890,7 +939,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Flexómetro 8M Total</g:title>
       <g:description>Cinta métrica de 8 metros y 25 mm de ancho, con graduación en ambas caras, freno y correa de sujeción.</g:description>
       <g:link>https://lexmonn.com/productos/flexometro-8m-total-62.html</g:link>
-      <g:image_link>https://i.postimg.cc/dV3NPtx6/Whats-App-Image-2026-10-01-at-12-55-31-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/dV3NPtx6.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>31000 COP</g:price>
@@ -902,7 +951,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Flexómetro Contra Impactos 5M Truper</g:title>
       <g:description>Cinta métrica de 5 metros resistente a impactos, con graduación métrica y carcasa envolvente.</g:description>
       <g:link>https://lexmonn.com/productos/flexometro-contra-impactos-5m-truper-24.html</g:link>
-      <g:image_link>https://i.postimg.cc/JnYtFxH8/Whats-App-Image-2026-10-01-at-1-01-24-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/JnYtFxH8.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>21500 COP</g:price>
@@ -914,7 +963,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Flexómetro Contra Impactos 8M Truper</g:title>
       <g:description>Resistente a impactos</g:description>
       <g:link>https://lexmonn.com/productos/flexometro-contra-impactos-8m-truper-157.html</g:link>
-      <g:image_link>https://i.postimg.cc/qvNwDDtp/Whats-App-Image-2026-10-01-at-12-57-02-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/qvNwDDtp.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>35000 COP</g:price>
@@ -926,7 +975,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Flexómetro Global Plus 8M Stanley</g:title>
       <g:description>Cinta métrica de 8 metros con carcasa reforzada y freno, doble graduación en metros y pies.</g:description>
       <g:link>https://lexmonn.com/productos/flexometro-global-plus-8m-stanley-25.html</g:link>
-      <g:image_link>https://i.postimg.cc/ZY16KYn7/Whats-App-Image-2026-10-01-at-1-03-27-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/ZY16KYn7.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>51600 COP</g:price>
@@ -963,7 +1012,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Gancho Para Taladro Drywall</g:title>
       <g:description>Pieza de repuesto alternativo para Taladros, gancho de acero resistente</g:description>
       <g:link>https://lexmonn.com/productos/gancho-para-taladro-drywall-43.html</g:link>
-      <g:image_link>https://i.postimg.cc/1zv6Q7fJ/Whats-App-Image-2026-10-05-at-2-26-53-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/1zv6Q7fJ.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>25000 COP</g:price>
@@ -975,7 +1024,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Grapadora Manual 3 en 1 Total</g:title>
       <g:description>Grapadora manual de cuerpo metálico que admite grapas tipo U, tipo T y puntillas. Incluye grapas de repuesto.</g:description>
       <g:link>https://lexmonn.com/productos/grapadora-manual-3-en-1-total-52.html</g:link>
-      <g:image_link>https://i.postimg.cc/d0Vb6kp9/Whats-App-Image-2026-10-01-at-2-34-01-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/d0Vb6kp9.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>55000 COP</g:price>
@@ -999,7 +1048,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Grapas Acero Inoxidable T50 10mm Arrow</g:title>
       <g:description>Grapas tipo T50 en acero inoxidable, de 3/8 pulgada (10mm), caja x320 U</g:description>
       <g:link>https://lexmonn.com/productos/grapas-acero-inoxidable-t50-10mm-arrow-134.html</g:link>
-      <g:image_link>https://i.postimg.cc/WpqhShPk/Whats-App-Image-2026-10-01-at-5-08-58-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/WpqhShPk.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>33000 COP</g:price>
@@ -1011,7 +1060,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Grapas T50 10MM Arrow</g:title>
       <g:description>3/8” / 10 mm longitud, Uso industrial robusto, Caja x1250</g:description>
       <g:link>https://lexmonn.com/productos/grapas-t50-10mm-arrow-135.html</g:link>
-      <g:image_link>https://i.postimg.cc/Dyt0tFn6/Whats-App-Image-2026-10-01-at-5-01-00-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/Dyt0tFn6.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>43100 COP</g:price>
@@ -1035,7 +1084,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Hojas Dentadas 25 mm 5 Unidades Husky</g:title>
       <g:description>Cinco hojas de filo dentado de 25 mm, el doble de filo, para cortes en materiales blandos y aislantes.</g:description>
       <g:link>https://lexmonn.com/productos/hojas-dentadas-25-mm-5-unidades-husky-15.html</g:link>
-      <g:image_link>https://i.postimg.cc/fy82JBTT/Whats-App-Image-2026-10-01-at-5-17-59-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/fy82JBTT.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>37700 COP</g:price>
@@ -1059,7 +1108,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:title>Juego de Brochas 3 Piezas Total</g:title>
       <g:description>Juego de tres brochas de 25, 50 y 75 mm con cerda natural y mango ergonómico, para pinturas a base de aceite.</g:description>
       <g:link>https://lexmonn.com/productos/juego-de-brochas-3-piezas-total-45.html</g:link>
-      <g:image_link>https://i.postimg.cc/tRvNn1Nn/Whats-App-Image-2026-10-01-at-5-22-12-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/tRvNn1Nn.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>16000 COP</g:price>
@@ -1127,11 +1176,37 @@ Se adapta a cinturones de trabajo</g:description>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
+      <g:id>159</g:id>
+      <g:title>LIJADORA DE PARED Y PISO 1050W INDUSTRIAL TOTAL</g:title>
+      <g:description>Lijadora para paneles de Yeso drywall teléscopica, -Voltaje: 110-120V~50/60Hz
+-Potencia de entrada: 1050W
+-Velocidad sin carga: 600-2600rpm
+-Diámetro de la almohadilla de molienda: 8-1/2''
+-Diámetro del papel de lija: 8-7/8''
+-Diámetro del tubo: 1-1/4''
+-Diámetro de la manguera de polvo: 1-1/2''
+-Luz de trabajo integrada
+-6 papeles de lija
+-3 adaptadores de conexión
+-1 tubo flexible de 2m
+-1 barra de extensión
+-1 bolsa de polvo
+-1 set extra de escobillas de carbón.</g:description>
+      <g:link>https://lexmonn.com/productos/lijadora-de-pared-y-piso-1050w-industrial-total-159.html</g:link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/Xq4yQT7N.jpg</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>700000 COP</g:price>
+      <g:sale_price>670000 COP</g:sale_price>
+      <g:brand>Total</g:brand>
+      <g:product_type>Herramientas Total</g:product_type>
+    </item>
+    <item>
       <g:id>12</g:id>
       <g:title>Lijadora Manual Truper</g:title>
       <g:description>Lijadora manual de 240 x 80 mm con base resistente de aluminio y sujeción rápida de la lija.</g:description>
       <g:link>https://lexmonn.com/productos/lijadora-manual-truper-12.html</g:link>
-      <g:image_link>https://i.postimg.cc/rFSGnhLr/Whats-App-Image-2026-10-01-at-5-28-35-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/rFSGnhLr.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>37000 COP</g:price>
@@ -1218,7 +1293,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:title>Linterna Frontal Vision HD 200 Lúmenes Energizer</g:title>
       <g:description>Linterna frontal LED de 200 lúmenes con intensidad regulable, deja las manos libres en obra.</g:description>
       <g:link>https://lexmonn.com/productos/linterna-frontal-vision-hd-200-lumenes-energizer-41.html</g:link>
-      <g:image_link>https://i.postimg.cc/PqKwGc6N/Whats-App-Image-2026-10-01-at-5-25-30-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/PqKwGc6N.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>74800 COP</g:price>
@@ -1230,7 +1305,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:title>Llana 280x130 mm Total</g:title>
       <g:description>Llana de acero inoxidable de 280 x 130 mm con mango ergonómico, para aplicar y alisar mortero y estuco.</g:description>
       <g:link>https://lexmonn.com/productos/llana-280x130-mm-total-48.html</g:link>
-      <g:image_link>https://i.postimg.cc/HswYrMb4/Whats-App-Image-2026-10-01-at-6-19-18-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/HswYrMb4.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>35000 COP</g:price>
@@ -1266,7 +1341,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:title>Martillo de Uña 27 mm Truper</g:title>
       <g:description>Martillo de uña con cabeza forjada de 27 mm y mango de fibra de vidrio con agarre antideslizante.</g:description>
       <g:link>https://lexmonn.com/productos/martillo-de-una-27-mm-truper-33.html</g:link>
-      <g:image_link>https://i.postimg.cc/xdsKsQqg/Whats-App-Image-2026-10-05-at-9-50-34-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/xdsKsQqg.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>35000 COP</g:price>
@@ -1278,7 +1353,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:title>Mezclador de Pasta 24&quot; Wal-Board</g:title>
       <g:description>Mezclador manual de 24 pulgadas en construcción metálica, para mezclar masilla y pasta rápidamente.</g:description>
       <g:link>https://lexmonn.com/productos/mezclador-de-pasta-24-wal-board-11.html</g:link>
-      <g:image_link>https://i.postimg.cc/y8scsxZN/Whats-App-Image-2026-10-05-at-9-52-43-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/y8scsxZN.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>159800 COP</g:price>
@@ -1303,7 +1378,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:title>Navaja Abatible NV-6X Truper</g:title>
       <g:description>Navaja abatible con cambio rápido de cuchilla, doble bisel para cortes precisos e incluye 5 cuchillas de repuesto.</g:description>
       <g:link>https://lexmonn.com/productos/navaja-abatible-nv-6x-truper-19.html</g:link>
-      <g:image_link>https://i.postimg.cc/pL3vKhJT/Whats-App-Image-2026-10-05-at-9-54-57-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/pL3vKhJT.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>40000 COP</g:price>
@@ -1315,7 +1390,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:title>Navaja de Punta Intercambiable 25 mm DeWalt</g:title>
       <g:description>Navaja de cuerpo metálico con hoja de 25 mm intercambiable y avance por segmentos.</g:description>
       <g:link>https://lexmonn.com/productos/navaja-de-punta-intercambiable-25-mm-dewalt-21.html</g:link>
-      <g:image_link>https://i.postimg.cc/1R7jgxHR/Whats-App-Image-2026-10-05-at-10-01-52-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/1R7jgxHR.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>96600 COP</g:price>
@@ -1327,7 +1402,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:title>Navaja Plegable Compacta Husky</g:title>
       <g:description>Navaja plegable de uso general con seguro de bloqueo y mango texturizado.</g:description>
       <g:link>https://lexmonn.com/productos/navaja-plegable-compacta-husky-16.html</g:link>
-      <g:image_link>https://i.postimg.cc/xTCV7ys1/Whats-App-Image-2026-10-05-at-9-59-28-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/xTCV7ys1.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>60800 COP</g:price>
@@ -1359,7 +1434,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Nivel Magnetico De 9&quot; Total</g:title>
       <g:description>Nivel compacto de 225 mm con tres viales de lectura y cuerpo de aluminio, para espacios donde no entra un nivel largo.</g:description>
       <g:link>https://lexmonn.com/productos/nivel-magnetico-de-9-total-53.html</g:link>
-      <g:image_link>https://i.postimg.cc/0QFXBDrd/Whats-App-Image-2026-10-05-at-10-03-09-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/0QFXBDrd.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>10000 COP</g:price>
@@ -1371,7 +1446,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Nivel Torpedo 9&quot; con Base Magnética Truper</g:title>
       <g:description>Nivel torpedo de 23 cm con base magnética para trabajar con las manos libres, tres viales de lectura.</g:description>
       <g:link>https://lexmonn.com/productos/nivel-torpedo-9-con-base-magnetica-truper-27.html</g:link>
-      <g:image_link>https://i.postimg.cc/pTfkq4bP/Whats-App-Image-2026-10-05-at-10-16-24-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/pTfkq4bP.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>18700 COP</g:price>
@@ -1383,7 +1458,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Palustre 150mm Total</g:title>
       <g:description>Paleta de albañil con hoja de acero en punta de 150mm (6 pulgadas), mango bimaterial antideslizante.</g:description>
       <g:link>https://lexmonn.com/productos/palustre-150mm-total-103.html</g:link>
-      <g:image_link>https://i.postimg.cc/m22Vymmp/Whats-App-Image-2026-10-05-at-10-17-48-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/m22Vymmp.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>11000 COP</g:price>
@@ -1395,7 +1470,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Pinza de Electricista 9&quot; con Ponchadora Truper Expert</g:title>
       <g:description>Pinza de electricista de alta palanca con zona de ponchado para conectores y terminales. Línea Expert.</g:description>
       <g:link>https://lexmonn.com/productos/pinza-de-electricista-9-con-ponchadora-truper-expert-35.html</g:link>
-      <g:image_link>https://i.postimg.cc/3N6yprS7/Whats-App-Image-2026-10-05-at-10-20-10-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/3N6yprS7.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>48000 COP</g:price>
@@ -1407,7 +1482,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Pinza de Presión 10&quot; Truper</g:title>
       <g:description>Pinza de presión de mordaza recta de 10 pulgadas, con tornillo de ajuste y apertura de hasta 50 mm.</g:description>
       <g:link>https://lexmonn.com/productos/pinza-de-presion-10-truper-34.html</g:link>
-      <g:image_link>https://i.postimg.cc/PJzXftgz/Whats-App-Image-2026-10-05-at-10-24-15-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/PJzXftgz.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>40500 COP</g:price>
@@ -1419,7 +1494,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Pinza de Presión Tipo C 6 Pulgadas Truper</g:title>
       <g:description>Pinza de presión tipo C de 6 pulgadas (150mm), apertura máxima de 2 pulgadas (50mm), mordazas autoajustables. Modelo 17413.</g:description>
       <g:link>https://lexmonn.com/productos/pinza-de-presion-tipo-c-6-pulgadas-truper-74.html</g:link>
-      <g:image_link>https://i.postimg.cc/qRvXxRLz/Whats-App-Image-2026-10-05-at-10-32-35-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/qRvXxRLz.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>55000 COP</g:price>
@@ -1455,7 +1530,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Pistola de Calor 1600 W Total</g:title>
       <g:description>Pistola de calor de 1600 W con tres niveles de temperatura hasta 550 grados, para decapar pintura y termoencoger.</g:description>
       <g:link>https://lexmonn.com/productos/pistola-de-calor-1600-w-total-64.html</g:link>
-      <g:image_link>https://i.postimg.cc/W1cGfSnH/Whats-App-Image-2026-10-05-at-10-36-04-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/W1cGfSnH.jpg</g:image_link>
       <g:additional_image_link>https://lexmonn.com/imagenes/foto-SNjFQRYv.jpg</g:additional_image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
@@ -1468,7 +1543,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Pistola de Fijación a Pólvora .22 Ramset</g:title>
       <g:description>Herramienta de fijación directa activada por pólvora calibre .22, para anclaje en concreto, acero y madera. Penetración de hasta 3 pulgadas.</g:description>
       <g:link>https://lexmonn.com/productos/pistola-de-fijacion-a-polvora-22-ramset-102.html</g:link>
-      <g:image_link>https://i.postimg.cc/MT95CRT1/Whats-App-Image-2026-09-29-at-7-27-38-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/MT95CRT1.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>665000 COP</g:price>
@@ -1516,7 +1591,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Placa de Puntería Roja para Nivel Láser</g:title>
       <g:description>Placa reflectiva con diana,  graduación en pulgadas y centímetros, mejora la visibilidad del láser rojo.</g:description>
       <g:link>https://lexmonn.com/productos/placa-de-punteria-roja-para-nivel-laser-31.html</g:link>
-      <g:image_link>https://i.postimg.cc/VkHDZXJt/Whats-App-Image-2026-10-05-at-10-50-45-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/VkHDZXJt.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>33000 COP</g:price>
@@ -1528,7 +1603,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:title>Placa de Puntería Verde para Nivel Láser</g:title>
       <g:description>Placa reflectiva con diana, graduación en pulgadas y centímetros, para niveles láser de haz verde.</g:description>
       <g:link>https://lexmonn.com/productos/placa-de-punteria-verde-para-nivel-laser-32.html</g:link>
-      <g:image_link>https://i.postimg.cc/yYH50hR0/Whats-App-Image-2026-10-05-at-10-49-37-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/yYH50hR0.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>33000 COP</g:price>
@@ -1560,7 +1635,7 @@ Sistema de velocidad variable que permite ajustar las revoluciones según la den
 Manija desmontable que permite el agarre necesario para realizar maniobras en espacios reducidos o ángulos difíciles.
 Incluye cargador, batería y 5 discos de 4 1/2 pulgadas para iniciar aplicaciones de corte de forma inmediata.</g:description>
       <g:link>https://lexmonn.com/productos/pulidora-angular-inalambrica-20v-total-50.html</g:link>
-      <g:image_link>https://i.postimg.cc/d1SsLH36/Whats-App-Image-2026-10-05-at-10-53-53-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/d1SsLH36.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>575000 COP</g:price>
@@ -1579,6 +1654,18 @@ Tamaño ajustable. Se adapta a todos, hombres y mujeres.</g:description>
       <g:price>31000 COP</g:price>
       <g:identifier_exists>no</g:identifier_exists>
       <g:product_type>Herrajes y Accesorios</g:product_type>
+    </item>
+    <item>
+      <g:id>160</g:id>
+      <g:title>Rotomartillo 800w Wadfow</g:title>
+      <g:description>Este rotomartillo cuenta con una potencia de 800V y una velocidad de 1100 RPM, permitiéndote realizar perforaciones con una fuerza de impacto de 2.5 J. Su diseño profesional y su mandril de 1/2 pulgada lo hacen ideal para una amplia gama de aplicaciones, garantizando un trabajo de calidad en cada uso. Además, su velocidad fija asegura un control constante y preciso.</g:description>
+      <g:link>https://lexmonn.com/productos/rotomartillo-800w-wadfow-160.html</g:link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/3xvfMvFG.jpg</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>350000 COP</g:price>
+      <g:brand>Wadfow</g:brand>
+      <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
       <g:id>81</g:id>
@@ -1603,7 +1690,12 @@ Incluye: (3) brocas, (2) cinceles y maletín.</g:description>
     <item>
       <g:id>128</g:id>
       <g:title>Serrucho 20 Pulgadas Truper</g:title>
-      <g:description>Serrucho 20 Pulgadas Truper, en la categoría Herramientas Truper de Lexmonn.</g:description>
+      <g:description>Hoja de acero al alto carbono AISI 1566 para óptima
+resistencia al desgaste
+• Dentado de 8 DPP que ofrece un acabado medio en
+madera
+• Mango de madera cómodo que proporciona un agarre
+firme y de mayor control</g:description>
       <g:link>https://lexmonn.com/productos/serrucho-20-pulgadas-truper-128.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/truper-serrucho-dorado-20.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
@@ -1615,9 +1707,12 @@ Incluye: (3) brocas, (2) cinceles y maletín.</g:description>
     <item>
       <g:id>56</g:id>
       <g:title>Serrucho para Drywall 150 mm Total</g:title>
-      <g:description>Serrucho para Drywall 150 mm Total, en la categoría Herramientas Total de Lexmonn.</g:description>
+      <g:description>8 Dientes por pulguda, Cabeza de martillo Forjada Tratamiento
+térmico 
+Dientes triples (Dientes rectificados de precisión
+3 filos)</g:description>
       <g:link>https://lexmonn.com/productos/serrucho-para-drywall-150-mm-total-56.html</g:link>
-      <g:image_link>https://i.postimg.cc/tRwvpKpy/Whats-App-Image-2026-10-05-at-11-02-01-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/tRwvpKpy.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>40000 COP</g:price>
@@ -1627,9 +1722,15 @@ Incluye: (3) brocas, (2) cinceles y maletín.</g:description>
     <item>
       <g:id>10</g:id>
       <g:title>Serrucho para Drywall Milwaukee</g:title>
-      <g:description>Serrucho para Drywall Milwaukee, en la categoría Drywall y Acabados de Lexmonn.</g:description>
+      <g:description>Los orificios de raspado hacen que alisar los bordes de yeso después de cortar sea más fácil
+Diseño compacto para su uso en espacios reducidos
+Hendiduras acanaladas para un mayor agarre
+Mango antivuelco
+Agujero de cordón listo para amarrar
+Ideal para penetrar paneles de yeso
+Corta yeso con facilidad.</g:description>
       <g:link>https://lexmonn.com/productos/serrucho-para-drywall-milwaukee-10.html</g:link>
-      <g:image_link>https://i.postimg.cc/cHV7GNYY/Whats-App-Image-2026-10-05-at-11-03-51-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/cHV7GNYY.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>75000 COP</g:price>
@@ -1645,7 +1746,7 @@ Dientes triples (afilados con precisión en 3 bordes)
 Función de protección para la mano.
 Corte rápido y larga duración.</g:description>
       <g:link>https://lexmonn.com/productos/serrucho-plegable-180-mm-total-61.html</g:link>
-      <g:image_link>https://i.postimg.cc/XvBpSBgR/Whats-App-Image-2026-10-05-at-11-05-43-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/XvBpSBgR.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>47000 COP</g:price>
@@ -1662,7 +1763,7 @@ Corte rápido y larga duración.</g:description>
 1 uds PH1x100 Destornillador 
 1 pcs cinta de medición de acero de 3M&amp;nbsp</g:description>
       <g:link>https://lexmonn.com/productos/set-de-herramientas-7-piezas-total-55.html</g:link>
-      <g:image_link>https://i.postimg.cc/s2bKsSCZ/Whats-App-Image-2026-10-05-at-11-13-52-AM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/s2bKsSCZ.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>38000 COP</g:price>
@@ -1718,7 +1819,7 @@ Corte rápido y larga duración.</g:description>
 – Puerto de carga de la batería: USB tipo C
 – Cargador se vende por separado.</g:description>
       <g:link>https://lexmonn.com/productos/taladro-chuck-12v-total-54.html</g:link>
-      <g:image_link>https://i.postimg.cc/ht6fgJnX/Whats-App-Image-2026-10-05-at-2-35-38-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/ht6fgJnX.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>110000 COP</g:price>
@@ -1742,7 +1843,7 @@ Corte rápido y larga duración.</g:description>
 - Voltaje de carga: 110-120V~50/60Hz
 - 3 brocas para mampostería.</g:description>
       <g:link>https://lexmonn.com/productos/taladro-de-impacto-20v-brushless-total-63.html</g:link>
-      <g:image_link>https://i.postimg.cc/R02ZQDd1/Whats-App-Image-2026-10-05-at-5-14-18-PM.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/R02ZQDd1.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>465000 COP</g:price>
@@ -1752,9 +1853,9 @@ Corte rápido y larga duración.</g:description>
     <item>
       <g:id>46</g:id>
       <g:title>Taladro de Impacto Inalámbrico 12V Total</g:title>
-      <g:description>Incluye trípode, soporte magnético, cargador y estuche</g:description>
+      <g:description>Incluye maletín de transporte, cuenta con función percutor, velocidad máxima de rotación 1500rpm y 2 baterías incluidas</g:description>
       <g:link>https://lexmonn.com/productos/taladro-de-impacto-inalambrico-12v-total-46.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/total-taladro-impacto-12v.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/DyCB4cBD.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>195000 COP</g:price>
@@ -1766,7 +1867,7 @@ Corte rápido y larga duración.</g:description>
       <g:title>Tapizadora Acero Azul 10&quot; Truper</g:title>
       <g:description>Tapizadora para drywall con hoja de acero azul de 25 cm y mango ergonómico, para acabados de mayor cubrimiento.</g:description>
       <g:link>https://lexmonn.com/productos/tapizadora-acero-azul-10-truper-2.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/truper-tapizadora-10.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/859TCvxN.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>28400 COP</g:price>
@@ -1778,7 +1879,7 @@ Corte rápido y larga duración.</g:description>
       <g:title>Tapizadora Acero Azul 12&quot; Truper</g:title>
       <g:description>Tapizadora para drywall con hoja de acero azul de 30 cm, la más ancha de la línea, para alisar superficies grandes.</g:description>
       <g:link>https://lexmonn.com/productos/tapizadora-acero-azul-12-truper-3.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/truper-tapizadora-12.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/dt8JqL6Y.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>30100 COP</g:price>
@@ -1790,7 +1891,7 @@ Corte rápido y larga duración.</g:description>
       <g:title>Tapizadora Acero Azul 8&quot; Truper</g:title>
       <g:description>Tapizadora para drywall con hoja de acero azul de 20 cm y mango ergonómico. Ideal para aplicar y extender masilla en juntas.</g:description>
       <g:link>https://lexmonn.com/productos/tapizadora-acero-azul-8-truper-1.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/truper-tapizadora-8.jpg</g:image_link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/g2sdZQfp.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>26000 COP</g:price>

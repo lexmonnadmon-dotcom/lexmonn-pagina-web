@@ -44,6 +44,18 @@ jobs:
         with:
           node-version: "20"
 
+      # Las fotos de producto que Gimena sube a otro servidor (postimg.cc) se
+      # guardan también en el sitio, para que Google (listado de Merchant
+      # Center, datos de cada producto) y la vista previa al compartir un
+      # enlace no dependan de que ese servidor esté arriba. Casi siempre ya
+      # están guardadas en el repositorio y el paso tarda un segundo: solo baja
+      # las nuevas. Si falla, esas fotos salen con su dirección original.
+      # Va antes de las versiones livianas, que parten de esa misma copia.
+      - name: Copias de fotos de otros servidores
+        continue-on-error: true
+        timeout-minutes: 3
+        run: node tools/guardar-fotos-externas.js
+
       # Las fotos cargadas en la Sheet después del último commit todavía no
       # tienen versión liviana (WebP) en el repositorio. Se generan aquí para
       # esta publicación, y solo cuando hace falta: instalar ffmpeg tarda

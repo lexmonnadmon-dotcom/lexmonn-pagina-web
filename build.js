@@ -49,6 +49,22 @@ function writeFile(relPath, content) {
   fs.writeFileSync(full, content, "utf8");
 }
 
+// La foto de un producto tal como se le da a Google (listado de Merchant
+// Center, datos de cada producto, mapa del sitio) y a las redes (vista previa
+// al compartir): siempre con la dirección completa. Si está en postimg.cc y ya
+// hay una copia guardada aquí (tools/guardar-fotos-externas.js), se da la del
+// sitio, para que lo que ve Google no dependa de que otro servidor esté
+// arriba. En la página no cambia nada: ahí se muestran las versiones livianas.
+function fotoPublica(url) {
+  if (!url) return "";
+  const copia = Shared.copiaLocalFoto(url);
+  if (copia && fs.existsSync(path.join(ROOT, copia))) return `${SITE_URL}${copia}`;
+  return /^https?:\/\//i.test(url) ? url : `${SITE_URL}/${String(url).replace(/^\/+/, "")}`;
+}
+
+// Copia del producto con sus fotos como las ve Google (ver fotoPublica).
+const conFotosPublicas = (p) => ({ ...p, imagen: fotoPublica(p.imagen), imagenes: (p.imagenes || []).map(fotoPublica) });
+
 async function fetchCsv(url) {
   const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) throw new Error(`HTTP ${res.status} al descargar el CSV de Google Sheets`);
@@ -588,7 +604,7 @@ function buildProductPage(p, cat) {
     title,
     description,
     canonical,
-    ogImage: p.imagen || undefined,
+    ogImage: fotoPublica(p.imagen) || undefined,
     ogImageAlt: p.nombre,
     ogType: "product",
     productPrice: Shared.getEffectivePrice(p),
@@ -597,7 +613,7 @@ function buildProductPage(p, cat) {
       { name: catName, url: `${SITE_URL}/categoria/${catSlug}.html` },
       { name: p.nombre, url: canonical },
     ]),
-    extraJsonLd: [Templates.renderProductJsonLd(p, canonical)],
+    extraJsonLd: [Templates.renderProductJsonLd(conFotosPublicas(p), canonical)],
   });
 
   const breadcrumbs = Templates.renderBreadcrumbs([
@@ -967,7 +983,7 @@ function buildCategoryPage(cat, allCats) {
     title,
     description,
     canonical,
-    ogImage: !cat.image ? undefined : /^https?:/.test(cat.image) ? cat.image : `${SITE_URL}${cat.image}`,
+    ogImage: fotoPublica(cat.image) || undefined,
     ogImageAlt: catName,
     breadcrumbJsonLd: Templates.renderBreadcrumbJsonLd([
       { name: "Inicio", url: `${SITE_URL}/` },
@@ -1069,7 +1085,7 @@ function buildSitemap(activeProducts, cats) {
     ...activeProducts.map((p) => ({
       loc: `${SITE_URL}/productos/${p.slug}.html`,
       priority: "0.7",
-      images: (p.imagenes && p.imagenes.length ? p.imagenes : [p.imagen]).filter(Boolean),
+      images: (p.imagenes && p.imagenes.length ? p.imagenes : [p.imagen]).filter(Boolean).map(fotoPublica),
     })),
     { loc: `${SITE_URL}${Shared.POLITICAS.PAGINA}`, priority: "0.4" },
     { loc: `${SITE_URL}/privacidad.html`, priority: "0.2" },
@@ -1097,7 +1113,9 @@ function buildSitemap(activeProducts, cats) {
 // Merchant Center lo vuelve a leer solo, a diario, desde:
 //   https://lexmonn.com/productos-google.xml
 // Se regenera en cada build desde la Sheet, igual que las páginas, así que
-// precios y productos siempre coinciden con los del sitio.
+// precios y productos siempre coinciden con los del sitio. Las fotos que están
+// en otro servidor (postimg.cc) van con su copia guardada en el sitio
+// (fotoPublica), para que Google no dependa de ese servidor.
 //
 // Envíos y devoluciones NO van aquí: se configuran una vez en la cuenta de
 // Merchant Center, que los aplica a todos los productos.
@@ -1109,13 +1127,12 @@ function buildMerchantFeed(activeProducts) {
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
-  const absoluta = (u) => (/^https?:\/\//i.test(u) ? u : `${SITE_URL}/${String(u).replace(/^\/+/, "")}`);
   const precio = (n) => `${Math.round(n)} COP`;
   const omitidos = [];
 
   const items = activeProducts
     .map((p) => {
-      const fotos = (p.imagenes && p.imagenes.length ? p.imagenes : [p.imagen]).filter(Boolean).map(absoluta);
+      const fotos = (p.imagenes && p.imagenes.length ? p.imagenes : [p.imagen]).filter(Boolean).map(fotoPublica);
       if (!p.precio || !fotos.length) {
         omitidos.push(p.id);
         return "";
