@@ -869,14 +869,14 @@ function buildPrivacyPage() {
 
 // ---------- Envíos, pagos y devoluciones ----------
 
-// Lo que dice esta página sale de POLITICAS (lib/shared.js), que es lo que
-// respondió Gimena el 2026-10-07; los datos para Google de cada producto y
-// llms.txt usan lo mismo. Lo que NO dice, a propósito: el valor del envío
-// (cambia con la ciudad) ni las condiciones de una devolución (estado del
-// producto, quién paga el envío de regreso, cómo se devuelve el dinero).
-// No están definidos y no se inventan. Google Merchant Center pide una
-// política de devoluciones, los medios de pago y los tiempos de envío
-// publicados antes de mostrar los productos en Shopping.
+// Lo que dice esta página sale de POLITICAS (lib/shared.js) y de lo que
+// respondió Gimena el 2026-10-07 y el 2026-10-25; los datos para Google de
+// cada producto y llms.txt usan lo mismo. Lo que NO dice, a propósito: un
+// valor del envío (lo define la transportadora según la zona, no existe como
+// número) ni en cuántos días se devuelve el dinero, que no está definido y no
+// se inventa. Google Merchant Center pide una política de devoluciones, los
+// medios de pago y los tiempos de envío publicados antes de mostrar los
+// productos en Shopping.
 function buildPoliciesPage() {
   const P = Shared.POLITICAS;
   const canonical = `${SITE_URL}${P.PAGINA}`;
@@ -884,7 +884,7 @@ function buildPoliciesPage() {
   const head = Shell.renderHead({
     title: "Envíos, pagos y devoluciones | Lexmonn",
     description: Shared.truncateForMeta(
-      `Cómo envía Lexmonn a toda Colombia (${dias}), cómo pagar (efectivo, transferencia, Nequi y Sistecrédito) y cómo devolver un producto en ${P.DEVOLUCION_DIAS} días.`,
+      `Cómo envía Lexmonn a toda Colombia (${dias}), cómo pagar (efectivo, transferencia, Nequi y Sistecrédito) y cuándo se acepta una devolución.`,
       160
     ),
     canonical,
@@ -904,7 +904,7 @@ function buildPoliciesPage() {
       <ul class="page-facts">
         <li>Envíos de ${dias}</li>
         <li>Efectivo, transferencia y Nequi</li>
-        <li>Devoluciones: ${P.DEVOLUCION_DIAS} días</li>
+        <li>Devoluciones de productos defectuosos o dañados, hasta ${P.DEVOLUCION_DIAS} días</li>
       </ul>
     </div>
   </section>
@@ -914,8 +914,8 @@ function buildPoliciesPage() {
         <h2 id="envios">Envíos</h2>
         <p>Despachamos a toda Colombia por transportadora.</p>
         <ul>
-          <li><strong>Costo.</strong> Depende de la ciudad. Te lo confirmamos por WhatsApp junto con tu pedido, antes de despachar.</li>
-          <li><strong>Tiempo de entrega.</strong> De ${dias}, según la zona.</li>
+          <li><strong>Costo.</strong> Depende de la zona del país y lo define la transportadora. Te lo confirmamos por WhatsApp junto con tu pedido, antes de despachar.</li>
+          <li><strong>Tiempo de entrega.</strong> De ${dias}, según la zona, contados desde que se despacha tu pedido.</li>
         </ul>
 
         <h2 id="pagos">Pagos</h2>
@@ -926,14 +926,21 @@ function buildPoliciesPage() {
         <p>Coordinamos el pago por WhatsApp cuando confirmamos tu pedido: el sitio no hace ningún cobro. Expedimos factura electrónica con los datos de tu pedido.</p>
 
         <h2 id="devoluciones">Devoluciones</h2>
-        <p>Tienes <strong>${P.DEVOLUCION_DIAS} días</strong>, contados desde que recibes tu pedido, para pedir la devolución de un producto.</p>
-        <p>Para pedirla, escríbenos por WhatsApp al <a href="${Shell.WHATSAPP_URL}" target="_blank" rel="noopener">${Shell.PHONE_DISPLAY}</a> o a <a href="mailto:${Shell.EMAIL}">${Shell.EMAIL}</a> y dinos tu nombre y el producto que quieres devolver. Esto no reemplaza los derechos que te da la ley como consumidor.</p>
+        <p>Aceptamos la devolución de un producto solo si está defectuoso o dañado, y tienes <strong>${P.DEVOLUCION_DIAS} días</strong>, contados desde que recibes tu pedido, para pedirla. La única excepción es el derecho de retracto, que explicamos abajo.</p>
+        <ul>
+          <li><strong>Estado del producto.</strong> Debe estar sin usar.</li>
+          <li><strong>Cambios.</strong> No hacemos cambios por otro producto.</li>
+          <li><strong>Cómo se devuelve.</strong> En nuestro local de Bello. Si lo devuelves por envío, el flete lo paga el cliente.</li>
+          <li><strong>Reembolso.</strong> No devolvemos el dinero, salvo que el producto esté dañado, y entonces es por transferencia, o que ejerzas el derecho de retracto.</li>
+        </ul>
+        <p><strong>Derecho de retracto.</strong> En compras a distancia también puedes retractarte dentro de los ${P.RETRACTO_DIAS} días hábiles siguientes a la entrega, devolviendo el producto sin usar. En ese caso sí te devolvemos el dinero, y el transporte de la devolución lo paga el cliente.</p>
+        <p>Para pedir una devolución o ejercer el retracto, escríbenos por WhatsApp al <a href="${Shell.WHATSAPP_URL}" target="_blank" rel="noopener">${Shell.PHONE_DISPLAY}</a> o a <a href="mailto:${Shell.EMAIL}">${Shell.EMAIL}</a> y dinos tu nombre y el producto que quieres devolver. Esto no reemplaza los derechos que te da la ley como consumidor.</p>
 
         <h2>¿Tienes dudas?</h2>
         <p>Escríbenos y te respondemos en el horario de atención.</p>
         <p><a class="btn btn-wa" href="${Shell.WHATSAPP_URL}" target="_blank" rel="noopener">${icon("whatsapp", 20)} Escribir por WhatsApp</a></p>
 
-        <p class="legal-updated">Última actualización: 8 de octubre de 2026.</p>
+        <p class="legal-updated">Última actualización: 25 de octubre de 2026.</p>
       </div>
     </div>
   </section>`;
@@ -1198,9 +1205,9 @@ function buildLlmsTxt(activeProducts, cats) {
     "- WhatsApp y teléfono: +57 301 559 7873",
     "- Correo: lexmonn.admon@gmail.com",
     "- Horario: lunes a viernes 8:00 a.m. – 5:00 p.m.; sábados 9:00 a.m. – 3:00 p.m.",
-    `- Envíos: a toda Colombia por transportadora; el costo depende de la ciudad y la entrega tarda de ${Shared.POLITICAS.ENVIO_DIAS_MIN} a ${Shared.POLITICAS.ENVIO_DIAS_MAX} días hábiles según la zona`,
-    "- Pagos: efectivo, transferencia, Nequi y crédito con Sistecrédito (sujeto a aprobación de Sistecrédito)",
-    `- Devoluciones: ${Shared.POLITICAS.DEVOLUCION_DIAS} días desde que se recibe el pedido`,
+    `- Envíos: a toda Colombia por transportadora; el costo depende de la zona del país y lo define la transportadora, y la entrega tarda de ${Shared.POLITICAS.ENVIO_DIAS_MIN} a ${Shared.POLITICAS.ENVIO_DIAS_MAX} días hábiles según la zona, contados desde que se despacha`,
+    "- Pagos: efectivo (en el local de Bello o contra entrega), transferencia, Nequi y crédito con Sistecrédito (sujeto a aprobación de Sistecrédito)",
+    `- Devoluciones: solo si el producto está defectuoso o dañado, sin usar, dentro de ${Shared.POLITICAS.DEVOLUCION_DIAS} días desde que se recibe el pedido; sin cambios; en el local de Bello o por envío con el flete a cargo del cliente; sin devolución de dinero, salvo que el producto esté dañado (por transferencia). Además, en compras a distancia hay derecho de retracto: ${Shared.POLITICAS.RETRACTO_DIAS} días hábiles desde la entrega, con el producto sin usar; se devuelve el dinero y el transporte lo paga el cliente`,
     "- NIT: 901923669",
     "",
     "## Catálogo",
