@@ -873,8 +873,7 @@ function buildPrivacyPage() {
 // respondió Gimena el 2026-10-07 y el 2026-10-25; los datos para Google de
 // cada producto y llms.txt usan lo mismo. Lo que NO dice, a propósito: un
 // valor del envío (lo define la transportadora según la zona, no existe como
-// número) ni en cuántos días se devuelve el dinero, que no está definido y no
-// se inventa. Google Merchant Center pide una política de devoluciones, los
+// número). Google Merchant Center pide una política de devoluciones, los
 // medios de pago y los tiempos de envío publicados antes de mostrar los
 // productos en Shopping.
 function buildPoliciesPage() {
@@ -930,8 +929,8 @@ function buildPoliciesPage() {
         <ul>
           <li><strong>Estado del producto.</strong> Debe estar sin usar.</li>
           <li><strong>Cambios.</strong> No hacemos cambios por otro producto.</li>
-          <li><strong>Cómo se devuelve.</strong> En nuestro local de Bello. Si lo devuelves por envío, el flete lo paga el cliente.</li>
-          <li><strong>Reembolso.</strong> No devolvemos el dinero, salvo que el producto esté dañado, y entonces es por transferencia, o que ejerzas el derecho de retracto.</li>
+          <li><strong>Cómo se devuelve.</strong> En nuestro local de Bello. Si lo devuelves por envío, el flete lo paga el cliente, salvo que el producto llegue dañado: en ese caso lo pagamos nosotros.</li>
+          <li><strong>Reembolso.</strong> No devolvemos el dinero, salvo que el producto esté dañado o que ejerzas el derecho de retracto. Si el producto está dañado, el reembolso es por transferencia y tarda de ${P.REEMBOLSO_DIAS_MIN} a ${P.REEMBOLSO_DIAS_MAX} días hábiles.</li>
         </ul>
         <p><strong>Derecho de retracto.</strong> En compras a distancia también puedes retractarte dentro de los ${P.RETRACTO_DIAS} días hábiles siguientes a la entrega, devolviendo el producto sin usar. En ese caso sí te devolvemos el dinero, y el transporte de la devolución lo paga el cliente.</p>
         <p>Para pedir una devolución o ejercer el retracto, escríbenos por WhatsApp al <a href="${Shell.WHATSAPP_URL}" target="_blank" rel="noopener">${Shell.PHONE_DISPLAY}</a> o a <a href="mailto:${Shell.EMAIL}">${Shell.EMAIL}</a> y dinos tu nombre y el producto que quieres devolver. Esto no reemplaza los derechos que te da la ley como consumidor.</p>
@@ -1207,7 +1206,7 @@ function buildLlmsTxt(activeProducts, cats) {
     "- Horario: lunes a viernes 8:00 a.m. – 5:00 p.m.; sábados 9:00 a.m. – 3:00 p.m.",
     `- Envíos: a toda Colombia por transportadora; el costo depende de la zona del país y lo define la transportadora, y la entrega tarda de ${Shared.POLITICAS.ENVIO_DIAS_MIN} a ${Shared.POLITICAS.ENVIO_DIAS_MAX} días hábiles según la zona, contados desde que se despacha`,
     "- Pagos: efectivo (en el local de Bello o contra entrega), transferencia, Nequi y crédito con Sistecrédito (sujeto a aprobación de Sistecrédito)",
-    `- Devoluciones: solo si el producto está defectuoso o dañado, sin usar, dentro de ${Shared.POLITICAS.DEVOLUCION_DIAS} días desde que se recibe el pedido; sin cambios; en el local de Bello o por envío con el flete a cargo del cliente; sin devolución de dinero, salvo que el producto esté dañado (por transferencia). Además, en compras a distancia hay derecho de retracto: ${Shared.POLITICAS.RETRACTO_DIAS} días hábiles desde la entrega, con el producto sin usar; se devuelve el dinero y el transporte lo paga el cliente`,
+    `- Devoluciones: solo si el producto está defectuoso o dañado, sin usar, dentro de ${Shared.POLITICAS.DEVOLUCION_DIAS} días desde que se recibe el pedido; sin cambios; en el local de Bello o por envío con el flete a cargo del cliente, salvo que el producto llegue dañado (entonces lo paga Lexmonn); sin devolución de dinero, salvo que el producto esté dañado (por transferencia, de ${Shared.POLITICAS.REEMBOLSO_DIAS_MIN} a ${Shared.POLITICAS.REEMBOLSO_DIAS_MAX} días hábiles). Además, en compras a distancia hay derecho de retracto: ${Shared.POLITICAS.RETRACTO_DIAS} días hábiles desde la entrega, con el producto sin usar; se devuelve el dinero y el transporte lo paga el cliente`,
     "- NIT: 901923669",
     "",
     "## Catálogo",
