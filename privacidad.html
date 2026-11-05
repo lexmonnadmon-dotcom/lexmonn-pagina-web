@@ -38,7 +38,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/fuentes/barlow-condensed-800.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fuentes/barlow-400.woff2" crossorigin>
 <link rel="preconnect" href="https://docs.google.com">
-<link rel="stylesheet" href="/style.css?v=8d098c13">
+<link rel="stylesheet" href="/style.css?v=e24752c8">
 
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://lexmonn.com/"},{"@type":"ListItem","position":2,"name":"Privacidad y datos","item":"https://lexmonn.com/privacidad.html"}]}</script>
@@ -99,9 +99,8 @@
         <ul>
           <li><strong>Tu carrito.</strong> Se guarda para que no lo pierdas si cierras la pestaña y vuelves. Sin esto la tienda no funcionaría, así que es almacenamiento necesario.</li>
           <li><strong>Que ya viste el aviso de privacidad</strong>, para no repetírtelo en cada visita.</li>
-          <li><strong>La fecha en que viste el aviso de promociones</strong>, para no repetírtelo en cada página que abras. Pasado un día se puede volver a mostrar.</li>
         </ul>
-        <p>Son tres datos técnicos que viven solo en tu navegador. Ninguno nos llega a nosotros, ninguno identifica quién eres, y puedes borrarlos cuando quieras limpiando los datos del sitio desde tu navegador.</p>
+        <p>Son dos datos técnicos que viven solo en tu navegador. Ninguno nos llega a nosotros, ninguno identifica quién eres, y puedes borrarlos cuando quieras limpiando los datos del sitio desde tu navegador.</p>
 
         <h2>Qué NO hacemos</h2>
         <p>Para que quede explícito, porque es distinto de lo que hacen muchas tiendas:</p>
@@ -125,14 +124,14 @@
         <h2>Tus derechos</h2>
         <p>De acuerdo con la Ley 1581 de 2012 puedes conocer, actualizar y rectificar tus datos, pedir prueba de la autorización, ser informado del uso que les damos, presentar quejas ante la Superintendencia de Industria y Comercio, y revocar la autorización o pedir que los suprimamos. Para ejercer cualquiera de estos derechos escríbenos a <a href="mailto:lexmonn.admon@gmail.com">lexmonn.admon@gmail.com</a> y te respondemos.</p>
 
-        <h2>¿Por qué esta página no te pide aceptar cookies?</h2>
-        <p>Porque no tendría sentido. Los avisos de "Aceptar todo / Rechazar todo" existen donde hay cookies de publicidad y seguimiento que se activan según lo que elijas. Aquí no hay ninguna, así que darte dos botones sería pedirte permiso para algo que no ocurre. Preferimos decirte qué pasa y ya. Si algún día eso cambia, esta página lo dirá y sí te preguntaremos antes.</p>
+        <h2>¿Por qué el aviso solo tiene un botón?</h2>
+        <p>Porque no hay nada que aceptar o rechazar. Los avisos de "Aceptar todo / Rechazar todo" existen donde hay cookies de publicidad y seguimiento que se activan según lo que elijas. Aquí no hay ninguna, así que darte dos botones sería pedirte permiso para algo que no ocurre. El aviso solo te cuenta qué guarda el sitio, y "Entendido" confirma que lo leíste: se pulsa una vez para seguir navegando. Si algún día eso cambia, esta página lo dirá y sí te preguntaremos antes.</p>
 
         <h2>Volver a ver el aviso</h2>
-        <p>Si cerraste el aviso de privacidad y quieres verlo de nuevo:</p>
+        <p>Si quieres leer de nuevo el aviso de privacidad, pulsa el botón: te llevamos al inicio y ahí lo verás.</p>
         <p><button type="button" id="privacy-notice-reset" class="btn btn-dark btn-sm">Ver el aviso otra vez</button></p>
 
-        <p class="legal-updated">Última actualización: 24 de septiembre de 2026.</p>
+        <p class="legal-updated">Última actualización: 4 de noviembre de 2026.</p>
       </div>
     </div>
   </section>
@@ -184,11 +183,12 @@
   </div>
 </footer>
 
-<div id="privacy-notice" class="privacy-notice" hidden role="region" aria-label="Aviso de privacidad">
-  <p class="privacy-notice-text">
-    <strong>Tu privacidad.</strong> Guardamos tu carrito en este navegador para que no lo pierdas si cierras la página. <strong>No usamos cookies de publicidad ni de seguimiento</strong> y no compartimos tus datos con nadie. <a href="/privacidad.html">Ver el detalle</a>.
-  </p>
-  <button type="button" id="privacy-notice-ok" class="btn btn-dark btn-sm">Entendido</button>
+<div id="privacy-notice" class="privacy-notice" hidden>
+  <div class="privacy-notice-box" role="dialog" aria-modal="true" aria-labelledby="privacy-notice-title" aria-describedby="privacy-notice-text">
+    <h2 id="privacy-notice-title" class="privacy-notice-title">Tu privacidad</h2>
+    <p id="privacy-notice-text" class="privacy-notice-text">Guardamos tu carrito en este navegador para que no lo pierdas si cierras la página. <strong>No usamos cookies de publicidad ni de seguimiento</strong> y no compartimos tus datos con nadie. <a href="/privacidad.html">Ver el detalle</a>.</p>
+    <button type="button" id="privacy-notice-ok" class="btn btn-dark btn-block">Entendido</button>
+  </div>
 </div>
 
 
@@ -256,22 +256,11 @@
   <img id="lightbox-img" class="lightbox-img" alt="">
 </div>
 
-<div id="promo-overlay" class="overlay" hidden></div>
-<div id="promo-modal" class="promo-modal" hidden role="dialog" aria-modal="true" aria-label="Promoción de aniversario">
-  <button id="promo-close" class="icon-btn promo-modal-close" type="button" aria-label="Cerrar"><svg class="icon icon-x" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
-  <a href="https://wa.me/573015597873?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20promoci%C3%B3n%20de%20aniversario%20de%20Lexmonn" target="_blank" rel="noopener">
-    <!-- Sin src a propósito: loading="lazy" no impedía que el navegador la
-         bajara en TODAS las páginas aunque el pop-up no fuera a salir.
-         app.js (abrirPromo) le pone src y srcset justo antes de mostrarla. -->
-    <img data-src="/imagenes/opt/sitio/promo-sorteo-480.webp" data-srcset="/imagenes/opt/sitio/promo-sorteo-480.webp 480w, /imagenes/opt/sitio/promo-sorteo-720.webp 720w, /imagenes/opt/sitio/promo-sorteo-960.webp 960w" sizes="(min-width: 492px) 460px, calc(100vw - 32px)" data-orig="/promo-sorteo.jpeg" onerror="this.onerror=null;this.removeAttribute('srcset');this.src=this.dataset.orig" alt="Promoción de aniversario Lexmonn" class="promo-modal-img" width="960" height="960" decoding="async">
-  </a>
-</div>
-
 <script src="/config.js?v=96a70dc5" defer></script>
 <script src="/sample-products.js?v=9bb3c815" defer></script>
 <script src="/lib/fotos-optimizadas.js?v=0fcf3f85" defer></script>
 <script src="/lib/shared.js?v=17a00103" defer></script>
 <script src="/lib/templates.js?v=09810430" defer></script>
-<script src="/app.js?v=c4d9a383" defer></script>
+<script src="/app.js?v=f4f098e3" defer></script>
 </body>
 </html>

@@ -826,9 +826,8 @@ function buildPrivacyPage() {
         <ul>
           <li><strong>Tu carrito.</strong> Se guarda para que no lo pierdas si cierras la pestaña y vuelves. Sin esto la tienda no funcionaría, así que es almacenamiento necesario.</li>
           <li><strong>Que ya viste el aviso de privacidad</strong>, para no repetírtelo en cada visita.</li>
-          <li><strong>La fecha en que viste el aviso de promociones</strong>, para no repetírtelo en cada página que abras. Pasado un día se puede volver a mostrar.</li>
         </ul>
-        <p>Son tres datos técnicos que viven solo en tu navegador. Ninguno nos llega a nosotros, ninguno identifica quién eres, y puedes borrarlos cuando quieras limpiando los datos del sitio desde tu navegador.</p>
+        <p>Son dos datos técnicos que viven solo en tu navegador. Ninguno nos llega a nosotros, ninguno identifica quién eres, y puedes borrarlos cuando quieras limpiando los datos del sitio desde tu navegador.</p>
 
         <h2>Qué NO hacemos</h2>
         <p>Para que quede explícito, porque es distinto de lo que hacen muchas tiendas:</p>
@@ -852,14 +851,14 @@ function buildPrivacyPage() {
         <h2>Tus derechos</h2>
         <p>De acuerdo con la Ley 1581 de 2012 puedes conocer, actualizar y rectificar tus datos, pedir prueba de la autorización, ser informado del uso que les damos, presentar quejas ante la Superintendencia de Industria y Comercio, y revocar la autorización o pedir que los suprimamos. Para ejercer cualquiera de estos derechos escríbenos a <a href="mailto:lexmonn.admon@gmail.com">lexmonn.admon@gmail.com</a> y te respondemos.</p>
 
-        <h2>¿Por qué esta página no te pide aceptar cookies?</h2>
-        <p>Porque no tendría sentido. Los avisos de "Aceptar todo / Rechazar todo" existen donde hay cookies de publicidad y seguimiento que se activan según lo que elijas. Aquí no hay ninguna, así que darte dos botones sería pedirte permiso para algo que no ocurre. Preferimos decirte qué pasa y ya. Si algún día eso cambia, esta página lo dirá y sí te preguntaremos antes.</p>
+        <h2>¿Por qué el aviso solo tiene un botón?</h2>
+        <p>Porque no hay nada que aceptar o rechazar. Los avisos de "Aceptar todo / Rechazar todo" existen donde hay cookies de publicidad y seguimiento que se activan según lo que elijas. Aquí no hay ninguna, así que darte dos botones sería pedirte permiso para algo que no ocurre. El aviso solo te cuenta qué guarda el sitio, y "Entendido" confirma que lo leíste: se pulsa una vez para seguir navegando. Si algún día eso cambia, esta página lo dirá y sí te preguntaremos antes.</p>
 
         <h2>Volver a ver el aviso</h2>
-        <p>Si cerraste el aviso de privacidad y quieres verlo de nuevo:</p>
+        <p>Si quieres leer de nuevo el aviso de privacidad, pulsa el botón: te llevamos al inicio y ahí lo verás.</p>
         <p><button type="button" id="privacy-notice-reset" class="btn btn-dark btn-sm">Ver el aviso otra vez</button></p>
 
-        <p class="legal-updated">Última actualización: 24 de septiembre de 2026.</p>
+        <p class="legal-updated">Última actualización: 4 de noviembre de 2026.</p>
       </div>
     </div>
   </section>`;

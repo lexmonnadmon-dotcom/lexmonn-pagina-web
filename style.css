@@ -1700,9 +1700,6 @@ body.searching .page-hero .eyebrow { display: none; }
 }
 /* En escritorio el encabezado es fijo y ya tiene el carrito a la vista. */
 @media (min-width: 900px) { .cart-fab { display: none !important; } }
-/* Mientras el aviso de privacidad está abajo, el botón del carrito sube para
-   no quedar tapado detrás de él. */
-.privacy-notice:not([hidden]) ~ .cart-fab { bottom: var(--notice-offset, 220px); }
 
 /* ---------- Visor de imagen ---------- */
 
@@ -1730,51 +1727,36 @@ body.searching .page-hero .eyebrow { display: none; }
 .lightbox-close:hover { background: rgba(255, 255, 255, 0.24); }
 .lightbox-hint { position: absolute; top: 22px; left: 50%; transform: translateX(-50%); margin: 0; color: #cfd6cb; font-size: 0.86rem; white-space: nowrap; }
 
-/* ---------- Pop-up de promoción ---------- */
+/* ---------- Aviso de privacidad ---------- */
 
-.promo-modal {
+/* Cuadro en el centro, con el fondo oscurecido, que hay que cerrar con
+   "Entendido" para seguir. Va por encima de todo (el visor está en 90) y
+   app.js deja inerte el resto de la página mientras está abierto. */
+.privacy-notice {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 80;
-  width: min(460px, calc(100% - 32px));
-  overflow: hidden;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(10, 13, 12, 0.6);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.privacy-notice-box {
+  width: min(440px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 26px 24px 24px;
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
   box-shadow: var(--shadow-lg);
-  transform: translate(-50%, -50%);
-  transition: opacity 240ms var(--ease), transform 240ms var(--ease);
 }
-@starting-style { .promo-modal { opacity: 0; transform: translate(-50%, -46%); } }
-.promo-modal-img { width: 100%; height: auto; }
-.promo-modal-close { position: absolute; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.94); border-radius: 50%; box-shadow: var(--shadow-sm); }
-.promo-modal-close:hover { background: #fff; }
-
-/* ---------- Aviso de privacidad ---------- */
-
-.privacy-notice {
-  position: fixed;
-  left: 16px;
-  right: 16px;
-  bottom: 16px;
-  z-index: 55;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  max-width: 820px;
-  margin-inline: auto;
-  padding: 16px 18px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: var(--shadow-lg);
-}
-.privacy-notice-text { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+.privacy-notice-title { margin: 0 0 10px; font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; text-transform: uppercase; }
+.privacy-notice-text { margin: 0 0 20px; color: var(--muted); font-size: 0.95rem; line-height: 1.55; }
 .privacy-notice-text strong { color: var(--text); }
-.privacy-notice .btn { flex: none; }
-@media (max-width: 640px) {
-  .privacy-notice { flex-direction: column; align-items: stretch; gap: 12px; left: 10px; right: 10px; bottom: 10px; }
-}
 
 /* ---------- Estados del catálogo ---------- */
 

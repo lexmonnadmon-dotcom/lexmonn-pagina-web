@@ -127,7 +127,7 @@ function jsonLdScript(obj, id) {
   return `<script type="application/ld+json"${id ? ` id="${id}"` : ""}>${json}</script>`;
 }
 
-// Imágenes fijas del sitio (logo, ícono, promoción): se muestran en WebP
+// Imágenes fijas del sitio (logo, ícono): se muestran en WebP
 // desde imagenes/opt/sitio/ y, si ese archivo faltara, vuelven a la original.
 const FIJA_ONERROR = "this.onerror=null;this.removeAttribute('srcset');this.src=this.dataset.orig";
 
@@ -277,15 +277,21 @@ function renderCategoryNav(currentSlug) {
 // pueda aceptar o rechazar. Poner "Aceptar" y "Rechazar" sería una elección
 // falsa. Por eso es informativo, con un solo botón.
 //
+// Desde el 2026-11-04 (pedido de Christian) es un cuadro en el centro que hay
+// que cerrar con "Entendido" para seguir: app.js tapa y deja inerte el resto
+// de la página mientras está abierto. Nace oculto (`hidden`) y lo abre
+// app.js: si el script no cargara, la página no queda bloqueada.
+//
 // El día que se agregue un rastreador de verdad, ESTO tiene que volverse un
 // consentimiento real: dos opciones, guardadas, y el script cargando solo si
 // el visitante acepta.
 function renderPrivacyNotice() {
-  return `<div id="privacy-notice" class="privacy-notice" hidden role="region" aria-label="Aviso de privacidad">
-  <p class="privacy-notice-text">
-    <strong>Tu privacidad.</strong> Guardamos tu carrito en este navegador para que no lo pierdas si cierras la página. <strong>No usamos cookies de publicidad ni de seguimiento</strong> y no compartimos tus datos con nadie. <a href="/privacidad.html">Ver el detalle</a>.
-  </p>
-  <button type="button" id="privacy-notice-ok" class="btn btn-dark btn-sm">Entendido</button>
+  return `<div id="privacy-notice" class="privacy-notice" hidden>
+  <div class="privacy-notice-box" role="dialog" aria-modal="true" aria-labelledby="privacy-notice-title" aria-describedby="privacy-notice-text">
+    <h2 id="privacy-notice-title" class="privacy-notice-title">Tu privacidad</h2>
+    <p id="privacy-notice-text" class="privacy-notice-text">Guardamos tu carrito en este navegador para que no lo pierdas si cierras la página. <strong>No usamos cookies de publicidad ni de seguimiento</strong> y no compartimos tus datos con nadie. <a href="/privacidad.html">Ver el detalle</a>.</p>
+    <button type="button" id="privacy-notice-ok" class="btn btn-dark btn-block">Entendido</button>
+  </div>
 </div>`;
 }
 
@@ -344,7 +350,7 @@ function renderFooter() {
 </footer>`;
 }
 
-// ---------- Carrito, pedido, visor de imagen y promoción ----------
+// ---------- Carrito, pedido y visor de imagen ----------
 
 function renderCartAndModals() {
   return `
@@ -410,17 +416,6 @@ function renderCartAndModals() {
   <button id="lightbox-close" class="icon-btn lightbox-close" type="button" aria-label="Cerrar">${icon("x", 24)}</button>
   <p id="lightbox-hint" class="lightbox-hint">Toca la imagen para hacer zoom</p>
   <img id="lightbox-img" class="lightbox-img" alt="">
-</div>
-
-<div id="promo-overlay" class="overlay" hidden></div>
-<div id="promo-modal" class="promo-modal" hidden role="dialog" aria-modal="true" aria-label="Promoción de aniversario">
-  <button id="promo-close" class="icon-btn promo-modal-close" type="button" aria-label="Cerrar">${icon("x", 22)}</button>
-  <a href="${WHATSAPP_URL}?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20promoci%C3%B3n%20de%20aniversario%20de%20Lexmonn" target="_blank" rel="noopener">
-    <!-- Sin src a propósito: loading="lazy" no impedía que el navegador la
-         bajara en TODAS las páginas aunque el pop-up no fuera a salir.
-         app.js (abrirPromo) le pone src y srcset justo antes de mostrarla. -->
-    <img data-src="/imagenes/opt/sitio/promo-sorteo-480.webp" data-srcset="/imagenes/opt/sitio/promo-sorteo-480.webp 480w, /imagenes/opt/sitio/promo-sorteo-720.webp 720w, /imagenes/opt/sitio/promo-sorteo-960.webp 960w" sizes="(min-width: 492px) 460px, calc(100vw - 32px)" data-orig="/promo-sorteo.jpeg" onerror="${FIJA_ONERROR}" alt="Promoción de aniversario Lexmonn" class="promo-modal-img" width="960" height="960" decoding="async">
-  </a>
 </div>`;
 }
 

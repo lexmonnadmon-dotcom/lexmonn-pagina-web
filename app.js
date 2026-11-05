@@ -10,9 +10,6 @@
 // ============================================================
 
 const CART_STORAGE_KEY = "lexmonn_cart";
-const PROMO_STORAGE_KEY = "lexmonn_promo_shown";
-// Cada cuánto se le puede volver a mostrar el pop-up al mismo visitante.
-const PROMO_REPETIR_MS = 24 * 60 * 60 * 1000;
 const PRIVACY_NOTICE_KEY = "lexmonn_aviso_visto";
 
 // Dominio del sitio, fijo a propósito y no `location.origin`: este valor solo
@@ -46,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCatalog().then(renderOffers);
   renderCart();
   initPrivacyNotice();
-  initPromoPopup();
 });
 
 // En celular la barra de categorías se desliza de lado: si la categoría
@@ -98,86 +94,6 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// ---------- Pop-up de promoción ----------
-//
-// La marca de "ya se mostró" vive en localStorage y no en sessionStorage,
-// porque sessionStorage es POR PESTAÑA: al abrir un producto en una pestaña
-// nueva la pestaña arranca sin la marca y el pop-up volvía a salir en cada
-// producto. Se guarda la FECHA y se deja volver a mostrar pasado un día.
-
-function promoYaSeMostro() {
-  try {
-    const marca = Number(localStorage.getItem(PROMO_STORAGE_KEY));
-    return marca > 0 && Date.now() - marca < PROMO_REPETIR_MS;
-  } catch {
-    // Sin almacenamiento se mostrará de nuevo: preferible a no mostrarlo.
-    return false;
-  }
-}
-
-function marcarPromoMostrado() {
-  try {
-    localStorage.setItem(PROMO_STORAGE_KEY, String(Date.now()));
-  } catch {
-    // navegador con almacenamiento bloqueado
-  }
-}
-
-function initPromoPopup() {
-  document.getElementById("promo-close").addEventListener("click", closePromoPopup);
-  document.getElementById("promo-overlay").addEventListener("click", closePromoPopup);
-
-  if (promoYaSeMostro()) return;
-
-  // Sale cuando la página terminó de cargar, y nunca antes de 1,2 s: antes
-  // salía a los 1,2 s fijos y su imagen le quitaba conexión a la foto
-  // principal justo mientras cargaba, que es lo que Google mide (LCP). En
-  // una conexión rápida sigue saliendo a los 1,2 s como siempre.
-  const inicio = Date.now();
-  const programar = () => setTimeout(abrirPromo, Math.max(500, 1200 - (Date.now() - inicio)));
-  if (document.readyState === "complete") programar();
-  else window.addEventListener("load", programar, { once: true });
-}
-
-async function abrirPromo() {
-  // Se vuelve a comprobar justo antes de mostrarlo: si el cliente abrió
-  // varias pestañas casi a la vez, la primera en aparecer deja la marca.
-  if (promoYaSeMostro()) return;
-  const modal = document.getElementById("promo-modal");
-  // La imagen se baja y decodifica antes de abrir, para que el cuadro no
-  // aparezca vacío y se rellene (y salte) un momento después.
-  // Con tope de 3 s: en una pestaña que está en segundo plano el navegador
-  // puede no decodificar hasta que se la mire, y el pop-up no debe quedar
-  // esperando para siempre.
-  const img = modal.querySelector("img");
-  if (img) {
-    // El HTML la trae sin src para que no se baje en cada página; recién
-    // ahora que el pop-up va a salir se le pone la dirección.
-    if (!img.getAttribute("src") && img.dataset.src) {
-      img.srcset = img.dataset.srcset || "";
-      img.src = img.dataset.src;
-    }
-    const tope = new Promise((resolve) => setTimeout(resolve, 3000));
-    // si la versión liviana falla, onerror pasa a la original: se abre igual
-    await Promise.race([img.decode().catch(() => {}), tope]);
-  }
-  if (promoYaSeMostro()) return;
-  marcarPromoMostrado();
-  modal.hidden = false;
-  document.getElementById("promo-overlay").hidden = false;
-  lockBodyScroll();
-  pushOpen(closePromoPopup, document.getElementById("promo-close"));
-}
-
-function closePromoPopup() {
-  const modal = document.getElementById("promo-modal");
-  if (modal.hidden) return;
-  modal.hidden = true;
-  document.getElementById("promo-overlay").hidden = true;
-  unlockBodyScroll();
-  popOpen(closePromoPopup);
-}
-
 // ---------- Aviso de privacidad ----------
 //
 // Es un aviso INFORMATIVO, no un consentimiento, y es a propósito: este
@@ -185,9 +101,41 @@ function closePromoPopup() {
 // guarda es el carrito, que es estrictamente necesario para que la tienda
 // funcione. No hay nada que el visitante pueda aceptar o rechazar.
 //
+// Desde el 2026-11-04 (pedido de Christian) hay que pulsar "Entendido" para
+// seguir: sale como un cuadro en el centro, el resto de la página queda
+// tapado y sin poder tocarse, ni con el teclado (por eso `inert`), y Escape no
+// lo cierra. Las páginas de políticas se pueden leer sin pulsarlo, para que el
+// enlace "Ver el detalle" lleve a algo legible. Nace oculto en el HTML y lo
+// abre este script: si no cargara, la página no queda bloqueada.
+//
 // El día que se agregue Google Analytics, Meta Pixel o similar, esto tiene
 // que convertirse en un consentimiento de verdad (y hay que reescribir este
 // texto y /privacidad.html, que hoy afirman que no existe seguimiento).
+
+const PAGINAS_SIN_AVISO = /^\/(privacidad|envios-pagos-devoluciones)(\.html)?\/?$/;
+
+// Todo lo que hay en la página salvo el aviso y los scripts.
+function fondoDelAviso(notice) {
+  return [...document.body.children].filter((el) => el !== notice && el.tagName !== "SCRIPT");
+}
+
+function abrirAviso(notice) {
+  notice.hidden = false;
+  lockBodyScroll();
+  fondoDelAviso(notice).forEach((el) => {
+    el.inert = true;
+  });
+  const okBtn = document.getElementById("privacy-notice-ok");
+  if (okBtn) okBtn.focus({ preventScroll: true });
+}
+
+function cerrarAviso(notice) {
+  notice.hidden = true;
+  fondoDelAviso(notice).forEach((el) => {
+    el.inert = false;
+  });
+  unlockBodyScroll();
+}
 
 function initPrivacyNotice() {
   const notice = document.getElementById("privacy-notice");
@@ -199,22 +147,12 @@ function initPrivacyNotice() {
   } catch {
     // se mostrará el aviso otra vez, preferible a no mostrarlo nunca
   }
-  if (!yaVisto) notice.hidden = false;
-
-  // Mientras el aviso está abajo, el botón flotante del carrito sube justo
-  // por encima: la altura del aviso cambia con el ancho de la pantalla.
-  const syncNoticeOffset = () => {
-    if (!notice.hidden) {
-      document.documentElement.style.setProperty("--notice-offset", `${notice.offsetHeight + 28}px`);
-    }
-  };
-  syncNoticeOffset();
-  window.addEventListener("resize", syncNoticeOffset);
+  if (!yaVisto && !PAGINAS_SIN_AVISO.test(window.location.pathname)) abrirAviso(notice);
 
   const okBtn = document.getElementById("privacy-notice-ok");
   if (okBtn) {
     okBtn.addEventListener("click", () => {
-      notice.hidden = true;
+      cerrarAviso(notice);
       try {
         localStorage.setItem(PRIVACY_NOTICE_KEY, "1");
       } catch {
@@ -223,7 +161,9 @@ function initPrivacyNotice() {
     });
   }
 
-  // Botón de /privacidad.html para volver a ver el aviso.
+  // Botón de /privacidad.html para volver a ver el aviso. En esa página el
+  // aviso no sale, así que se borra la marca y se lleva al visitante al
+  // inicio, donde sí aparece.
   const resetBtn = document.getElementById("privacy-notice-reset");
   if (resetBtn) {
     resetBtn.addEventListener("click", () => {
@@ -232,7 +172,7 @@ function initPrivacyNotice() {
       } catch {
         // no hay nada guardado que borrar
       }
-      window.location.reload();
+      window.location.href = "/";
     });
   }
 }
