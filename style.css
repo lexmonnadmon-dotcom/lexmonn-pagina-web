@@ -279,12 +279,10 @@ p { text-wrap: pretty; }
 .topbar-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 16px;
   min-height: 38px;
 }
-.topbar-msg { margin: 0; }
-.topbar-msg strong { color: var(--lime); font-weight: 700; }
 .topbar-links {
   display: flex;
   align-items: center;
@@ -299,7 +297,6 @@ p { text-wrap: pretty; }
 .topbar-links a:hover { color: var(--lime); }
 .topbar-links .icon { color: var(--lime); }
 
-@media (max-width: 899px) { .topbar-long { display: none !important; } }
 @media (max-width: 560px) { .topbar-hide-sm { display: none !important; } }
 /* En celular el teléfono de la franja tiene que poder tocarse con el dedo. */
 @media (max-width: 899px) {

@@ -3,7 +3,7 @@
 // en Home, páginas de producto y páginas de categoría (head, header,
 // navegación, carrito, modales, footer, scripts). Solo lo usa build.js.
 //
-// Si quieres cambiar el header, el footer, la franja de aniversario
+// Si quieres cambiar el header, el footer, la franja superior
 // o los modales del carrito a mano, este es el archivo que debes
 // editar — index.html y las páginas de producto/categoría se
 // regeneran a partir de aquí con `node build.js`.
@@ -212,7 +212,6 @@ ${extraJsonLd}`;
 function renderTopbar() {
   return `<div class="topbar">
   <div class="container topbar-inner">
-    <p class="topbar-msg"><strong>¡Celebramos 5 años!</strong> <span class="topbar-long">Fabricando calidad y revolucionando la forma en que trabajas.</span></p>
     <ul class="topbar-links">
       <li class="topbar-hide-sm">${icon("truck", 16)} Envíos a toda Colombia</li>
       <li><a href="${WHATSAPP_URL}" target="_blank" rel="noopener">${icon("whatsapp", 16)} ${PHONE_DISPLAY}</a></li>
