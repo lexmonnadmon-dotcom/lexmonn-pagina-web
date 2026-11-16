@@ -78,6 +78,18 @@
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
+      <g:id>161</g:id>
+      <g:title>Bandeja de acero inoxidable de 12&quot;</g:title>
+      <g:description>Con mango antideslizante, lados cónicos, herramienta de paneles de yeso, cubo de bandeja, fácil de limpiar</g:description>
+      <g:link>https://lexmonn.com/productos/bandeja-de-acero-inoxidable-de-12-161.html</g:link>
+      <g:image_link>https://lexmonn.com/imagenes/externas/JzQ8wvqJ.jpg</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>99900 COP</g:price>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:product_type>Drywall y Acabados</g:product_type>
+    </item>
+    <item>
       <g:id>72</g:id>
       <g:title>Bandeja para Masilla 14 Pulgadas Level5</g:title>
       <g:description>Bandeja para masilla de acero inoxidable de 14 pulgadas (356mm) con fondo perfilado para mezclar y limpiar fácilmente. Referencia 5-334.</g:description>
@@ -148,18 +160,6 @@
       <g:price>9500 COP</g:price>
       <g:brand>Truper</g:brand>
       <g:product_type>Herramientas Truper</g:product_type>
-    </item>
-    <item>
-      <g:id>161</g:id>
-      <g:title>Bnadeja de acero inoxidable de 12&quot;</g:title>
-      <g:description>Con mango antideslizante, lados cónicos, herramienta de paneles de yeso, cubo de bandeja, fácil de limpiar</g:description>
-      <g:link>https://lexmonn.com/productos/bnadeja-de-acero-inoxidable-de-12-161.html</g:link>
-      <g:image_link>https://lexmonn.com/imagenes/externas/JzQ8wvqJ.jpg</g:image_link>
-      <g:availability>in_stock</g:availability>
-      <g:condition>new</g:condition>
-      <g:price>99900 COP</g:price>
-      <g:identifier_exists>no</g:identifier_exists>
-      <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
       <g:id>151</g:id>
@@ -968,7 +968,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>35000 COP</g:price>
       <g:brand>Truper</g:brand>
-      <g:product_type>Herramientas Total</g:product_type>
+      <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
       <g:id>25</g:id>
