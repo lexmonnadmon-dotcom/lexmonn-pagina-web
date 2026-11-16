@@ -7,8 +7,8 @@
 // galería, 68. Este script genera, por cada foto de producto, copias en WebP
 // de 200, 400, 480 y 800 px de ancho en imagenes/opt/, y la lista
 // lib/fotos-optimizadas.js con la que el sitio elige la adecuada para cada
-// pantalla (srcset). También las versiones de la foto de portada, el logo,
-// el ícono del pie y el pop-up de aniversario (imagenes/opt/sitio/).
+// pantalla (srcset). También las versiones de la foto de portada, el logo
+// y el ícono del pie (imagenes/opt/sitio/).
 //
 // Cubre las fotos guardadas en /imagenes/ y las de postimg.cc que aparecen
 // en la Sheet. NO toca la Sheet: la foto original sigue siendo la de

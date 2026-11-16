@@ -518,7 +518,7 @@ function renderCatalog() {
   renderSearchEmptyState(visibleProducts.length);
 }
 
-// ---------- Carrusel "Ofertas de Aniversario" ----------
+// ---------- Carrusel "Ofertas" ----------
 
 function renderOffers() {
   const section = document.getElementById("offers");
