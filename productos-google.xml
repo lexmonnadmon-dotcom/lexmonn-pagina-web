@@ -50,6 +50,7 @@
       <g:condition>new</g:condition>
       <g:price>24000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1958</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -62,11 +63,12 @@
       <g:condition>new</g:condition>
       <g:price>32000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>3594</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
       <g:id>90</g:id>
-      <g:title>Atornillador de Impacto 20V Total</g:title>
+      <g:title>Atornillador de Impacto Inalámbrico 20V Brushless 285 N.m con 2 Baterías y Maletín Total</g:title>
       <g:description>Atornillador de impacto inalámbrico línea P20S, motor brushless, torque de 285N.m. Incluye 2 baterías de 2.0Ah, cargador y maletín.</g:description>
       <g:link>https://lexmonn.com/productos/atornillador-de-impacto-20v-total-90.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/total-atornillador-impacto-20v.jpg</g:image_link>
@@ -75,11 +77,12 @@
       <g:price>590000 COP</g:price>
       <g:sale_price>560500 COP</g:sale_price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1221</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
       <g:id>161</g:id>
-      <g:title>Bandeja de acero inoxidable de 12&quot;</g:title>
+      <g:title>Bandeja de Acero Inoxidable 12 Pulgadas para Drywall con Mango Antideslizante</g:title>
       <g:description>Con mango antideslizante, lados cónicos, herramienta de paneles de yeso, cubo de bandeja, fácil de limpiar</g:description>
       <g:link>https://lexmonn.com/productos/bandeja-de-acero-inoxidable-de-12-161.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/externas/JzQ8wvqJ.jpg</g:image_link>
@@ -99,6 +102,7 @@
       <g:condition>new</g:condition>
       <g:price>149000 COP</g:price>
       <g:brand>Level5</g:brand>
+      <g:mpn>5-334</g:mpn>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -115,7 +119,7 @@
     </item>
     <item>
       <g:id>82</g:id>
-      <g:title>Batería 20V 4.0Ah Total</g:title>
+      <g:title>Batería de Litio 20V 4.0Ah Total Tecnología Share TFBLI20021</g:title>
       <g:description>Batería línea 20V Max Li-Ion de 4.0Ah, tecnología Share compatible con otras herramientas de la misma línea. Modelo TFBLI20021.</g:description>
       <g:link>https://lexmonn.com/productos/bateria-20v-4-0ah-total-82.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/total-bateria-20v-4ah.jpg</g:image_link>
@@ -123,6 +127,8 @@
       <g:condition>new</g:condition>
       <g:price>195000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:mpn>TFBLI20021</g:mpn>
+      <g:google_product_category>6295</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -135,6 +141,7 @@
       <g:condition>new</g:condition>
       <g:price>42200 COP</g:price>
       <g:brand>Stanley</g:brand>
+      <g:google_product_category>2411</g:google_product_category>
       <g:product_type>Corte y Cuchillas</g:product_type>
     </item>
     <item>
@@ -147,6 +154,7 @@
       <g:condition>new</g:condition>
       <g:price>15000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>2411</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -159,12 +167,13 @@
       <g:condition>new</g:condition>
       <g:price>9500 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>2411</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
       <g:id>151</g:id>
-      <g:title>Bolsillo multiusos</g:title>
-      <g:description>Práctico y versátil para llevar tus elementos esenciales de trabajo siempre a la mano. Cuenta con 6 compartimientos para organizar libretas, lápices, flexómetro y otros accesorios.</g:description>
+      <g:title>Bolsillo Porta Herramientas Multiusos con 6 Compartimientos Lexmonn</g:title>
+      <g:description>Bolsillo porta herramientas multiusos, fabricado en Colombia por Lexmonn. Práctico y versátil para llevar tus elementos esenciales de trabajo siempre a la mano. Cuenta con 6 compartimientos para organizar libretas, lápices, flexómetro y otros accesorios.</g:description>
       <g:link>https://lexmonn.com/productos/bolsillo-multiusos-151.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/foto-59zdNgR8.jpg</g:image_link>
       <g:availability>in_stock</g:availability>
@@ -172,12 +181,13 @@
       <g:price>45000 COP</g:price>
       <g:brand>Lexmonn</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>2485</g:google_product_category>
       <g:product_type>Porta Herramientas</g:product_type>
     </item>
     <item>
       <g:id>154</g:id>
-      <g:title>Bolsillo para accesorios piernero</g:title>
-      <g:description>Diseñado para llevar tus herramientas esenciales siempre al alcance. Cuenta con 10 compartimientos, incluyendo espacios para destornilladores, y correa ajustable para un transporte cómodo y práctico durante la jornada de trabajo.</g:description>
+      <g:title>Bolsillo Piernero Porta Herramientas y Accesorios, 10 Compartimientos, Correa Ajustable Lexmonn</g:title>
+      <g:description>Bolsillo piernero porta herramientas y accesorios, fabricado en Colombia por Lexmonn. Diseñado para llevar tus herramientas esenciales siempre al alcance. Cuenta con 10 compartimientos, incluyendo espacios para destornilladores, y correa ajustable para un transporte cómodo y práctico durante la jornada de trabajo.</g:description>
       <g:link>https://lexmonn.com/productos/bolsillo-para-accesorios-piernero-154.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/foto-Z52xR8g8.jpg</g:image_link>
       <g:additional_image_link>https://lexmonn.com/imagenes/foto-CLvNyT4w.jpg</g:additional_image_link>
@@ -188,12 +198,13 @@
       <g:price>87000 COP</g:price>
       <g:brand>Lexmonn</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>2485</g:google_product_category>
       <g:product_type>Porta Herramientas</g:product_type>
     </item>
     <item>
       <g:id>152</g:id>
-      <g:title>Bolsillo para electricos</g:title>
-      <g:description>Diseñado para mantener tus herramientas eléctricas y accesorios organizados y siempre al alcance. Cuenta con 15 compartimientos, espacios para destornilladores y una tira para sujetar la cinta. Diseño práctico y resistente
+      <g:title>Bolsillo Porta Herramientas para Eléctricos con 15 Compartimientos, para Cinturón de Trabajo Lexmonn</g:title>
+      <g:description>Bolsillo porta herramientas para eléctricos, fabricado en Colombia por Lexmonn. Diseñado para mantener tus herramientas eléctricas y accesorios organizados y siempre al alcance. Cuenta con 15 compartimientos, espacios para destornilladores y una tira para sujetar la cinta. Diseño práctico y resistente
 Se adapta a cinturones de trabajo</g:description>
       <g:link>https://lexmonn.com/productos/bolsillo-para-electricos-152.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/foto-XqSPCMzH.jpg</g:image_link>
@@ -205,12 +216,13 @@ Se adapta a cinturones de trabajo</g:description>
       <g:price>85000 COP</g:price>
       <g:brand>Lexmonn</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>2485</g:google_product_category>
       <g:product_type>Porta Herramientas</g:product_type>
     </item>
     <item>
       <g:id>65</g:id>
-      <g:title>Bolso de mano Lexmonn Con Cargadera</g:title>
-      <g:description>Bolso de Mano Lexmonn: práctico, amplio y diseñado para transportar tus herramientas y materiales de trabajo. Cuenta con dos bolsillos externos frontales, dos amplios bolsillos traseros y compartimentos internos para mantener todo organizado y al alcance de la mano. Adicional cuanta con cargadera.</g:description>
+      <g:title>Bolso de Mano para Herramientas con Cargadera y Múltiples Bolsillos Lexmonn</g:title>
+      <g:description>Bolso de mano para herramientas con cargadera, fabricado en Colombia por Lexmonn. Bolso de Mano Lexmonn: práctico, amplio y diseñado para transportar tus herramientas y materiales de trabajo. Cuenta con dos bolsillos externos frontales, dos amplios bolsillos traseros y compartimentos internos para mantener todo organizado y al alcance de la mano. Adicional cuanta con cargadera.</g:description>
       <g:link>https://lexmonn.com/productos/bolso-de-mano-lexmonn-con-cargadera-65.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/foto-mZPWBhHz.jpg</g:image_link>
       <g:additional_image_link>https://lexmonn.com/imagenes/foto-PJ05ZqkV.jpg</g:additional_image_link>
@@ -222,11 +234,12 @@ Se adapta a cinturones de trabajo</g:description>
       <g:price>140000 COP</g:price>
       <g:brand>Lexmonn</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>6876</g:google_product_category>
       <g:product_type>Porta Herramientas</g:product_type>
     </item>
     <item>
       <g:id>156</g:id>
-      <g:title>Bomba Periférica (APM37A)</g:title>
+      <g:title>Bomba Periférica Leo APM37A de 0.5 HP Monofásica 110V</g:title>
       <g:description>0.5HP MONOFASICA 110V, SUCCIÓN 1&quot; DESCARGA 1&quot;, AMP 5, ALTURA MÁXIMA 40M Y CAUDAL MÁXIMO 35LTS/MN APROX</g:description>
       <g:link>https://lexmonn.com/productos/bomba-periferica-apm37a-156.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/foto-CxHrg3jg.jpg</g:image_link>
@@ -234,6 +247,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>290000 COP</g:price>
       <g:brand>Leo</g:brand>
+      <g:mpn>APM37A</g:mpn>
+      <g:google_product_category>500096</g:google_product_category>
       <g:product_type>LEO PUMP</g:product_type>
     </item>
     <item>
@@ -246,7 +261,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>360000 COP</g:price>
       <g:sale_price>330000 COP</g:sale_price>
-      <g:identifier_exists>no</g:identifier_exists>
+      <g:brand>Bosch</g:brand>
+      <g:google_product_category>1191</g:google_product_category>
       <g:product_type>Medición y Nivelación</g:product_type>
     </item>
     <item>
@@ -259,6 +275,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>32000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>1540</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -271,6 +288,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>10000 COP</g:price>
       <g:brand>Forte</g:brand>
+      <g:mpn>39233</g:mpn>
+      <g:google_product_category>1540</g:google_product_category>
       <g:product_type>Herramientas de Construcción</g:product_type>
     </item>
     <item>
@@ -283,6 +302,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>11700 COP</g:price>
       <g:brand>Forte</g:brand>
+      <g:mpn>39232</g:mpn>
+      <g:google_product_category>1540</g:google_product_category>
       <g:product_type>Herramientas de Construcción</g:product_type>
     </item>
     <item>
@@ -295,6 +316,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>6800 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>1540</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -307,6 +329,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>1000000 COP</g:price>
       <g:brand>Level5</g:brand>
+      <g:mpn>002018-06</g:mpn>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -319,6 +342,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>950000 COP</g:price>
       <g:brand>TapeTech</g:brand>
+      <g:mpn>42TT</g:mpn>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -368,6 +392,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>950000 COP</g:price>
       <g:brand>Level5</g:brand>
+      <g:mpn>002018-05</g:mpn>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -380,12 +405,13 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>25000 COP</g:price>
       <g:brand>Hermex</g:brand>
+      <g:google_product_category>1027</g:google_product_category>
       <g:product_type>Herrajes y Accesorios</g:product_type>
     </item>
     <item>
       <g:id>149</g:id>
-      <g:title>Cargaderas Acolchadas Lexmonn</g:title>
-      <g:description>Mayor comodidad y mejor distribución del peso durante la jornada de trabajo. Las cargaderas Lexmonn son adaptables a cualquier línea de porta herramientas, cuentan con acolchado para mayor comodidad y un bolsillo frontal para llevar el celular.</g:description>
+      <g:title>Cargaderas Acolchadas para Cinturón Porta Herramientas con Bolsillo para Celular Lexmonn</g:title>
+      <g:description>Cargaderas acolchadas para cinturón porta herramientas, fabricadas en Colombia por Lexmonn. Mayor comodidad y mejor distribución del peso durante la jornada de trabajo. Las cargaderas Lexmonn son adaptables a cualquier línea de porta herramientas, cuentan con acolchado para mayor comodidad y un bolsillo frontal para llevar el celular.</g:description>
       <g:link>https://lexmonn.com/productos/cargaderas-acolchadas-lexmonn-149.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/foto-Z54hQNj6.jpg</g:image_link>
       <g:additional_image_link>https://lexmonn.com/imagenes/foto-sgmRC2N1.jpg</g:additional_image_link>
@@ -394,6 +420,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:price>101000 COP</g:price>
       <g:brand>Lexmonn</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>2485</g:google_product_category>
       <g:product_type>Porta Herramientas</g:product_type>
     </item>
     <item>
@@ -407,6 +434,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:price>415000 COP</g:price>
       <g:sale_price>394250 COP</g:sale_price>
       <g:brand>Milwaukee</g:brand>
+      <g:google_product_category>2723</g:google_product_category>
       <g:product_type>Seguridad Industrial</g:product_type>
     </item>
     <item>
@@ -419,6 +447,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>45000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1236</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -431,6 +460,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>31800 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>1236</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -443,11 +473,12 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>25300 COP</g:price>
       <g:brand>Pretul</g:brand>
+      <g:google_product_category>1236</g:google_product_category>
       <g:product_type>Herramientas de Construcción</g:product_type>
     </item>
     <item>
       <g:id>100</g:id>
-      <g:title>Cautín Tipo Pluma 60W NA</g:title>
+      <g:title>Cautín Tipo Pluma 60W 220V con Mango Amarillo</g:title>
       <g:description>Cautín tipo pluma de 60W para 220V, con mango amarillo y cable de alimentación integrado.</g:description>
       <g:link>https://lexmonn.com/productos/cautin-tipo-pluma-60w-na-100.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/na-cautin-pluma-60w.jpg</g:image_link>
@@ -455,6 +486,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>12500 COP</g:price>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>1236</g:google_product_category>
       <g:product_type>Herramientas de Construcción</g:product_type>
     </item>
     <item>
@@ -467,6 +499,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>52000 COP</g:price>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>2047</g:google_product_category>
       <g:product_type>Seguridad Industrial</g:product_type>
     </item>
     <item>
@@ -480,6 +513,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:price>1000000 COP</g:price>
       <g:sale_price>930000 COP</g:sale_price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>4716</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -504,6 +538,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>205000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>2726</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -516,6 +551,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>8300 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>2174</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -528,6 +564,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>40500 COP</g:price>
       <g:brand>DeWalt</g:brand>
+      <g:google_product_category>2174</g:google_product_category>
       <g:product_type>Corte y Cuchillas</g:product_type>
     </item>
     <item>
@@ -540,6 +577,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>186600 COP</g:price>
       <g:brand>Tajima</g:brand>
+      <g:google_product_category>2174</g:google_product_category>
       <g:product_type>Corte y Cuchillas</g:product_type>
     </item>
     <item>
@@ -552,6 +590,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>23800 COP</g:price>
       <g:brand>Husky</g:brand>
+      <g:google_product_category>2174</g:google_product_category>
       <g:product_type>Corte y Cuchillas</g:product_type>
     </item>
     <item>
@@ -564,6 +603,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>13000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1203</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -576,6 +616,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>10600 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>1203</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -588,6 +629,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>36000 COP</g:price>
       <g:brand>Stanley</g:brand>
+      <g:google_product_category>1203</g:google_product_category>
       <g:product_type>Herramientas de Construcción</g:product_type>
     </item>
     <item>
@@ -600,6 +642,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>6000 COP</g:price>
       <g:brand>DeWalt</g:brand>
+      <g:google_product_category>499859</g:google_product_category>
       <g:product_type>Herramientas de Construcción</g:product_type>
     </item>
     <item>
@@ -612,6 +655,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>51500 COP</g:price>
       <g:brand>DeWalt</g:brand>
+      <g:mpn>DWAFV8918</g:mpn>
+      <g:google_product_category>499859</g:google_product_category>
       <g:product_type>Herramientas de Construcción</g:product_type>
     </item>
     <item>
@@ -624,6 +669,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>8000 COP</g:price>
       <g:brand>Wadfow</g:brand>
+      <g:google_product_category>499859</g:google_product_category>
       <g:product_type>Herramientas de Construcción</g:product_type>
     </item>
     <item>
@@ -636,6 +682,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>59500 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>499859</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -648,6 +695,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>8300 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>3240</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -665,7 +713,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>830000 COP</g:price>
       <g:sale_price>780000 COP</g:sale_price>
-      <g:identifier_exists>no</g:identifier_exists>
+      <g:brand>Makita</g:brand>
+      <g:mpn>XSF03</g:mpn>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -704,6 +753,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>31000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1205</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -716,6 +766,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>44000 COP</g:price>
       <g:brand>Empire</g:brand>
+      <g:google_product_category>1205</g:google_product_category>
       <g:product_type>Medición y Nivelación</g:product_type>
     </item>
     <item>
@@ -728,6 +779,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>85200 COP</g:price>
       <g:brand>Empire</g:brand>
+      <g:google_product_category>1205</g:google_product_category>
       <g:product_type>Medición y Nivelación</g:product_type>
     </item>
     <item>
@@ -740,6 +792,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>33000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>1205</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -752,6 +805,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>68700 COP</g:price>
       <g:brand>Husky</g:brand>
+      <g:google_product_category>1202</g:google_product_category>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -764,6 +818,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>58800 COP</g:price>
       <g:brand>Marshalltown</g:brand>
+      <g:google_product_category>1202</g:google_product_category>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -776,6 +831,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>110000 COP</g:price>
       <g:brand>DeWalt</g:brand>
+      <g:google_product_category>1202</g:google_product_category>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -788,6 +844,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>20000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>1202</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -800,6 +857,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>26000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>1202</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -812,6 +870,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>119000 COP</g:price>
       <g:brand>Level5</g:brand>
+      <g:mpn>5-136</g:mpn>
+      <g:google_product_category>1202</g:google_product_category>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -824,6 +884,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>130700 COP</g:price>
       <g:brand>Level5</g:brand>
+      <g:mpn>5-137</g:mpn>
+      <g:google_product_category>1202</g:google_product_category>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -836,6 +898,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>139000 COP</g:price>
       <g:brand>Level5</g:brand>
+      <g:mpn>5-514</g:mpn>
+      <g:google_product_category>1202</g:google_product_category>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -848,6 +912,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>112000 COP</g:price>
       <g:brand>Level5</g:brand>
+      <g:mpn>5-142</g:mpn>
+      <g:google_product_category>1202</g:google_product_category>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -860,6 +926,8 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>115000 COP</g:price>
       <g:brand>Level5</g:brand>
+      <g:mpn>5-134</g:mpn>
+      <g:google_product_category>1202</g:google_product_category>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -872,6 +940,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>18500 COP</g:price>
       <g:brand>3M</g:brand>
+      <g:google_product_category>3240</g:google_product_category>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -908,6 +977,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>37000 COP</g:price>
       <g:brand>Stanley</g:brand>
+      <g:google_product_category>2481</g:google_product_category>
       <g:product_type>Medición y Nivelación</g:product_type>
     </item>
     <item>
@@ -920,6 +990,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>25000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>2481</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -932,6 +1003,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>35700 COP</g:price>
       <g:brand>YesBes</g:brand>
+      <g:google_product_category>2481</g:google_product_category>
       <g:product_type>Medición y Nivelación</g:product_type>
     </item>
     <item>
@@ -944,6 +1016,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>31000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>2481</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -956,6 +1029,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>21500 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>2481</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -968,6 +1042,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>35000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>2481</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -980,6 +1055,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>51600 COP</g:price>
       <g:brand>Stanley</g:brand>
+      <g:google_product_category>2481</g:google_product_category>
       <g:product_type>Medición y Nivelación</g:product_type>
     </item>
     <item>
@@ -992,6 +1068,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>6000 COP</g:price>
       <g:brand>Pretul</g:brand>
+      <g:google_product_category>2227</g:google_product_category>
       <g:product_type>Seguridad Industrial</g:product_type>
     </item>
     <item>
@@ -1005,6 +1082,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>60000 COP</g:price>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>2227</g:google_product_category>
       <g:product_type>Seguridad Industrial</g:product_type>
     </item>
     <item>
@@ -1029,6 +1107,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>55000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1206</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1041,6 +1120,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>8000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>2380</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -1053,6 +1133,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>33000 COP</g:price>
       <g:brand>Arrow</g:brand>
+      <g:google_product_category>2380</g:google_product_category>
       <g:product_type>Herrajes y Accesorios</g:product_type>
     </item>
     <item>
@@ -1065,6 +1146,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>43100 COP</g:price>
       <g:brand>Arrow</g:brand>
+      <g:google_product_category>2380</g:google_product_category>
       <g:product_type>Herrajes y Accesorios</g:product_type>
     </item>
     <item>
@@ -1077,6 +1159,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>25000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>5591</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1089,6 +1172,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>37700 COP</g:price>
       <g:brand>Husky</g:brand>
+      <g:google_product_category>2174</g:google_product_category>
       <g:product_type>Corte y Cuchillas</g:product_type>
     </item>
     <item>
@@ -1101,6 +1185,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>38000 COP</g:price>
       <g:brand>Pretul</g:brand>
+      <g:google_product_category>1958</g:google_product_category>
       <g:product_type>Herramientas de Construcción</g:product_type>
     </item>
     <item>
@@ -1113,6 +1198,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>16000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1300</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1125,6 +1211,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>12000 COP</g:price>
       <g:brand>Wadfow</g:brand>
+      <g:google_product_category>1203</g:google_product_category>
       <g:product_type>Herramientas de Construcción</g:product_type>
     </item>
     <item>
@@ -1137,6 +1224,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>250000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>6295</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1149,6 +1237,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>480000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>2629</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1161,6 +1250,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>650000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>4716</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1173,11 +1263,12 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>2100 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>3240</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
       <g:id>159</g:id>
-      <g:title>LIJADORA DE PARED Y PISO 1050W INDUSTRIAL TOTAL</g:title>
+      <g:title>Lijadora Telescópica para Drywall, Pared y Piso 1050W Industrial Total</g:title>
       <g:description>Lijadora para paneles de Yeso drywall teléscopica, -Voltaje: 110-120V~50/60Hz
 -Potencia de entrada: 1050W
 -Velocidad sin carga: 600-2600rpm
@@ -1199,6 +1290,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:price>700000 COP</g:price>
       <g:sale_price>670000 COP</g:sale_price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1188</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1211,6 +1303,7 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>37000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>4419</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -1223,12 +1316,13 @@ Se adapta a cinturones de trabajo</g:description>
       <g:condition>new</g:condition>
       <g:price>255000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1188</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
       <g:id>146</g:id>
-      <g:title>Línea Estándar</g:title>
-      <g:description>Porta herramientas diseñado para mantener tus herramientas organizadas y siempre al alcance durante la jornada de trabajo. Cuenta con 15 compartimientos, cinturón ajustable y materiales pensados para ofrecer durabilidad y resistencia. 15 compartimientos
+      <g:title>Cinturón Porta Herramientas Línea Estándar con 15 Compartimientos Lexmonn</g:title>
+      <g:description>Cinturón porta herramientas Línea Estándar, fabricado en Colombia por Lexmonn. Porta herramientas diseñado para mantener tus herramientas organizadas y siempre al alcance durante la jornada de trabajo. Cuenta con 15 compartimientos, cinturón ajustable y materiales pensados para ofrecer durabilidad y resistencia. 15 compartimientos
 Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y resistencia.  Compartimientos movibles.</g:description>
       <g:link>https://lexmonn.com/productos/linea-estandar-146.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/foto-RZQZ3X6H.jpg</g:image_link>
@@ -1239,12 +1333,13 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:price>128000 COP</g:price>
       <g:brand>Lexmonn</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>2485</g:google_product_category>
       <g:product_type>Porta Herramientas</g:product_type>
     </item>
     <item>
       <g:id>147</g:id>
-      <g:title>Línea Junior</g:title>
-      <g:description>Diseñada para quienes necesitan llevar herramientas de mayor peso sin perder organización y comodidad durante la jornada. Cuenta con 13 compartimientos y un cinturón acolchado que ayuda a distribuir mejor la carga.  Capa con protección a los rayos UV, que evita el desgaste a largo tiempo.  Compartimientos movibles.</g:description>
+      <g:title>Cinturón Porta Herramientas Línea Junior Acolchado con 13 Compartimientos Lexmonn</g:title>
+      <g:description>Cinturón porta herramientas acolchado Línea Junior, fabricado en Colombia por Lexmonn. Diseñada para quienes necesitan llevar herramientas de mayor peso sin perder organización y comodidad durante la jornada. Cuenta con 13 compartimientos y un cinturón acolchado que ayuda a distribuir mejor la carga.  Capa con protección a los rayos UV, que evita el desgaste a largo tiempo.  Compartimientos movibles.</g:description>
       <g:link>https://lexmonn.com/productos/linea-junior-147.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/foto-wx4H73qY.jpg</g:image_link>
       <g:additional_image_link>https://lexmonn.com/imagenes/foto-7YpkncT4.jpg</g:additional_image_link>
@@ -1255,12 +1350,13 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:price>170000 COP</g:price>
       <g:brand>Lexmonn</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>2485</g:google_product_category>
       <g:product_type>Porta Herramientas</g:product_type>
     </item>
     <item>
       <g:id>153</g:id>
-      <g:title>Línea Práctica</g:title>
-      <g:description>Diseñada para llevar herramientas livianas de forma práctica y organizada. Cuenta con 13 compartimientos y mantiene la calidad y resistencia que caracterizan a Lexmonn, siendo una opción funcional para el trabajo diario. Diseño práctico y funcional.  Compartimientos movibles.</g:description>
+      <g:title>Porta Herramientas Línea Práctica para Herramientas Livianas, 13 Compartimientos Lexmonn</g:title>
+      <g:description>Porta herramientas Línea Práctica, fabricado en Colombia por Lexmonn. Diseñada para llevar herramientas livianas de forma práctica y organizada. Cuenta con 13 compartimientos y mantiene la calidad y resistencia que caracterizan a Lexmonn, siendo una opción funcional para el trabajo diario. Diseño práctico y funcional.  Compartimientos movibles.</g:description>
       <g:link>https://lexmonn.com/productos/linea-practica-153.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/foto-wB144TKF.jpg</g:image_link>
       <g:additional_image_link>https://lexmonn.com/imagenes/foto-Y0HXS6vV.jpg</g:additional_image_link>
@@ -1270,12 +1366,13 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:price>87000 COP</g:price>
       <g:brand>Lexmonn</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>2485</g:google_product_category>
       <g:product_type>Porta Herramientas</g:product_type>
     </item>
     <item>
       <g:id>148</g:id>
-      <g:title>Línea Premium</g:title>
-      <g:description>Diseñada para quienes necesitan mayor capacidad para llevar y organizar sus herramientas durante jornadas de trabajo exigentes. Está fabricada con materiales ultra resistentes y tela antifluido, ofreciendo alta durabilidad, resistencia y protección. Cuenta con 15 compartimientos que permiten distribuir una mayor cantidad de herramientas y mantenerlas organizadas y siempre al alcance. Diseñada para uso profesional, Alta durabilidad y resistencia. Compartimientos movibles</g:description>
+      <g:title>Porta Herramientas Línea Premium Profesional, Tela Antifluido, 15 Compartimientos Lexmonn</g:title>
+      <g:description>Porta herramientas profesional Línea Premium, fabricado en Colombia por Lexmonn. Diseñada para quienes necesitan mayor capacidad para llevar y organizar sus herramientas durante jornadas de trabajo exigentes. Está fabricada con materiales ultra resistentes y tela antifluido, ofreciendo alta durabilidad, resistencia y protección. Cuenta con 15 compartimientos que permiten distribuir una mayor cantidad de herramientas y mantenerlas organizadas y siempre al alcance. Diseñada para uso profesional, Alta durabilidad y resistencia. Compartimientos movibles</g:description>
       <g:link>https://lexmonn.com/productos/linea-premium-148.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/foto-QMhv6rNh.jpg</g:image_link>
       <g:additional_image_link>https://lexmonn.com/imagenes/foto-xTH0hnQN.jpg</g:additional_image_link>
@@ -1286,6 +1383,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:price>225000 COP</g:price>
       <g:brand>Lexmonn</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>2485</g:google_product_category>
       <g:product_type>Porta Herramientas</g:product_type>
     </item>
     <item>
@@ -1298,6 +1396,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:condition>new</g:condition>
       <g:price>74800 COP</g:price>
       <g:brand>Energizer</g:brand>
+      <g:google_product_category>338</g:google_product_category>
       <g:product_type>Seguridad Industrial</g:product_type>
     </item>
     <item>
@@ -1310,6 +1409,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:condition>new</g:condition>
       <g:price>35000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>2181</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1322,6 +1422,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:condition>new</g:condition>
       <g:price>25000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>2181</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -1334,6 +1435,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:condition>new</g:condition>
       <g:price>45000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1632</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1346,6 +1448,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:condition>new</g:condition>
       <g:price>35000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>2208</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -1358,11 +1461,12 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:condition>new</g:condition>
       <g:price>159800 COP</g:price>
       <g:brand>Wal-Board</g:brand>
+      <g:google_product_category>499886</g:google_product_category>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
       <g:id>44</g:id>
-      <g:title>Morral Porta Herramientas Lexmonn</g:title>
+      <g:title>Morral Porta Herramientas Reforzado con Compartimentos, Portabotellas y Cintas Reflectivas Lexmonn</g:title>
       <g:description>Morral fabricado por Lexmonn en material reforzado, con múltiples compartimentos, portabotellas y cintas reflectivas.</g:description>
       <g:link>https://lexmonn.com/productos/morral-porta-herramientas-lexmonn-44.html</g:link>
       <g:image_link>https://lexmonn.com/imagenes/lexmonn-morral-porta-herramientas.jpg</g:image_link>
@@ -1371,6 +1475,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:price>205000 COP</g:price>
       <g:brand>Lexmonn</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>6876</g:google_product_category>
       <g:product_type>Porta Herramientas</g:product_type>
     </item>
     <item>
@@ -1383,6 +1488,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:condition>new</g:condition>
       <g:price>40000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>2411</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -1395,6 +1501,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:condition>new</g:condition>
       <g:price>96600 COP</g:price>
       <g:brand>DeWalt</g:brand>
+      <g:google_product_category>2411</g:google_product_category>
       <g:product_type>Corte y Cuchillas</g:product_type>
     </item>
     <item>
@@ -1407,6 +1514,7 @@ Cinturón ajustable, Capa con protección contra rayos UV, Alta durabilidad y re
       <g:condition>new</g:condition>
       <g:price>60800 COP</g:price>
       <g:brand>Husky</g:brand>
+      <g:google_product_category>2411</g:google_product_category>
       <g:product_type>Corte y Cuchillas</g:product_type>
     </item>
     <item>
@@ -1427,6 +1535,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>299900 COP</g:price>
       <g:brand>Pretul</g:brand>
+      <g:google_product_category>1191</g:google_product_category>
       <g:product_type>Medición y Nivelación</g:product_type>
     </item>
     <item>
@@ -1439,6 +1548,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>10000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1191</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1451,6 +1561,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>18700 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>1191</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -1463,6 +1574,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>11000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>2181</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1475,6 +1587,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>48000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>1958</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -1487,6 +1600,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>40500 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>1958</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -1499,6 +1613,8 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>55000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:mpn>17413</g:mpn>
+      <g:google_product_category>1958</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -1523,6 +1639,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>15500 COP</g:price>
       <g:brand>Pretul</g:brand>
+      <g:google_product_category>1958</g:google_product_category>
       <g:product_type>Herramientas de Construcción</g:product_type>
     </item>
     <item>
@@ -1535,6 +1652,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>135000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1220</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1547,6 +1665,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>665000 COP</g:price>
       <g:brand>Ramset</g:brand>
+      <g:google_product_category>1206</g:google_product_category>
       <g:product_type>Herramientas de Construcción</g:product_type>
     </item>
     <item>
@@ -1559,6 +1678,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>145000 COP</g:price>
       <g:brand>Wadfow</g:brand>
+      <g:google_product_category>2465</g:google_product_category>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -1571,6 +1691,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>155000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>2465</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1583,6 +1704,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>350000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>2465</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1595,6 +1717,7 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>33000 COP</g:price>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>5526</g:google_product_category>
       <g:product_type>Medición y Nivelación</g:product_type>
     </item>
     <item>
@@ -1607,12 +1730,13 @@ Incluye trípode, soporte magnético, cargador y estuche.</g:description>
       <g:condition>new</g:condition>
       <g:price>33000 COP</g:price>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>5526</g:google_product_category>
       <g:product_type>Medición y Nivelación</g:product_type>
     </item>
     <item>
       <g:id>150</g:id>
-      <g:title>Porta Taladro Lexmonn</g:title>
-      <g:description>Diseñado para llevar el taladro de forma práctica, segura y siempre al alcance durante la jornada de trabajo. Su diseño permite transportarlo cómodamente y mantenerlo disponible cuando lo necesites. Alta resistencia y durabilidad
+      <g:title>Porta Taladro con Espacios para Herramientas y Accesorios Lexmonn</g:title>
+      <g:description>Porta taladro, fabricado en Colombia por Lexmonn. Diseñado para llevar el taladro de forma práctica, segura y siempre al alcance durante la jornada de trabajo. Su diseño permite transportarlo cómodamente y mantenerlo disponible cuando lo necesites. Alta resistencia y durabilidad
 Diseño práctico y funcional
 Espacios para organizar herramientas y accesorios
 Fácil acceso al taladro
@@ -1624,6 +1748,7 @@ Materiales de alta calidad</g:description>
       <g:price>80000 COP</g:price>
       <g:brand>Lexmonn</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>4031</g:google_product_category>
       <g:product_type>Porta Herramientas</g:product_type>
     </item>
     <item>
@@ -1639,6 +1764,7 @@ Incluye cargador, batería y 5 discos de 4 1/2 pulgadas para iniciar aplicacione
       <g:condition>new</g:condition>
       <g:price>575000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1219</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1664,6 +1790,7 @@ Tamaño ajustable. Se adapta a todos, hombres y mujeres.</g:description>
       <g:condition>new</g:condition>
       <g:price>350000 COP</g:price>
       <g:brand>Wadfow</g:brand>
+      <g:google_product_category>2629</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1684,6 +1811,7 @@ Incluye: (3) brocas, (2) cinceles y maletín.</g:description>
       <g:condition>new</g:condition>
       <g:price>395000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>2629</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1701,6 +1829,7 @@ firme y de mayor control</g:description>
       <g:condition>new</g:condition>
       <g:price>27000 COP</g:price>
       <g:brand>Truper</g:brand>
+      <g:google_product_category>3594</g:google_product_category>
       <g:product_type>Herramientas Truper</g:product_type>
     </item>
     <item>
@@ -1716,6 +1845,7 @@ Dientes triples (Dientes rectificados de precisión
       <g:condition>new</g:condition>
       <g:price>40000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>3594</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1734,6 +1864,7 @@ Corta yeso con facilidad.</g:description>
       <g:condition>new</g:condition>
       <g:price>75000 COP</g:price>
       <g:brand>Milwaukee</g:brand>
+      <g:google_product_category>3594</g:google_product_category>
       <g:product_type>Drywall y Acabados</g:product_type>
     </item>
     <item>
@@ -1750,6 +1881,7 @@ Corte rápido y larga duración.</g:description>
       <g:condition>new</g:condition>
       <g:price>47000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>3594</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1767,11 +1899,12 @@ Corte rápido y larga duración.</g:description>
       <g:condition>new</g:condition>
       <g:price>38000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>6965</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
       <g:id>93</g:id>
-      <g:title>Sierra Circular Industrial 1600W 185mm Total</g:title>
+      <g:title>Sierra Circular Industrial 7 1/4 Pulgadas 1600W 185mm Total</g:title>
       <g:description>-Voltaje: 110-120V~50/60Hz, Potencia de entrada: 1600W
 -Velocidad sin carga: 5000 rpm
 -Diámetro de la cuchilla: 7-1/4&quot; x 20 mm (0.78&quot;)
@@ -1789,11 +1922,12 @@ Corte rápido y larga duración.</g:description>
       <g:condition>new</g:condition>
       <g:price>400000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>3224</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
       <g:id>86</g:id>
-      <g:title>Sopladora 3 Velocidades Total</g:title>
+      <g:title>Sopladora Inalámbrica 20V Brushless de 3 Velocidades Total (Sin Batería)</g:title>
       <g:description>Motor sin escobillas (Brushless), Voltaje: 20V-Velocidad sin carga: 13,000 / 16,000 / 19,500 rpm
 -Velocidad máxima del aire: 72 m/s
 -Flujo máximo de aire: 2.8 m³/min
@@ -1805,11 +1939,12 @@ Corte rápido y larga duración.</g:description>
       <g:condition>new</g:condition>
       <g:price>170000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>3340</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
       <g:id>54</g:id>
-      <g:title>Taladro Chuck 12V Total</g:title>
+      <g:title>Taladro Inalámbrico 12V Chuck 10 mm con Batería 1.5Ah Total</g:title>
       <g:description>Velocidad sin carga: 0-750rpm, Torque máximo: 20Nm
 – Capacidad de mandril: 0.8-10mm
 – Configuraciones de torque: 15+1
@@ -1823,6 +1958,7 @@ Corte rápido y larga duración.</g:description>
       <g:condition>new</g:condition>
       <g:price>110000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>2629</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1847,6 +1983,7 @@ Corte rápido y larga duración.</g:description>
       <g:condition>new</g:condition>
       <g:price>465000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>2629</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1859,6 +1996,7 @@ Corte rápido y larga duración.</g:description>
       <g:condition>new</g:condition>
       <g:price>195000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>2629</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
     <item>
@@ -1907,6 +2045,7 @@ Corte rápido y larga duración.</g:description>
       <g:condition>new</g:condition>
       <g:price>39000 COP</g:price>
       <g:brand>Total</g:brand>
+      <g:google_product_category>1454</g:google_product_category>
       <g:product_type>Herramientas Total</g:product_type>
     </item>
   </channel>

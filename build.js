@@ -25,6 +25,7 @@ const crypto = require("crypto");
 
 const Shared = require("./lib/shared.js");
 const Templates = require("./lib/templates.js");
+const FeedGoogle = require("./lib/feed-google.js");
 const Shell = require("./templates/shell.js");
 const CONFIG = require("./config.js");
 
@@ -1124,6 +1125,11 @@ function buildSitemap(activeProducts, cats) {
 //
 // Envíos y devoluciones NO van aquí: se configuran una vez en la cuenta de
 // Merchant Center, que los aplica a todos los productos.
+//
+// El título, la categoría de Google y el código de fabricante que van en el
+// listado NO son siempre los de la Sheet: salen de lib/feed-google.js, que
+// explica por qué (los productos propios no se encontraban sin la marca en la
+// búsqueda). Los nombres que ve el visitante en el sitio no cambian.
 function buildMerchantFeed(activeProducts) {
   const xmlEsc = (s) =>
     String(s)
@@ -1151,10 +1157,12 @@ function buildMerchantFeed(activeProducts) {
         (propio
           ? `${p.nombre}, porta herramientas fabricado en Colombia por Lexmonn.`
           : `${p.nombre}${p.marca && !p.nombre.includes(p.marca) ? ` ${p.marca}` : ""}, en la categoría ${p.categoria} de Lexmonn.`);
+      const mpn = FeedGoogle.codigoFabricante(p);
+      const categoriaGoogle = FeedGoogle.categoriaGoogle(p);
       const campos = [
         ["g:id", p.id],
-        ["g:title", p.nombre],
-        ["g:description", descripcion],
+        ["g:title", FeedGoogle.titulo(p)],
+        ["g:description", FeedGoogle.descripcion(p, descripcion)],
         ["g:link", `${SITE_URL}/productos/${p.slug}.html`],
         ["g:image_link", fotos[0]],
         ...fotos.slice(1, 11).map((f) => ["g:additional_image_link", f]),
@@ -1168,6 +1176,8 @@ function buildMerchantFeed(activeProducts) {
         // dice a Google. Las herramientas de marca sí lo tienen, pero la Sheet
         // no lo guarda, así que ahí no se afirma nada.
         ...(propio || !p.marca ? [["g:identifier_exists", "no"]] : []),
+        ...(mpn ? [["g:mpn", mpn]] : []),
+        ...(categoriaGoogle ? [["g:google_product_category", categoriaGoogle]] : []),
         ["g:product_type", p.categoria],
       ];
       return `    <item>\n${campos.map(([k, v]) => `      <${k}>${xmlEsc(v)}</${k}>`).join("\n")}\n    </item>`;
@@ -1180,6 +1190,7 @@ function buildMerchantFeed(activeProducts) {
     `    <description>Porta herramientas fabricados en Colombia y herramientas de marca.</description>\n` +
     `${items.join("\n")}\n  </channel>\n</rss>\n`;
   writeFile("productos-google.xml", xml);
+  FeedGoogle.avisos(activeProducts).forEach((a) => console.log(`[build] Listado de Google: ${a}`));
   if (omitidos.length) {
     console.log(`[build] ${omitidos.length} productos fuera del listado de Google (sin precio o sin foto): IDs ${omitidos.join(", ")}`);
   }
